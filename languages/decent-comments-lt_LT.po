@@ -1,0 +1,232 @@
+# Copyright (C) 2012 Decent Comments
+# This file is distributed under the same license as the Decent Comments package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Decent Comments 1.1.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/decent-comments\n"
+"POT-Creation-Date: 2012-04-03 11:58:23+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2012-05-01 18:59+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"X-Poedit-Language: Lithuanian\n"
+"X-Poedit-Country: Lithuania\n"
+
+#: class-decent-comments-renderer.php:77
+msgid "Author Email"
+msgstr "Autoriaus Elektroninio pašto adresas"
+
+#: class-decent-comments-renderer.php:78
+msgid "Author URL"
+msgstr "Autoriaus Universalioji nuoroda"
+
+#: class-decent-comments-renderer.php:79
+msgid "Content"
+msgstr "Turinys"
+
+#: class-decent-comments-renderer.php:80
+msgid "Date"
+msgstr "Data"
+
+#: class-decent-comments-renderer.php:81
+msgid "Karma"
+msgstr "Karma"
+
+#: class-decent-comments-renderer.php:82
+msgid "Post"
+msgstr "Įrašas"
+
+#: class-decent-comments-renderer.php:85
+msgid "Ascending"
+msgstr "Didėjančia tvarka"
+
+#: class-decent-comments-renderer.php:86
+msgid "Descending"
+msgstr "Mažėjančia tvarka"
+
+#: class-decent-comments-renderer.php:295
+msgctxt "comment-link"
+msgid " on %s"
+msgstr " %s"
+
+#: class-decent-comments-widget.php:244
+msgid "Title"
+msgstr "Antraštė"
+
+#: class-decent-comments-widget.php:251
+msgid "The number of comments to show."
+msgstr "Rodomų komentarų skaičius."
+
+#: class-decent-comments-widget.php:251
+msgid "Number of comments"
+msgstr "Komentarų skaičius"
+
+#: class-decent-comments-widget.php:258
+msgid "Sorting criteria."
+msgstr "Rikiavimo kriterijai."
+
+#: class-decent-comments-widget.php:258
+msgid "Order by ..."
+msgstr "Rikiuoti pagal ..."
+
+#: class-decent-comments-widget.php:270
+msgid "Sort order."
+msgstr "Rikiavimo tvarka."
+
+#: class-decent-comments-widget.php:270
+msgid "Sort order"
+msgstr "Rikiavimo tvarka"
+
+#: class-decent-comments-widget.php:289
+msgid "Leave empty to show comments for all posts. To show comments for a specific post only, indicate either part of the title or the post ID. To show posts for the current post, indicate: [current]"
+msgstr "Norėdamas rodyti komentarus visiems įrašams, laukelį palikite tuščią. Kad komentarai būtų rodomi tik specifiniam įrašui, nurodykite antraštės arba įrašo identifikatorių. Kad rodyti komentarus dabartiniam įrašui nurodykite: [current]"
+
+#: class-decent-comments-widget.php:289
+msgid "Post ID"
+msgstr "Įrašo identifikatorius"
+
+#: class-decent-comments-widget.php:292
+msgid "Title, empty, post ID or [current]"
+msgstr "Antraštė, tuščia, įrašo identifikatorius arba [current]"
+
+#: class-decent-comments-widget.php:295
+msgid "Selected post: <em>%s</em>"
+msgstr "Pasirinktas įrašas: <em>%s</em>"
+
+#: class-decent-comments-widget.php:303
+msgid "If checked, shows an excerpt of the comment. Otherwise the full text of the comment is displayed."
+msgstr "Jeigu pažymėta, rodoma komentaro ištrauka. Kitu atveju rodomas pilnas komentaro tekstas."
+
+#: class-decent-comments-widget.php:303
+msgid "Show comment excerpt"
+msgstr "Rodyti komentaro ištrauką"
+
+#: class-decent-comments-widget.php:309
+msgid "The maximum number of words shown in excerpts."
+msgstr "Didžiausias rodomų žodžių skaičius ištraukoje."
+
+#: class-decent-comments-widget.php:309
+msgid "Number of words in excerpts"
+msgstr "Žodžių skaičius ištraukose"
+
+#: class-decent-comments-widget.php:316
+msgid "The ellipsis is shown after the excerpt when there is more content."
+msgstr "Elipsė yra rodoma po ištraukos, kuomet yra daugiau turinio."
+
+#: class-decent-comments-widget.php:316
+msgid "Ellipsis"
+msgstr "Elipsė"
+
+#: class-decent-comments-widget.php:324
+msgid "Whether to show the author of each comment."
+msgstr "Ar rodyti kiekvieno komentaro autorių."
+
+#: class-decent-comments-widget.php:324
+msgid "Show author"
+msgstr "Rodyti autorių"
+
+#: class-decent-comments-widget.php:331
+msgid "Show the avatar of the author."
+msgstr "Rodyti autoriaus pseudoportretą."
+
+#: class-decent-comments-widget.php:331
+msgid "Show avatar"
+msgstr "Rodyti pseudoportretą"
+
+#: class-decent-comments-widget.php:337
+msgid "The size of the avatar in pixels."
+msgstr "Pseudoportreto dydis, taškais."
+
+#: class-decent-comments-widget.php:337
+msgid "Avatar size"
+msgstr "Pseudoportreto dydis"
+
+#: class-decent-comments-widget.php:345
+msgid "Show a link to the post that the comment applies to."
+msgstr "Rodyti nuorodą į įrašą, kuriai priklauso komentaras."
+
+#: class-decent-comments-widget.php:345
+msgid "Show link to post"
+msgstr "Rodyti nuorodą į įrašą"
+
+#: class-decent-comments-widget.php:352
+msgid "Show an excerpt of the comment or the full comment."
+msgstr "Rodyti komentaro ištrauką arba pilną komentarą."
+
+#: class-decent-comments-widget.php:352
+msgid "Show the comment"
+msgstr "Rodyti komentarą"
+
+#: class-decent-comments-widget.php:358
+msgid "A taxonomy, e.g. category or post_tag"
+msgstr "Taksonomija, pvz. category arba post_tag"
+
+#: class-decent-comments-widget.php:358
+msgid "Taxonomy"
+msgstr "Taksonomija"
+
+#: class-decent-comments-widget.php:361
+msgid "Indicate <strong>category</strong> if you would like to show comments on posts in certain categories. Give the desired categories' slugs in <strong>Terms</strong>. For tags use <strong>post_tag</strong> and give the tags' slugs in <strong>Terms</strong>."
+msgstr "Nurodykite <strong>kategoriją</strong>, jeigu norite rodyti komentarus atitinkamų kategorijų įrašuose. Priskirkite norimų terminų sekiklius <strong>Terminuose</strong>. Gairėms naudokite <strong>post_tag</strong> ir suteikite gairių sekiklius <strong>Terminuose</strong>."
+
+#: class-decent-comments-widget.php:373
+msgid "If a taxonomy is given , indicate terms in that taxonomy separated by comma to show comments for all posts related to these terms. To show comments on posts related to the same terms as the current post, indicate: {current}. If a taxonomy is given and terms is empty, no comments will be shown."
+msgstr "Jeigu taksonomija priskirta, nurodykite terminus, atskirtus kableliais, toje taksonomijoje, kad būtų rodomi visų įrašų, susietų su tais terminais, komentarai. Kad komentarai būtų rodomi įrašuose, susietuose su tais pačiais terminais, kaip ir dabartinis įrašas, nurodykite: {current}. Jeigu taksonomija yra suteikta ir terminų laukelis tuščias, nebus rodomi jokie komentarai."
+
+#: class-decent-comments-widget.php:373
+msgid "Terms"
+msgstr "Terminai"
+
+#: class-decent-comments-widget.php:376
+msgid "Terms or {current}. A <strong>Taxonomy</strong> must be given."
+msgstr "Terminai arba  {current}. <strong>Taksonomija</strong> privalo būti suteikta."
+
+#: decent-comments.php:126
+#: decent-comments.php:142
+msgid "Decent Comments Options"
+msgstr "Decent Comments Parinktys"
+
+#. #-#-#-#-#  plugin.pot (Decent Comments 1.1.0)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: decent-comments.php:126
+msgid "Decent Comments"
+msgstr "Decent Comments"
+
+#: decent-comments.php:136
+msgid "Access denied."
+msgstr "Prieiga nesuteikta."
+
+#: decent-comments.php:165
+msgid "Settings"
+msgstr "Nuostatos"
+
+#: decent-comments.php:168
+msgid "Delete settings when the plugin is deactivated"
+msgstr "Ištrinti nuostatas, kuomet papildinys deaktyvuojamas"
+
+#: decent-comments.php:172
+msgid "Save"
+msgstr "Įrašyti"
+
+#: decent-comments.php:186
+msgid "Options"
+msgstr "Parinktys"
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.itthinx.com/plugins/decent-comments"
+msgstr "http://www.itthinx.com/plugins/decent-comments"
+
+#. Description of the plugin/theme
+msgid "Provides configurable means to display comments that include author's avatars, author link, link to post and most importantly an excerpt of each comment. There are several options ..."
+msgstr "Suteikia rodomiems komentarams, kuriuose įtrauktas komentaro autoriaus pseudoportretas, autoriaus nuoroda, nuoroda į įrašą ir, svarbiausia, įrašo ištrauka, konfigūruojamas reikšmes. Ir tai tik kelios parinktys..."
+
+#. Author of the plugin/theme
+msgid "itthinx (Karim Rahimpur)"
+msgstr "itthinx (Karim Rahimpur)"
+
+#. Author URI of the plugin/theme
+msgid "http://www.itthinx.com"
+msgstr "http://www.itthinx.com"
+
