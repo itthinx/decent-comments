@@ -21,7 +21,7 @@
  * Plugin Name: Decent Comments
  * Plugin URI: http://www.itthinx.com/plugins/decent-comments
  * Description: Provides configurable means to display comments that include author's avatars, author link, link to post and most importantly an excerpt of each comment. There are several options ... 
- * Version: 1.3.10
+ * Version: 1.3.11
  * Author: itthinx
  * Author URI: http://www.itthinx.com
  * Donate-Link: http://www.itthinx.com/plugins/decent-comments
