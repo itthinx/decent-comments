@@ -3,7 +3,7 @@ Contributors: itthinx
 Donate link: http://www.itthinx.com/plugins/decent-comments
 Tags: avatar, comment, comment API, comment excerpt, comment excerpts, comment widget, comment shortcode, comments, excerpt, excerpts, latest comments, recent comments, shortcode, shortcodes
 Requires at least: 4.0
-Tested up to: 4.7.2
+Tested up to: 4.8
 Stable tag: 1.3.11
 License: GPLv3
 
@@ -110,8 +110,8 @@ Translations are also welcome!
 == Changelog ==
 
 = 1.3.11 =
-* Improved translations.
-* Added spanish translation.
+* Added missing translation strings.
+* Added the Spanish translation.
 
 = 1.3.10 =
 * Fixed shortcode attribute strip_tags was not taken into account.
@@ -122,5 +122,5 @@ Translations are also welcome!
 
 == Upgrade Notice ==
 
-= 1.3.10 =
-* This release improves the translations and adds the Spanish.
+= 1.3.11 =
+* This release adds missing translation strings and adds the Spanish translation.
