@@ -124,4 +124,4 @@ Translations are also welcome!
 == Upgrade Notice ==
 
 = 1.3.11 =
-* This release adds missing translation strings and adds the Spanish translation.
+* This release adds missing translation strings, completes the German translation and adds the Spanish translation.
