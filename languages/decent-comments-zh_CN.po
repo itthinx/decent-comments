@@ -3,188 +3,91 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Decent Comments 1.1.0\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/tag/decent-comments\n"
-"POT-Creation-Date: 2012-04-03 11:58:23+00:00\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-03-06 18:28+0100\n"
+"PO-Revision-Date: 2017-03-06 18:28+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2013-12-03 20:05+0800\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.8.8\n"
 
-#: class-decent-comments-renderer.php:77
-msgid "Author Email"
-msgstr "作者邮箱"
+#: class-decent-comments-renderer.php:386
+#, php-format
+msgctxt "comment-date"
+msgid " %1$s at %2$s"
+msgstr ""
 
-#: class-decent-comments-renderer.php:78
-msgid "Author URL"
-msgstr "作者网址"
-
-#: class-decent-comments-renderer.php:79
-msgid "Content"
-msgstr "内容"
-
-#: class-decent-comments-renderer.php:80
-msgid "Date"
-msgstr "日期"
-
-#: class-decent-comments-renderer.php:81
-msgid "Karma"
-msgstr "魅力"
-
-#: class-decent-comments-renderer.php:82
-msgid "Post"
-msgstr "原文"
-
-#: class-decent-comments-renderer.php:85
-msgid "Ascending"
-msgstr "从小到大"
-
-#: class-decent-comments-renderer.php:86
-msgid "Descending"
-msgstr "从大到小"
-
-#: class-decent-comments-renderer.php:295
+#: class-decent-comments-renderer.php:396
+#, php-format
 msgctxt "comment-link"
 msgid " on %s"
 msgstr " 在 %s"
 
-#: class-decent-comments-widget.php:244
-msgid "Title"
-msgstr "题目"
-
-#: class-decent-comments-widget.php:251
-msgid "The number of comments to show."
-msgstr "留言显示数量。"
-
-#: class-decent-comments-widget.php:251
-msgid "Number of comments"
-msgstr "留言总数"
-
-#: class-decent-comments-widget.php:258
-msgid "Sorting criteria."
-msgstr "排序规律."
-
-#: class-decent-comments-widget.php:258
-msgid "Order by ..."
-msgstr "按...排序"
-
-#: class-decent-comments-widget.php:270
-msgid "Sort order."
-msgstr "排序."
-
-#: class-decent-comments-widget.php:270
-msgid "Sort order"
-msgstr "排序"
-
-#: class-decent-comments-widget.php:289
-msgid ""
-"Leave empty to show comments for all posts. To show comments for a specific "
-"post only, indicate either part of the title or the post ID. To show posts "
-"for the current post, indicate: [current]"
-msgstr ""
-"显示每篇文章的留言则不用填写。为了显示个别文章的留言，请指出文章题目或ID。为"
-"了显示当前文章的留言， 请指出 : [current]"
-
-#: class-decent-comments-widget.php:289
-msgid "Post ID"
-msgstr "文章 ID"
-
-#: class-decent-comments-widget.php:292
-msgid "Title, empty, post ID or [current]"
-msgstr "题目、空白、文章 ID 或者 [current]"
-
-#: class-decent-comments-widget.php:295
-msgid "Selected post: <em>%s</em>"
-msgstr "所选文章： <em>%s</em>"
-
-#: class-decent-comments-widget.php:303
-msgid ""
-"If checked, shows an excerpt of the comment. Otherwise the full text of the "
-"comment is displayed."
-msgstr "选择这项将显示留言预览，否则将显示留言全文"
-
-#: class-decent-comments-widget.php:303
-msgid "Show comment excerpt"
-msgstr "显示留言预览"
-
-#: class-decent-comments-widget.php:309
-msgid "The maximum number of words shown in excerpts."
-msgstr "预览显示最多字数量。"
-
-#: class-decent-comments-widget.php:309
-msgid "Number of words in excerpts"
-msgstr "预览字数量"
-
-#: class-decent-comments-widget.php:316
-msgid "The ellipsis is shown after the excerpt when there is more content."
-msgstr "若有更多内容将提示。"
-
-#: class-decent-comments-widget.php:316
-msgid "Ellipsis"
-msgstr "更多内容提示"
-
-#: class-decent-comments-widget.php:324
-msgid "Whether to show the author of each comment."
-msgstr "显示每个留言的作者。"
-
-#: class-decent-comments-widget.php:324
-msgid "Show author"
-msgstr "显示作者"
-
-#: class-decent-comments-widget.php:331
-msgid "Show the avatar of the author."
-msgstr "显示作者头像。"
-
-#: class-decent-comments-widget.php:331
-msgid "Show avatar"
-msgstr "显示头像"
-
-#: class-decent-comments-widget.php:337
-msgid "The size of the avatar in pixels."
-msgstr "头像大小（pixels）。"
-
-#: class-decent-comments-widget.php:337
-msgid "Avatar size"
-msgstr "头像尺寸"
-
-#: class-decent-comments-widget.php:345
-msgid "Show a link to the post that the comment applies to."
-msgstr "显示留言原文章的链接。"
-
-#: class-decent-comments-widget.php:345
-msgid "Show link to post"
-msgstr "显示原文章链接"
-
-#: class-decent-comments-widget.php:352
-msgid "Show an excerpt of the comment or the full comment."
-msgstr "显示留言预览或者全文。"
-
-#: class-decent-comments-widget.php:352
-msgid "Show the comment"
-msgstr "显示留言"
-
-#: class-decent-comments-widget.php:358
+#: class-decent-comments-widget.php:437
 msgid "A taxonomy, e.g. category or post_tag"
 msgstr "分类系统，如类别或post_tag"
 
-#: class-decent-comments-widget.php:358
-msgid "Taxonomy"
-msgstr "分类"
+#: decent-comments.php:136
+msgid "Access denied."
+msgstr "拒绝访问。"
 
-#: class-decent-comments-widget.php:361
-msgid ""
-"Indicate <strong>category</strong> if you would like to show comments on "
-"posts in certain categories. Give the desired categories' slugs in "
-"<strong>Terms</strong>. For tags use <strong>post_tag</strong> and give the "
-"tags' slugs in <strong>Terms</strong>."
+#: class-decent-comments-renderer.php:103
+msgid "Ascending"
+msgstr "从小到大"
+
+#: class-decent-comments-renderer.php:95
+msgid "Author Email"
+msgstr "作者邮箱"
+
+#: class-decent-comments-renderer.php:96
+msgid "Author URL"
+msgstr "作者网址"
+
+#: class-decent-comments-widget.php:344
+#, php-format
+msgid "Available post types: %s"
 msgstr ""
-"若想显示某种分类里的留言请选择 <strong>category</strong> 。请在"
-"<strong>Terms</strong>里选择分类短语。标签请选择<strong>post_tag</strong> 然"
-"后在 <strong>Termes</strong>选择标签短语。"
 
-#: class-decent-comments-widget.php:373
+#: class-decent-comments-widget.php:416
+msgid "Avatar size"
+msgstr "头像尺寸"
+
+#: class-decent-comments-renderer.php:97
+msgid "Content"
+msgstr "内容"
+
+#: class-decent-comments-renderer.php:98
+msgid "Date"
+msgstr "日期"
+
+#: decent-comments.php:126
+msgid "Decent Comments"
+msgstr "Decent Comments"
+
+#: decent-comments.php:126 decent-comments.php:142
+msgid "Decent Comments Options"
+msgstr "Decent Comments设置"
+
+#: decent-comments.php:168
+msgid "Delete settings when the plugin is deactivated"
+msgstr "停止插件时删除设置"
+
+#: class-decent-comments-renderer.php:104
+msgid "Descending"
+msgstr "从大到小"
+
+#: class-decent-comments-widget.php:381
+msgid "Ellipsis"
+msgstr "更多内容提示"
+
+#: class-decent-comments-widget.php:354
+msgid "Exclude comments from post authors"
+msgstr ""
+
+#: class-decent-comments-widget.php:452
 msgid ""
 "If a taxonomy is given , indicate terms in that taxonomy separated by comma "
 "to show comments for all posts related to these terms. To show comments on "
@@ -195,59 +98,223 @@ msgstr ""
 "文章的留言。若想选择与当前文章相关的留言，请输入{current}。若提供一个分类但该"
 "分类内没有任何词汇，系统将不显示任何留言。"
 
-#: class-decent-comments-widget.php:373
-msgid "Terms"
-msgstr "词汇"
+#: class-decent-comments-widget.php:354
+msgid "If checked, excludes comments from post authors on their own posts."
+msgstr ""
 
-#: class-decent-comments-widget.php:376
-msgid "Terms or {current}. A <strong>Taxonomy</strong> must be given."
-msgstr "词汇或{current}。请提供至少一个 <strong>分类</strong>。"
+#: class-decent-comments-widget.php:361
+msgid ""
+"If checked, shows an excerpt of the comment. Otherwise the full text of the "
+"comment is displayed."
+msgstr "选择这项将显示留言预览，否则将显示留言全文"
 
-#: decent-comments.php:126 decent-comments.php:142
-msgid "Decent Comments Options"
-msgstr "Decent Comments设置"
+#: class-decent-comments-widget.php:462
+msgid "Include pingbacks."
+msgstr ""
 
-#. #-#-#-#-#  plugin.pot (Decent Comments 1.1.0)  #-#-#-#-#
-#. Plugin Name of the plugin/theme
-#: decent-comments.php:126
-msgid "Decent Comments"
-msgstr "Decent Comments"
+#: class-decent-comments-widget.php:469
+msgid "Include trackbacks."
+msgstr ""
 
-#: decent-comments.php:136
-msgid "Access denied."
-msgstr "拒绝访问。"
+#: class-decent-comments-widget.php:440
+msgid ""
+"Indicate <strong>category</strong> if you would like to show comments on "
+"posts in certain categories. Give the desired categories' slugs in "
+"<strong>Terms</strong>. For tags use <strong>post_tag</strong> and give the "
+"tags' slugs in <strong>Terms</strong>."
+msgstr ""
+"若想显示某种分类里的留言请选择 <strong>category</strong> 。请在"
+"<strong>Terms</strong>里选择分类短语。标签请选择<strong>post_tag</strong> 然"
+"后在 <strong>Termes</strong>选择标签短语。"
 
-#: decent-comments.php:165
-msgid "Settings"
-msgstr "Règ设置"
+#: class-decent-comments-renderer.php:99
+msgid "Karma"
+msgstr "魅力"
 
-#: decent-comments.php:168
-msgid "Delete settings when the plugin is deactivated"
-msgstr "停止插件时删除设置"
+#: class-decent-comments-widget.php:341
+msgid ""
+"Leave empty to show comments for all post types. To show comments for a "
+"specific post type only, indicate the post type."
+msgstr ""
 
-#: decent-comments.php:172
-msgid "Save"
-msgstr "保存"
+#: class-decent-comments-widget.php:324
+msgid ""
+"Leave empty to show comments for all posts. To show comments for a specific "
+"post only, indicate either part of the title or the post ID. To show posts "
+"for the current post, indicate: [current]"
+msgstr ""
+"显示每篇文章的留言则不用填写。为了显示个别文章的留言，请指出文章题目或ID。为"
+"了显示当前文章的留言， 请指出 : [current]"
+
+#: class-decent-comments-widget.php:403
+msgid "Link authors"
+msgstr ""
+
+#: class-decent-comments-widget.php:374
+msgid "Number of characters in excerpts"
+msgstr ""
+
+#: class-decent-comments-widget.php:286
+msgid "Number of comments"
+msgstr "留言总数"
+
+#: class-decent-comments-widget.php:367
+msgid "Number of words in excerpts"
+msgstr "预览字数量"
 
 #: decent-comments.php:186
 msgid "Options"
 msgstr "设置"
 
-#. Plugin URI of the plugin/theme
-msgid "http://www.itthinx.com/plugins/decent-comments"
-msgstr "http://www.itthinx.com/plugins/decent-comments"
+#: class-decent-comments-widget.php:293
+msgid "Order by ..."
+msgstr "按...排序"
 
-#. Description of the plugin/theme
-msgid ""
-"Provides configurable means to display comments that include author's "
-"avatars, author link, link to post and most importantly an excerpt of each "
-"comment. There are several options ..."
-msgstr "提供设置选项包括显示留言、头像、作者、原文链接、留言、原文预览等功能"
+#: class-decent-comments-widget.php:462
+msgid "Pingbacks"
+msgstr ""
 
-#. Author of the plugin/theme
-msgid "itthinx (Karim Rahimpur)"
-msgstr "itthinx (Karim Rahimpur)"
+#: class-decent-comments-renderer.php:100
+msgid "Post"
+msgstr "原文"
 
-#. Author URI of the plugin/theme
-msgid "http://www.itthinx.com"
-msgstr "http://www.itthinx.com"
+#: class-decent-comments-widget.php:324
+msgid "Post ID"
+msgstr "文章 ID"
+
+#: class-decent-comments-widget.php:341
+msgid "Post Type"
+msgstr ""
+
+#: decent-comments.php:172
+msgid "Save"
+msgstr "保存"
+
+#: class-decent-comments-widget.php:330
+#, php-format
+msgid "Selected post: <em>%s</em>"
+msgstr "所选文章： <em>%s</em>"
+
+#: decent-comments.php:165
+msgid "Settings"
+msgstr "Règ设置"
+
+#: class-decent-comments-widget.php:424
+msgid "Show a link to the post that the comment applies to."
+msgstr "显示留言原文章的链接。"
+
+#: class-decent-comments-widget.php:431
+msgid "Show an excerpt of the comment or the full comment."
+msgstr "显示留言预览或者全文。"
+
+#: class-decent-comments-widget.php:389
+msgid "Show author"
+msgstr "显示作者"
+
+#: class-decent-comments-widget.php:410
+msgid "Show avatar"
+msgstr "显示头像"
+
+#: class-decent-comments-widget.php:361
+msgid "Show comment excerpt"
+msgstr "显示留言预览"
+
+#: class-decent-comments-widget.php:396
+msgid "Show date"
+msgstr ""
+
+#: class-decent-comments-widget.php:424
+msgid "Show link to post"
+msgstr "显示原文章链接"
+
+#: class-decent-comments-widget.php:410
+msgid "Show the avatar of the author."
+msgstr "显示作者头像。"
+
+#: class-decent-comments-widget.php:431
+msgid "Show the comment"
+msgstr "显示留言"
+
+#: class-decent-comments-widget.php:396
+msgid "Show the date and time when the comment was posted."
+msgstr ""
+
+#: class-decent-comments-widget.php:305
+msgid "Sort order"
+msgstr "排序"
+
+#: class-decent-comments-widget.php:305
+msgid "Sort order."
+msgstr "排序."
+
+#: class-decent-comments-widget.php:293
+msgid "Sorting criteria."
+msgstr "排序规律."
+
+#: class-decent-comments-widget.php:437
+msgid "Taxonomy"
+msgstr "分类"
+
+#: class-decent-comments-widget.php:452
+msgid "Terms"
+msgstr "词汇"
+
+#: class-decent-comments-widget.php:455
+msgid "Terms or {current}. A <strong>Taxonomy</strong> must be given."
+msgstr "词汇或{current}。请提供至少一个 <strong>分类</strong>。"
+
+#: class-decent-comments-widget.php:381
+msgid "The ellipsis is shown after the excerpt when there is more content."
+msgstr "若有更多内容将提示。"
+
+#: class-decent-comments-widget.php:374
+msgid "The maximum number of characters shown in excerpts."
+msgstr ""
+
+#: class-decent-comments-widget.php:367
+msgid "The maximum number of words shown in excerpts."
+msgstr "预览显示最多字数量。"
+
+#: class-decent-comments-widget.php:286
+msgid "The number of comments to show."
+msgstr "留言显示数量。"
+
+#: class-decent-comments-widget.php:416
+msgid "The size of the avatar in pixels."
+msgstr "头像大小（pixels）。"
+
+#: class-decent-comments-widget.php:279
+msgid "Title"
+msgstr "题目"
+
+#: class-decent-comments-widget.php:327
+msgid "Title, empty, post ID or [current]"
+msgstr "题目、空白、文章 ID 或者 [current]"
+
+#: class-decent-comments-widget.php:469
+msgid "Trackbacks"
+msgstr ""
+
+#: class-decent-comments-widget.php:403
+msgid "Whether to link comment authors to their website."
+msgstr ""
+
+#: class-decent-comments-widget.php:389
+msgid "Whether to show the author of each comment."
+msgstr "显示每个留言的作者。"
+
+#~ msgid "http://www.itthinx.com/plugins/decent-comments"
+#~ msgstr "http://www.itthinx.com/plugins/decent-comments"
+
+#~ msgid ""
+#~ "Provides configurable means to display comments that include author's "
+#~ "avatars, author link, link to post and most importantly an excerpt of "
+#~ "each comment. There are several options ..."
+#~ msgstr ""
+#~ "提供设置选项包括显示留言、头像、作者、原文链接、留言、原文预览等功能"
+
+#~ msgid "itthinx (Karim Rahimpur)"
+#~ msgstr "itthinx (Karim Rahimpur)"
+
+#~ msgid "http://www.itthinx.com"
+#~ msgstr "http://www.itthinx.com"

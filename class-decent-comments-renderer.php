@@ -383,7 +383,7 @@ class Decent_Comments_Renderer {
 				if ( $show_date ) {
 					$output .= '<span class="comment-date">';
 					$output .= sprintf(
-						' %1$s at %2$s', // translators : the first argument is the date of the comment, the second is the time
+						_x( ' %1$s at %2$s', 'comment-date', DC_PLUGIN_DOMAIN ), // translators : the first argument is the date of the comment, the second is the time
 						mysql2date( get_option( 'date_format' ), $comment->comment_date ),
 						mysql2date( get_option( 'time_format' ), $comment->comment_date, true )
 					);
