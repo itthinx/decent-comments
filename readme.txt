@@ -112,6 +112,7 @@ Translations are also welcome!
 = 1.3.11 =
 * Added missing translation strings.
 * Added the Spanish translation.
+* Added missing German translations.
 
 = 1.3.10 =
 * Fixed shortcode attribute strip_tags was not taken into account.
