@@ -8,20 +8,20 @@ msgstr ""
 "Project-Id-Version: decent-comments 1.1.3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-06 18:26+0100\n"
-"PO-Revision-Date: 2017-03-06 18:27+0100\n"
+"PO-Revision-Date: 2017-03-07 20:53+0100\n"
 "Last-Translator: kento <http://www.itthinx.com/plugins/decent-comments/>\n"
 "Language-Team: German <http://www.itthinx.com/plugins/decent-comments/>\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.8.12\n"
 
 #: class-decent-comments-renderer.php:386
 #, php-format
 msgctxt "comment-date"
 msgid " %1$s at %2$s"
-msgstr ""
+msgstr " %1$s um %2$s"
 
 #: class-decent-comments-renderer.php:396
 #, php-format
@@ -52,7 +52,7 @@ msgstr "URL des Autors"
 #: class-decent-comments-widget.php:344
 #, php-format
 msgid "Available post types: %s"
-msgstr ""
+msgstr "Verfügbare Eintragstypen: %s"
 
 #: class-decent-comments-widget.php:416
 msgid "Avatar size"
@@ -88,7 +88,7 @@ msgstr "Ellipse"
 
 #: class-decent-comments-widget.php:354
 msgid "Exclude comments from post authors"
-msgstr ""
+msgstr "Kommentare von Eintragsautoren ausschließen"
 
 #: class-decent-comments-widget.php:452
 msgid ""
@@ -107,6 +107,8 @@ msgstr ""
 #: class-decent-comments-widget.php:354
 msgid "If checked, excludes comments from post authors on their own posts."
 msgstr ""
+"Kommentare der Autoren auf ihre eigenen Einträge werden nicht angezeigt wenn "
+"dies aktiviert ist."
 
 #: class-decent-comments-widget.php:361
 msgid ""
@@ -118,11 +120,11 @@ msgstr ""
 
 #: class-decent-comments-widget.php:462
 msgid "Include pingbacks."
-msgstr ""
+msgstr "Pingbacks einbeziehen."
 
 #: class-decent-comments-widget.php:469
 msgid "Include trackbacks."
-msgstr ""
+msgstr "Trackbacks einbeziehen."
 
 #: class-decent-comments-widget.php:440
 msgid ""
@@ -147,6 +149,8 @@ msgid ""
 "Leave empty to show comments for all post types. To show comments for a "
 "specific post type only, indicate the post type."
 msgstr ""
+"Leer lassen um Kommentare zu allen Eintragstypen anzuzeigen. Um nur "
+"Kommentare auf einen speziellen Eintragstyp anzuzeigen, diesen hier angeben."
 
 #: class-decent-comments-widget.php:324
 msgid ""
@@ -161,11 +165,11 @@ msgstr ""
 
 #: class-decent-comments-widget.php:403
 msgid "Link authors"
-msgstr ""
+msgstr "Autoren verlinken"
 
 #: class-decent-comments-widget.php:374
 msgid "Number of characters in excerpts"
-msgstr ""
+msgstr "Anzahl der Zeichen in Auszügen"
 
 #: class-decent-comments-widget.php:286
 msgid "Number of comments"
@@ -185,7 +189,7 @@ msgstr "Ordnen nach ..."
 
 #: class-decent-comments-widget.php:462
 msgid "Pingbacks"
-msgstr ""
+msgstr "Pingbacks"
 
 #: class-decent-comments-renderer.php:100
 msgid "Post"
@@ -197,7 +201,7 @@ msgstr "Artikel-ID"
 
 #: class-decent-comments-widget.php:341
 msgid "Post Type"
-msgstr ""
+msgstr "Eintragstyp"
 
 #: decent-comments.php:172
 msgid "Save"
@@ -234,7 +238,7 @@ msgstr "Den Auszug anzeigen"
 
 #: class-decent-comments-widget.php:396
 msgid "Show date"
-msgstr ""
+msgstr "Datum anzeigen"
 
 #: class-decent-comments-widget.php:424
 msgid "Show link to post"
@@ -250,7 +254,7 @@ msgstr "Den Kommentar anzeigen"
 
 #: class-decent-comments-widget.php:396
 msgid "Show the date and time when the comment was posted."
-msgstr ""
+msgstr "Das Datum und die Uhrzeit des Kommentars anzeigen."
 
 #: class-decent-comments-widget.php:305
 msgid "Sort order"
@@ -286,7 +290,7 @@ msgstr ""
 
 #: class-decent-comments-widget.php:374
 msgid "The maximum number of characters shown in excerpts."
-msgstr ""
+msgstr "Die maximale Anzahl der Zeichen die in Auszügen angezeigt wird."
 
 #: class-decent-comments-widget.php:367
 msgid "The maximum number of words shown in excerpts."
@@ -310,11 +314,11 @@ msgstr "Titel, leer, Artikel-ID oder [current]"
 
 #: class-decent-comments-widget.php:469
 msgid "Trackbacks"
-msgstr ""
+msgstr "Trackbacks"
 
 #: class-decent-comments-widget.php:403
 msgid "Whether to link comment authors to their website."
-msgstr ""
+msgstr "Ob Autoren zu ihren Webseiten verlinkt werden sollen."
 
 #: class-decent-comments-widget.php:389
 msgid "Whether to show the author of each comment."
