@@ -95,9 +95,9 @@ class Decent_Comment {
 			'taxonomy' => '',
 			'terms' => '',
 			'term_ids' => '',
-
-			'pingback' => true,
-			'trackback' => true,
+      //JM: the default should be to show real comments
+			'pingback' => false,
+			'trackback' => false,
 
 			'exclude_post_author' => false
 
@@ -187,6 +187,11 @@ class Decent_Comment {
 		if ( ! empty( $post_id ) ) {
 			$where .= $wpdb->prepare( ' AND comment_post_ID = %d', $post_id );
 		}
+    else {
+      //if no post_id is specified, exclude current post id, since theme should show it elsewhere:
+      global $post;
+			$where .= $wpdb->prepare( ' AND comment_post_ID != %d', $post->ID );
+    }
 		if ( '' !== $author_email ) {
 			$where .= $wpdb->prepare( ' AND comment_author_email = %s', $author_email );
 		}
@@ -200,12 +205,15 @@ class Decent_Comment {
 		} elseif ( ! empty( $type ) ) {
 			$where .= $wpdb->prepare( ' AND comment_type = %s', $type );
 		}
+    else{
+      //JM: no need to add on these clauses if we already have a type clause, but if we don't...
 		if ( !$pingback ) {
 			$where .= " AND comment_type != 'pingback' ";
 		}
 		if ( !$trackback ) {
 			$where .= " AND comment_type != 'trackback' ";
 		}
+    }
 		if ( '' !== $parent ) {
 			$where .= $wpdb->prepare( ' AND comment_parent = %d', $parent );
 		}
@@ -238,9 +246,14 @@ class Decent_Comment {
 		// terms - check the term_ids and limit comments to those on posts related to these terms
 		// If the list of term_ids is empty, there won't be any comments displayed.
 		if ( !empty( $taxonomy ) ) {
-			if ( is_string( $term_ids ) ) {
+      //JM: Avoid adding empty item to array
+			if ( is_string( $term_ids ) && strlen($term_ids)>0 ) {
 				$term_ids = explode( ",", $term_ids );
 			}
+      else{
+        $term_ids = array();
+      }
+        
 			if ( !empty( $terms ) ) {
 				if ( is_string( $terms ) ) {
 					$terms = explode( ",", $terms );
@@ -256,12 +269,13 @@ class Decent_Comment {
 					}
 				}
 			}
-			$terms = get_terms( $taxonomy, array( 'include' => $term_ids ) );
-			if ( is_array( $terms ) ) {
-				$term_ids = array();
-				foreach ( $terms as $term ) {
-					$term_ids[] = $term->term_id;
-				}
+			//JM: previous code did 
+			//$terms = get_terms( $taxonomy, array( 'include' => $term_ids )
+			//and then read ->term_id on each $term
+			//this had the effect of applying filters such as language filter to the terms
+			//however as we already have the term ids we can use them directly, 
+      //any applicable eg language filter would be applied (or overridden) on the comments)
+			if ( is_array( $term_ids ) ) {
 				$term_ids = implode( ",", $term_ids );
 				if ( strlen($term_ids) == 0 ) {
 					$term_ids = "NULL";

@@ -56,10 +56,21 @@ class Decent_Comments_Widget extends WP_Widget {
 
 	/**
 	 * Creates a Decent Comments widget.
-	 */
+   * FIXED:#1 PHP Deprecated warning
+   * PHP7 Deprecated: Methods with the same name as their class will not be constructors in a future version of PHP
 	function Decent_Comments_Widget() {
 		parent::__construct( false, $name = 'Decent Comments' );
 	}
+	 */
+  public function __construct()
+  {
+		parent::__construct( false, $name = 'Decent Comments' );
+  }
+
+  public function Decent_Comments_Widget()
+  {
+      self::__construct();
+  }
 
 	/**
 	 * Clears cached comments.

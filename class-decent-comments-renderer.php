@@ -69,8 +69,8 @@ class Decent_Comments_Renderer {
 		// by post type
 		'post_type'    => null,
 
-		'pingback'     => true,
-		'trackback'    => true,
+		'pingback'     => false,
+		'trackback'    => false,
 
 		'exclude_post_author' => false
 	);
@@ -188,6 +188,7 @@ class Decent_Comments_Renderer {
 		}
 		return apply_filters( 'decent_comments_comment_output', $output, $comment_ID, $options );
 	}
+
 
 	/**
 	 * Renders comments.
@@ -348,79 +349,29 @@ class Decent_Comments_Renderer {
 				$strip_tags = ( $options['strip_tags'] !== 'false' && $options['strip_tags'] !== false );
 			}
 
-			$output .= '<div class="decent-comments">';
+      //JM: can call the wordpress list comments function instead of:
+      //$output .= wp_list_comments( $options, $comments);
+      //this component should not be rendering the comments as such
+      //even better, a mechanism is needed to the theme to provide the callback
+      $container_class='decent-comments comments-area';
+      if ( class_exists( 'woocommerce' ) ){
+        //if woocommerce is activated, use standard woocommerce callback for the display
+        //to get the rating and the verified owner where applicable
+        //for further customization, see woocommerce single-product/review.php
+        $options['callback']='woocommerce_comments';
+        apply_filters( 'woocommerce_product_review_list_args', $options );
+        //note, apply woocommerce class to get woo CSS formatting for ratings on non-woo page
+        $container_class.=' woocommerce';
+				}
+			$output .= '<div class="' . $container_class . '">';
 			$output .= '<ul>';
-
-			foreach ( $comments as $comment) {
-
-				$output .= '<li>';
-
-				$output .= '<div class="comment">';
-
-				if ( $show_avatar ) {
-					$output .= '<span class="comment-avatar">';
-					$comment_author_url = get_comment_author_url( $comment->comment_ID );
-					if ( !empty( $comment_author_url ) && $link_author ) {
-						$output .= '<a href="'. $comment_author_url . '" rel="external">';
-					}
-					$output .= get_avatar( $comment->comment_author_email, $avatar_size );
-					if ( !empty( $comment_author_url ) ) {
-						$output .= '</a>';
-					}
-					$output .= '</span>'; // .comment-avatar
-				}
-
-				if ( $show_author ) {
-					$output .= '<span class="comment-author">';
-					if ( $link_author ) {
-						$output .= get_comment_author_link( $comment->comment_ID );
-					} else {
-						$output .= get_comment_author( $comment->comment_ID );
-					}
-					$output .= '</span>'; // .comment-author
-				}
-
-				if ( $show_date ) {
-					$output .= '<span class="comment-date">';
-					$output .= sprintf(
-						_x( ' %1$s at %2$s', 'comment-date', DC_PLUGIN_DOMAIN ), // translators : the first argument is the date of the comment, the second is the time
-						mysql2date( get_option( 'date_format' ), $comment->comment_date ),
-						mysql2date( get_option( 'time_format' ), $comment->comment_date, true )
-					);
-					$output .= '</span>'; // .comment-date
-				}
-
-				if ( $show_link ) {
-					$output .= '<span class="comment-link">';
-					$output .= sprintf(
-						_x( ' on %s', 'comment-link', DC_PLUGIN_DOMAIN ),
-						'<a href="' . esc_url( get_comment_link( $comment->comment_ID ) ) . '">' . get_the_title( $comment->comment_post_ID ) . '</a>'
-					);
-					$output .= '</span>'; // .comment-link
-				}
-
-				if ( $show_comment ) {
-					$output .= '<span class="comment-' . ( $excerpt ? "excerpt" : "body" ) . '">';
-					$output .= self::get_comment(
-						$comment,
-						array(
-							'ellipsis' => $ellipsis,
-							'excerpt' => $excerpt,
-							'max_excerpt_words' => $max_excerpt_words,
-							'max_excerpt_characters' => $max_excerpt_characters,
-							'strip_tags' => $strip_tags
-						)
-					);
-					$output .= '</span>'; // .comment-body or .comment-excerpt
-				}
-
-				$output .= '</div>'; // .comment
-
-				$output .= '</li>';
-			}
-
-			$output .= '</ul>';
+      $options['echo']=false;
+      $output .= wp_list_comments( $options, $comments);
+      $output .= '</ul>';
 			$output .= '</div>'; // .decent-comments
+
+
+
  		}
 		return apply_filters( 'decent_comments_comments_output', $output, $comments, $options );
 	}
