@@ -315,6 +315,7 @@ class Decent_Comments_Renderer {
 			if ( isset( $options['avatar_size'] ) ) {
 				$avatar_size = intval( $options['avatar_size'] );
 			}
+			$options['avatar_size']=80;
 			if ( isset( $options['excerpt'] ) ) {
 				$excerpt = ( $options['excerpt'] !== 'false' && $options['excerpt'] !== false );
 			}
