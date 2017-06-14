@@ -4,7 +4,7 @@ Donate link: http://www.itthinx.com/plugins/decent-comments
 Tags: avatar, comment, comment API, comment excerpt, comment excerpts, comment widget, comment shortcode, comments, excerpt, excerpts, latest comments, recent comments, shortcode, shortcodes
 Requires at least: 4.0
 Tested up to: 4.8
-Stable tag: 1.3.11
+Stable tag: 1.3.2
 License: GPLv3
 
 Decent Comments shows what people say. Provides widgets, shortcodes and API to display comments including author avatars, links, comment excerpts.
@@ -108,6 +108,10 @@ Translations are also welcome!
 1. Decent Comments widget configuration.
 
 == Changelog ==
+
+= 1.3.2 =
+* PHP 7.x fixed widget constructor warning.
+* Improved admin appearance.
 
 = 1.3.11 =
 * Added missing translation strings.

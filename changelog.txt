@@ -1,5 +1,9 @@
 Decent Comments by itthinx                                           Changelog
 
+= 1.3.2 =
+* PHP 7.x fixed widget constructor warning.
+* Improved admin appearance.
+
 = 1.3.11 =
 * Added missing translation strings.
 * Added the Spanish translation.
