@@ -256,7 +256,12 @@ class Decent_Comment {
 					}
 				}
 			}
-			$terms = get_terms( $taxonomy, array( 'include' => $term_ids ) );
+			global $wp_version;
+			if ( isset( $wp_version ) && ( version_compare( $wp_version, '4.5' ) >= 0 ) ) {
+				$terms = get_terms( array( 'taxonomy' => $taxonomy, 'include' => $term_ids ) );
+			} else {
+				$terms = get_terms( $taxonomy, array( 'include' => $term_ids ) );
+			}
 			if ( is_array( $terms ) ) {
 				$term_ids = array();
 				foreach ( $terms as $term ) {

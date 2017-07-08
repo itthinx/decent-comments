@@ -112,20 +112,11 @@ Translations are also welcome!
 = 1.4.0 =
 * PHP 7.x fixed widget constructor warning.
 * Improved admin appearance.
+* Adjustment for get_terms() signature change.
 
-= 1.3.11 =
-* Added missing translation strings.
-* Added the Spanish translation.
-* Added missing German translations.
-
-= 1.3.10 =
-* Fixed shortcode attribute strip_tags was not taken into account.
-
-= 1.3.9 =
-* Added the decent_comments_comment_output filter.
-* Added the decent_comments_comments_output filter.
+[Complete changelog](https://github.com/itthinx/decent-comments/blob/master/changelog.txt)
 
 == Upgrade Notice ==
 
 = 1.4.0 =
-* This release contains a minor admin appearance improvement and fixes a PHP warning related to deprecated PHP constructors.
+* This release contains a minor admin appearance improvement, internal API usage adjustments and fixes a PHP warning related to deprecated PHP constructors.
