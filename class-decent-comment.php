@@ -108,7 +108,7 @@ class Decent_Comment {
 		extract( $this->query_vars, EXTR_SKIP );
 
 		// $args can be whatever, only use the args defined in defaults to compute the key
-		$key = md5( serialize( compact(array_keys($defaults)) )  );
+		$key = md5( serialize( compact( array_keys( $defaults ) ) )  );
 		$last_changed = wp_cache_get( 'last_changed', 'comment' );
 		if ( !$last_changed ) {
 			$last_changed = time();
@@ -256,7 +256,12 @@ class Decent_Comment {
 					}
 				}
 			}
-			$terms = get_terms( $taxonomy, array( 'include' => $term_ids ) );
+			global $wp_version;
+			if ( isset( $wp_version ) && ( version_compare( $wp_version, '4.5' ) >= 0 ) ) {
+				$terms = get_terms( array( 'taxonomy' => $taxonomy, 'include' => $term_ids ) );
+			} else {
+				$terms = get_terms( $taxonomy, array( 'include' => $term_ids ) );
+			}
 			if ( is_array( $terms ) ) {
 				$term_ids = array();
 				foreach ( $terms as $term ) {

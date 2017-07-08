@@ -21,7 +21,7 @@
  * Plugin Name: Decent Comments
  * Plugin URI: http://www.itthinx.com/plugins/decent-comments
  * Description: Provides configurable means to display comments that include author's avatars, author link, link to post and most importantly an excerpt of each comment. There are several options ... 
- * Version: 1.3.11
+ * Version: 1.4.0
  * Author: itthinx
  * Author URI: http://www.itthinx.com
  * Donate-Link: http://www.itthinx.com/plugins/decent-comments
@@ -169,7 +169,7 @@ function DC_options() {
 				'</p>' .
 				'<p>' .
 					wp_nonce_field( plugin_basename( __FILE__ ), DC_OPTIONS_NONCE, true, false ) .
-					'<input type="submit" name="submit" value="' . __( 'Save', DC_PLUGIN_DOMAIN ) . '"/>' .
+					'<input type="submit" name="submit" class="button button-primary" value="' . __( 'Save', DC_PLUGIN_DOMAIN ) . '"/>' .
 				'</p>' .
 			'</div>' .
 		'</form>';
