@@ -1,6 +1,6 @@
 Decent Comments by itthinx                                           Changelog
 
-= 1.3.2 =
+= 1.4.0 =
 * PHP 7.x fixed widget constructor warning.
 * Improved admin appearance.
 
