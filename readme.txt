@@ -39,12 +39,14 @@ Please try to solve problems there before you rate this plugin or say it doesn't
 
 __Translations__
 
+* Catalan translation provided by [Ibidem Group](http://www.ibidemgroup.com).
 * Chinese translation provided by Francesco from [in Cina](http://www.in-cina.com)
 * French translation provided by Thomas Mur from [Creapage.net](http://www.creapage.net)
 * German translation provided by the author [itthinx](http://www.itthinx.com)
 * Italian translation provided by Francesco from [in Cina](http://www.in-cina.com)
 * Lithuanian translation provided by Vincent G from [Host1Free](http://www.Host1Free.com)
 * Portuguese translation provided by [TopCasinoWagering](http://wordpress.org/support/profile/topcasinowagering)
+* Spanish translation provided by [itthinx](http://www.itthinx.com) and [Ibidem Translations](http://www.ibidem-translations.com).
 
 Many thanks!
 
@@ -112,6 +114,8 @@ Translations are also welcome!
 = 1.5.0 =
 * Added the possibility to indicate multiple post types, so only comments on one
   or more post types are shown.
+* Updated the German, French and Spanish translations.
+* Added the Catalan translation.
 
 = 1.4.1 =
 * Updated the plugin tags.
@@ -128,5 +132,4 @@ Translations are also welcome!
 = 1.5.0 =
 This release provides an improvement so that comments on one or more post types can be shown.
 Previously, we could only restrict the comments shown to a single post type, now we can use several.
-
-
+This new version also updated several translations and adds the Catalan translation.

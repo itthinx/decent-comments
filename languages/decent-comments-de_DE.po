@@ -7,29 +7,29 @@ msgid ""
 msgstr ""
 "Project-Id-Version: decent-comments 1.1.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-06 18:26+0100\n"
-"PO-Revision-Date: 2017-03-07 20:53+0100\n"
+"POT-Creation-Date: 2017-08-10 11:46+0200\n"
+"PO-Revision-Date: 2017-08-10 11:47+0200\n"
 "Last-Translator: kento <http://www.itthinx.com/plugins/decent-comments/>\n"
 "Language-Team: German <http://www.itthinx.com/plugins/decent-comments/>\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 2.0.2\n"
 
-#: class-decent-comments-renderer.php:386
+#: class-decent-comments-renderer.php:405
 #, php-format
 msgctxt "comment-date"
 msgid " %1$s at %2$s"
 msgstr " %1$s um %2$s"
 
-#: class-decent-comments-renderer.php:396
+#: class-decent-comments-renderer.php:415
 #, php-format
 msgctxt "comment-link"
 msgid " on %s"
 msgstr " zu %s"
 
-#: class-decent-comments-widget.php:437
+#: class-decent-comments-widget.php:448
 msgid "A taxonomy, e.g. category or post_tag"
 msgstr "Eine Taxonomie, zum Beispiel category oder post_tag"
 
@@ -49,12 +49,12 @@ msgstr "Email des Autors"
 msgid "Author URL"
 msgstr "URL des Autors"
 
-#: class-decent-comments-widget.php:344
+#: class-decent-comments-widget.php:355
 #, php-format
 msgid "Available post types: %s"
 msgstr "Verfügbare Eintragstypen: %s"
 
-#: class-decent-comments-widget.php:416
+#: class-decent-comments-widget.php:427
 msgid "Avatar size"
 msgstr "Avatar Größe"
 
@@ -82,15 +82,15 @@ msgstr "Die Einstellungen löschen wenn das Plugin deaktiviert wird"
 msgid "Descending"
 msgstr "Absteigend"
 
-#: class-decent-comments-widget.php:381
+#: class-decent-comments-widget.php:392
 msgid "Ellipsis"
 msgstr "Ellipse"
 
-#: class-decent-comments-widget.php:354
+#: class-decent-comments-widget.php:365
 msgid "Exclude comments from post authors"
 msgstr "Kommentare von Eintragsautoren ausschließen"
 
-#: class-decent-comments-widget.php:452
+#: class-decent-comments-widget.php:463
 msgid ""
 "If a taxonomy is given , indicate terms in that taxonomy separated by comma "
 "to show comments for all posts related to these terms. To show comments on "
@@ -104,13 +104,13 @@ msgstr ""
 "Taxonomie angegeben, jedoch keine Begriffe, dann werden keine Kommentare "
 "angezeigt."
 
-#: class-decent-comments-widget.php:354
+#: class-decent-comments-widget.php:365
 msgid "If checked, excludes comments from post authors on their own posts."
 msgstr ""
 "Kommentare der Autoren auf ihre eigenen Einträge werden nicht angezeigt wenn "
 "dies aktiviert ist."
 
-#: class-decent-comments-widget.php:361
+#: class-decent-comments-widget.php:372
 msgid ""
 "If checked, shows an excerpt of the comment. Otherwise the full text of the "
 "comment is displayed."
@@ -118,15 +118,15 @@ msgstr ""
 "Wird diese Option ausgewählt dann wird ein Auszug der Kommentare angezeigt. "
 "Ansonsten wird der gesamte Text angezeigt."
 
-#: class-decent-comments-widget.php:462
+#: class-decent-comments-widget.php:473
 msgid "Include pingbacks."
 msgstr "Pingbacks einbeziehen."
 
-#: class-decent-comments-widget.php:469
+#: class-decent-comments-widget.php:480
 msgid "Include trackbacks."
 msgstr "Trackbacks einbeziehen."
 
-#: class-decent-comments-widget.php:440
+#: class-decent-comments-widget.php:451
 msgid ""
 "Indicate <strong>category</strong> if you would like to show comments on "
 "posts in certain categories. Give the desired categories' slugs in "
@@ -144,7 +144,7 @@ msgstr ""
 msgid "Karma"
 msgstr "Karma"
 
-#: class-decent-comments-widget.php:341
+#: class-decent-comments-widget.php:346
 msgid ""
 "Leave empty to show comments for all post types. To show comments for a "
 "specific post type only, indicate the post type."
@@ -152,7 +152,7 @@ msgstr ""
 "Leer lassen um Kommentare zu allen Eintragstypen anzuzeigen. Um nur "
 "Kommentare auf einen speziellen Eintragstyp anzuzeigen, diesen hier angeben."
 
-#: class-decent-comments-widget.php:324
+#: class-decent-comments-widget.php:326
 msgid ""
 "Leave empty to show comments for all posts. To show comments for a specific "
 "post only, indicate either part of the title or the post ID. To show posts "
@@ -163,19 +163,19 @@ msgstr ""
 "des Titels oder die Artikel-ID angegeben werden. Um Kommentare für den "
 "aktuellen Artikel anzuzeigen, sollte [current] angegeben werden."
 
-#: class-decent-comments-widget.php:403
+#: class-decent-comments-widget.php:414
 msgid "Link authors"
 msgstr "Autoren verlinken"
 
-#: class-decent-comments-widget.php:374
+#: class-decent-comments-widget.php:385
 msgid "Number of characters in excerpts"
 msgstr "Anzahl der Zeichen in Auszügen"
 
-#: class-decent-comments-widget.php:286
+#: class-decent-comments-widget.php:288
 msgid "Number of comments"
 msgstr "Anzahl der Kommentare"
 
-#: class-decent-comments-widget.php:367
+#: class-decent-comments-widget.php:378
 msgid "Number of words in excerpts"
 msgstr "Anzahl der Worte in Auszügen"
 
@@ -183,11 +183,11 @@ msgstr "Anzahl der Worte in Auszügen"
 msgid "Options"
 msgstr "Optionen"
 
-#: class-decent-comments-widget.php:293
+#: class-decent-comments-widget.php:295
 msgid "Order by ..."
 msgstr "Ordnen nach ..."
 
-#: class-decent-comments-widget.php:462
+#: class-decent-comments-widget.php:473
 msgid "Pingbacks"
 msgstr "Pingbacks"
 
@@ -195,11 +195,11 @@ msgstr "Pingbacks"
 msgid "Post"
 msgstr "Artikel"
 
-#: class-decent-comments-widget.php:324
+#: class-decent-comments-widget.php:326
 msgid "Post ID"
 msgstr "Artikel-ID"
 
-#: class-decent-comments-widget.php:341
+#: class-decent-comments-widget.php:351
 msgid "Post Type"
 msgstr "Eintragstyp"
 
@@ -207,7 +207,7 @@ msgstr "Eintragstyp"
 msgid "Save"
 msgstr "Speichern"
 
-#: class-decent-comments-widget.php:330
+#: class-decent-comments-widget.php:332
 #, php-format
 msgid "Selected post: <em>%s</em>"
 msgstr "Ausgewählter Artikel: <em>%s</em>"
@@ -216,110 +216,116 @@ msgstr "Ausgewählter Artikel: <em>%s</em>"
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: class-decent-comments-widget.php:424
+#: class-decent-comments-widget.php:435
 msgid "Show a link to the post that the comment applies to."
 msgstr "Einen Link zum Artikel anzeigen."
 
-#: class-decent-comments-widget.php:431
+#: class-decent-comments-widget.php:442
 msgid "Show an excerpt of the comment or the full comment."
 msgstr "Einen Auszug oder den vollen Kommentar anzeigen."
 
-#: class-decent-comments-widget.php:389
+#: class-decent-comments-widget.php:400
 msgid "Show author"
 msgstr "Den Autor anzeigen"
 
-#: class-decent-comments-widget.php:410
+#: class-decent-comments-widget.php:421
 msgid "Show avatar"
 msgstr "Den Avatar anzeigen"
 
-#: class-decent-comments-widget.php:361
+#: class-decent-comments-widget.php:372
 msgid "Show comment excerpt"
 msgstr "Den Auszug anzeigen"
 
-#: class-decent-comments-widget.php:396
+#: class-decent-comments-widget.php:407
 msgid "Show date"
 msgstr "Datum anzeigen"
 
-#: class-decent-comments-widget.php:424
+#: class-decent-comments-widget.php:435
 msgid "Show link to post"
 msgstr "Den Link zum Artikel anzeigen"
 
-#: class-decent-comments-widget.php:410
+#: class-decent-comments-widget.php:421
 msgid "Show the avatar of the author."
 msgstr "Den Avatar des Autors anzeigen."
 
-#: class-decent-comments-widget.php:431
+#: class-decent-comments-widget.php:442
 msgid "Show the comment"
 msgstr "Den Kommentar anzeigen"
 
-#: class-decent-comments-widget.php:396
+#: class-decent-comments-widget.php:407
 msgid "Show the date and time when the comment was posted."
 msgstr "Das Datum und die Uhrzeit des Kommentars anzeigen."
 
-#: class-decent-comments-widget.php:305
+#: class-decent-comments-widget.php:307
 msgid "Sort order"
 msgstr "Reihenfolge"
 
-#: class-decent-comments-widget.php:305
+#: class-decent-comments-widget.php:307
 msgid "Sort order."
 msgstr "Reihenfolge."
 
-#: class-decent-comments-widget.php:293
+#: class-decent-comments-widget.php:295
 msgid "Sorting criteria."
 msgstr "Sortierkriterium."
 
-#: class-decent-comments-widget.php:437
+#: class-decent-comments-widget.php:448
 msgid "Taxonomy"
 msgstr "Taxonomie"
 
-#: class-decent-comments-widget.php:452
+#: class-decent-comments-widget.php:463
 msgid "Terms"
 msgstr "Begriffe"
 
-#: class-decent-comments-widget.php:455
+#: class-decent-comments-widget.php:466
 msgid "Terms or {current}. A <strong>Taxonomy</strong> must be given."
 msgstr ""
 "Begriffe oder {current}. Eine <strong>Taxonomie</strong> muss hierzu "
 "angegeben werden."
 
-#: class-decent-comments-widget.php:381
+#: class-decent-comments-widget.php:392
 msgid "The ellipsis is shown after the excerpt when there is more content."
 msgstr ""
 "Die Ellipse wird nach dem Auszug angezeigt falls zusätzlicher Inhalt "
 "vorhanden ist."
 
-#: class-decent-comments-widget.php:374
+#: class-decent-comments-widget.php:385
 msgid "The maximum number of characters shown in excerpts."
 msgstr "Die maximale Anzahl der Zeichen die in Auszügen angezeigt wird."
 
-#: class-decent-comments-widget.php:367
+#: class-decent-comments-widget.php:378
 msgid "The maximum number of words shown in excerpts."
 msgstr "Die maximale Anzahl an Worten die in Auszügen angezeigt wird."
 
-#: class-decent-comments-widget.php:286
+#: class-decent-comments-widget.php:288
 msgid "The number of comments to show."
 msgstr "Die Anzahl der Kommentare die angezeigt werden sollen."
 
-#: class-decent-comments-widget.php:416
+#: class-decent-comments-widget.php:427
 msgid "The size of the avatar in pixels."
 msgstr "Die Größe des Avatars in Pixeln."
 
-#: class-decent-comments-widget.php:279
+#: class-decent-comments-widget.php:281
 msgid "Title"
 msgstr "Titel"
 
-#: class-decent-comments-widget.php:327
+#: class-decent-comments-widget.php:329
 msgid "Title, empty, post ID or [current]"
 msgstr "Titel, leer, Artikel-ID oder [current]"
 
-#: class-decent-comments-widget.php:469
+#: class-decent-comments-widget.php:480
 msgid "Trackbacks"
 msgstr "Trackbacks"
 
-#: class-decent-comments-widget.php:403
+#: class-decent-comments-widget.php:414
 msgid "Whether to link comment authors to their website."
 msgstr "Ob Autoren zu ihren Webseiten verlinkt werden sollen."
 
-#: class-decent-comments-widget.php:389
+#: class-decent-comments-widget.php:400
 msgid "Whether to show the author of each comment."
 msgstr "Ob der Autor zu jedem Kommentar angezeigt werden soll."
+
+#: class-decent-comments-widget.php:348
+msgid "You can indicate one ore more post types separated by comma."
+msgstr ""
+"Es können einer oder mehrere Beitragstypen durch Komma getrennt angegeben "
+"werden."
