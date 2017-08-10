@@ -221,7 +221,14 @@ class Decent_Comment {
 			$join = "JOIN $wpdb->posts ON $wpdb->posts.ID = $wpdb->comments.comment_post_ID";
 			if ( ! empty( $post_fields ) ) {
 				foreach( $post_fields as $field_name => $field_value ) {
-					$where .= $wpdb->prepare( " AND {$wpdb->posts}.{$field_name} = %s", $field_value );
+					if ( is_array( $field_value ) ) {
+						$where .= sprintf(
+							" AND {$wpdb->posts}.{$field_name} IN (%s)",
+							'\'' . implode( '\',\'', array_map( 'esc_sql', $field_value ) ) . '\''
+						);
+					} else {
+						$where .= $wpdb->prepare( " AND {$wpdb->posts}.{$field_name} = %s", $field_value );
+					}
 				}
 			}
 			if ( $exclude_post_author ) {

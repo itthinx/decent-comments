@@ -4,7 +4,7 @@ Donate link: http://www.itthinx.com/plugins/decent-comments
 Tags: comment, comment excerpt, comments, comment shortcode, comment widget, comment excerpts, avatar, comment API, excerpt, excerpts, latest comments, recent comments, shortcode, shortcodes
 Requires at least: 4.0
 Tested up to: 4.8
-Stable tag: 1.4.1
+Stable tag: 1.5.0
 License: GPLv3
 
 Decent Comments shows what people say. Provides widgets, shortcodes and API to display comments including author avatars, links, comment excerpts.
@@ -109,6 +109,10 @@ Translations are also welcome!
 
 == Changelog ==
 
+= 1.5.0 =
+* Added the possibility to indicate multiple post types, so only comments on one
+  or more post types are shown.
+
 = 1.4.1 =
 * Updated the plugin tags.
 
@@ -121,5 +125,8 @@ Translations are also welcome!
 
 == Upgrade Notice ==
 
-= 1.4.1 =
-* This release contains a minor admin appearance improvement, internal API usage adjustments and fixes a PHP warning related to deprecated PHP constructors.
+= 1.5.0 =
+This release provides an improvement so that comments on one or more post types can be shown.
+Previously, we could only restrict the comments shown to a single post type, now we can use several.
+
+
