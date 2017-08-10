@@ -173,10 +173,12 @@ class Decent_Comments_Widget extends WP_Widget {
 
 		// post type
 		$post_type = $new_instance['post_type'];
+		if ( !empty( $post_type ) ) {
+			$post_type = implode( ',', array_map( 'trim', explode( ',', $post_type ) ) );
+			$settings['post_type'] = $post_type;
+		}
 		if ( empty( $post_type ) ) {
 			unset( $settings['post_type'] );
-		} else {
-			$settings['post_type'] = trim( $post_type );
 		}
 
 		// exclude_post_author
@@ -337,8 +339,17 @@ class Decent_Comments_Widget extends WP_Widget {
 		if ( !empty( $instance['post_type'] ) ) {
 			$post_type = $instance['post_type'];
 		}
-		echo "<p>";
-		echo '<label class="title" title="' . __( "Leave empty to show comments for all post types. To show comments for a specific post type only, indicate the post type.", DC_PLUGIN_DOMAIN ) . '" for="' .$this->get_field_id( 'post_type' ) . '">' . __( 'Post Type', DC_PLUGIN_DOMAIN ) . '</label>';
+		echo '<p>';
+		printf(
+			'<label class="title" title="%s" for="%s">%s</label>',
+			esc_attr(
+				__( 'Leave empty to show comments for all post types. To show comments for a specific post type only, indicate the post type.', DC_PLUGIN_DOMAIN ) .
+				' ' .
+				__( 'You can indicate one ore more post types separated by comma.', DC_PLUGIN_DOMAIN )
+			),
+			esc_attr( $this->get_field_id( 'post_type' ) ),
+			esc_html( __( 'Post Type', DC_PLUGIN_DOMAIN ) )
+		);
 		echo '<input class="widefat" id="' . $this->get_field_id( 'post_type' ) . '" name="' . $this->get_field_name( 'post_type' ) . '" type="text" value="' . esc_attr( $post_type ) . '" />';
 		echo '<br/>';
 		echo '<span class="description">' . sprintf( __( "Available post types: %s", DC_PLUGIN_DOMAIN ), implode( ', ', $post_types ) ) . '</span>';

@@ -223,11 +223,30 @@ class Decent_Comments_Renderer {
 				$post_id = $post->ID;
 			}
 		}
+
 		if ( isset( $options['post_type'] ) ) {
-			$post_type = trim( $options['post_type'] );
 			$post_types = get_post_types( array( 'public' => true ) );
-			if ( !in_array( $post_type, $post_types ) ) {
-				$post_type = null;
+			$options['post_type'] = array_map( 'trim', explode( ',', $options['post_type'] ) );
+			if ( count( $options['post_type'] ) < 2 ) {
+				$options['post_type'] = array_shift( $options['post_type'] );
+			}
+			if ( is_array( $options['post_type'] ) ) {
+				$post_type = array();
+				$_post_types = $options['post_type'];
+				foreach( $_post_types as $_post_type ) {
+					$_post_type = trim( $_post_type );
+					if ( in_array( $_post_type, $post_types ) ) {
+						$post_type[] = $_post_type;
+					}
+				}
+				if ( empty( $post_type ) ) {
+					$post_type = null;
+				}
+			} else {
+				$post_type = trim( $options['post_type'] );
+				if ( !in_array( $post_type, $post_types ) ) {
+					$post_type = null;
+				}
 			}
 		}
 
