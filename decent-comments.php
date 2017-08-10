@@ -28,6 +28,10 @@
  * License: GPLv3
  */
 
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * @var string plugin url
  */
