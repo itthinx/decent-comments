@@ -114,7 +114,7 @@ Translations are also welcome!
 = 1.5.0 =
 * Added the possibility to indicate multiple post types, so only comments on one
   or more post types are shown.
-* Updated the German, French and Spanish translations.
+* Updated the German, French, Portuguese and Spanish translations.
 * Added the Catalan translation.
 
 = 1.4.1 =
