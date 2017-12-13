@@ -2,9 +2,10 @@
 Contributors: itthinx
 Donate link: http://www.itthinx.com/plugins/decent-comments
 Tags: comment, comment excerpt, comments, comment shortcode, comment widget, comment excerpts, avatar, comment API, excerpt, excerpts, latest comments, recent comments, shortcode, shortcodes
-Requires at least: 4.0
-Tested up to: 4.9
-Stable tag: 1.5.0
+Requires at least: 4.0.0
+Tested up to: 4.9.1
+Requires PHP: 5.5.0
+Stable tag: 1.6.0
 License: GPLv3
 
 Decent Comments shows what people say. Provides widgets, shortcodes and API to display comments including author avatars, links, comment excerpts.
@@ -39,14 +40,15 @@ Please try to solve problems there before you rate this plugin or say it doesn't
 
 __Translations__
 
-* Catalan translation provided by [Ibidem Group](http://www.ibidemgroup.com).
+* Catalan translation provided by [Ibidem Group](http://www.ibidemgroup.com)
 * Chinese translation provided by Francesco from [in Cina](http://www.in-cina.com)
 * French translation provided by Thomas Mur from [Creapage.net](http://www.creapage.net)
 * German translation provided by the author [itthinx](http://www.itthinx.com)
 * Italian translation provided by Francesco from [in Cina](http://www.in-cina.com)
 * Lithuanian translation provided by Vincent G from [Host1Free](http://www.Host1Free.com)
 * Portuguese translation provided by [TopCasinoWagering](http://wordpress.org/support/profile/topcasinowagering)
-* Spanish translation provided by [itthinx](http://www.itthinx.com) and [Ibidem Translations](http://www.ibidem-translations.com).
+* Russion translation provided by [Igor](http://arahis.com)
+* Spanish translation provided by [itthinx](http://www.itthinx.com) and [Ibidem Translations](http://www.ibidem-translations.com)
 
 Many thanks!
 
@@ -111,25 +113,13 @@ Translations are also welcome!
 
 == Changelog ==
 
-= 1.5.0 =
-* Added the possibility to indicate multiple post types, so only comments on one
-  or more post types are shown.
-* Updated the German, French, Portuguese and Spanish translations.
-* Added the Catalan translation.
-
-= 1.4.1 =
-* Updated the plugin tags.
-
-= 1.4.0 =
-* PHP 7.x fixed widget constructor warning.
-* Improved admin appearance.
-* Adjustment for get_terms() signature change.
+= 1.6.0 =
+* Tested with WordPress 4.9.1.
+* Added the Russian translation.
 
 [Complete changelog](https://github.com/itthinx/decent-comments/blob/master/changelog.txt)
 
 == Upgrade Notice ==
 
-= 1.5.0 =
-This release provides an improvement so that comments on one or more post types can be shown.
-Previously, we could only restrict the comments shown to a single post type, now we can use several.
-This new version also updated several translations and adds the Catalan translation.
+= 1.6.0 =
+This release adds the Russian translation.

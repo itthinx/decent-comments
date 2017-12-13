@@ -1,5 +1,9 @@
 Decent Comments by itthinx                                           Changelog
 
+= 1.6.0 =
+* Tested with WordPress 4.9.1.
+* Added the Russian translation.
+
 = 1.5.0 =
 * Added the possibility to indicate multiple post types, so only comments on one
   or more post types are shown.
