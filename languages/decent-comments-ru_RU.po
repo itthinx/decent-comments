@@ -1,0 +1,328 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-08 11:39+0200\n"
+"PO-Revision-Date: 2017-12-13 16:14+0100\n"
+"Last-Translator: Igor <akigleo@ukr.net>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.5\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: ru\n"
+
+#: class-decent-comments-renderer.php:405
+#, php-format
+msgctxt "comment-date"
+msgid " %1$s at %2$s"
+msgstr " %1$s в %2$s"
+
+#: class-decent-comments-renderer.php:415
+#, php-format
+msgctxt "comment-link"
+msgid " on %s"
+msgstr " на %s"
+
+#: class-decent-comments-widget.php:448
+msgid "A taxonomy, e.g. category or post_tag"
+msgstr "Таксономия, например категория или post_tag"
+
+#: decent-comments.php:136
+msgid "Access denied."
+msgstr "Доступ заблокирован."
+
+#: class-decent-comments-renderer.php:103
+msgid "Ascending"
+msgstr "По возрастанию"
+
+#: class-decent-comments-renderer.php:95
+msgid "Author Email"
+msgstr "Email автора"
+
+#: class-decent-comments-renderer.php:96
+msgid "Author URL"
+msgstr "URL Автора"
+
+#: class-decent-comments-widget.php:355
+#, php-format
+msgid "Available post types: %s"
+msgstr "Доступные типы сообщений:  %s"
+
+#: class-decent-comments-widget.php:427
+msgid "Avatar size"
+msgstr "Размер аватара"
+
+#: class-decent-comments-renderer.php:97
+msgid "Content"
+msgstr "Содержание"
+
+#: class-decent-comments-renderer.php:98
+msgid "Date"
+msgstr "Дата"
+
+#: decent-comments.php:126
+msgid "Decent Comments"
+msgstr "Достойные комментарии"
+
+#: decent-comments.php:126 decent-comments.php:142
+msgid "Decent Comments Options"
+msgstr "Достойные комментарии. Опции"
+
+#: decent-comments.php:168
+msgid "Delete settings when the plugin is deactivated"
+msgstr "Удаление настроек при отключении плагина"
+
+#: class-decent-comments-renderer.php:104
+msgid "Descending"
+msgstr "По убывание"
+
+#: class-decent-comments-widget.php:392
+msgid "Ellipsis"
+msgstr "Многоточие"
+
+#: class-decent-comments-widget.php:365
+msgid "Exclude comments from post authors"
+msgstr "Исключить комментарии от авторов сообщения"
+
+#: class-decent-comments-widget.php:463
+msgid ""
+"If a taxonomy is given , indicate terms in that taxonomy separated by comma "
+"to show comments for all posts related to these terms. To show comments on "
+"posts related to the same terms as the current post, indicate: {current}. If "
+"a taxonomy is given and terms is empty, no comments will be shown."
+msgstr ""
+"Если дана таксономия, укажите термины в этой таксономии, разделенные "
+"запятой, чтобы показывать комментарии для всех должностей, связанных с этими "
+"условиями. Чтобы показать комментарии к сообщениям, относящимся к тем же "
+"терминам, что и текущая публикация, укажите: {current}. Если дана таксономия "
+"и условия пусты, комментарии не будут отображаться."
+
+#: class-decent-comments-widget.php:365
+msgid "If checked, excludes comments from post authors on their own posts."
+msgstr ""
+"Если отмечено, исключает комментарии авторов сообщений на свои собственные "
+"сообщения."
+
+#: class-decent-comments-widget.php:372
+msgid ""
+"If checked, shows an excerpt of the comment. Otherwise the full text of the "
+"comment is displayed."
+msgstr ""
+"Если отмечено, отобразится отрывок комментария. В противном случае "
+"отображается полный текст комментария."
+
+#: class-decent-comments-widget.php:473
+msgid "Include pingbacks."
+msgstr "Включите pingbacks."
+
+#: class-decent-comments-widget.php:480
+msgid "Include trackbacks."
+msgstr "Включите трекбэки."
+
+#: class-decent-comments-widget.php:451
+msgid ""
+"Indicate <strong>category</strong> if you would like to show comments on "
+"posts in certain categories. Give the desired categories' slugs in "
+"<strong>Terms</strong>. For tags use <strong>post_tag</strong> and give the "
+"tags' slugs in <strong>Terms</strong>."
+msgstr ""
+"Укажите <strong>категорию,</strong> если вы хотите показывать комментарии к "
+"сообщениям в определенных категориях. Дайте slugs желаемых категорий в « "
+"<strong>Terms</strong> . Для тегов использовать <strong>post_tag</strong> и "
+"дать тэги slugs в <strong>Terms</strong>."
+
+#: class-decent-comments-renderer.php:99
+msgid "Karma"
+msgstr "Ка́рма"
+
+#: class-decent-comments-widget.php:346
+msgid ""
+"Leave empty to show comments for all post types. To show comments for a "
+"specific post type only, indicate the post type."
+msgstr ""
+"Оставьте пустым, чтобы показывать комментарии для всех типов сообщений. "
+"Чтобы показывать комментарии только для определенного типа сообщения, "
+"укажите тип сообщения."
+
+#: class-decent-comments-widget.php:326
+msgid ""
+"Leave empty to show comments for all posts. To show comments for a specific "
+"post only, indicate either part of the title or the post ID. To show posts "
+"for the current post, indicate: [current]"
+msgstr ""
+"Оставьте пустым, чтобы показывать комментарии для всех сообщений. Чтобы "
+"показывать комментарии только для определенной записи, укажите либо часть "
+"названия, либо идентификатор сообщения. Чтобы показать сообщения для текущей "
+"публикации, укажите: [текущий]"
+
+#: class-decent-comments-widget.php:414
+msgid "Link authors"
+msgstr "Авторы ссылок"
+
+#: class-decent-comments-widget.php:385
+msgid "Number of characters in excerpts"
+msgstr "Количество символов в анонсе"
+
+#: class-decent-comments-widget.php:288
+msgid "Number of comments"
+msgstr "Число комментариев"
+
+#: class-decent-comments-widget.php:378
+msgid "Number of words in excerpts"
+msgstr "Количество слов в анонсах"
+
+#: decent-comments.php:186
+msgid "Options"
+msgstr "Настройки"
+
+#: class-decent-comments-widget.php:295
+msgid "Order by ..."
+msgstr "Сортровать по ..."
+
+#: class-decent-comments-widget.php:473
+msgid "Pingbacks"
+msgstr "Уведомления"
+
+#: class-decent-comments-renderer.php:100
+msgid "Post"
+msgstr "Статья"
+
+#: class-decent-comments-widget.php:326
+msgid "Post ID"
+msgstr "ID поста"
+
+#: class-decent-comments-widget.php:351
+msgid "Post Type"
+msgstr "Тип сообщения"
+
+#: decent-comments.php:172
+msgid "Save"
+msgstr "Сохранить"
+
+#: class-decent-comments-widget.php:332
+#, php-format
+msgid "Selected post: <em>%s</em>"
+msgstr "Выбранное сообщение: <em>%s</em>"
+
+#: decent-comments.php:165
+msgid "Settings"
+msgstr "Управление"
+
+#: class-decent-comments-widget.php:435
+msgid "Show a link to the post that the comment applies to."
+msgstr "Показывать ссылку на сообщение, к которому относится комментарий."
+
+#: class-decent-comments-widget.php:442
+msgid "Show an excerpt of the comment or the full comment."
+msgstr "Покажите отрывок комментария или полный комментарий."
+
+#: class-decent-comments-widget.php:400
+msgid "Show author"
+msgstr "Показать Информацию Об Авторе"
+
+#: class-decent-comments-widget.php:421
+msgid "Show avatar"
+msgstr "Показать аватар"
+
+#: class-decent-comments-widget.php:372
+msgid "Show comment excerpt"
+msgstr "Показывать анонс комментария"
+
+#: class-decent-comments-widget.php:407
+msgid "Show date"
+msgstr "Показать дату"
+
+#: class-decent-comments-widget.php:435
+msgid "Show link to post"
+msgstr "Показать ссылку для публикацию"
+
+#: class-decent-comments-widget.php:421
+msgid "Show the avatar of the author."
+msgstr "Показать аватар автора."
+
+#: class-decent-comments-widget.php:442
+msgid "Show the comment"
+msgstr "Показать комментарий"
+
+#: class-decent-comments-widget.php:407
+msgid "Show the date and time when the comment was posted."
+msgstr "Показывать дату и время публикации комментария."
+
+#: class-decent-comments-widget.php:307
+msgid "Sort order"
+msgstr "Порядок сортировки"
+
+#: class-decent-comments-widget.php:307
+msgid "Sort order."
+msgstr "Порядок сортировки."
+
+#: class-decent-comments-widget.php:295
+msgid "Sorting criteria."
+msgstr "Критерии сортировки."
+
+#: class-decent-comments-widget.php:448
+msgid "Taxonomy"
+msgstr "Таксономия"
+
+#: class-decent-comments-widget.php:463
+msgid "Terms"
+msgstr "Сроки и условия"
+
+#: class-decent-comments-widget.php:466
+msgid "Terms or {current}. A <strong>Taxonomy</strong> must be given."
+msgstr ""
+"Термины или текущие - {current}. Должна быть дана таксономия "
+"<strong>Taxonomy</strong> ."
+
+#: class-decent-comments-widget.php:392
+msgid "The ellipsis is shown after the excerpt when there is more content."
+msgstr "Многоточие показывается после анонса, когда есть больше контента."
+
+#: class-decent-comments-widget.php:385
+msgid "The maximum number of characters shown in excerpts."
+msgstr "Максимальное количество символов, показанных в анонсах."
+
+#: class-decent-comments-widget.php:378
+msgid "The maximum number of words shown in excerpts."
+msgstr "Максимальное количество слов, указанных в анонсах."
+
+#: class-decent-comments-widget.php:288
+msgid "The number of comments to show."
+msgstr "Количество комментариев для отображения."
+
+#: class-decent-comments-widget.php:427
+msgid "The size of the avatar in pixels."
+msgstr "Размер аватара в пикселях."
+
+#: class-decent-comments-widget.php:281
+msgid "Title"
+msgstr "Заголовок"
+
+#: class-decent-comments-widget.php:329
+msgid "Title, empty, post ID or [current]"
+msgstr "Заголовок, пустой, ID идентификатор или текущий [current]"
+
+#: class-decent-comments-widget.php:480
+msgid "Trackbacks"
+msgstr "Обратные ссылки"
+
+#: class-decent-comments-widget.php:414
+msgid "Whether to link comment authors to their website."
+msgstr "Связывать ли авторы комментариев с их сайтом."
+
+#: class-decent-comments-widget.php:400
+msgid "Whether to show the author of each comment."
+msgstr "Показывать автору каждого комментария."
+
+#: class-decent-comments-widget.php:348
+msgid "You can indicate one ore more post types separated by comma."
+msgstr ""
+"Вы можете указать один или несколько типов сообщений, разделенных запятой."
