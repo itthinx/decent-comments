@@ -2,10 +2,10 @@
 Contributors: itthinx
 Donate link: http://www.itthinx.com/plugins/decent-comments
 Tags: comment, comment excerpt, comments, comment shortcode, comment widget, comment excerpts, avatar, comment API, excerpt, excerpts, latest comments, recent comments, shortcode, shortcodes
-Requires at least: 4.0.0
-Tested up to: 4.9.1
-Requires PHP: 5.5.0
-Stable tag: 1.6.0
+Requires at least: 4.6.0
+Tested up to: 5.1
+Requires PHP: 5.6.0
+Stable tag: 1.7.0
 License: GPLv3
 
 Decent Comments shows what people say. Provides widgets, shortcodes and API to display comments including author avatars, links, comment excerpts.
@@ -113,13 +113,12 @@ Translations are also welcome!
 
 == Changelog ==
 
-= 1.6.0 =
-* Tested with WordPress 4.9.1.
-* Added the Russian translation.
+= 1.7.0 =
+* WordPress 5.1 compatible.
+* Fixed some code documentation issues.
 
 [Complete changelog](https://github.com/itthinx/decent-comments/blob/master/changelog.txt)
 
 == Upgrade Notice ==
 
-= 1.6.0 =
-This release adds the Russian translation.
+Tested with the latest version of WordPress.

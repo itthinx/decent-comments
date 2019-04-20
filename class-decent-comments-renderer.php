@@ -107,10 +107,12 @@ class Decent_Comments_Renderer {
 
 	/** 
 	 * Renders a comment according to the $options given.
-	 * 
+	 *
 	 * @param int $comment_ID the comment ID
 	 * @param array $options used to specify rendering settings, defaults apply if none given
-	 * @return rendered comment
+	 *
+	 * @return string rendered comment
+	 *
 	 * @see Decent_Comments_Renderer::$defaults
 	 */
 	static function get_comment( $comment_ID = 0, $options = array() ) {
@@ -191,12 +193,14 @@ class Decent_Comments_Renderer {
 
 	/**
 	 * Renders comments.
-	 * 
+	 *
 	 * These options defined in Decent_Comments_Renderer::$defaults are supported.
 	 * @see Decent_Comments_Renderer::$defaults
-	 * 
+	 *
 	 * @param array $options determines what settings are used to render which comments
-	 * @return rendered comments
+	 *
+	 * @return string rendered comments
+	 *
 	 * @uses Decent_Comments_Renderer::get_comment()
 	 */
 	static function get_comments( $options = array() ) {

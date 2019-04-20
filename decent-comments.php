@@ -2,7 +2,7 @@
 /**
  * decent-comments.php
  * 
- * Copyright (c) 2011 - 2017 "kento" Karim Rahimpur www.itthinx.com
+ * Copyright (c) 2011 - 2019 "kento" Karim Rahimpur www.itthinx.com
  * 
  * This code is released under the GNU General Public License.
  * See COPYRIGHT.txt and LICENSE.txt.
@@ -21,7 +21,7 @@
  * Plugin Name: Decent Comments
  * Plugin URI: http://www.itthinx.com/plugins/decent-comments
  * Description: Provides configurable means to display comments that include author's avatars, author link, link to post and most importantly an excerpt of each comment. There are several options ... 
- * Version: 1.6.0
+ * Version: 1.7.0
  * Author: itthinx
  * Author URI: http://www.itthinx.com
  * Donate-Link: http://www.itthinx.com/plugins/decent-comments
@@ -54,7 +54,8 @@ define( 'DC_OPTIONS_NONCE', "dc-options-nonce" );
 
 /**
  * Returns settings.
- * @return plugin settings
+ *
+ * @return array plugin settings
  */
 function DC_get_settings() {
 	global $DC_settings, $DC_version;
@@ -74,6 +75,7 @@ function DC_get_settings() {
 
 /**
  * Retrieves an option from settings or default value.
+ *
  * @param string $option desired option
  * @param mixed $default given default value or null if none given
  */
@@ -88,7 +90,9 @@ function DC_get_setting( $option, $default = null ) {
 
 /**
  * Retrieves plugin settings.
- * @return plugin settings
+ *
+ * @return array plugin settings
+ *
  * @access private
  */
 function _DC_get_settings() {
@@ -97,8 +101,11 @@ function _DC_get_settings() {
 
 /**
  * Updates plugin settings.
+ *
  * @param array $settings new plugin settings
+ *
  * @return bool true if successful, false otherwise
+ *
  * @access private
  */
 function _DC_update_settings( $settings ) {
@@ -182,6 +189,7 @@ function DC_options() {
 add_filter( 'plugin_action_links', 'DC_plugin_action_links', 10, 2 );
 /**
  * Adds an administrative link.
+ *
  * @param array $links
  * @param string $file
  */
