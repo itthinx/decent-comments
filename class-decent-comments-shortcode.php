@@ -30,9 +30,11 @@ class Decent_Comments_Shortcode {
 
 	/**
 	 * Renders comments based on shortcode attributes.
+	 *
 	 * @param array $atts settings
 	 * @param string $content unused
-	 * @return rendered comments
+	 *
+	 * @return string rendered comments
 	 */
 	static function decent_comments( $atts, $content = null ) {
 		$options = shortcode_atts( Decent_Comments_Renderer::$defaults, $atts );
