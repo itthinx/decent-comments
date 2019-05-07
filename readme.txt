@@ -113,11 +113,7 @@ Translations are also welcome!
 
 == Changelog ==
 
-= 1.7.0 =
-* WordPress 5.1 compatible.
-* Fixed some code documentation issues.
-
-[Complete changelog](https://github.com/itthinx/decent-comments/blob/master/changelog.txt)
+For the full changelog see [changelog.txt](https://github.com/itthinx/decent-comments/blob/master/changelog.txt).
 
 == Upgrade Notice ==
 
