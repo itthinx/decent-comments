@@ -1,5 +1,8 @@
 Decent Comments by itthinx                                           Changelog
 
+= 1.8.0 =
+* WordPress 5.2 compatible.
+
 = 1.7.0 =
 * WordPress 5.1 compatible.
 * Fixed some code documentation issues.
