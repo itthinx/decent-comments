@@ -54,7 +54,7 @@ Many thanks!
 
 == Installation ==
 
-1. Upload or extract the `decent-comments` folder to your site's `/wp-content/plugins/` directory. Or you could use the *Add new* option found in the *Plugins* menu in WordPress.  
+1. Upload or extract the `decent-comments` folder to your site's `/wp-content/plugins/` directory. Or you could use the *Add new* option found in the *Plugins* menu in WordPress.
 2. Enable the plugin from the *Plugins* menu in WordPress.
 
 Please also visit the [Decent Comments plugin page](http://www.itthinx.com/plugins/decent-comments) for the latest info.

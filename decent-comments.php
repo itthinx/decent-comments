@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Decent Comments
  * Plugin URI: https://www.itthinx.com/plugins/decent-comments
- * Description: Provides configurable means to display comments that include author's avatars, author link, link to post and most importantly an excerpt of each comment. There are several options ... 
+ * Description: Provides configurable means to display comments that include author's avatars, author link, link to post and most importantly an excerpt of each comment. There are several options ...
  * Version: 1.9.0
  * Author: itthinx
  * Author URI: https://www.itthinx.com
@@ -66,7 +66,7 @@ define( 'DC_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
  */
 define( 'DC_PLUGIN_DOMAIN', 'decent-comments' );
 
-/** 
+/**
  * @var int throbber height
  */
 define( 'DC_THROBBER_HEIGHT', 16 );
@@ -102,6 +102,8 @@ function DC_get_settings() {
  *
  * @param string $option desired option
  * @param mixed $default given default value or null if none given
+ *
+ * @return array
  */
 function DC_get_setting( $option, $default = null ) {
 	$settings = DC_get_settings();
@@ -157,8 +159,8 @@ add_action( 'admin_menu', 'DC_admin_menu' );
  * Add administration options.
  */
 function DC_admin_menu() {
-	if ( function_exists('add_submenu_page') ) {
-		add_submenu_page( 'plugins.php', __( 'Decent Comments Options', DC_PLUGIN_DOMAIN ), __( 'Decent Comments', DC_PLUGIN_DOMAIN ), 'manage_options', 'decent-comments-options', 'DC_options');
+	if ( function_exists( 'add_submenu_page' ) ) {
+		add_submenu_page( 'plugins.php', esc_html__( 'Decent Comments Options', DC_PLUGIN_DOMAIN ), esc_html__( 'Decent Comments', DC_PLUGIN_DOMAIN ), 'manage_options', 'decent-comments-options', 'DC_options');
 	}
 }
 
@@ -167,14 +169,14 @@ function DC_admin_menu() {
  */
 function DC_options() {
 
-	if ( !current_user_can( "manage_options" ) ) {
-		wp_die( __( 'Access denied.', DC_PLUGIN_DOMAIN ) );
+	if ( !current_user_can( 'manage_options' ) ) {
+		wp_die( esc_html__( 'Access denied.', DC_PLUGIN_DOMAIN ) );
 	}
 
 	echo
 		'<div>' .
 			'<h2>' .
-				__( 'Decent Comments Options', DC_PLUGIN_DOMAIN ) .
+				esc_html__( 'Decent Comments Options', DC_PLUGIN_DOMAIN ) .
 			'</h2>' .
 		'</div>';
 
@@ -197,14 +199,14 @@ function DC_options() {
 	echo
 		'<form action="" name="options" method="post">' .
 			'<div>' .
-				'<h3>' . __( 'Settings', DC_PLUGIN_DOMAIN ) . '</h3>' .
+				'<h3>' . esc_html__( 'Settings', DC_PLUGIN_DOMAIN ) . '</h3>' .
 				'<p>' .
 					'<input name="delete-data" type="checkbox" ' . ( $delete_data ? 'checked="checked"' : '' ) . '/>' .
-					'<label for="delete-data">' . __( 'Delete settings when the plugin is deactivated', DC_PLUGIN_DOMAIN ) . '</label>' .
+					'<label for="delete-data">' . esc_html__( 'Delete settings when the plugin is deactivated', DC_PLUGIN_DOMAIN ) . '</label>' .
 				'</p>' .
 				'<p>' .
 					wp_nonce_field( plugin_basename( __FILE__ ), DC_OPTIONS_NONCE, true, false ) .
-					'<input type="submit" name="submit" class="button button-primary" value="' . __( 'Save', DC_PLUGIN_DOMAIN ) . '"/>' .
+					'<input type="submit" name="submit" class="button button-primary" value="' . esc_html__( 'Save', DC_PLUGIN_DOMAIN ) . '"/>' .
 				'</p>' .
 			'</div>' .
 		'</form>';
@@ -216,10 +218,12 @@ add_filter( 'plugin_action_links', 'DC_plugin_action_links', 10, 2 );
  *
  * @param array $links
  * @param string $file
+ *
+ * @return array
  */
 function DC_plugin_action_links( $links, $file ) {
-	if ( $file == plugin_basename( dirname(__FILE__) . '/decent-comments.php' ) ) {
-		$links[] = '<a href="plugins.php?page=decent-comments-options">'.__( 'Options', DC_PLUGIN_DOMAIN ).'</a>';
+	if ( $file == plugin_basename( dirname( __FILE__ ) . '/decent-comments.php' ) ) {
+		$links[] = '<a href="plugins.php?page=decent-comments-options">' . esc_html__( 'Options', DC_PLUGIN_DOMAIN ) . '</a>';
 	}
 	return $links;
 }
@@ -275,7 +279,7 @@ add_action( 'widgets_init', 'DC_widgets_init' );
  * Register widgets
  */
 function DC_widgets_init() {
-	require_once( dirname(__FILE__ ) . '/class-decent-comments-widget.php' );
+	require_once( dirname( __FILE__ ) . '/class-decent-comments-widget.php' );
 }
 
 add_action( 'init', 'DC_init' );
@@ -288,4 +292,4 @@ function DC_init() {
 	load_plugin_textdomain( DC_PLUGIN_DOMAIN, null, 'decent-comments/languages' );
 }
 
-require_once( dirname(__FILE__ ) . '/class-decent-comments-shortcode.php' );
+require_once( dirname( __FILE__ ) . '/class-decent-comments-shortcode.php' );
