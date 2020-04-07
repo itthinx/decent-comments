@@ -329,7 +329,7 @@ class Decent_Comments_Widget extends WP_Widget {
 		echo '<span class="description">' . __( "Title, empty, post ID or [current]", DC_PLUGIN_DOMAIN ) . '</span>';
 		if ( !empty( $post_id ) && ( $post_title = get_the_title( $post_id ) ) ) {
 			echo '<br/>';
-			echo '<span class="description"> ' . sprintf( __("Selected post: <em>%s</em>", DC_PLUGIN_DOMAIN ) , $post_title ) . '</span>';
+			echo '<span class="description"> ' . sprintf( __( 'Selected post: <em>%s</em>', DC_PLUGIN_DOMAIN ) , $post_title ) . '</span>';
 		}
 		echo '</p>';
 

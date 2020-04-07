@@ -136,7 +136,7 @@ class Decent_Comment {
 			$approved = "( comment_approved = '0' OR comment_approved = '1' )";
 		}
 
-		$order = ( 'ASC' == strtoupper($order) ) ? 'ASC' : 'DESC';
+		$order = ( 'ASC' == strtoupper( $order ) ) ? 'ASC' : 'DESC';
 
 		if ( ! empty( $orderby ) ) {
 			$ordersby = is_array( $orderby ) ? $orderby : preg_split( '/[,\s]/', $orderby );
@@ -168,7 +168,7 @@ class Decent_Comment {
 		$number = absint( $number );
 		$offset = absint( $offset );
 
-		if ( !empty($number) ) {
+		if ( !empty( $number ) ) {
 			if ( $offset ) {
 				$limits = 'LIMIT ' . $offset . ',' . $number;
 			} else {
@@ -277,7 +277,7 @@ class Decent_Comment {
 					$term_ids[] = $term->term_id;
 				}
 				$term_ids = implode( ",", $term_ids );
-				if ( strlen($term_ids) == 0 ) {
+				if ( strlen( $term_ids ) == 0 ) {
 					$term_ids = "NULL";
 				}
 				$where .=
