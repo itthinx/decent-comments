@@ -90,7 +90,7 @@ class Decent_Comments_Renderer {
 	/**
 	 * Statics initialization.
 	 */
-	static function init() {
+	public static function init() {
 		self::$orderby_options = array(
 			'comment_author_email' => __( 'Author Email', DC_PLUGIN_DOMAIN ),
 			'comment_author_url'   => __( 'Author URL', DC_PLUGIN_DOMAIN ),
@@ -115,7 +115,7 @@ class Decent_Comments_Renderer {
 	 *
 	 * @see Decent_Comments_Renderer::$defaults
 	 */
-	static function get_comment( $comment_ID = 0, $options = array() ) {
+	public static function get_comment( $comment_ID = 0, $options = array() ) {
 
 		$ellipsis = self::$defaults['ellipsis'];
 		if ( isset( $options["ellipsis"] ) ) {
@@ -203,7 +203,7 @@ class Decent_Comments_Renderer {
 	 *
 	 * @uses Decent_Comments_Renderer::get_comment()
 	 */
-	static function get_comments( $options = array() ) {
+	public static function get_comments( $options = array() ) {
 
 		// output
 		$output = '';

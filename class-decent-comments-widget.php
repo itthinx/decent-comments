@@ -64,14 +64,14 @@ class Decent_Comments_Widget extends WP_Widget {
 	/**
 	 * Clears cached comments.
 	 */
-	static function cache_delete() {
+	public static function cache_delete() {
 		wp_cache_delete( self::$cache_id, self::$cache_flag );
 	}
 
 	/**
 	 * Enqueue styles if at least one widget is used.
 	 */
-	static function _wp_print_styles() {
+	public static function _wp_print_styles() {
 		global $wp_registered_widgets, $DC_version;
 		foreach ( $wp_registered_widgets as $widget ) {
 			if ( $widget['name'] == 'Decent Comments' ) {
@@ -86,7 +86,7 @@ class Decent_Comments_Widget extends WP_Widget {
 	 *
 	 * @see WP_Widget::widget()
 	 */
-	function widget( $args, $instance ) {
+	public function widget( $args, $instance ) {
 
 		// Note that there won't be any efficient caching unless a persistent
 		// caching mechanism is used. WordPress' default cache is persistent
@@ -128,7 +128,7 @@ class Decent_Comments_Widget extends WP_Widget {
 	 *
 	 * @see WP_Widget::update()
 	 */
-	function update( $new_instance, $old_instance ) {
+	public function update( $new_instance, $old_instance ) {
 
 		global $wpdb;
 
@@ -271,7 +271,7 @@ class Decent_Comments_Widget extends WP_Widget {
 	 *
 	 * @see WP_Widget::form()
 	 */
-	function form( $instance ) {
+	public function form( $instance ) {
 
 		extract( Decent_Comments_Renderer::$defaults );
 
@@ -481,7 +481,7 @@ class Decent_Comments_Widget extends WP_Widget {
 		echo '</p>';
 
 	}
-}// class Decent_Comments_Widget
+} // class Decent_Comments_Widget
 
 Decent_Comments_Widget::init();
 register_widget( 'Decent_Comments_Widget' );
