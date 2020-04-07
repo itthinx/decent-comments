@@ -1,31 +1,55 @@
 <?php
 /**
- * decent-comments.php
- * 
- * Copyright (c) 2011 - 2019 "kento" Karim Rahimpur www.itthinx.com
- * 
- * This code is released under the GNU General Public License.
- * See COPYRIGHT.txt and LICENSE.txt.
- * 
- * This code is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * This header and all notices must be kept intact.
- * 
- * @author Karim Rahimpur
- * @package decent-comments
- * @since decent-comments 1.0.0
- *
  * Plugin Name: Decent Comments
- * Plugin URI: http://www.itthinx.com/plugins/decent-comments
+ * Plugin URI: https://www.itthinx.com/plugins/decent-comments
  * Description: Provides configurable means to display comments that include author's avatars, author link, link to post and most importantly an excerpt of each comment. There are several options ... 
  * Version: 1.9.0
  * Author: itthinx
- * Author URI: http://www.itthinx.com
- * Donate-Link: http://www.itthinx.com/plugins/decent-comments
+ * Author URI: https://www.itthinx.com
+ * Donate-Link: https://www.itthinx.com/shop
+ * Text Domain: decent-comments
+ * Domain Path: /languages
  * License: GPLv3
+ *
+ * Copyright (c) 2015 - 2020 "kento" Karim Rahimpur www.itthinx.com
+ *
+ * This code is released under the GNU General Public License Version 3.
+ * The following additional terms apply to all files as per section
+ * "7. Additional Terms." See COPYRIGHT.txt and LICENSE.txt.
+ *
+ * This code is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * All legal, copyright and license notices and all author attributions
+ * must be preserved in all files and user interfaces.
+ *
+ * Where modified versions of this material are allowed under the applicable
+ * license, modified version must be marked as such and the origin of the
+ * modified material must be clearly indicated, including the copyright
+ * holder, the author and the date of modification and the origin of the
+ * modified material.
+ *
+ * This material may not be used for publicity purposes and the use of
+ * names of licensors and authors of this material for publicity purposes
+ * is prohibited.
+ *
+ * The use of trade names, trademarks or service marks, licensor or author
+ * names is prohibited unless granted in writing by their respective owners.
+ *
+ * Where modified versions of this material are allowed under the applicable
+ * license, anyone who conveys this material (or modified versions of it) with
+ * contractual assumptions of liability to the recipient, for any liability
+ * that these contractual assumptions directly impose on those licensors and
+ * authors, is required to fully indemnify the licensors and authors of this
+ * material.
+ *
+ * This header and all notices must be kept intact.
+ *
+ * @author itthinx
+ * @package decent-comments
+ * @since 1.0.0
  */
 
 if ( !defined( 'ABSPATH' ) ) {
@@ -61,7 +85,7 @@ function DC_get_settings() {
 	global $DC_settings, $DC_version;
 	if ( !isset( $DC_settings ) ) {
 		$DC_settings = _DC_get_settings();
-		$DC_version = "current";
+		$DC_version = 'current';
 		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 		if ( function_exists( 'get_plugin_data' ) ) {
 			$plugin_data = get_plugin_data( __FILE__ );
