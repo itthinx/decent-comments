@@ -1,31 +1,55 @@
 <?php
 /**
- * decent-comments.php
- * 
- * Copyright (c) 2011 - 2019 "kento" Karim Rahimpur www.itthinx.com
- * 
- * This code is released under the GNU General Public License.
- * See COPYRIGHT.txt and LICENSE.txt.
- * 
+ * Plugin Name: Decent Comments
+ * Plugin URI: https://www.itthinx.com/plugins/decent-comments
+ * Description: Provides configurable means to display comments that include author's avatars, author link, link to post and most importantly an excerpt of each comment. There are several options ...
+ * Version: 1.9.0
+ * Author: itthinx
+ * Author URI: https://www.itthinx.com
+ * Donate-Link: https://www.itthinx.com/shop
+ * Text Domain: decent-comments
+ * Domain Path: /languages
+ * License: GPLv3
+ *
+ * Copyright (c) 2015 - 2020 "kento" Karim Rahimpur www.itthinx.com
+ *
+ * This code is released under the GNU General Public License Version 3.
+ * The following additional terms apply to all files as per section
+ * "7. Additional Terms." See COPYRIGHT.txt and LICENSE.txt.
+ *
  * This code is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
- * This header and all notices must be kept intact.
- * 
- * @author Karim Rahimpur
- * @package decent-comments
- * @since decent-comments 1.0.0
  *
- * Plugin Name: Decent Comments
- * Plugin URI: http://www.itthinx.com/plugins/decent-comments
- * Description: Provides configurable means to display comments that include author's avatars, author link, link to post and most importantly an excerpt of each comment. There are several options ... 
- * Version: 1.8.0
- * Author: itthinx
- * Author URI: http://www.itthinx.com
- * Donate-Link: http://www.itthinx.com/plugins/decent-comments
- * License: GPLv3
+ * All legal, copyright and license notices and all author attributions
+ * must be preserved in all files and user interfaces.
+ *
+ * Where modified versions of this material are allowed under the applicable
+ * license, modified version must be marked as such and the origin of the
+ * modified material must be clearly indicated, including the copyright
+ * holder, the author and the date of modification and the origin of the
+ * modified material.
+ *
+ * This material may not be used for publicity purposes and the use of
+ * names of licensors and authors of this material for publicity purposes
+ * is prohibited.
+ *
+ * The use of trade names, trademarks or service marks, licensor or author
+ * names is prohibited unless granted in writing by their respective owners.
+ *
+ * Where modified versions of this material are allowed under the applicable
+ * license, anyone who conveys this material (or modified versions of it) with
+ * contractual assumptions of liability to the recipient, for any liability
+ * that these contractual assumptions directly impose on those licensors and
+ * authors, is required to fully indemnify the licensors and authors of this
+ * material.
+ *
+ * This header and all notices must be kept intact.
+ *
+ * @author itthinx
+ * @package decent-comments
+ * @since 1.0.0
  */
 
 if ( !defined( 'ABSPATH' ) ) {
@@ -42,7 +66,7 @@ define( 'DC_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
  */
 define( 'DC_PLUGIN_DOMAIN', 'decent-comments' );
 
-/** 
+/**
  * @var int throbber height
  */
 define( 'DC_THROBBER_HEIGHT', 16 );
@@ -61,7 +85,7 @@ function DC_get_settings() {
 	global $DC_settings, $DC_version;
 	if ( !isset( $DC_settings ) ) {
 		$DC_settings = _DC_get_settings();
-		$DC_version = "current";
+		$DC_version = 'current';
 		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 		if ( function_exists( 'get_plugin_data' ) ) {
 			$plugin_data = get_plugin_data( __FILE__ );
@@ -78,6 +102,8 @@ function DC_get_settings() {
  *
  * @param string $option desired option
  * @param mixed $default given default value or null if none given
+ *
+ * @return array
  */
 function DC_get_setting( $option, $default = null ) {
 	$settings = DC_get_settings();
@@ -133,8 +159,8 @@ add_action( 'admin_menu', 'DC_admin_menu' );
  * Add administration options.
  */
 function DC_admin_menu() {
-	if ( function_exists('add_submenu_page') ) {
-		add_submenu_page( 'plugins.php', __( 'Decent Comments Options', DC_PLUGIN_DOMAIN ), __( 'Decent Comments', DC_PLUGIN_DOMAIN ), 'manage_options', 'decent-comments-options', 'DC_options');
+	if ( function_exists( 'add_submenu_page' ) ) {
+		add_submenu_page( 'plugins.php', esc_html__( 'Decent Comments Options', DC_PLUGIN_DOMAIN ), esc_html__( 'Decent Comments', DC_PLUGIN_DOMAIN ), 'manage_options', 'decent-comments-options', 'DC_options');
 	}
 }
 
@@ -143,14 +169,14 @@ function DC_admin_menu() {
  */
 function DC_options() {
 
-	if ( !current_user_can( "manage_options" ) ) {
-		wp_die( __( 'Access denied.', DC_PLUGIN_DOMAIN ) );
+	if ( !current_user_can( 'manage_options' ) ) {
+		wp_die( esc_html__( 'Access denied.', DC_PLUGIN_DOMAIN ) );
 	}
 
 	echo
 		'<div>' .
 			'<h2>' .
-				__( 'Decent Comments Options', DC_PLUGIN_DOMAIN ) .
+				esc_html__( 'Decent Comments Options', DC_PLUGIN_DOMAIN ) .
 			'</h2>' .
 		'</div>';
 
@@ -173,14 +199,14 @@ function DC_options() {
 	echo
 		'<form action="" name="options" method="post">' .
 			'<div>' .
-				'<h3>' . __( 'Settings', DC_PLUGIN_DOMAIN ) . '</h3>' .
+				'<h3>' . esc_html__( 'Settings', DC_PLUGIN_DOMAIN ) . '</h3>' .
 				'<p>' .
 					'<input name="delete-data" type="checkbox" ' . ( $delete_data ? 'checked="checked"' : '' ) . '/>' .
-					'<label for="delete-data">' . __( 'Delete settings when the plugin is deactivated', DC_PLUGIN_DOMAIN ) . '</label>' .
+					'<label for="delete-data">' . esc_html__( 'Delete settings when the plugin is deactivated', DC_PLUGIN_DOMAIN ) . '</label>' .
 				'</p>' .
 				'<p>' .
 					wp_nonce_field( plugin_basename( __FILE__ ), DC_OPTIONS_NONCE, true, false ) .
-					'<input type="submit" name="submit" class="button button-primary" value="' . __( 'Save', DC_PLUGIN_DOMAIN ) . '"/>' .
+					'<input type="submit" name="submit" class="button button-primary" value="' . esc_html__( 'Save', DC_PLUGIN_DOMAIN ) . '"/>' .
 				'</p>' .
 			'</div>' .
 		'</form>';
@@ -192,10 +218,12 @@ add_filter( 'plugin_action_links', 'DC_plugin_action_links', 10, 2 );
  *
  * @param array $links
  * @param string $file
+ *
+ * @return array
  */
 function DC_plugin_action_links( $links, $file ) {
-	if ( $file == plugin_basename( dirname(__FILE__) . '/decent-comments.php' ) ) {
-		$links[] = '<a href="plugins.php?page=decent-comments-options">'.__( 'Options', DC_PLUGIN_DOMAIN ).'</a>';
+	if ( $file == plugin_basename( dirname( __FILE__ ) . '/decent-comments.php' ) ) {
+		$links[] = '<a href="plugins.php?page=decent-comments-options">' . esc_html__( 'Options', DC_PLUGIN_DOMAIN ) . '</a>';
 	}
 	return $links;
 }
@@ -251,7 +279,7 @@ add_action( 'widgets_init', 'DC_widgets_init' );
  * Register widgets
  */
 function DC_widgets_init() {
-	require_once( dirname(__FILE__ ) . '/class-decent-comments-widget.php' );
+	require_once( dirname( __FILE__ ) . '/class-decent-comments-widget.php' );
 }
 
 add_action( 'init', 'DC_init' );
@@ -264,4 +292,4 @@ function DC_init() {
 	load_plugin_textdomain( DC_PLUGIN_DOMAIN, null, 'decent-comments/languages' );
 }
 
-require_once( dirname(__FILE__ ) . '/class-decent-comments-shortcode.php' );
+require_once( dirname( __FILE__ ) . '/class-decent-comments-shortcode.php' );

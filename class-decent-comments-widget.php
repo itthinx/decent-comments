@@ -1,19 +1,19 @@
 <?php
 /**
  * class-decent-comments-widget.php
- * 
+ *
  * Copyright (c) 2011 "kento" Karim Rahimpur www.itthinx.com
- * 
+ *
  * This code is released under the GNU General Public License.
  * See COPYRIGHT.txt and LICENSE.txt.
- * 
+ *
  * This code is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * This header and all notices must be kept intact.
- * 
+ *
  * @author Karim Rahimpur
  * @package decent-comments
  * @since decent-comments 1.0.0
@@ -64,14 +64,14 @@ class Decent_Comments_Widget extends WP_Widget {
 	/**
 	 * Clears cached comments.
 	 */
-	static function cache_delete() {
+	public static function cache_delete() {
 		wp_cache_delete( self::$cache_id, self::$cache_flag );
 	}
 
 	/**
 	 * Enqueue styles if at least one widget is used.
 	 */
-	static function _wp_print_styles() {
+	public static function _wp_print_styles() {
 		global $wp_registered_widgets, $DC_version;
 		foreach ( $wp_registered_widgets as $widget ) {
 			if ( $widget['name'] == 'Decent Comments' ) {
@@ -83,10 +83,10 @@ class Decent_Comments_Widget extends WP_Widget {
 
 	/**
 	 * Widget output
-	 * 
+	 *
 	 * @see WP_Widget::widget()
 	 */
-	function widget( $args, $instance ) {
+	public function widget( $args, $instance ) {
 
 		// Note that there won't be any efficient caching unless a persistent
 		// caching mechanism is used. WordPress' default cache is persistent
@@ -125,10 +125,10 @@ class Decent_Comments_Widget extends WP_Widget {
 
 	/**
 	 * Save widget options
-	 * 
+	 *
 	 * @see WP_Widget::update()
 	 */
-	function update( $new_instance, $old_instance ) {
+	public function update( $new_instance, $old_instance ) {
 
 		global $wpdb;
 
@@ -163,7 +163,7 @@ class Decent_Comments_Widget extends WP_Widget {
 		$post_id = $new_instance['post_id'];
 		if ( empty( $post_id ) ) {
 			unset( $settings['post_id'] );
-		} else if ( ("[current]" == $post_id ) || ("{current}" == $post_id ) )  {
+		} else if ( ( "[current]" == $post_id ) || ( "{current}" == $post_id ) )  {
 			$settings['post_id'] = "{current}";
 		} else if ( $post = get_post( $post_id ) ) {
 			$settings['post_id'] = $post->ID;
@@ -268,24 +268,24 @@ class Decent_Comments_Widget extends WP_Widget {
 
 	/**
 	 * Output admin widget options form
-	 * 
+	 *
 	 * @see WP_Widget::form()
 	 */
-	function form( $instance ) {
+	public function form( $instance ) {
 
 		extract( Decent_Comments_Renderer::$defaults );
 
 		// title
 		$title = isset( $instance['title'] ) ? $instance['title'] : "";
 		echo "<p>";
-		echo '<label for="' .$this->get_field_id( 'title' ) . '">' . __( 'Title', DC_PLUGIN_DOMAIN ) . '</label>'; 
+		echo '<label for="' .$this->get_field_id( 'title' ) . '">' . __( 'Title', DC_PLUGIN_DOMAIN ) . '</label>';
 		echo '<input class="widefat" id="' . $this->get_field_id( 'title' ) . '" name="' . $this->get_field_name( 'title' ) . '" type="text" value="' . esc_attr( $title ) . '" />';
 		echo '</p>';
 
 		// number
 		$number = isset( $instance['number'] ) ? intval( $instance['number'] ) : '';
 		echo "<p>";
-		echo '<label class="title" title="' . __( "The number of comments to show.", DC_PLUGIN_DOMAIN ) .'" for="' .$this->get_field_id( 'number' ) . '">' . __( 'Number of comments', DC_PLUGIN_DOMAIN ) . '</label>'; 
+		echo '<label class="title" title="' . __( "The number of comments to show.", DC_PLUGIN_DOMAIN ) .'" for="' .$this->get_field_id( 'number' ) . '">' . __( 'Number of comments', DC_PLUGIN_DOMAIN ) . '</label>';
 		echo '<input class="widefat" id="' . $this->get_field_id( 'number' ) . '" name="' . $this->get_field_name( 'number' ) . '" type="text" value="' . esc_attr( $number ) . '" />';
 		echo '</p>';
 
@@ -296,7 +296,7 @@ class Decent_Comments_Widget extends WP_Widget {
 		echo '<select class="widefat" name="' . $this->get_field_name( 'orderby' ) . '">';
 		foreach ( Decent_Comments_Renderer::$orderby_options as $orderby_option_key => $orderby_option_name ) {
 			$selected = ( $orderby_option_key == $orderby ? ' selected="selected" ' : "" );
-			echo '<option ' . $selected . 'value="' . $orderby_option_key . '">' . $orderby_option_name . '</option>'; 
+			echo '<option ' . $selected . 'value="' . $orderby_option_key . '">' . $orderby_option_name . '</option>';
 		}
 		echo '</select>';
 		echo '</p>';
@@ -308,7 +308,7 @@ class Decent_Comments_Widget extends WP_Widget {
 		echo '<select class="widefat" name="' . $this->get_field_name( 'order' ) . '">';
 		foreach ( Decent_Comments_Renderer::$order_options as $order_option_key => $order_option_name ) {
 			$selected = ( $order_option_key == $order ? ' selected="selected" ' : "" );
-			echo '<option ' . $selected . 'value="' . $order_option_key . '">' . $order_option_name . '</option>'; 
+			echo '<option ' . $selected . 'value="' . $order_option_key . '">' . $order_option_name . '</option>';
 		}
 		echo '</select>';
 		echo '</p>';
@@ -323,13 +323,13 @@ class Decent_Comments_Widget extends WP_Widget {
 			}
 		}
 		echo "<p>";
-		echo '<label class="title" title="' . __( "Leave empty to show comments for all posts. To show comments for a specific post only, indicate either part of the title or the post ID. To show posts for the current post, indicate: [current]", DC_PLUGIN_DOMAIN ) . '" for="' .$this->get_field_id( 'post_id' ) . '">' . __( 'Post ID', DC_PLUGIN_DOMAIN ) . '</label>'; 
+		echo '<label class="title" title="' . __( "Leave empty to show comments for all posts. To show comments for a specific post only, indicate either part of the title or the post ID. To show posts for the current post, indicate: [current]", DC_PLUGIN_DOMAIN ) . '" for="' .$this->get_field_id( 'post_id' ) . '">' . __( 'Post ID', DC_PLUGIN_DOMAIN ) . '</label>';
 		echo '<input class="widefat" id="' . $this->get_field_id( 'post_id' ) . '" name="' . $this->get_field_name( 'post_id' ) . '" type="text" value="' . esc_attr( $post_id ) . '" />';
 		echo '<br/>';
 		echo '<span class="description">' . __( "Title, empty, post ID or [current]", DC_PLUGIN_DOMAIN ) . '</span>';
 		if ( !empty( $post_id ) && ( $post_title = get_the_title( $post_id ) ) ) {
 			echo '<br/>';
-			echo '<span class="description"> ' . sprintf( __("Selected post: <em>%s</em>", DC_PLUGIN_DOMAIN ) , $post_title ) . '</span>';
+			echo '<span class="description"> ' . sprintf( __( 'Selected post: <em>%s</em>', DC_PLUGIN_DOMAIN ) , $post_title ) . '</span>';
 		}
 		echo '</p>';
 
@@ -357,7 +357,7 @@ class Decent_Comments_Widget extends WP_Widget {
 
 		// exclude_post_author
 		$checked = ( (
-			( !isset( $instance['exclude_post_author'] ) && Decent_Comments_Renderer::$defaults['exclude_post_author'] ) || 
+			( !isset( $instance['exclude_post_author'] ) && Decent_Comments_Renderer::$defaults['exclude_post_author'] ) ||
 			( isset( $instance['exclude_post_author'] ) && $instance['exclude_post_author'] === true ) )
 			? 'checked="checked"' : '' );
 		echo '<p>';
@@ -375,21 +375,21 @@ class Decent_Comments_Widget extends WP_Widget {
 		// max_excerpt_words
 		$max_excerpt_words = !empty( $instance['max_excerpt_words'] ) ? intval( $instance['max_excerpt_words'] ) : '';
 		echo "<p>";
-		echo '<label class="title" title="' . __( "The maximum number of words shown in excerpts.", DC_PLUGIN_DOMAIN ) .'" for="' .$this->get_field_id( 'max_excerpt_words' ) . '">' . __( 'Number of words in excerpts', DC_PLUGIN_DOMAIN ) . '</label>'; 
+		echo '<label class="title" title="' . __( "The maximum number of words shown in excerpts.", DC_PLUGIN_DOMAIN ) .'" for="' .$this->get_field_id( 'max_excerpt_words' ) . '">' . __( 'Number of words in excerpts', DC_PLUGIN_DOMAIN ) . '</label>';
 		echo '<input class="widefat" id="' . $this->get_field_id( 'max_excerpt_words' ) . '" name="' . $this->get_field_name( 'max_excerpt_words' ) . '" type="text" value="' . esc_attr( $max_excerpt_words ) . '" />';
 		echo '</p>';
 
 		// max_excerpt_characters
 		$max_excerpt_characters = !empty( $instance['max_excerpt_characters'] ) ? intval( $instance['max_excerpt_characters'] ) : '';
 		echo "<p>";
-		echo '<label class="title" title="' . __( "The maximum number of characters shown in excerpts.", DC_PLUGIN_DOMAIN ) .'" for="' .$this->get_field_id( 'max_excerpt_characters' ) . '">' . __( 'Number of characters in excerpts', DC_PLUGIN_DOMAIN ) . '</label>'; 
+		echo '<label class="title" title="' . __( "The maximum number of characters shown in excerpts.", DC_PLUGIN_DOMAIN ) .'" for="' .$this->get_field_id( 'max_excerpt_characters' ) . '">' . __( 'Number of characters in excerpts', DC_PLUGIN_DOMAIN ) . '</label>';
 		echo '<input class="widefat" id="' . $this->get_field_id( 'max_excerpt_characters' ) . '" name="' . $this->get_field_name( 'max_excerpt_characters' ) . '" type="text" value="' . esc_attr( $max_excerpt_characters ) . '" />';
 		echo '</p>';
 
 		// ellipsis
 		$ellipsis = isset( $instance['ellipsis'] ) ? $instance['ellipsis'] : '';
 		echo "<p>";
-		echo '<label class="title" title="' . __( "The ellipsis is shown after the excerpt when there is more content.", DC_PLUGIN_DOMAIN ) . '" for="' .$this->get_field_id( 'ellipsis' ) . '">' . __( 'Ellipsis', DC_PLUGIN_DOMAIN ) . '</label>'; 
+		echo '<label class="title" title="' . __( "The ellipsis is shown after the excerpt when there is more content.", DC_PLUGIN_DOMAIN ) . '" for="' .$this->get_field_id( 'ellipsis' ) . '">' . __( 'Ellipsis', DC_PLUGIN_DOMAIN ) . '</label>';
 		echo '<input class="widefat" id="' . $this->get_field_id( 'ellipsis' ) . '" name="' . $this->get_field_name( 'ellipsis' ) . '" type="text" value="' . esc_attr( $ellipsis ) . '" />';
 		echo '</p>';
 
@@ -424,7 +424,7 @@ class Decent_Comments_Widget extends WP_Widget {
 		// avatar size
 		$avatar_size = isset( $instance['avatar_size'] ) ? intval( $instance['avatar_size'] ) : '';
 		echo "<p>";
-		echo '<label class="title" title="' . __( "The size of the avatar in pixels.", DC_PLUGIN_DOMAIN ) .'" for="' .$this->get_field_id( 'avatar_size' ) . '">' . __( 'Avatar size', DC_PLUGIN_DOMAIN ) . '</label>'; 
+		echo '<label class="title" title="' . __( "The size of the avatar in pixels.", DC_PLUGIN_DOMAIN ) .'" for="' .$this->get_field_id( 'avatar_size' ) . '">' . __( 'Avatar size', DC_PLUGIN_DOMAIN ) . '</label>';
 		echo '<input class="widefat" id="' . $this->get_field_id( 'avatar_size' ) . '" name="' . $this->get_field_name( 'avatar_size' ) . '" type="text" value="' . esc_attr( $avatar_size ) . '" />';
 		echo '</p>';
 
@@ -481,7 +481,7 @@ class Decent_Comments_Widget extends WP_Widget {
 		echo '</p>';
 
 	}
-}// class Decent_Comments_Widget
+} // class Decent_Comments_Widget
 
 Decent_Comments_Widget::init();
 register_widget( 'Decent_Comments_Widget' );

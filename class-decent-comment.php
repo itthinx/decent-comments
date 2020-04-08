@@ -51,6 +51,7 @@ class Decent_Comment {
 	 * - 'terms' : comma-separated list of terms (e.g. category names) or array of category names
 	 *
 	 * @param mixed $args Optional. Array or string of options to override defaults.
+	 *
 	 * @return array List of comments.
 	 */
 	public static function get_comments( $args = '' ) {
@@ -64,6 +65,7 @@ class Decent_Comment {
 	 * @since 3.1.0
 	 *
 	 * @param string|array $query_vars
+	 *
 	 * @return int|array
 	 */
 	function query( $query_vars ) {
@@ -134,7 +136,7 @@ class Decent_Comment {
 			$approved = "( comment_approved = '0' OR comment_approved = '1' )";
 		}
 
-		$order = ( 'ASC' == strtoupper($order) ) ? 'ASC' : 'DESC';
+		$order = ( 'ASC' == strtoupper( $order ) ) ? 'ASC' : 'DESC';
 
 		if ( ! empty( $orderby ) ) {
 			$ordersby = is_array( $orderby ) ? $orderby : preg_split( '/[,\s]/', $orderby );
@@ -166,7 +168,7 @@ class Decent_Comment {
 		$number = absint( $number );
 		$offset = absint( $offset );
 
-		if ( !empty($number) ) {
+		if ( !empty( $number ) ) {
 			if ( $offset ) {
 				$limits = 'LIMIT ' . $offset . ',' . $number;
 			} else {
@@ -275,7 +277,7 @@ class Decent_Comment {
 					$term_ids[] = $term->term_id;
 				}
 				$term_ids = implode( ",", $term_ids );
-				if ( strlen($term_ids) == 0 ) {
+				if ( strlen( $term_ids ) == 0 ) {
 					$term_ids = "NULL";
 				}
 				$where .=
@@ -302,13 +304,14 @@ class Decent_Comment {
 		return $comments;
 	}
 
-	/*
+	/**
 	 * Used internally to generate an SQL string for searching across multiple columns
 	 *
 	 * @access protected
 	 *
 	 * @param string $string
 	 * @param array $cols
+	 *
 	 * @return string
 	 */
 	function get_search_sql( $string, $cols ) {
@@ -326,6 +329,6 @@ class Decent_Comment {
 			$searches[] = "$col LIKE '%$string%'";
 		}
 
-		return ' AND (' . implode(' OR ', $searches) . ')';
+		return ' AND (' . implode( ' OR ', $searches ) . ')';
 	}
 }

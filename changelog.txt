@@ -1,5 +1,14 @@
 Decent Comments by itthinx                                           Changelog
 
+= 1.9.0 =
+* WordPress 5.4 compatible.
+* Cleaned up code, trailing whitespace.
+* Minimum WordPress version required is now 5.0.
+* Improved code format, validation, output escaping and documentation.
+* Updated the translation template.
+* Corrected the German translation.
+* Added the formal German translation.
+
 = 1.8.0 =
 * WordPress 5.2 compatible.
 
@@ -94,7 +103,7 @@ Decent Comments by itthinx                                           Changelog
 = 1.1.0 =
 * Added own comment retriever which allows for more versatile ways to get comments.
 * Widget and shortcode allow to show comments from posts related to one or more terms in a chosen taxonomy.
-* Shortcode now works like this [decent_comments/] and as before [decent-comments/] 
+* Shortcode now works like this [decent_comments/] and as before [decent-comments/]
 
 = 1.0.3 =
 * guarded against shortcode interpretation in comments

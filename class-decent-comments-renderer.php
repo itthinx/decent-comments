@@ -1,19 +1,19 @@
 <?php
 /**
  * class-decent-comments-renderer.php
- * 
+ *
  * Copyright (c) 2011 "kento" Karim Rahimpur www.itthinx.com
- * 
+ *
  * This code is released under the GNU General Public License.
  * See COPYRIGHT.txt and LICENSE.txt.
- * 
+ *
  * This code is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * This header and all notices must be kept intact.
- * 
+ *
  * @author Karim Rahimpur
  * @package decent-comments
  * @since decent-comments 1.0.0
@@ -35,7 +35,7 @@ class Decent_Comments_Renderer {
 	 * max_excerpt_words
 	 * strip_tags
 	 * ...
-	 * 
+	 *
 	 * @var array
 	 */
 	static $defaults = array(
@@ -90,7 +90,7 @@ class Decent_Comments_Renderer {
 	/**
 	 * Statics initialization.
 	 */
-	static function init() {
+	public static function init() {
 		self::$orderby_options = array(
 			'comment_author_email' => __( 'Author Email', DC_PLUGIN_DOMAIN ),
 			'comment_author_url'   => __( 'Author URL', DC_PLUGIN_DOMAIN ),
@@ -105,7 +105,7 @@ class Decent_Comments_Renderer {
 		);
 	}
 
-	/** 
+	/**
 	 * Renders a comment according to the $options given.
 	 *
 	 * @param int $comment_ID the comment ID
@@ -115,7 +115,7 @@ class Decent_Comments_Renderer {
 	 *
 	 * @see Decent_Comments_Renderer::$defaults
 	 */
-	static function get_comment( $comment_ID = 0, $options = array() ) {
+	public static function get_comment( $comment_ID = 0, $options = array() ) {
 
 		$ellipsis = self::$defaults['ellipsis'];
 		if ( isset( $options["ellipsis"] ) ) {
@@ -203,7 +203,7 @@ class Decent_Comments_Renderer {
 	 *
 	 * @uses Decent_Comments_Renderer::get_comment()
 	 */
-	static function get_comments( $options = array() ) {
+	public static function get_comments( $options = array() ) {
 
 		// output
 		$output = '';
@@ -264,7 +264,7 @@ class Decent_Comments_Renderer {
 		}
 		// What taxonomy? - {current} will void $terms and $term_ids above and
 		// replace with those related to current post if any.
-		$taxonomy = !empty( $options['taxonomy'] ) ? $options['taxonomy'] : self::$defaults['taxonomy']; 
+		$taxonomy = !empty( $options['taxonomy'] ) ? $options['taxonomy'] : self::$defaults['taxonomy'];
 		if ( isset( $options['terms'] ) && !empty( $taxonomy ) ) {
 			// If the {current} option is used, get the current post's terms
 			// and use their ids to look for comments on posts that are
