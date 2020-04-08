@@ -163,7 +163,7 @@ class Decent_Comments_Widget extends WP_Widget {
 		$post_id = $new_instance['post_id'];
 		if ( empty( $post_id ) ) {
 			unset( $settings['post_id'] );
-		} else if ( ("[current]" == $post_id ) || ("{current}" == $post_id ) )  {
+		} else if ( ( "[current]" == $post_id ) || ( "{current}" == $post_id ) )  {
 			$settings['post_id'] = "{current}";
 		} else if ( $post = get_post( $post_id ) ) {
 			$settings['post_id'] = $post->ID;

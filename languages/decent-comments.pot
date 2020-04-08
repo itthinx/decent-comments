@@ -7,7 +7,7 @@
 msgid   ""
 msgstr  "Project-Id-Version: PACKAGE VERSION\n"
         "Report-Msgid-Bugs-To: \n"
-        "POT-Creation-Date: 2017-08-10 11:36+0200\n"
+        "POT-Creation-Date: 2020-04-08 12:32+0200\n"
         "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
         "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
         "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,13 +16,13 @@ msgstr  "Project-Id-Version: PACKAGE VERSION\n"
         "Content-Type: text/plain; charset=CHARSET\n"
         "Content-Transfer-Encoding: 8bit\n"
 
-#: class-decent-comments-renderer.php:405
+#: class-decent-comments-renderer.php:409
 #, php-format
 msgctxt "comment-date"
 msgid   " %1$s at %2$s"
 msgstr  ""
 
-#: class-decent-comments-renderer.php:415
+#: class-decent-comments-renderer.php:419
 #, php-format
 msgctxt "comment-link"
 msgid   " on %s"
@@ -32,7 +32,7 @@ msgstr  ""
 msgid   "A taxonomy, e.g. category or post_tag"
 msgstr  ""
 
-#: decent-comments.php:136
+#: decent-comments.php:173
 msgid   "Access denied."
 msgstr  ""
 
@@ -65,15 +65,15 @@ msgstr  ""
 msgid   "Date"
 msgstr  ""
 
-#: decent-comments.php:126
+#: decent-comments.php:163
 msgid   "Decent Comments"
 msgstr  ""
 
-#: decent-comments.php:126 decent-comments.php:142
+#: decent-comments.php:163 decent-comments.php:179
 msgid   "Decent Comments Options"
 msgstr  ""
 
-#: decent-comments.php:168
+#: decent-comments.php:205
 msgid   "Delete settings when the plugin is deactivated"
 msgstr  ""
 
@@ -153,7 +153,7 @@ msgstr  ""
 msgid   "Number of words in excerpts"
 msgstr  ""
 
-#: decent-comments.php:186
+#: decent-comments.php:226
 msgid   "Options"
 msgstr  ""
 
@@ -177,7 +177,7 @@ msgstr  ""
 msgid   "Post Type"
 msgstr  ""
 
-#: decent-comments.php:172
+#: decent-comments.php:209
 msgid   "Save"
 msgstr  ""
 
@@ -186,7 +186,7 @@ msgstr  ""
 msgid   "Selected post: <em>%s</em>"
 msgstr  ""
 
-#: decent-comments.php:165
+#: decent-comments.php:202
 msgid   "Settings"
 msgstr  ""
 

@@ -5,6 +5,9 @@ Decent Comments by itthinx                                           Changelog
 * Cleaned up code, trailing whitespace.
 * Minimum WordPress version required is now 5.0.
 * Improved code format, validation, output escaping and documentation.
+* Updated the translation template.
+* Corrected the German translation.
+* Added the formal German translation.
 
 = 1.8.0 =
 * WordPress 5.2 compatible.
