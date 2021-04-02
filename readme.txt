@@ -1,6 +1,6 @@
 === Decent Comments ===
 Contributors: itthinx
-Donate link: http://www.itthinx.com/plugins/decent-comments
+Donate link: https://www.itthinx.com/shop/
 Tags: comment, comment excerpt, comments, comment shortcode, comment widget, comment excerpts, avatar, comment API, excerpt, excerpts, latest comments, recent comments, shortcode, shortcodes
 Requires at least: 5.0
 Tested up to: 5.7
@@ -32,23 +32,23 @@ Anywhere you place comments, by means of a widget, a shortcode or an API call, y
 - and more to come ... got suggestions?
 
 __Feedback__ is welcome!
-If you need help, have problems, want to leave feedback or want to provide constructive criticism, please do so here at the [Decent Comments plugin page](http://www.itthinx.com/plugins/decent-comments).
+If you need help, have problems, want to leave feedback or want to provide constructive criticism, please do so here at the [Decent Comments plugin page](https://www.itthinx.com/plugins/decent-comments).
 
 Please try to solve problems there before you rate this plugin or say it doesn't work. There goes a _lot_ of work into providing you with free quality plugins! Please appreciate that and help with your feedback. Thanks!
 
-[Follow me on Twitter](http://twitter.com/itthinx) for updates on this and other plugins.
+Follow [@itthinx](https://twitter.com/itthinx) for updates on this and other plugins.
 
 __Translations__
 
-* Catalan translation provided by [Ibidem Group](http://www.ibidemgroup.com)
-* Chinese translation provided by Francesco from [in Cina](http://www.in-cina.com)
-* French translation provided by Thomas Mur from [Creapage.net](http://www.creapage.net)
-* German translation provided by the author [itthinx](http://www.itthinx.com)
-* Italian translation provided by Francesco from [in Cina](http://www.in-cina.com)
-* Lithuanian translation provided by Vincent G from [Host1Free](http://www.Host1Free.com)
-* Portuguese translation provided by [TopCasinoWagering](http://wordpress.org/support/profile/topcasinowagering)
-* Russion translation provided by [Igor](http://arahis.com)
-* Spanish translation provided by [itthinx](http://www.itthinx.com) and [Ibidem Translations](http://www.ibidem-translations.com)
+* Catalan translation provided by [Ibidem Group](https://www.ibidemgroup.com)
+* Chinese translation provided by Francesco from [in Cina](https://www.in-cina.com)
+* French translation provided by Thomas Mur from [Creapage.net](https://www.creapage.net)
+* German translation provided by the author [itthinx](https://www.itthinx.com)
+* Italian translation provided by Francesco from [in Cina](https://www.in-cina.com)
+* Lithuanian translation provided by Vincent G from [Host1Free](https://www.Host1Free.com)
+* Portuguese translation provided by [TopCasinoWagering](https://wordpress.org/support/profile/topcasinowagering)
+* Russion translation provided by [Igor](https://arahis.com)
+* Spanish translation provided by [itthinx](https://www.itthinx.com) and [Ibidem Translations](https://www.ibidem-translations.com)
 
 Many thanks!
 
@@ -57,7 +57,7 @@ Many thanks!
 1. Upload or extract the `decent-comments` folder to your site's `/wp-content/plugins/` directory. Or you could use the *Add new* option found in the *Plugins* menu in WordPress.
 2. Enable the plugin from the *Plugins* menu in WordPress.
 
-Please also visit the [Decent Comments plugin page](http://www.itthinx.com/plugins/decent-comments) for the latest info.
+Please also visit the [Decent Comments plugin page](https://www.itthinx.com/plugins/decent-comments) for the latest info.
 
 == Frequently Asked Questions ==
 
@@ -93,17 +93,17 @@ Yes.
 
 It's highly configurable!
 
-Please visit the [Decent Comments plugin page](http://www.itthinx.com/plugins/decent-comments) for the latest info.
+Please visit the [Decent Comments plugin page](https://www.itthinx.com/plugins/decent-comments) for the latest info.
 
 If you need something that is not available yet, get in touch. Feedback is welcome!
 
 = Help! =
 
-Get help at the [Decent Comments plugin page](http://www.itthinx.com/plugins/decent-comments).
+Get help at the [Decent Comments plugin page](https://www.itthinx.com/plugins/decent-comments).
 
 = I really appreciate this, how can I contribute? =
 
-Please visit the [Decent Comments plugin page](http://www.itthinx.com/plugins/decent-comments) and you should find a way to donate or contribute with feedback and ideas.
+Please visit the [Decent Comments plugin page](https://www.itthinx.com/plugins/decent-comments) and you should find a way to donate or contribute with feedback and ideas.
 
 Translations are also welcome!
 

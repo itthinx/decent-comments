@@ -2,6 +2,10 @@ Decent Comments by itthinx                                           Changelog
 
 = 1.10.0 =
 * WordPress 5.7 compatible.
+* Added escaping to translated strings output.
+* Added shop links.
+* Revised http:// links to https:// where appropriate.
+* Fixed comments on private posts were included.
 
 = 1.9.0 =
 * WordPress 5.4 compatible.

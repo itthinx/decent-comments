@@ -92,16 +92,16 @@ class Decent_Comments_Renderer {
 	 */
 	public static function init() {
 		self::$orderby_options = array(
-			'comment_author_email' => __( 'Author Email', DC_PLUGIN_DOMAIN ),
-			'comment_author_url'   => __( 'Author URL', DC_PLUGIN_DOMAIN ),
-			'comment_content'      => __( 'Content', DC_PLUGIN_DOMAIN ),
-			'comment_date_gmt'     => __( 'Date', DC_PLUGIN_DOMAIN ),
-			'comment_karma'        => __( 'Karma', DC_PLUGIN_DOMAIN ),
-			'comment_post_ID'      => __( 'Post', DC_PLUGIN_DOMAIN )
+			'comment_author_email' => esc_html__( 'Author Email', DC_PLUGIN_DOMAIN ),
+			'comment_author_url'   => esc_html__( 'Author URL', DC_PLUGIN_DOMAIN ),
+			'comment_content'      => esc_html__( 'Content', DC_PLUGIN_DOMAIN ),
+			'comment_date_gmt'     => esc_html__( 'Date', DC_PLUGIN_DOMAIN ),
+			'comment_karma'        => esc_html__( 'Karma', DC_PLUGIN_DOMAIN ),
+			'comment_post_ID'      => esc_html__( 'Post', DC_PLUGIN_DOMAIN )
 		);
 		self::$order_options = array(
-			'ASC'  => __( 'Ascending', DC_PLUGIN_DOMAIN ),
-			'DESC' => __( 'Descending', DC_PLUGIN_DOMAIN )
+			'ASC'  => esc_html__( 'Ascending', DC_PLUGIN_DOMAIN ),
+			'DESC' => esc_html__( 'Descending', DC_PLUGIN_DOMAIN )
 		);
 	}
 
@@ -293,12 +293,24 @@ class Decent_Comments_Renderer {
 			$exclude_post_author = $options['exclude_post_author'] === 'true' || $options['exclude_post_author'] === true;
 		}
 
+		// @since 1.10.0
+		if ( isset( $options['post_status'] ) ) {
+			$post_status = $options['post_status'];
+			if ( is_string( $post_status ) ) {
+				$post_status = array_map( 'trim', explode( ',', $post_status ) );
+			} else if ( is_array( $post_status ) ) {
+				$post_status = array_map( 'trim', $post_status );
+			}
+		}
+
 		// basic options: number, sort, comments must be approved
+		// and from published posts
 		$comment_args = array(
 			'number'  => $number,
 			'order'   => $order,
 			'orderby' => $orderby,
-			'status'  => 'approve'
+			'status'  => 'approve',
+			'post_status' => 'publish', // @since 1.10.0
 		);
 		// comments for a specific post
 		if ( isset( $post_id ) ) {
@@ -326,6 +338,9 @@ class Decent_Comments_Renderer {
 		}
 		if ( isset( $exclude_post_author ) ) {
 			$comment_args['exclude_post_author'] = $exclude_post_author;
+		}
+		if ( isset( $post_status ) ) {
+			$comment_args['post_status'] = $post_status;
 		}
 
 		require_once( dirname( __FILE__ ) . '/class-decent-comment.php' );
