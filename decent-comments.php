@@ -2,16 +2,16 @@
 /**
  * Plugin Name: Decent Comments
  * Plugin URI: https://www.itthinx.com/plugins/decent-comments
- * Description: Provides configurable means to display comments that include author's avatars, author link, link to post and most importantly an excerpt of each comment. There are several options ...
- * Version: 1.9.0
+ * Description: Provides configurable means to display comments that include author's avatars, author link, link to post and most importantly an excerpt of each comment. Thanks for supporting our work with a purchase in our <a href="https://www.itthinx.com/shop/">Shop</a>!
+ * Version: 1.10.0
  * Author: itthinx
  * Author URI: https://www.itthinx.com
- * Donate-Link: https://www.itthinx.com/shop
+ * Donate-Link: https://www.itthinx.com/shop/
  * Text Domain: decent-comments
  * Domain Path: /languages
  * License: GPLv3
  *
- * Copyright (c) 2015 - 2020 "kento" Karim Rahimpur www.itthinx.com
+ * Copyright (c) 2015 - 2021 "kento" Karim Rahimpur www.itthinx.com
  *
  * This code is released under the GNU General Public License Version 3.
  * The following additional terms apply to all files as per section
