@@ -292,7 +292,6 @@ class Decent_Comments_Renderer {
 		if ( isset( $options['trackback'] ) ) {
 			$trackback = ( $options['trackback'] === 'false' && $options['pingback'] !== false );
 		}
-
 		if ( isset( $options['exclude_post_author'] ) ) {
 			$exclude_post_author = $options['exclude_post_author'] === 'true' || $options['exclude_post_author'] === true;
 		}

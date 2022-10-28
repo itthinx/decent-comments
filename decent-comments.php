@@ -11,7 +11,7 @@
  * Domain Path: /languages
  * License: GPLv3
  *
- * Copyright (c) 2015 - 2021 "kento" Karim Rahimpur www.itthinx.com
+ * Copyright (c) 2015 - 2022 "kento" Karim Rahimpur www.itthinx.com
  *
  * This code is released under the GNU General Public License Version 3.
  * The following additional terms apply to all files as per section
