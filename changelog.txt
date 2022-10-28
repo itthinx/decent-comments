@@ -2,6 +2,11 @@ Decent Comments by itthinx                                           Changelog
 
 = 1.11.0 =
 * WordPress 6.1 compatible.
+* Requires at least WordPress 5.6.
+* Fixed several PHP warnings related to undefined array keys used in the plugin's widget.
+* Fixes a dumb approach to caching the widget's content.
+* Adds support for role- and group-based caching for the widget's content; group-based caching requires https://wordpress.org/plugins/groups/
+* Adds the decent_comments_widget_cache_expire filter.
 
 = 1.10.0 =
 * WordPress 5.7 compatible.

@@ -30,14 +30,14 @@ if ( !defined( 'ABSPATH' ) ) {
 class Decent_Comments_Widget extends WP_Widget {
 
 	/**
-	 * @var string cache id
+	 * @var string cache group
 	 */
-	static $cache_id = 'decent_comments_widget';
+	static $cache_group = 'decent_comments_widget';
 
 	/**
 	 * @var string cache flag
 	 */
-	static $cache_flag = 'widget';
+	static $cache_expire = 3600;
 
 	/**
 	 * Initialize class.
@@ -62,10 +62,99 @@ class Decent_Comments_Widget extends WP_Widget {
 	}
 
 	/**
-	 * Clears cached comments.
+	 * Returns the cache key based on the given $widget_id, the current user's roles and groups.
+	 * For plain visitors, this returns the $widget_id.
+	 * This returns null if the $widget_id is null.
+	 *
+	 * @since 1.11.0
+	 *
+	 * @param string $widget_id
+	 *
+	 * @return string|null
 	 */
-	public static function cache_delete() {
-		wp_cache_delete( self::$cache_id, self::$cache_flag );
+	private function get_cache_key( $widget_id = null ) {
+		$cache_key = $widget_id;
+		if ( $widget_id !== null ) {
+			if ( is_user_logged_in() ) {
+				$user = wp_get_current_user();
+				$roles = $user->roles;
+				if ( is_array( $roles ) ) {
+					sort( $roles );
+				} else {
+					$roles = array();
+				}
+				if ( class_exists( 'Groups_User' ) ) {
+					$groups_user = new Groups_User( $user->ID );
+					$group_ids = $groups_user->group_ids_deep;
+					$group_ids = array_map( 'intval', $group_ids );
+					sort( $group_ids, SORT_NUMERIC );
+				} else {
+					$group_ids = array();
+				}
+				if ( count( $roles ) > 0 ) {
+					$cache_key .= '-' . implode( '.', $roles );
+				}
+				if ( count( $group_ids ) > 0 ) {
+					$cache_key .= '-' . implode( '.', $group_ids );
+				}
+			}
+		}
+		return $cache_key;
+	}
+
+	/**
+	 * Clears cached widget content.
+	 *
+	 * @param string $widget_id
+	 */
+	public function cache_delete( $widget_id = null ) {
+		if ( $widget_id !== null ) {
+			wp_cache_delete( $this->get_cache_key( $widget_id ), self::$cache_group );
+		}
+	}
+
+	/**
+	 * Returns cached content for the widget.
+	 *
+	 * @since 1.11.0
+	 *
+	 * @param string $widget_id
+	 *
+	 * @return string|null
+	 */
+	public function cache_get( $widget_id = null ) {
+		$content = null;
+		if ( $widget_id !== null ) {
+			$found = null;
+			$cached = wp_cache_get( $this->get_cache_key( $widget_id ), self::$cache_group, false, $found );
+			if ( $found ) {
+				$content = $cached;
+			}
+		}
+		return $content;
+	}
+
+	/**
+	 * Sets cached content for the widget.
+	 *
+	 * @since 1.11.0
+	 *
+	 * @param string $widget_id
+	 * @param string $content
+	 */
+	public function cache_set( $widget_id = null, $content = null ) {
+		if ( $widget_id !== null ) {
+			$cache_expire = apply_filters( 'decent_comments_widget_cache_expire', self::$cache_expire );
+			if ( !is_numeric( $cache_expire ) || $cache_expire < 0 ) {
+				$cache_expire = 0;
+			}
+			wp_cache_set(
+				$this->get_cache_key( $widget_id ),
+				$content,
+				self::$cache_group,
+				$cache_expire
+			);
+		}
 	}
 
 	/**
@@ -88,39 +177,35 @@ class Decent_Comments_Widget extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 
-		// Note that there won't be any efficient caching unless a persistent
-		// caching mechanism is used. WordPress' default cache is persistent
-		// during a request only so this won't have any effect on our widget
-		// unless it were printed twice on a page - and that won't happen as
-		// each widget is different and cached by its own id.
-		// @see https://codex.wordpress.org/Class_Reference/WP_Object_Cache
-		$cache = wp_cache_get( self::$cache_id, self::$cache_flag );
-		if ( ! is_array( $cache ) ) {
-			$cache = array();
+		if ( ! isset( $args['widget_id'] ) ) {
+			$args['widget_id'] = $this->id;
 		}
-		if ( isset( $cache[$args['widget_id']] ) ) {
-			echo $cache[$args['widget_id']];
-			return;
-		}
+		$widget_id = $args['widget_id'];
 
-		extract( $args );
+		$before_widget = isset( $args['before_widget'] ) && is_string( $args['before_widget'] ) ? $args['before_widget'] : '';
+		$after_widget = isset( $args['after_widget'] ) && is_string( $args['after_widget'] ) ? $args['after_widget'] : '';
+
+		$before_title = isset( $args['before_title'] ) && is_string( $args['before_title'] ) ? $args['before_title'] : '';
+		$after_title = isset( $args['after_title'] ) && is_string( $args['after_title'] ) ? $args['after_title'] : '';
+
+		$cached = $this->cache_get( $widget_id );
+		if ( $cached !== null ) {
+			return $cached;
+		}
 
 		$title = apply_filters( 'widget_title', isset( $instance['title'] ) ? $instance['title'] : '' );
 
-		$widget_id = $args['widget_id'];
-
-		// output
-		$output = '';
-		$output .= $before_widget;
+		// render the widget's content
+		$output = $before_widget;
 		if ( !empty( $title ) ) {
 			$output .= $before_title . $title . $after_title;
 		}
 		$output .= Decent_Comments_Renderer::get_comments( $instance );
 		$output .= $after_widget;
-		echo $output;
 
-		$cache[$args['widget_id']] = $output;
-		wp_cache_set( self::$cache_id, $cache, self::$cache_flag );
+		$this->cache_set( $widget_id, $output );
+
+		echo $output;
 	}
 
 	/**
@@ -138,13 +223,13 @@ class Decent_Comments_Widget extends WP_Widget {
 		$settings['title'] = strip_tags( $new_instance['title'] );
 
 		// number
-		$number = intval( $new_instance['number'] );
+		$number = isset( $new_instance['number'] ) ? intval( $new_instance['number'] ) : 0;
 		if ( $number > 0 ) {
 			$settings['number'] = $number;
 		}
 
 		// orderby
-		$orderby = $new_instance['orderby'];
+		$orderby = isset( $new_instance['orderby'] ) ? $new_instance['orderby'] : null;
 		if ( key_exists( $orderby, Decent_Comments_Renderer::$orderby_options ) ) {
 			$settings['orderby'] = $orderby;
 		} else {
@@ -152,7 +237,7 @@ class Decent_Comments_Widget extends WP_Widget {
 		}
 
 		// order
-		$order = $new_instance['order'];
+		$order = isset( $new_instance['order'] ) ? $new_instance['order'] : null;
 		if ( key_exists( $order, Decent_Comments_Renderer::$order_options ) ) {
 			$settings['order'] = $order;
 		} else {
@@ -160,7 +245,7 @@ class Decent_Comments_Widget extends WP_Widget {
 		}
 
 		// post_id
-		$post_id = $new_instance['post_id'];
+		$post_id = isset( $new_instance['post_id'] ) ? $new_instance['post_id'] : null;
 		if ( empty( $post_id ) ) {
 			unset( $settings['post_id'] );
 		} else if ( ( "[current]" == $post_id ) || ( "{current}" == $post_id ) )  {
@@ -172,7 +257,7 @@ class Decent_Comments_Widget extends WP_Widget {
 		}
 
 		// post type
-		$post_type = $new_instance['post_type'];
+		$post_type = isset( $new_instance['post_type'] ) ? $new_instance['post_type'] : null;
 		if ( !empty( $post_type ) ) {
 			$post_type = implode( ',', array_map( 'trim', explode( ',', $post_type ) ) );
 			$settings['post_type'] = $post_type;
@@ -188,19 +273,19 @@ class Decent_Comments_Widget extends WP_Widget {
 		$settings['excerpt'] = !empty( $new_instance['excerpt'] );
 
 		// max_excerpt_words
-		$max_excerpt_words = intval( $new_instance['max_excerpt_words'] );
+		$max_excerpt_words = isset( $new_instance['max_excerpt_words'] ) ? intval( $new_instance['max_excerpt_words'] ) : 0;
 		if ( $max_excerpt_words > 0 ) {
 			$settings['max_excerpt_words'] = $max_excerpt_words;
 		}
 
 		// max_excerpt_characters
-		$max_excerpt_characters = intval( $new_instance['max_excerpt_characters'] );
+		$max_excerpt_characters = isset( $new_instance['max_excerpt_characters'] ) ? intval( $new_instance['max_excerpt_characters'] ) : 0;
 		if ( $max_excerpt_characters >= 0 ) {
 			$settings['max_excerpt_characters'] = $max_excerpt_characters;
 		}
 
 		// ellipsis
-		$settings['ellipsis'] = strip_tags( $new_instance['ellipsis'] );
+		$settings['ellipsis'] = isset( $new_instance['ellipsis'] ) ? strip_tags( $new_instance['ellipsis'] ) : '';
 
 		// show_author
 		$settings['show_author'] = !empty( $new_instance['show_author'] );
@@ -215,7 +300,7 @@ class Decent_Comments_Widget extends WP_Widget {
 		$settings['show_avatar'] = !empty( $new_instance['show_avatar'] );
 
 		// avatar_size
-		$avatar_size = intval( $new_instance['avatar_size'] );
+		$avatar_size = isset( $new_instance['avatar_size'] ) ? intval( $new_instance['avatar_size'] ) : 0;
 		if ( $avatar_size > 0 ) {
 			$settings['avatar_size'] = $avatar_size;
 		}
