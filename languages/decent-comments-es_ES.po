@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: decent-comments 1.3.11\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-08 12:32+0200\n"
-"PO-Revision-Date: 2022-10-28 19:44+0200\n"
+"PO-Revision-Date: 2022-10-28 22:01+0200\n"
 "Last-Translator: kento <http://www.itthinx.com/plugins/decent-comments/>\n"
 "Language-Team: Spanish <http://www.itthinx.com/plugins/decent-comments/>\n"
 "Language: es_ES\n"
@@ -300,7 +300,7 @@ msgstr "Título"
 
 #: class-decent-comments-widget.php:329
 msgid "Title, empty, post ID or [current]"
-msgstr "Títullo, vacío, ID de artículo o [current]"
+msgstr "Título, vacío, ID de artículo o [current]"
 
 #: class-decent-comments-widget.php:480
 msgid "Trackbacks"
