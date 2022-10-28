@@ -7,6 +7,10 @@ Decent Comments by itthinx                                           Changelog
 * Fixes a dumb approach to caching the widget's content.
 * Adds support for role- and group-based caching for the widget's content; group-based caching requires https://wordpress.org/plugins/groups/
 * Adds the decent_comments_widget_cache_expire filter.
+* Removed support for like_escape() deprecated in WordPress 4.0.0.
+* Added support for the user_id attribute to the comments renderer (render comments from given user).
+* Added support for the search attribute to the comments renderer (render comments related to keyword).
+* Fixed an error in a translation.
 
 = 1.10.0 =
 * WordPress 5.7 compatible.

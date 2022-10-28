@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: decent-comments 1.3.11\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-08 12:32+0200\n"
-"PO-Revision-Date: 2020-04-08 12:38+0200\n"
+"PO-Revision-Date: 2022-10-28 19:44+0200\n"
 "Last-Translator: kento <http://www.itthinx.com/plugins/decent-comments/>\n"
 "Language-Team: Spanish <http://www.itthinx.com/plugins/decent-comments/>\n"
 "Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 2.4.3\n"
 
 #: class-decent-comments-renderer.php:409
 #, php-format
@@ -133,7 +133,7 @@ msgstr ""
 "Indique la <strong>categoría</strong> si quiere mostrar los comentarios de "
 "los artículos de esas categorías. Indique los slugs de las categorías en "
 "<strong>Términos</strong>. Para etiquetas, use <trong>post_tag</strong> e "
-"indique los elugs de las etiquetas en <strong>Términos</strong>."
+"indique los slugs de las etiquetas en <strong>Términos</strong>."
 
 #: class-decent-comments-renderer.php:99
 msgid "Karma"

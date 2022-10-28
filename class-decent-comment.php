@@ -318,15 +318,11 @@ class Decent_Comment {
 
 		global $wpdb;
 
-		if ( method_exists( $wpdb, 'esc_like' ) ) {
-			$string = esc_sql( $wpdb->esc_like( $string ) );
-		} else {
-			$string = esc_sql( like_escape( $string ) );
-		}
+		$string = esc_sql( '%' . $wpdb->esc_like( $string ) . '%' );
 
 		$searches = array();
 		foreach ( $cols as $col ) {
-			$searches[] = "$col LIKE '%$string%'";
+			$searches[] = "$col LIKE '$string'";
 		}
 
 		return ' AND (' . implode( ' OR ', $searches ) . ')';

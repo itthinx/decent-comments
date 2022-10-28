@@ -72,7 +72,11 @@ class Decent_Comments_Renderer {
 		'pingback'     => true,
 		'trackback'    => true,
 
-		'exclude_post_author' => false
+		'exclude_post_author' => false,
+
+		'user_id' => null,
+
+		'search' => null
 	);
 
 	/**
@@ -303,6 +307,22 @@ class Decent_Comments_Renderer {
 			}
 		}
 
+		// @since 1.11.0
+		if ( isset( $options['user_id'] ) && is_numeric( $options['user_id'] ) ) {
+			$user_id = intval( $options['user_id'] );
+			if ( $user_id < 0 ) {
+				$user_id = null;
+			}
+		}
+
+		// @since 1.11.0
+		if ( !empty( $options['search'] ) && is_string( $options['search'] ) ) {
+			$search = trim( $options['search'] );
+			if ( strlen( $search ) === 0 ) {
+				$search = null;
+			}
+		}
+
 		// basic options: number, sort, comments must be approved
 		// and from published posts
 		$comment_args = array(
@@ -341,6 +361,14 @@ class Decent_Comments_Renderer {
 		}
 		if ( isset( $post_status ) ) {
 			$comment_args['post_status'] = $post_status;
+		}
+
+		if ( $user_id !== null ) {
+			$comment_args['user_id'] = $user_id;
+		}
+
+		if ( $search !== null ) {
+			$comment_args['search'] = $search;
 		}
 
 		require_once( dirname( __FILE__ ) . '/class-decent-comment.php' );
