@@ -2,10 +2,10 @@
 Contributors: itthinx
 Donate link: https://www.itthinx.com/shop/
 Tags: comment, comment excerpt, comments, comment shortcode, comment widget, comment excerpts, avatar, comment API, excerpt, excerpts, latest comments, recent comments, shortcode, shortcodes
-Requires at least: 5.0
-Tested up to: 5.7
+Requires at least: 5.6
+Tested up to: 6.1
 Requires PHP: 5.6.0
-Stable tag: 1.10.0
+Stable tag: 1.11.0
 License: GPLv3
 
 Decent Comments shows what people say. Provides widgets, shortcodes and API to display comments including author avatars, links, comment excerpts.
@@ -24,7 +24,7 @@ Anywhere you place comments, by means of a widget, a shortcode or an API call, y
 - Determine the number of words shown for excerpts.
 - Set your kind of ellipsis.
 - Set the number of comments to show.
-- Show the author's avatar and determine it's size.
+- Show the author's avatar and determine its size.
 - Sort by author email, author URL, content (what's said in the comment), date, karma or post ... in ascending or descending order.
 - Show comments for the current post or for a specific post.
 - Show comments for a specific post type.

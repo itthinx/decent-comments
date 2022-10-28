@@ -72,7 +72,11 @@ class Decent_Comments_Renderer {
 		'pingback'     => true,
 		'trackback'    => true,
 
-		'exclude_post_author' => false
+		'exclude_post_author' => false,
+
+		'user_id' => null,
+
+		'search' => null
 	);
 
 	/**
@@ -288,7 +292,6 @@ class Decent_Comments_Renderer {
 		if ( isset( $options['trackback'] ) ) {
 			$trackback = ( $options['trackback'] === 'false' && $options['pingback'] !== false );
 		}
-
 		if ( isset( $options['exclude_post_author'] ) ) {
 			$exclude_post_author = $options['exclude_post_author'] === 'true' || $options['exclude_post_author'] === true;
 		}
@@ -300,6 +303,22 @@ class Decent_Comments_Renderer {
 				$post_status = array_map( 'trim', explode( ',', $post_status ) );
 			} else if ( is_array( $post_status ) ) {
 				$post_status = array_map( 'trim', $post_status );
+			}
+		}
+
+		// @since 1.11.0
+		if ( isset( $options['user_id'] ) && is_numeric( $options['user_id'] ) ) {
+			$user_id = intval( $options['user_id'] );
+			if ( $user_id < 0 ) {
+				$user_id = null;
+			}
+		}
+
+		// @since 1.11.0
+		if ( !empty( $options['search'] ) && is_string( $options['search'] ) ) {
+			$search = trim( $options['search'] );
+			if ( strlen( $search ) === 0 ) {
+				$search = null;
 			}
 		}
 
@@ -341,6 +360,14 @@ class Decent_Comments_Renderer {
 		}
 		if ( isset( $post_status ) ) {
 			$comment_args['post_status'] = $post_status;
+		}
+
+		if ( $user_id !== null ) {
+			$comment_args['user_id'] = $user_id;
+		}
+
+		if ( $search !== null ) {
+			$comment_args['search'] = $search;
 		}
 
 		require_once( dirname( __FILE__ ) . '/class-decent-comment.php' );
