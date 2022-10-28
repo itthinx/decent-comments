@@ -9,7 +9,7 @@ Decent Comments by itthinx                                           Changelog
 * Adds the decent_comments_widget_cache_expire filter.
 * Added support for the user_id attribute to the comments renderer (render comments from given user).
 * Added support for the search attribute to the comments renderer (render comments related to keyword).
-* Fixed an error in a translation.
+* Fixed translation errors.
 * Completely revised comments query code to extend instead of replace the WP_Comments_Query.
 
 = 1.10.0 =
