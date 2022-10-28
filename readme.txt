@@ -24,7 +24,7 @@ Anywhere you place comments, by means of a widget, a shortcode or an API call, y
 - Determine the number of words shown for excerpts.
 - Set your kind of ellipsis.
 - Set the number of comments to show.
-- Show the author's avatar and determine it's size.
+- Show the author's avatar and determine its size.
 - Sort by author email, author URL, content (what's said in the comment), date, karma or post ... in ascending or descending order.
 - Show comments for the current post or for a specific post.
 - Show comments for a specific post type.
