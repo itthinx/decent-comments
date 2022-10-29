@@ -5,7 +5,7 @@ Tags: comment, comment excerpt, comments, comment shortcode, comment widget, com
 Requires at least: 5.6
 Tested up to: 6.1
 Requires PHP: 5.6.0
-Stable tag: 1.11.0
+Stable tag: 1.12.0
 License: GPLv3
 
 Decent Comments shows what people say. Provides widgets, shortcodes and API to display comments including author avatars, links, comment excerpts.

@@ -171,17 +171,18 @@ class Decent_Comment {
 					foreach ( $terms as $term ) {
 						$term_ids[] = $term->term_id;
 					}
-					$term_ids = implode( ",", $term_ids );
+					$term_ids = array_unique( array_map( 'intval', $term_ids ) );
+					$term_ids = implode( ',', $term_ids );
 					if ( strlen( $term_ids ) == 0 ) {
-						$term_ids = "NULL";
+						$term_ids = 'NULL';
 					}
 					$where .=
-						" AND comment_post_ID IN (
-							SELECT DISTINCT ID FROM $wpdb->posts
-							LEFT JOIN $wpdb->term_relationships ON $wpdb->posts.ID = $wpdb->term_relationships.object_id
-							LEFT JOIN $wpdb->term_taxonomy ON $wpdb->term_relationships.term_taxonomy_id = $wpdb->term_taxonomy.term_taxonomy_id
-							WHERE $wpdb->term_taxonomy.term_id IN ( $term_ids )
-							) ";
+						" AND comment_post_ID IN ( " .
+						"SELECT DISTINCT ID FROM $wpdb->posts " .
+						"LEFT JOIN $wpdb->term_relationships ON $wpdb->posts.ID = $wpdb->term_relationships.object_id " .
+						"LEFT JOIN $wpdb->term_taxonomy ON $wpdb->term_relationships.term_taxonomy_id = $wpdb->term_taxonomy.term_taxonomy_id " .
+						"WHERE $wpdb->term_taxonomy.term_id IN ( $term_ids ) " .
+						") ";
 				}
 			}
 
