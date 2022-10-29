@@ -4,6 +4,8 @@ Decent Comments by itthinx                                           Changelog
 * WordPress 6.1 compatible.
 * Fixed fatal errors caused by the previous release when handling comment update actions.
 * Fixed cache entry for widget not cleared when changing widget settings.
+* Fixed taxonomy, term and other widget settings were not cleared when previously set.
+* Fixed more translation errors.
 
 = 1.11.0 =
 * WordPress 6.1 compatible.

@@ -61,7 +61,6 @@ class Decent_Comments_Widget extends WP_Widget {
 		if ( !has_action( 'transition_comment_status', array( __CLASS__, 'transition_comment_status' ) ) ) {
 			add_action( 'transition_comment_status', array( __CLASS__, 'transition_comment_status' ), 10, 3 );
 		}
-		add_action( 'init', array(__CLASS__,'purge_widget_caches')); // @todo remove
 	}
 
 	/**
@@ -75,7 +74,6 @@ class Decent_Comments_Widget extends WP_Widget {
 	 */
 	public static function comment_post( $comment_ID, $comment_approved, $commentdata ) {
 		if ( $comment_approved === 1 ) {
-			error_log( __METHOD__ . ' ' . __LINE__ ); // @todo remove
 			self::purge_widget_caches();
 		}
 	}
@@ -91,7 +89,6 @@ class Decent_Comments_Widget extends WP_Widget {
 	 */
 	public static function transition_comment_status( $new_status, $old_status, $comment ) {
 		if ( $new_status !== $old_status ) {
-			error_log( __METHOD__ . ' ' . __LINE__ ); // @todo remove
 			self::purge_widget_caches();
 		}
 	}
@@ -295,6 +292,8 @@ class Decent_Comments_Widget extends WP_Widget {
 		$number = isset( $new_instance['number'] ) ? intval( $new_instance['number'] ) : 0;
 		if ( $number > 0 ) {
 			$settings['number'] = $number;
+		} else {
+			unset( $settings['number'] );
 		}
 
 		// orderby
@@ -345,12 +344,16 @@ class Decent_Comments_Widget extends WP_Widget {
 		$max_excerpt_words = isset( $new_instance['max_excerpt_words'] ) ? intval( $new_instance['max_excerpt_words'] ) : 0;
 		if ( $max_excerpt_words > 0 ) {
 			$settings['max_excerpt_words'] = $max_excerpt_words;
+		} else {
+			unset( $settings['max_excerpt_words'] );
 		}
 
 		// max_excerpt_characters
 		$max_excerpt_characters = isset( $new_instance['max_excerpt_characters'] ) ? intval( $new_instance['max_excerpt_characters'] ) : 0;
 		if ( $max_excerpt_characters >= 0 ) {
 			$settings['max_excerpt_characters'] = $max_excerpt_characters;
+		} else {
+			unset( $settings['max_excerpt_characters'] );
 		}
 
 		// ellipsis
@@ -372,6 +375,8 @@ class Decent_Comments_Widget extends WP_Widget {
 		$avatar_size = isset( $new_instance['avatar_size'] ) ? intval( $new_instance['avatar_size'] ) : 0;
 		if ( $avatar_size > 0 ) {
 			$settings['avatar_size'] = $avatar_size;
+		} else {
+			unset( $settings['avatar_size'] );
 		}
 
 		// show_link
@@ -386,7 +391,7 @@ class Decent_Comments_Widget extends WP_Widget {
 			if ( $taxonomy = get_taxonomy( $new_instance['taxonomy'] ) ) {
 				$settings['taxonomy'] = $new_instance['taxonomy'];
 				if ( isset( $new_instance['terms'] ) ) {
-					if ( $new_instance['terms'] != '{current}' ) {
+					if ( $new_instance['terms'] !== '{current}' ) {
 						// let's see if those slugs are ok
 						$slugs = explode( ",", $new_instance['terms'] );
 						$slugs_ = array();
@@ -405,10 +410,14 @@ class Decent_Comments_Widget extends WP_Widget {
 					} else {
 						$settings['terms'] = '{current}';
 					}
+				} else {
+					unset( $settings['terms'] );
 				}
 			} else {
 				unset( $settings['taxonomy'] );
 			}
+		} else {
+			unset( $settings['taxonomy'] );
 		}
 
 		// pingback, trackback
