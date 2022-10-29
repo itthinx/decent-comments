@@ -30,27 +30,96 @@ if ( !defined( 'ABSPATH' ) ) {
 class Decent_Comments_Widget extends WP_Widget {
 
 	/**
+	 * Widget name
+	 *
+	 * @since 1.12.0
+	 *
+	 * @var string
+	 */
+	const DECENT_COMMENTS_WIDGET_NAME = 'Decent Comments';
+
+	/**
 	 * @var string cache group
 	 */
-	static $cache_group = 'decent_comments_widget';
+	public static $cache_group = 'decent_comments_widget';
 
 	/**
 	 * @var string cache flag
 	 */
-	static $cache_expire = 3600;
+	public static $cache_expire = 3600;
 
 	/**
 	 * Initialize class.
 	 */
-	static function init() {
-		if ( !has_action( 'wp_print_styles', array( 'Decent_Comments_Widget', '_wp_print_styles' ) ) ) {
-			add_action( 'wp_print_styles', array( 'Decent_Comments_Widget', '_wp_print_styles' ) );
+	public static function init() {
+		if ( !has_action( 'wp_print_styles', array( __CLASS__, '_wp_print_styles' ) ) ) {
+			add_action( 'wp_print_styles', array( __CLASS__, '_wp_print_styles' ) );
 		}
-		if ( !has_action( 'comment_post', array( 'Decent_Comments_Widget', 'cache_delete' ) ) ) {
-			add_action( 'comment_post', array( 'Decent_Comments_Widget', 'cache_delete' ) );
+		if ( !has_action( 'comment_post', array( __CLASS__, 'comment_post' ) ) ) {
+			add_action( 'comment_post', array( __CLASS__, 'comment_post' ), 10, 3 );
 		}
-		if ( !has_action( 'transition_comment_status', array( 'Decent_Comments_Widget', 'cache_delete' ) ) ) {
-			add_action( 'transition_comment_status', array( 'Decent_Comments_Widget', 'cache_delete' ) );
+		if ( !has_action( 'transition_comment_status', array( __CLASS__, 'transition_comment_status' ) ) ) {
+			add_action( 'transition_comment_status', array( __CLASS__, 'transition_comment_status' ), 10, 3 );
+		}
+		add_action( 'init', array(__CLASS__,'purge_widget_caches')); // @todo remove
+	}
+
+	/**
+	 * Purge widgets cached on new approved comments.
+	 *
+	 * @since 1.12.0
+	 *
+	 * @param int $comment_ID
+	 * @param int|string $comment_approved
+	 * @param array $commentdata
+	 */
+	public static function comment_post( $comment_ID, $comment_approved, $commentdata ) {
+		if ( $comment_approved === 1 ) {
+			error_log( __METHOD__ . ' ' . __LINE__ ); // @todo remove
+			self::purge_widget_caches();
+		}
+	}
+
+	/**
+	 * Purge widgets cached on comment status changes.
+	 *
+	 * @since 1.12.0
+	 *
+	 * @param int|string $new_status
+	 * @param int|string $old_status
+	 * @param WP_Comment $comment
+	 */
+	public static function transition_comment_status( $new_status, $old_status, $comment ) {
+		if ( $new_status !== $old_status ) {
+			error_log( __METHOD__ . ' ' . __LINE__ ); // @todo remove
+			self::purge_widget_caches();
+		}
+	}
+
+	/**
+	 * Purge cached data for this class' widgets.
+	 *
+	 * @since 1.12.0
+	 */
+	public static function purge_widget_caches() {
+
+		global $wp_registered_sidebars, $wp_registered_widgets;
+
+		$sidebars_widgets = wp_get_sidebars_widgets();
+		foreach ( $sidebars_widgets as $sidebar => $ids ) {
+			if ( $sidebar !== 'wp_inactive_widgets' ) {
+				if ( is_array( $ids ) ) {
+					foreach ( $ids as $id ) {
+						if ( isset( $wp_registered_widgets[$id] ) ) {
+							if ( isset( $wp_registered_widgets[$id]['name'] ) ) {
+								if ( $wp_registered_widgets[$id]['name'] === self::DECENT_COMMENTS_WIDGET_NAME ) {
+									self::cache_delete( $id );
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 
@@ -58,7 +127,7 @@ class Decent_Comments_Widget extends WP_Widget {
 	 * Creates a Decent Comments widget.
 	 */
 	public function __construct() {
-		parent::__construct( false, $name = 'Decent Comments' );
+		parent::__construct( false, $name = self::DECENT_COMMENTS_WIDGET_NAME );
 	}
 
 	/**
@@ -72,7 +141,7 @@ class Decent_Comments_Widget extends WP_Widget {
 	 *
 	 * @return string|null
 	 */
-	private function get_cache_key( $widget_id = null ) {
+	private static function get_cache_key( $widget_id = null ) {
 		$cache_key = $widget_id;
 		if ( $widget_id !== null ) {
 			if ( is_user_logged_in() ) {
@@ -107,9 +176,9 @@ class Decent_Comments_Widget extends WP_Widget {
 	 *
 	 * @param string $widget_id
 	 */
-	public function cache_delete( $widget_id = null ) {
+	public static function cache_delete( $widget_id = null ) {
 		if ( $widget_id !== null ) {
-			wp_cache_delete( $this->get_cache_key( $widget_id ), self::$cache_group );
+			wp_cache_delete( self::get_cache_key( $widget_id ), self::$cache_group );
 		}
 	}
 
@@ -122,11 +191,11 @@ class Decent_Comments_Widget extends WP_Widget {
 	 *
 	 * @return string|null
 	 */
-	public function cache_get( $widget_id = null ) {
+	public static function cache_get( $widget_id = null ) {
 		$content = null;
 		if ( $widget_id !== null ) {
 			$found = null;
-			$cached = wp_cache_get( $this->get_cache_key( $widget_id ), self::$cache_group, false, $found );
+			$cached = wp_cache_get( self::get_cache_key( $widget_id ), self::$cache_group, false, $found );
 			if ( $found ) {
 				$content = $cached;
 			}
@@ -142,14 +211,14 @@ class Decent_Comments_Widget extends WP_Widget {
 	 * @param string $widget_id
 	 * @param string $content
 	 */
-	public function cache_set( $widget_id = null, $content = null ) {
+	public static function cache_set( $widget_id = null, $content = null ) {
 		if ( $widget_id !== null ) {
 			$cache_expire = apply_filters( 'decent_comments_widget_cache_expire', self::$cache_expire );
 			if ( !is_numeric( $cache_expire ) || $cache_expire < 0 ) {
 				$cache_expire = 0;
 			}
 			wp_cache_set(
-				$this->get_cache_key( $widget_id ),
+				self::get_cache_key( $widget_id ),
 				$content,
 				self::$cache_group,
 				$cache_expire
@@ -163,7 +232,7 @@ class Decent_Comments_Widget extends WP_Widget {
 	public static function _wp_print_styles() {
 		global $wp_registered_widgets, $DC_version;
 		foreach ( $wp_registered_widgets as $widget ) {
-			if ( $widget['name'] == 'Decent Comments' ) {
+			if ( $widget['name'] === self::DECENT_COMMENTS_WIDGET_NAME ) {
 				wp_enqueue_style( 'decent-comments-widget', DC_PLUGIN_URL . 'css/decent-comments-widget.css', array(), $DC_version );
 				break;
 			}
@@ -188,7 +257,7 @@ class Decent_Comments_Widget extends WP_Widget {
 		$before_title = isset( $args['before_title'] ) && is_string( $args['before_title'] ) ? $args['before_title'] : '';
 		$after_title = isset( $args['after_title'] ) && is_string( $args['after_title'] ) ? $args['after_title'] : '';
 
-		$cached = $this->cache_get( $widget_id );
+		$cached = self::cache_get( $widget_id );
 		if ( $cached !== null ) {
 			return $cached;
 		}
@@ -203,7 +272,7 @@ class Decent_Comments_Widget extends WP_Widget {
 		$output .= Decent_Comments_Renderer::get_comments( $instance );
 		$output .= $after_widget;
 
-		$this->cache_set( $widget_id, $output );
+		self::cache_set( $widget_id, $output );
 
 		echo $output;
 	}
@@ -346,7 +415,7 @@ class Decent_Comments_Widget extends WP_Widget {
 		$settings['pingback'] = !empty( $new_instance['pingback'] );
 		$settings['trackback'] = !empty( $new_instance['trackback'] );
 
-		$this->cache_delete();
+		self::cache_delete( $this->id );
 
 		return $settings;
 	}
