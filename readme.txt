@@ -2,9 +2,9 @@
 Contributors: itthinx
 Donate link: https://www.itthinx.com/shop/
 Tags: comment, comment excerpt, comments, comment shortcode, comment widget, comment excerpts, avatar, comment API, excerpt, excerpts, latest comments, recent comments, shortcode, shortcodes
-Requires at least: 5.6
+Requires at least: 6.0
 Tested up to: 6.4
-Requires PHP: 5.6.0
+Requires PHP: 7.4
 Stable tag: 1.13.0
 License: GPLv3
 
