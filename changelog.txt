@@ -1,5 +1,11 @@
 Decent Comments by itthinx                                           Changelog
 
+= 1.13.0 =
+* WordPress 6.4 compatible.
+* Requires at least WordPress 6.0.
+* Requires at least PHP 7.4.
+* Added compatibility plugin header fields.
+
 = 1.12.0 =
 * WordPress 6.1 compatible.
 * Fixed fatal errors caused by the previous release when handling comment update actions.
