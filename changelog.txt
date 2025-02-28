@@ -1,5 +1,10 @@
 Decent Comments by itthinx                                           Changelog
 
+= 2.0.0 =
+* WordPress 6.7 compatible.
+* Added support for the include parameter which allows to show comments from posts given by their IDs separated by comma.
+* Added support for the exclude parameter which allows to exclude comments from posts given by their IDs separated by comma.
+
 = 1.13.0 =
 * WordPress 6.4 compatible.
 * Requires at least WordPress 6.0.

@@ -3,7 +3,7 @@
  * Plugin Name: Decent Comments
  * Plugin URI: https://www.itthinx.com/plugins/decent-comments
  * Description: Provides configurable means to display comments that include author's avatars, author link, link to post and most importantly an excerpt of each comment. Thanks for supporting our work with a purchase in our <a href="https://www.itthinx.com/shop/">Shop</a>!
- * Version: 1.13.0
+ * Version: 2.0.0
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: itthinx
@@ -13,7 +13,7 @@
  * Domain Path: /languages
  * License: GPLv3
  *
- * Copyright (c) 2015 - 2024 "kento" Karim Rahimpur www.itthinx.com
+ * Copyright (c) 2015 - 2025 "kento" Karim Rahimpur www.itthinx.com
  *
  * This code is released under the GNU General Public License Version 3.
  * The following additional terms apply to all files as per section

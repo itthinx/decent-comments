@@ -1,11 +1,11 @@
 === Decent Comments ===
 Contributors: itthinx
 Donate link: https://www.itthinx.com/shop/
-Tags: comment, comment excerpt, comments, comment shortcode, comment widget, comment excerpts, avatar, comment API, excerpt, excerpts, latest comments, recent comments, shortcode, shortcodes
+Tags: comment, comments, shortcode, discussion, feedback
 Requires at least: 6.0
-Tested up to: 6.4
+Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 1.13.0
+Stable tag: 2.0.0
 License: GPLv3
 
 Decent Comments shows what people say. Provides widgets, shortcodes and API to display comments including author avatars, links, comment excerpts.
@@ -29,6 +29,7 @@ Anywhere you place comments, by means of a widget, a shortcode or an API call, y
 - Show comments for the current post or for a specific post.
 - Show comments for a specific post type.
 - Show comments for posts in specific categories, for specific tags, ... (more precisely: the ability to show comments from posts related to one or more terms in a chosen taxonomy).
+- Show comments for a set of posts and/or excluding a set of posts.
 - and more to come ... got suggestions?
 
 __Feedback__ is welcome!

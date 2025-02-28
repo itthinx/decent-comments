@@ -76,7 +76,10 @@ class Decent_Comments_Renderer {
 
 		'user_id' => null,
 
-		'search' => null
+		'search' => null,
+
+		'include' => array(), // @since 2.0.0
+		'exclude' => array() // @since 2.0.0
 	);
 
 	/**
@@ -322,6 +325,40 @@ class Decent_Comments_Renderer {
 			}
 		}
 
+		// @since 2.0.0 include comments from a set of posts
+		$include_ids = array();
+		if ( !empty( $options['include'] ) ) {
+			if ( is_string( $options['include'] ) ) {
+				$includes = explode( ',', $options['include'] );
+				foreach ( $includes as $id ) {
+					$id = trim( $id );
+					if ( strlen( $id ) > 0 && is_numeric( $id ) ) {
+						$id = intval( $id );
+						if ( $id > 0 ) {
+							$include_ids[] = $id;
+						}
+					}
+				}
+			}
+		}
+
+		// @since 2.0.0 include comments from a set of posts
+		$exclude_ids = array();
+		if ( !empty( $options['exclude'] ) ) {
+			if ( is_string( $options['exclude'] ) ) {
+				$excludes = explode( ',', $options['exclude'] );
+				foreach ( $excludes as $id ) {
+					$id = trim( $id );
+					if ( strlen( $id ) > 0 && is_numeric( $id ) ) {
+						$id = intval( $id );
+						if ( $id > 0 ) {
+							$exclude_ids[] = $id;
+						}
+					}
+				}
+			}
+		}
+
 		// basic options: number, sort, comments must be approved
 		// and from published posts
 		$comment_args = array(
@@ -368,6 +405,14 @@ class Decent_Comments_Renderer {
 
 		if ( $search !== null ) {
 			$comment_args['search'] = $search;
+		}
+
+		if ( count( $include_ids ) > 0 ) {
+			$comment_args['post__in'] = $include_ids;
+		}
+
+		if ( count( $exclude_ids ) > 0 ) {
+			$comment_args['post__not_in'] = $exclude_ids;
 		}
 
 		require_once( dirname( __FILE__ ) . '/class-decent-comment.php' );
