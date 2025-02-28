@@ -1,7 +1,7 @@
 === Decent Comments ===
 Contributors: itthinx
 Donate link: https://www.itthinx.com/shop/
-Tags: comment, comment excerpt, comments, comment shortcode, comment widget, comment excerpts, avatar, comment API, excerpt, excerpts, latest comments, recent comments, shortcode, shortcodes
+Tags: comment, comments, shortcode, discussion, feedback
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 7.4
