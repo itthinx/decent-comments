@@ -29,6 +29,7 @@ Anywhere you place comments, by means of a widget, a shortcode or an API call, y
 - Show comments for the current post or for a specific post.
 - Show comments for a specific post type.
 - Show comments for posts in specific categories, for specific tags, ... (more precisely: the ability to show comments from posts related to one or more terms in a chosen taxonomy).
+- Show comments for a set of posts and/or excluding a set of posts.
 - and more to come ... got suggestions?
 
 __Feedback__ is welcome!
