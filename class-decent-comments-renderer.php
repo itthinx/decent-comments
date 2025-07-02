@@ -531,7 +531,7 @@ class Decent_Comments_Renderer {
 
 			$output .= '</ul>';
 			$output .= '</div>'; // .decent-comments
- 		}
+		}
 		return apply_filters( 'decent_comments_comments_output', $output, $comments, $options );
 	}
 } // class Decent_Comments_Renderer

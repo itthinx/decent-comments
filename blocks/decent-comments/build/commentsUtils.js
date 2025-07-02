@@ -1,0 +1,1 @@
+(()=>{"use strict";var r={723:r=>{r.exports=window.wp.i18n}},t={};window.wp.apiFetch,function e(o){var i=t[o];if(void 0!==i)return i.exports;var p=t[o]={exports:{}};return r[o](p,p.exports,e),p.exports}(723)})();
