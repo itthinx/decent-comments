@@ -1,1 +1,352 @@
-(()=>{"use strict";var t={723:t=>{t.exports=window.wp.i18n},727:(t,e,n)=>{n.d(e,{p4:()=>a,vB:()=>c,Le:()=>i});const o=window.wp.apiFetch;var r=n.n(o),s=n(723);function c(t){return JSON.parse(t||"{}")}async function a(t,e){const n=function(t){const e={number:t.number||5,offset:t.offset||0,order:t.order||"asc",orderby:t.orderby||"comment_author_email",...t.post_id&&{post_id:t.post_id},...t.post__in&&{post__in:t.post__in},...t.post__not_in&&{post__not_in:t.post__not_in},...t.post_type&&{post_type:t.post_type},...t.taxonomy&&{taxonomy:t.taxonomy},...t.terms&&{terms:t.terms},...t.term_ids&&{term_ids:t.term_ids},...t.exclude_post_author&&{exclude_post_author:t.exclude_post_author},...t.pingback&&{pingback:t.pingback},...t.trackback&&{trackback:t.trackback}};return new URLSearchParams(e)}(t);return await r()({path:`decent-comments/v1/comments?${n.toString()}`,method:"GET",headers:{"X-WP-Nonce":e}})}function i(t,e){let n='<div class="decent-comments">';return e.title?.length>0&&(n+=`<div class="decent-comments-heading gamma widget-title">${m(e.title)}</div>`),n+='<ul class="decent-comments">',0===t.length?n+=`<li>${(0,s.__)("No Comments","decent-comments")}</li>`:n+=t.filter((t=>!e.exclude_post_author||t.author_email!==t.post_author)).map((t=>function(t,e){const n=e.show_author?e.link_authors&&t.author_url?`<a href="${m(t.author_url)}" class="comment-author-link">${m(t.author)}</a>`:t.author:"",o=e.show_date?`${new Date(t.date).toLocaleDateString(void 0,{year:"numeric",month:"long",day:"numeric",hour12:!0})} ${(0,s.__)("at","decent-comments")} ${new Date(t.date).toLocaleTimeString()}`:"",r=e.show_avatar&&t.avatar?`<img src="${m(t.avatar)}" alt="${m(n)}" width="${e.avatar_size||48}" height="${e.avatar_size||48}" />`:"",c=e.show_comment?function(t,e){let n=e.show_excerpt?t:"";if(e.strip_tags&&(n=n.replace(/(<([^>]+)>)/gi,"")),e.max_excerpt_words>0){const t=n.split(" ");n=t.slice(0,e.max_excerpt_words).join(" ")+(t.length>e.max_excerpt_words?m(e.ellipsis):"")}return e.max_excerpt_characters>0&&(n=n.substring(0,e.max_excerpt_characters)+(n.length>e.max_excerpt_characters?m(e.ellipsis):"")),m(n)}(t.content,e):"";return`\n\t\t<li class="comment">\n\t\t\t${r}\n\t\t\t<div class="comment-content">\n\t\t\t\t${n?`<span class="comment-author">${n}</span>`:""}\n\t\t\t\t${o?`<span class="comment-date">${o}</span>`:""}\n\t\t\t\t${e.show_link&&t.comment_link?`${(0,s.__)("on","decent-comments")} <a href="${m(t.comment_link||"#")}" class="comment-post-title">${m(t.post_title||"")}</a>`:""}\n\t\t\t\t<span class="comment-excerpt">${c}</span>\n\t\t\t</div>\n\t\t</li>`}(t,e))).join(""),n+="</ul></div>",n}function m(t){const e=document.createElement("div");return e.textContent=t,e.innerHTML}}},e={};function n(o){var r=e[o];if(void 0!==r)return r.exports;var s=e[o]={exports:{}};return t[o](s,s.exports,n),s.exports}n.n=t=>{var e=t&&t.__esModule?()=>t.default:()=>t;return n.d(e,{a:e}),e},n.d=(t,e)=>{for(var o in e)n.o(e,o)&&!n.o(t,o)&&Object.defineProperty(t,o,{enumerable:!0,get:e[o]})},n.o=(t,e)=>Object.prototype.hasOwnProperty.call(t,e);var o=n(723),r=n(727);let s=null,c=null;window.decentCommentsView&&(window.decentCommentsView.current_post_id&&(s=window.decentCommentsView.current_post_id),window.decentCommentsView.current_term_id&&(c=window.decentCommentsView.current_term_id)),document.addEventListener("DOMContentLoaded",(async()=>{const t=document.querySelectorAll(".wp-block-itthinx-decent-comments");for(const e of t)try{const t=(0,r.vB)(e.dataset.attributes);"[current]"!==t.post_id&&"{current}"!==t.post_id||s&&(t.post_id=s),"[current]"!==t.terms&&"{current}"!==t.terms||c&&(t.term_ids=c);const n=window.decentCommentsView?.nonce||"",o=await(0,r.p4)(t,n),a=(0,r.Le)(o.comments,t);e.innerHTML=a}catch(t){e.innerHTML=`<p>${(0,o.__)("Error loading comments","decent-comments")}</p>`,console.error("Decent Comments Error:",t)}}))})();
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./src/commentsUtils.js":
+/*!******************************!*\
+  !*** ./src/commentsUtils.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   buildQuery: () => (/* binding */ buildQuery),
+/* harmony export */   fetchComments: () => (/* binding */ fetchComments),
+/* harmony export */   formatExcerpt: () => (/* binding */ formatExcerpt),
+/* harmony export */   handleError: () => (/* binding */ handleError),
+/* harmony export */   initializeComments: () => (/* binding */ initializeComments),
+/* harmony export */   parseAttributes: () => (/* binding */ parseAttributes),
+/* harmony export */   processCommentBlock: () => (/* binding */ processCommentBlock),
+/* harmony export */   renderComment: () => (/* binding */ renderComment),
+/* harmony export */   renderComments: () => (/* binding */ renderComments),
+/* harmony export */   sanitizeHTML: () => (/* binding */ sanitizeHTML)
+/* harmony export */ });
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/**
+ * commentsUtils.js
+ *
+ * Copyright (c) 2011 "kento" Karim Rahimpur www.itthinx.com
+ *
+ * This code is released under the GNU General Public License.
+ * See COPYRIGHT.txt and LICENSE.txt.
+ *
+ * This code is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * This header and all notices must be kept intact.
+ *
+ * @author George Tsiokos
+ * @package decent-comments
+ * @since decent-comments 3.0.0
+ */
+
+
+
+async function initializeComments() {
+  const blocks = document.querySelectorAll('.wp-block-itthinx-decent-comments');
+  for (const block of blocks) {
+    try {
+      await processCommentBlock(block);
+    } catch (error) {
+      handleError(block, error);
+    }
+  }
+}
+async function processCommentBlock(block) {
+  const attributes = parseAttributes(block.dataset.attributes);
+  if (attributes.post_id === '[current]' || attributes.post_id === '{current}') {
+    if (current_post_id) {
+      attributes.post_id = current_post_id;
+    }
+  }
+  if (attributes.terms === '[current]' || attributes.terms === '{current}') {
+    if (current_term_id) {
+      attributes.term_ids = current_term_id;
+    }
+  }
+  let comments = await fetchComments(attributes);
+  const html = renderComments(comments.comments, attributes);
+  block.innerHTML = html;
+}
+function parseAttributes(data) {
+  return JSON.parse(data || '{}');
+}
+async function fetchComments(attributes, nonce) {
+  const query = buildQuery(attributes);
+  const response = await _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0___default()({
+    path: `decent-comments/v1/comments?${query.toString()}`,
+    method: 'GET',
+    headers: {
+      'X-WP-Nonce': nonce
+    }
+  });
+  return response;
+}
+function buildQuery(attributes) {
+  const params = {
+    number: attributes.number || 5,
+    offset: attributes.offset || 0,
+    order: attributes.order || 'asc',
+    orderby: attributes.orderby || 'comment_author_email',
+    ...(attributes.post_id && {
+      post_id: attributes.post_id
+    }),
+    ...(attributes.post__in && {
+      post__in: attributes.post__in
+    }),
+    ...(attributes.post__not_in && {
+      post__not_in: attributes.post__not_in
+    }),
+    ...(attributes.post_type && {
+      post_type: attributes.post_type
+    }),
+    ...(attributes.taxonomy && {
+      taxonomy: attributes.taxonomy
+    }),
+    ...(attributes.terms && {
+      terms: attributes.terms
+    }),
+    ...(attributes.term_ids && {
+      term_ids: attributes.term_ids
+    }),
+    ...(attributes.exclude_post_author && {
+      exclude_post_author: attributes.exclude_post_author
+    }),
+    ...(attributes.pingback && {
+      pingback: attributes.pingback
+    }),
+    ...(attributes.trackback && {
+      trackback: attributes.trackback
+    })
+  };
+  return new URLSearchParams(params);
+}
+function renderComments(comments, attributes) {
+  let output = '<div class="decent-comments">';
+  if (attributes.title?.length > 0) {
+    output += `<div class="decent-comments-heading gamma widget-title">${sanitizeHTML(attributes.title)}</div>`;
+  }
+  output += '<ul class="decent-comments">';
+  if (comments.length === 0) {
+    output += `<li>${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('No Comments', 'decent-comments')}</li>`;
+  } else {
+    output += comments.filter(comment => !attributes.exclude_post_author || comment.author_email !== comment.post_author).map(comment => renderComment(comment, attributes)).join('');
+  }
+  output += '</ul></div>';
+  return output;
+}
+function renderComment(comment, attributes) {
+  const author = attributes.show_author ? attributes.link_authors && comment.author_url ? `<a href="${sanitizeHTML(comment.author_url)}" class="comment-author-link">${sanitizeHTML(comment.author)}</a>` : comment.author : '';
+  const dateOptions = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour12: true
+  };
+  const date = attributes.show_date ? `${new Date(comment.date).toLocaleDateString(undefined, dateOptions)} ${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('at', 'decent-comments')} ${new Date(comment.date).toLocaleTimeString()}` : '';
+  const avatar = attributes.show_avatar && comment.avatar ? `<img src="${sanitizeHTML(comment.avatar)}" alt="${sanitizeHTML(author)}" width="${attributes.avatar_size || 48}" height="${attributes.avatar_size || 48}" />` : '';
+  const excerpt = attributes.show_comment ? formatExcerpt(comment.content, attributes) : '';
+  const postTitle = attributes.show_link && comment.comment_link ? `${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('on', 'decent-comments')} <a href="${sanitizeHTML(comment.comment_link || '#')}" class="comment-post-title">${sanitizeHTML(comment.post_title || '')}</a>` : '';
+  return `
+		<li class="comment">
+			${avatar}
+			<div class="comment-content">
+				${author ? `<span class="comment-author">${author}</span>` : ''}
+				${date ? `<span class="comment-date">${date}</span>` : ''}
+				${postTitle}
+				<span class="comment-excerpt">${excerpt}</span>
+			</div>
+		</li>`;
+}
+function formatExcerpt(content, attributes) {
+  let excerpt = attributes.show_excerpt ? content : '';
+  if (attributes.strip_tags) {
+    excerpt = excerpt.replace(/(<([^>]+)>)/gi, '');
+  }
+  if (attributes.max_excerpt_words > 0) {
+    const words = excerpt.split(' ');
+    excerpt = words.slice(0, attributes.max_excerpt_words).join(' ') + (words.length > attributes.max_excerpt_words ? sanitizeHTML(attributes.ellipsis) : '');
+  }
+  if (attributes.max_excerpt_characters > 0) {
+    excerpt = excerpt.substring(0, attributes.max_excerpt_characters) + (excerpt.length > attributes.max_excerpt_characters ? sanitizeHTML(attributes.ellipsis) : '');
+  }
+  return sanitizeHTML(excerpt);
+}
+function handleError(block, error) {
+  block.innerHTML = `<p>${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Error loading comments', 'decent-comments')}</p>`;
+  console.error('Decent Comments Error:', error);
+}
+function sanitizeHTML(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+
+/***/ }),
+
+/***/ "@wordpress/api-fetch":
+/*!**********************************!*\
+  !*** external ["wp","apiFetch"] ***!
+  \**********************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["apiFetch"];
+
+/***/ }),
+
+/***/ "@wordpress/i18n":
+/*!******************************!*\
+  !*** external ["wp","i18n"] ***!
+  \******************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["i18n"];
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
+(() => {
+/*!*********************!*\
+  !*** ./src/view.js ***!
+  \*********************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _commentsUtils_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./commentsUtils.js */ "./src/commentsUtils.js");
+/**
+ * view.js
+ *
+ * Copyright (c) 2011 "kento" Karim Rahimpur www.itthinx.com
+ *
+ * This code is released under the GNU General Public License.
+ * See COPYRIGHT.txt and LICENSE.txt.
+ *
+ * This code is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * This header and all notices must be kept intact.
+ *
+ * @author George Tsiokos
+ * @package decent-comments
+ * @since decent-comments 3.0.0
+ */
+
+
+
+let current_post_id = null;
+let current_term_id = null;
+if (window.decentCommentsView) {
+  if (window.decentCommentsView.current_post_id) {
+    current_post_id = window.decentCommentsView.current_post_id;
+  }
+  if (window.decentCommentsView.current_term_id) {
+    current_term_id = window.decentCommentsView.current_term_id;
+  }
+}
+document.addEventListener('DOMContentLoaded', async () => {
+  const blocks = document.querySelectorAll('.wp-block-itthinx-decent-comments');
+  for (const block of blocks) {
+    try {
+      const attributes = (0,_commentsUtils_js__WEBPACK_IMPORTED_MODULE_1__.parseAttributes)(block.dataset.attributes);
+      if (attributes.post_id === '[current]' || attributes.post_id === '{current}') {
+        if (current_post_id) {
+          attributes.post_id = current_post_id;
+        }
+      }
+      if (attributes.terms === '[current]' || attributes.terms === '{current}') {
+        if (current_term_id) {
+          attributes.term_ids = current_term_id;
+        }
+      }
+      const nonce = window.decentCommentsView?.nonce || '';
+      const comments = await (0,_commentsUtils_js__WEBPACK_IMPORTED_MODULE_1__.fetchComments)(attributes, nonce);
+      const html = (0,_commentsUtils_js__WEBPACK_IMPORTED_MODULE_1__.renderComments)(comments.comments, attributes);
+      block.innerHTML = html;
+    } catch (error) {
+      block.innerHTML = `<p>${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Error loading comments', 'decent-comments')}</p>`;
+      console.error('Decent Comments Error:', error);
+    }
+  }
+});
+})();
+
+/******/ })()
+;
+//# sourceMappingURL=view.js.map

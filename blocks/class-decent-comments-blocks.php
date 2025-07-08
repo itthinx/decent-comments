@@ -1,16 +1,22 @@
 <?php
 /**
- * Plugin Name:       Decent Comments
- * Description:       Example block scaffolded with Create Block tool.
- * Version:           0.1.0
- * Requires at least: 6.7
- * Requires PHP:      7.4
- * Author:            The WordPress Contributors
- * License:           GPL-2.0-or-later
- * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       decent-comments
+ * class-decent-comments-blocks.php
  *
- * @package CreateBlock
+ * Copyright (c) 2011 "kento" Karim Rahimpur www.itthinx.com
+ *
+ * This code is released under the GNU General Public License.
+ * See COPYRIGHT.txt and LICENSE.txt.
+ *
+ * This code is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * This header and all notices must be kept intact.
+ *
+ * @author George Tsiokos
+ * @package decent-comments
+ * @since decent-comments 3.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

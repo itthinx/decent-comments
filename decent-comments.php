@@ -273,7 +273,6 @@ function DC_admin_print_scripts() {
 	wp_enqueue_script( 'decent-comments-admin', DC_PLUGIN_URL . 'js/decent-comments-admin.js', array( 'jquery' ), $DC_version );
 }
 
-// @todo widgets_init hooked in init hook
 add_action( 'widgets_init', 'DC_widgets_init' );
 /**
  * Register widgets
