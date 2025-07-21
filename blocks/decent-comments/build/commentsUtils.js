@@ -20,6 +20,16 @@ module.exports = window["wp"]["apiFetch"];
 
 module.exports = window["wp"]["i18n"];
 
+/***/ }),
+
+/***/ "react":
+/*!************************!*\
+  !*** external "React" ***!
+  \************************/
+/***/ ((module) => {
+
+module.exports = window["React"];
+
 /***/ })
 
 /******/ 	});
@@ -98,21 +108,25 @@ var __webpack_exports__ = {};
   \******************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   RenderComment: () => (/* binding */ RenderComment),
+/* harmony export */   RenderComments: () => (/* binding */ RenderComments),
 /* harmony export */   buildQuery: () => (/* binding */ buildQuery),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
 /* harmony export */   fetchComments: () => (/* binding */ fetchComments),
 /* harmony export */   formatExcerpt: () => (/* binding */ formatExcerpt),
 /* harmony export */   handleError: () => (/* binding */ handleError),
 /* harmony export */   initializeComments: () => (/* binding */ initializeComments),
 /* harmony export */   parseAttributes: () => (/* binding */ parseAttributes),
 /* harmony export */   processCommentBlock: () => (/* binding */ processCommentBlock),
-/* harmony export */   renderComment: () => (/* binding */ renderComment),
-/* harmony export */   renderComments: () => (/* binding */ renderComments),
 /* harmony export */   sanitizeHTML: () => (/* binding */ sanitizeHTML)
 /* harmony export */ });
-/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
-/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+
 /**
  * commentsUtils.js
  *
@@ -133,40 +147,54 @@ __webpack_require__.r(__webpack_exports__);
  * @since decent-comments 3.0.0
  */
 
+//import React from 'react';
 
 
 async function initializeComments() {
   const blocks = document.querySelectorAll('.wp-block-itthinx-decent-comments');
+  const results = [];
   for (const block of blocks) {
     try {
-      await processCommentBlock(block);
+      const result = await processCommentBlock(block);
+      results.push({
+        block,
+        ...result
+      });
     } catch (error) {
-      handleError(block, error);
+      block.innerHTML = `<p class="text-red-500 p-4">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Error loading comments', 'decent-comments')}</p>`;
     }
   }
+  return results;
 }
 async function processCommentBlock(block) {
-  const attributes = parseAttributes(block.dataset.attributes);
-  if (attributes.post_id === '[current]' || attributes.post_id === '{current}') {
-    if (current_post_id) {
-      attributes.post_id = current_post_id;
+  try {
+    const attributes = parseAttributes(block.dataset.attributes);
+    if (attributes.post_id === '[current]' || attributes.post_id === '{current}') {
+      if (window.current_post_id) {
+        attributes.post_id = window.current_post_id;
+      }
     }
-  }
-  if (attributes.terms === '[current]' || attributes.terms === '{current}') {
-    if (current_term_id) {
-      attributes.term_ids = current_term_id;
+    if (attributes.terms === '[current]' || attributes.terms === '{current}') {
+      if (window.current_term_id) {
+        attributes.term_ids = window.current_term_id;
+      }
     }
+    const response = await fetchComments(attributes, block.dataset.nonce || window.decentCommentsNonce);
+    return {
+      comments: response.comments || [],
+      attributes
+    };
+  } catch (error) {
+    console.error('Decent Comments Error:', error);
+    throw error;
   }
-  let comments = await fetchComments(attributes);
-  const html = renderComments(comments.comments, attributes);
-  block.innerHTML = html;
 }
 function parseAttributes(data) {
   return JSON.parse(data || '{}');
 }
 async function fetchComments(attributes, nonce) {
   const query = buildQuery(attributes);
-  const response = await _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0___default()({
+  const response = await _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default()({
     path: `decent-comments/v1/comments?${query.toString()}`,
     method: 'GET',
     headers: {
@@ -214,43 +242,64 @@ function buildQuery(attributes) {
   };
   return new URLSearchParams(params);
 }
-function renderComments(comments, attributes) {
-  let output = '<div class="decent-comments">';
-  if (attributes.title?.length > 0) {
-    output += `<div class="decent-comments-heading gamma widget-title">${sanitizeHTML(attributes.title)}</div>`;
-  }
-  output += '<ul class="decent-comments">';
-  if (comments.length === 0) {
-    output += `<li>${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('No Comments', 'decent-comments')}</li>`;
-  } else {
-    output += comments.filter(comment => !attributes.exclude_post_author || comment.author_email !== comment.post_author).map(comment => renderComment(comment, attributes)).join('');
-  }
-  output += '</ul></div>';
-  return output;
-}
-function renderComment(comment, attributes) {
-  const author = attributes.show_author ? attributes.link_authors && comment.author_url ? `<a href="${sanitizeHTML(comment.author_url)}" class="comment-author-link">${sanitizeHTML(comment.author)}</a>` : comment.author : '';
+const RenderComments = ({
+  comments,
+  attributes
+}) => {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "decent-comments max-w-3xl mx-auto"
+  }, attributes.title?.length > 0 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "decent-comments-heading gamma widget-title text-2xl font-bold mb-4"
+  }, sanitizeHTML(attributes.title)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
+    className: "decent-comments list-none"
+  }, comments.length === 0 ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+    className: "p-4"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('No Comments', 'decent-comments')) : comments.filter(comment => !attributes.exclude_post_author || comment.author_email !== comment.post_author).map(comment => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(RenderComment, {
+    key: comment.id,
+    comment: comment,
+    attributes: attributes
+  }))));
+};
+const RenderComment = ({
+  comment,
+  attributes
+}) => {
+  const author = attributes.show_author ? attributes.link_authors && comment.author_url ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: sanitizeHTML(comment.author_url),
+    className: "comment-author-link"
+  }, sanitizeHTML(comment.author)) : sanitizeHTML(comment.author) : null;
   const dateOptions = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
     hour12: true
   };
-  const date = attributes.show_date ? `${new Date(comment.date).toLocaleDateString(undefined, dateOptions)} ${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('at', 'decent-comments')} ${new Date(comment.date).toLocaleTimeString()}` : '';
-  const avatar = attributes.show_avatar && comment.avatar ? `<img src="${sanitizeHTML(comment.avatar)}" alt="${sanitizeHTML(author)}" width="${attributes.avatar_size || 48}" height="${attributes.avatar_size || 48}" />` : '';
+  const date = attributes.show_date ? `${new Date(comment.date).toLocaleDateString(undefined, dateOptions)} ${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('at', 'decent-comments')} ${new Date(comment.date).toLocaleTimeString()}` : null;
+  const avatar = attributes.show_avatar && comment.avatar ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: sanitizeHTML(comment.avatar),
+    alt: sanitizeHTML(comment.author || ''),
+    width: attributes.avatar_size || 48,
+    height: attributes.avatar_size || 48,
+    className: "rounded-full"
+  }) : null;
   const excerpt = attributes.show_comment ? formatExcerpt(comment.content, attributes) : '';
-  const postTitle = attributes.show_link && comment.comment_link ? `${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('on', 'decent-comments')} <a href="${sanitizeHTML(comment.comment_link || '#')}" class="comment-post-title">${sanitizeHTML(comment.post_title || '')}</a>` : '';
-  return `
-		<li class="comment">
-			${avatar}
-			<div class="comment-content">
-				${author ? `<span class="comment-author">${author}</span>` : ''}
-				${date ? `<span class="comment-date">${date}</span>` : ''}
-				${postTitle}
-				<span class="comment-excerpt">${excerpt}</span>
-			</div>
-		</li>`;
-}
+  const postTitle = attributes.show_link && comment.comment_link ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('on', 'decent-comments'), ' ', (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: sanitizeHTML(comment.comment_link || '#'),
+    className: "comment-post-title"
+  }, sanitizeHTML(comment.post_title || ''))) : null;
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+    key: comment.id,
+    className: "comment"
+  }, avatar, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "comment"
+  }, author && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "comment-author"
+  }, author, ' '), date && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "comment-date"
+  }, date, ' '), postTitle, ' ', excerpt && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "comment-excerpt"
+  }, excerpt)));
+};
 function formatExcerpt(content, attributes) {
   let excerpt = attributes.show_excerpt ? content : '';
   if (attributes.strip_tags) {
@@ -266,15 +315,15 @@ function formatExcerpt(content, attributes) {
   return sanitizeHTML(excerpt);
 }
 function handleError(block, error) {
-  block.innerHTML = `<p>${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Error loading comments', 'decent-comments')}</p>`;
+  block.innerHTML = `<p class="text-red-500 p-4">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Error loading comments', 'decent-comments')}</p>`;
   console.error('Decent Comments Error:', error);
 }
 function sanitizeHTML(str) {
   const div = document.createElement('div');
-  div.textContent = str;
+  div.textContent = str || '';
   return div.innerHTML;
 }
-
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RenderComments);
 })();
 
 /******/ })()

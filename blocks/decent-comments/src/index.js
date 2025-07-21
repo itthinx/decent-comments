@@ -25,7 +25,7 @@ import { PanelBody, TextControl, ToggleControl, SelectControl, NumberControl } f
 import './index.css';
 import metadata from './block.json';
 import { useState, useEffect } from '@wordpress/element';
-import { fetchComments, renderComments } from './commentsUtils.js';
+import { fetchComments, RenderComments } from './commentsUtils.js';
 
 registerBlockType( metadata.name, {
 	apiVersion: 3,
@@ -276,13 +276,16 @@ registerBlockType( metadata.name, {
 				</InspectorControls>
 				<div {...useBlockProps({ className: 'wp-block-itthinx-decent-comments', 'data-attributes': JSON.stringify(attributes) })}>
 					{error ? (
-						<p>{__('Error loading comments in editor', 'decent-comments')}</p>
+						<div className="decent-comments-error">
+							<p>
+								{__('Error loading comments in editor', 'decent-comments')}
+								{error.message && `: ${error.message}`}
+							</p>
+						</div>
 					) : (
-						<div
-							className="wp-block-itthinx-decent-comments"
-							data-attributes={JSON.stringify(attributes)}
-							dangerouslySetInnerHTML={{ __html: renderComments(comments, attributes) }}
-						/>
+						<div className="wp-block-itthinx-decent-comments">
+							<RenderComments comments={comments} attributes={attributes} />
+						</div>
 					)}
 				</div>
 			</>

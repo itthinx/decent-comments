@@ -18,57 +18,62 @@
  * @since decent-comments 3.0.0
  */
 
+//import React from 'react';
 import apiFetch from '@wordpress/api-fetch';
 import { __ } from '@wordpress/i18n';
 
-async function initializeComments() {
+export async function initializeComments() {
 	const blocks = document.querySelectorAll('.wp-block-itthinx-decent-comments');
+	const results = [];
 	for (const block of blocks) {
 		try {
-			await processCommentBlock(block);
+			const result = await processCommentBlock(block);
+			results.push({ block, ...result });
 		} catch (error) {
-			handleError(block, error);
+			block.innerHTML = `<p class="text-red-500 p-4">${__('Error loading comments', 'decent-comments')}</p>`;
 		}
+	}
+	return results;
+}
+
+export async function processCommentBlock(block) {
+	try {
+		const attributes = parseAttributes(block.dataset.attributes);
+		if (attributes.post_id === '[current]' || attributes.post_id === '{current}') {
+			if (window.current_post_id) {
+				attributes.post_id = window.current_post_id;
+			}
+		}
+		if (attributes.terms === '[current]' || attributes.terms === '{current}') {
+			if (window.current_term_id) {
+				attributes.term_ids = window.current_term_id;
+			}
+		}
+		const response = await fetchComments(attributes, block.dataset.nonce || window.decentCommentsNonce);
+		return { comments: response.comments || [], attributes };
+	} catch (error) {
+		console.error('Decent Comments Error:', error);
+		throw error;
 	}
 }
 
-async function processCommentBlock(block) {
-	const attributes = parseAttributes(block.dataset.attributes);
-	if (attributes.post_id === '[current]' || attributes.post_id === '{current}') {
-		if (current_post_id) {
-			attributes.post_id = current_post_id;
-		}
-	}
-	if (attributes.terms === '[current]' || attributes.terms === '{current}') {
-		if (current_term_id) {
-			attributes.term_ids = current_term_id;
-		}
-	}
-
-	let comments = await fetchComments(attributes);
-
-	const html = renderComments(comments.comments, attributes);
-	block.innerHTML = html;
-}
-
-function parseAttributes(data) {
+export function parseAttributes(data) {
 	return JSON.parse(data || '{}');
 }
 
-async function fetchComments(attributes, nonce) {
+export async function fetchComments(attributes, nonce) {
 	const query = buildQuery(attributes);
-
 	const response = await apiFetch({
 		path: `decent-comments/v1/comments?${query.toString()}`,
 		method: 'GET',
 		headers: {
-			'X-WP-Nonce': nonce
-		}
+			'X-WP-Nonce': nonce,
+		},
 	});
 	return response;
 }
 
-function buildQuery(attributes) {
+export function buildQuery(attributes) {
 	const params = {
 		number: attributes.number || 5,
 		offset: attributes.offset || 0,
@@ -83,73 +88,95 @@ function buildQuery(attributes) {
 		...(attributes.term_ids && { term_ids: attributes.term_ids }),
 		...(attributes.exclude_post_author && { exclude_post_author: attributes.exclude_post_author }),
 		...(attributes.pingback && { pingback: attributes.pingback }),
-		...(attributes.trackback && { trackback: attributes.trackback })
+		...(attributes.trackback && { trackback: attributes.trackback }),
 	};
 	return new URLSearchParams(params);
 }
 
-function renderComments(comments, attributes) {
-	let output = '<div class="decent-comments">';
 
-	if (attributes.title?.length > 0) {
-		output += `<div class="decent-comments-heading gamma widget-title">${sanitizeHTML(attributes.title)}</div>`;
-	}
+export const RenderComments = ({ comments, attributes }) => {
+	return (
+		<div className="decent-comments max-w-3xl mx-auto">
+			{attributes.title?.length > 0 && (
+				<div className="decent-comments-heading gamma widget-title text-2xl font-bold mb-4">
+					{sanitizeHTML(attributes.title)}
+				</div>
+			)}
+			<ul className="decent-comments list-none">
+				{comments.length === 0 ? (
+					<li className="p-4">{__('No Comments', 'decent-comments')}</li>
+				) : (
+					comments
+					.filter(
+						(comment) =>
+							!attributes.exclude_post_author ||
+							comment.author_email !== comment.post_author
+					)
+					.map((comment) => (
+					<RenderComment key={comment.id} comment={comment} attributes={attributes} />
+				))
+			)}
+			</ul>
+		</div>
+	);
+};
 
-	output += '<ul class="decent-comments">';
-
-	if (comments.length === 0) {
-		output += `<li>${__('No Comments', 'decent-comments')}</li>`;
-	} else {
-		output += comments
-			.filter(comment => !attributes.exclude_post_author || comment.author_email !== comment.post_author)
-			.map(comment => renderComment(comment, attributes))
-			.join('');
-	}
-
-	output += '</ul></div>';
-	return output;
-}
-
-function renderComment(comment, attributes) {
-	const author = attributes.show_author 
-		? attributes.link_authors && comment.author_url 
-			? `<a href="${sanitizeHTML(comment.author_url)}" class="comment-author-link">${sanitizeHTML(comment.author)}</a>`
-			: comment.author
-		: '';
+export const RenderComment = ({ comment, attributes }) => {
+	const author = attributes.show_author ? (
+		attributes.link_authors && comment.author_url ? (
+			<a href={sanitizeHTML(comment.author_url)} className="comment-author-link">
+				{sanitizeHTML(comment.author)}
+			</a>
+		) : (
+			sanitizeHTML(comment.author)
+		)
+	) : null;
 
 	const dateOptions = {
-		year: "numeric",
-		month: "long",
-		day: "numeric",
-		hour12: true
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric',
+		hour12: true,
 	};
-	const date = attributes.show_date 
-		? `${new Date(comment.date).toLocaleDateString(undefined, dateOptions)} ${__('at', 'decent-comments')} ${new Date(comment.date).toLocaleTimeString()}`
-		: '';
+	const date = attributes.show_date ? (
+		`${new Date(comment.date).toLocaleDateString(undefined, dateOptions)} ${__('at', 'decent-comments')} ${new Date(comment.date).toLocaleTimeString()}`
+	) : null;
 
-	const avatar = attributes.show_avatar && comment.avatar 
-		? `<img src="${sanitizeHTML(comment.avatar)}" alt="${sanitizeHTML(author)}" width="${attributes.avatar_size || 48}" height="${attributes.avatar_size || 48}" />`
-		: '';
+	const avatar = attributes.show_avatar && comment.avatar ? (
+		<img
+			src={sanitizeHTML(comment.avatar)}
+			alt={sanitizeHTML(comment.author || '')}
+			width={attributes.avatar_size || 48}
+			height={attributes.avatar_size || 48}
+			className="rounded-full"
+		/>
+	) : null;
 
 	const excerpt = attributes.show_comment ? formatExcerpt(comment.content, attributes) : '';
 
-	const postTitle = attributes.show_link && comment.comment_link 
-		? `${__('on', 'decent-comments')} <a href="${sanitizeHTML(comment.comment_link || '#')}" class="comment-post-title">${sanitizeHTML(comment.post_title || '')}</a>`
-		: '';
+	const postTitle = attributes.show_link && comment.comment_link ? (
+		<span>
+			{__('on', 'decent-comments')}{' '}
+			<a href={sanitizeHTML(comment.comment_link || '#')} className="comment-post-title">
+				{sanitizeHTML(comment.post_title || '')}
+			</a>
+		</span>
+	) : null;
 
-	return `
-		<li class="comment">
-			${avatar}
-			<div class="comment-content">
-				${author ? `<span class="comment-author">${author}</span>` : ''}
-				${date ? `<span class="comment-date">${date}</span>` : ''}
-				${postTitle}
-				<span class="comment-excerpt">${excerpt}</span>
+	return (
+		<li key={comment.id} className="comment">
+			{avatar}
+			<div className="comment">
+				{author && <span className="comment-author">{author}{' '}</span>}
+				{date && <span className="comment-date">{date}{' '}</span>}
+				{postTitle}{' '}
+				{excerpt && <span className="comment-excerpt">{excerpt}</span>}
 			</div>
-		</li>`;
-}
+		</li>
+	);
+};
 
-function formatExcerpt(content, attributes) {
+export function formatExcerpt(content, attributes) {
 	let excerpt = attributes.show_excerpt ? content : '';
 
 	if (attributes.strip_tags) {
@@ -158,38 +185,27 @@ function formatExcerpt(content, attributes) {
 
 	if (attributes.max_excerpt_words > 0) {
 		const words = excerpt.split(' ');
-		excerpt = words.slice(0, attributes.max_excerpt_words).join(' ') + 
+		excerpt = words.slice(0, attributes.max_excerpt_words).join(' ') +
 		(words.length > attributes.max_excerpt_words ? sanitizeHTML(attributes.ellipsis) : '');
 	}
 
 	if (attributes.max_excerpt_characters > 0) {
-		excerpt = excerpt.substring(0, attributes.max_excerpt_characters) + 
+		excerpt = excerpt.substring(0, attributes.max_excerpt_characters) +
 		(excerpt.length > attributes.max_excerpt_characters ? sanitizeHTML(attributes.ellipsis) : '');
 	}
 
 	return sanitizeHTML(excerpt);
 }
 
-function handleError(block, error) {
-	block.innerHTML = `<p>${__('Error loading comments', 'decent-comments')}</p>`;
+export function handleError(block, error) {
+	block.innerHTML = `<p class="text-red-500 p-4">${__('Error loading comments', 'decent-comments')}</p>`;
 	console.error('Decent Comments Error:', error);
 }
 
-function sanitizeHTML(str) {
+export function sanitizeHTML(str) {
 	const div = document.createElement('div');
-	div.textContent = str;
+	div.textContent = str || '';
 	return div.innerHTML;
 }
 
-export {
-	initializeComments,
-	processCommentBlock,
-	parseAttributes,
-	fetchComments,
-	buildQuery,
-	renderComments,
-	renderComment,
-	formatExcerpt,
-	handleError,
-	sanitizeHTML
-};
+export default RenderComments;
