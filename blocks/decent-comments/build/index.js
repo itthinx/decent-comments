@@ -73,7 +73,7 @@ async function initializeComments() {
         ...result
       });
     } catch (error) {
-      block.innerHTML = `<p class="text-red-500 p-4">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Error loading comments', 'decent-comments')}</p>`;
+      block.innerHTML = `<p>${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Error loading comments', 'decent-comments')}</p>`;
     }
   }
   return results;
@@ -159,14 +159,12 @@ const RenderComments = ({
   attributes
 }) => {
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "decent-comments max-w-3xl mx-auto"
+    className: "decent-comments"
   }, attributes.title?.length > 0 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "decent-comments-heading gamma widget-title text-2xl font-bold mb-4"
+    className: "decent-comments-heading gamma widget-title"
   }, sanitizeHTML(attributes.title)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
     className: "decent-comments list-none"
-  }, comments.length === 0 ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
-    className: "p-4"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('No Comments', 'decent-comments')) : comments.filter(comment => !attributes.exclude_post_author || comment.author_email !== comment.post_author).map(comment => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(RenderComment, {
+  }, comments.length === 0 ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('No Comments', 'decent-comments')) : comments.filter(comment => !attributes.exclude_post_author || comment.author_email !== comment.post_author).map(comment => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(RenderComment, {
     key: comment.id,
     comment: comment,
     attributes: attributes
@@ -203,7 +201,7 @@ const RenderComment = ({
     key: comment.id,
     className: "comment"
   }, avatar, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "comment"
+    className: "comment-content"
   }, author && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "comment-author"
   }, author, ' '), date && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
@@ -227,7 +225,7 @@ function formatExcerpt(content, attributes) {
   return sanitizeHTML(excerpt);
 }
 function handleError(block, error) {
-  block.innerHTML = `<p class="text-red-500 p-4">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Error loading comments', 'decent-comments')}</p>`;
+  block.innerHTML = `<p>${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Error loading comments', 'decent-comments')}</p>`;
   console.error('Decent Comments Error:', error);
 }
 function sanitizeHTML(str) {

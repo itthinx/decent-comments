@@ -30,7 +30,7 @@ export async function initializeComments() {
 			const result = await processCommentBlock(block);
 			results.push({ block, ...result });
 		} catch (error) {
-			block.innerHTML = `<p class="text-red-500 p-4">${__('Error loading comments', 'decent-comments')}</p>`;
+			block.innerHTML = `<p>${__('Error loading comments', 'decent-comments')}</p>`;
 		}
 	}
 	return results;
@@ -96,15 +96,15 @@ export function buildQuery(attributes) {
 
 export const RenderComments = ({ comments, attributes }) => {
 	return (
-		<div className="decent-comments max-w-3xl mx-auto">
+		<div className="decent-comments">
 			{attributes.title?.length > 0 && (
-				<div className="decent-comments-heading gamma widget-title text-2xl font-bold mb-4">
+				<div className="decent-comments-heading gamma widget-title">
 					{sanitizeHTML(attributes.title)}
 				</div>
 			)}
 			<ul className="decent-comments list-none">
 				{comments.length === 0 ? (
-					<li className="p-4">{__('No Comments', 'decent-comments')}</li>
+					<li>{__('No Comments', 'decent-comments')}</li>
 				) : (
 					comments
 					.filter(
@@ -166,7 +166,7 @@ export const RenderComment = ({ comment, attributes }) => {
 	return (
 		<li key={comment.id} className="comment">
 			{avatar}
-			<div className="comment">
+			<div className="comment-content">
 				{author && <span className="comment-author">{author}{' '}</span>}
 				{date && <span className="comment-date">{date}{' '}</span>}
 				{postTitle}{' '}
@@ -198,7 +198,7 @@ export function formatExcerpt(content, attributes) {
 }
 
 export function handleError(block, error) {
-	block.innerHTML = `<p class="text-red-500 p-4">${__('Error loading comments', 'decent-comments')}</p>`;
+	block.innerHTML = `<p>${__('Error loading comments', 'decent-comments')}</p>`;
 	console.error('Decent Comments Error:', error);
 }
 
