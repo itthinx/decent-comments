@@ -273,9 +273,6 @@ function DC_admin_print_scripts() {
 	wp_enqueue_script( 'decent-comments-admin', DC_PLUGIN_URL . 'js/decent-comments-admin.js', array( 'jquery' ), $DC_version );
 }
 
-require_once( dirname( __FILE__ ) . '/class-decent-comments-helper.php' );
-require_once( dirname( __FILE__ ) . '/class-decent-comments-renderer.php' );
-
 add_action( 'widgets_init', 'DC_widgets_init' );
 /**
  * Register widgets
@@ -292,6 +289,9 @@ add_action( 'init', 'DC_init' );
  */
 function DC_init() {
 	load_plugin_textdomain( DC_PLUGIN_DOMAIN, null, 'decent-comments/languages' );
+	require_once( dirname( __FILE__ ) . '/class-decent-comments-renderer.php' );
+	require_once( dirname( __FILE__ ) . '/class-decent-comments-shortcode.php' );
 }
-
-require_once( dirname( __FILE__ ) . '/class-decent-comments-shortcode.php' );
+require_once( dirname( __FILE__ ) . '/class-decent-comments-helper.php' );
+require_once( dirname( __FILE__ ) . '/class-decent-comments-rest.php' );
+require_once( dirname( __FILE__ ) . '/blocks/class-decent-comments-blocks.php' );

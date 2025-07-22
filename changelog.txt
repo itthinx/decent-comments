@@ -2,6 +2,9 @@ Decent Comments by itthinx                                           Changelog
 
 = 3.0.0 =
 * WordPress 6.8 compatible.
+* Added Decent Comments Block widget with the same functionality and features as the existing widget and shortcode.
+* Added REST API endpoint for requesting comments.
+* Fixed warning related to translations rendered too early.
 
 = 2.0.0 =
 * WordPress 6.7 compatible.
