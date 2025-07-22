@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 		} catch (error) {
 			const root = createRoot(block);
 				root.render(
-					<p className="text-red-500 p-4">
+					<p className="text-red-500">
 						{__('Error loading comments', 'decent-comments')}
 					</p>
 				);

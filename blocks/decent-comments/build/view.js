@@ -440,7 +440,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (error) {
       const root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(block);
       root.render((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-        className: "text-red-500 p-4"
+        className: "text-red-500"
       }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Error loading comments', 'decent-comments')));
       console.error('Decent Comments Error:', error);
     }
