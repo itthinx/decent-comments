@@ -23,6 +23,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+/**
+ * Decent Comments Block, main class.
+ */
 class Decent_Comments_Blocks {
 
 	/**
