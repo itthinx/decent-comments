@@ -100,7 +100,7 @@ export const RenderComments = ({ comments, attributes }) => {
 		<div className="decent-comments">
 			{attributes.title?.length > 0 && (
 				<div className="decent-comments-heading gamma widget-title">
-					{sanitizeHTML(attributes.title)}
+					{createDivWithInnerHtml(attributes.title)}
 				</div>
 			)}
 			<ul className="decent-comments">
@@ -125,11 +125,11 @@ export const RenderComments = ({ comments, attributes }) => {
 export const RenderComment = ({ comment, attributes }) => {
 	const author = attributes.show_author ? (
 		attributes.link_authors && comment.author_url ? (
-			<a href={sanitizeHTML(comment.author_url)} className="comment-author-link">
-				{sanitizeHTML(comment.author)}
+			<a href={createDivWithInnerHtml(comment.author_url)} className="comment-author-link">
+				{createDivWithInnerHtml(comment.author)}
 			</a>
 		) : (
-			sanitizeHTML(comment.author)
+			createDivWithInnerHtml(comment.author)
 		)
 	) : null;
 
@@ -157,11 +157,11 @@ export const RenderComment = ({ comment, attributes }) => {
 
 	const excerpt = attributes.show_comment ? formatExcerpt(comment.content, attributes) : '';
 
-	const postTitle = attributes.show_link && comment.comment_link ? (
-		<span>
-			{__('on', 'decent-comments')}{' '}
-			<a href={sanitizeHTML(comment.comment_link || '#')} className="comment-post-title">
-				{sanitizeHTML(comment.post_title || '')}
+	const link = attributes.show_link && comment.comment_link ? (
+		<span className="comment-link">
+			{ __( 'on', 'decent-comments' ) }{ ' ' }
+			<a href={ createDivWithInnerHtml( comment.comment_link || '#' ) } className="comment-post-title">
+				{createDivWithInnerHtml(comment.post_title || '')}
 			</a>
 		</span>
 	) : null;
@@ -172,7 +172,7 @@ export const RenderComment = ({ comment, attributes }) => {
 			<div className="comment-content">
 				{author && <span className="comment-author">{author}{' '}</span>}
 				{date && <span className="comment-date">{date}{' '}</span>}
-				{postTitle}{' '}
+				{link}{' '}
 				{excerpt && <span className="comment-excerpt">{excerpt}</span>}
 			</div>
 		</li>
@@ -189,15 +189,15 @@ export function formatExcerpt(content, attributes) {
 	if (attributes.max_excerpt_words > 0) {
 		const words = excerpt.split(' ');
 		excerpt = words.slice(0, attributes.max_excerpt_words).join(' ') +
-		(words.length > attributes.max_excerpt_words ? sanitizeHTML(attributes.ellipsis) : '');
+		(words.length > attributes.max_excerpt_words ? createDivWithInnerHtml(attributes.ellipsis) : '');
 	}
 
 	if (attributes.max_excerpt_characters > 0) {
 		excerpt = excerpt.substring(0, attributes.max_excerpt_characters) +
-		(excerpt.length > attributes.max_excerpt_characters ? sanitizeHTML(attributes.ellipsis) : '');
+		(excerpt.length > attributes.max_excerpt_characters ? createDivWithInnerHtml(attributes.ellipsis) : '');
 	}
 
-	return sanitizeHTML(excerpt);
+	return createDivWithInnerHtml(excerpt);
 }
 
 export function handleError(block, error) {
@@ -205,7 +205,7 @@ export function handleError(block, error) {
 	console.error('Decent Comments Error:', error);
 }
 
-export function sanitizeHTML(str) {
+export function createDivWithInnerHtml(str) {
 	const div = document.createElement('div');
 	div.textContent = str || '';
 	return div.innerHTML;
