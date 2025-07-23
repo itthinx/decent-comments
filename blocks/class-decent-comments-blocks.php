@@ -154,8 +154,7 @@ class Decent_Comments_Blocks {
 	}
 
 	/**
-	 * Helper function to get available post_types
-	 * in a comma-separated list
+	 * Helper function to get available (public) post types as a comma-separated list.
 	 *
 	 * @return string
 	 */
