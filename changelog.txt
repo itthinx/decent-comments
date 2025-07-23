@@ -1,4 +1,4 @@
-== Decent Comments by itthinx - changelog.txt
+== Decent Comments by itthinx - changelog.txt ==
 
 = 3.0.0 =
 * WordPress 6.8 compatible.
