@@ -163,4 +163,6 @@ class Decent_Comments_Blocks {
 		return implode( ', ', get_post_types( array( 'public' => true ) ) );
 	}
 
-} Decent_Comments_Blocks::init();
+}
+
+Decent_Comments_Blocks::init();
