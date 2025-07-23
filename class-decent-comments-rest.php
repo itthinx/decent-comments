@@ -201,7 +201,7 @@ class Decent_Comments_Rest {
 					'author_url'      => $comment->comment_author_url,
 					'date'            => $comment->comment_date,
 					'content'         => $comment->comment_content,
-					'avatar'          => get_avatar_url( $comment->comment_author_email, $args['avatar_size'] ),
+					'avatar'          => get_avatar( $comment->comment_author_email, $args['avatar_size'] ),
 					'comment_post_id' => $comment->comment_post_ID,
 					'post_title'      => get_the_title( $comment->comment_post_ID ),
 					'comment_link'    => get_comment_link( $comment->comment_ID ),

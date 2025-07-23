@@ -142,15 +142,17 @@ export const RenderComment = ({ comment, attributes }) => {
 		`${new Date(comment.date).toLocaleDateString(undefined, dateOptions)} ${__('at', 'decent-comments')} ${new Date(comment.date).toLocaleTimeString()}`
 	) : null;
 
-	const avatar = attributes.show_avatar && comment.avatar ? (
-		<img
-			src={sanitizeHTML(comment.avatar)}
-			alt={sanitizeHTML(comment.author || '')}
-			width={attributes.avatar_size || 48}
-			height={attributes.avatar_size || 48}
-			className="rounded-full"
-		/>
-	) : null;
+	let pre_avatar = '';
+	let post_avatar = '';
+	if ( comment.author_url ) {
+		pre_avatar = '<a href="' + comment.author_url +'" rel="external">';
+		post_avatar = '</a>';
+	}
+
+	const avatar = attributes.show_avatar && comment.avatar ?
+		<span className="comment-avatar" dangerouslySetInnerHTML={{ __html: pre_avatar + comment.avatar + post_avatar }} />
+		:
+		null;
 
 	const excerpt = attributes.show_comment ? formatExcerpt(comment.content, attributes) : '';
 
@@ -165,7 +167,7 @@ export const RenderComment = ({ comment, attributes }) => {
 
 	return (
 		<li key={comment.id} className="comment">
-			{avatar}
+			{ avatar }
 			<div className="comment-content">
 				{author && <span className="comment-author">{author}{' '}</span>}
 				{date && <span className="comment-date">{date}{' '}</span>}
