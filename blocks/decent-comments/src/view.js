@@ -1,7 +1,7 @@
 /**
  * view.js
  *
- * Copyright (c) 2011 "kento" Karim Rahimpur www.itthinx.com
+ * Copyright (c) www.itthinx.com
  *
  * This code is released under the GNU General Public License.
  * See COPYRIGHT.txt and LICENSE.txt.

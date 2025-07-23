@@ -99,16 +99,16 @@ class Decent_Comments_Renderer {
 	 */
 	public static function init() {
 		self::$orderby_options = array(
-			'comment_author_email' => esc_html__( 'Author Email', DC_PLUGIN_DOMAIN ),
-			'comment_author_url'   => esc_html__( 'Author URL', DC_PLUGIN_DOMAIN ),
-			'comment_content'      => esc_html__( 'Content', DC_PLUGIN_DOMAIN ),
-			'comment_date_gmt'     => esc_html__( 'Date', DC_PLUGIN_DOMAIN ),
-			'comment_karma'        => esc_html__( 'Karma', DC_PLUGIN_DOMAIN ),
-			'comment_post_ID'      => esc_html__( 'Post', DC_PLUGIN_DOMAIN )
+			'comment_author_email' => esc_html__( 'Author Email', 'decent-comments' ),
+			'comment_author_url'   => esc_html__( 'Author URL', 'decent-comments' ),
+			'comment_content'      => esc_html__( 'Content', 'decent-comments' ),
+			'comment_date_gmt'     => esc_html__( 'Date', 'decent-comments' ),
+			'comment_karma'        => esc_html__( 'Karma', 'decent-comments' ),
+			'comment_post_ID'      => esc_html__( 'Post', 'decent-comments' )
 		);
 		self::$order_options = array(
-			'ASC'  => esc_html__( 'Ascending', DC_PLUGIN_DOMAIN ),
-			'DESC' => esc_html__( 'Descending', DC_PLUGIN_DOMAIN )
+			'ASC'  => esc_html__( 'Ascending', 'decent-comments' ),
+			'DESC' => esc_html__( 'Descending', 'decent-comments' )
 		);
 	}
 
@@ -493,7 +493,7 @@ class Decent_Comments_Renderer {
 				if ( $show_date ) {
 					$output .= '<span class="comment-date">';
 					$output .= sprintf(
-						_x( ' %1$s at %2$s', 'comment-date', DC_PLUGIN_DOMAIN ), // translators : the first argument is the date of the comment, the second is the time
+						_x( ' %1$s at %2$s', 'comment-date', 'decent-comments' ), // translators : the first argument is the date of the comment, the second is the time
 						mysql2date( get_option( 'date_format' ), $comment->comment_date ),
 						mysql2date( get_option( 'time_format' ), $comment->comment_date, true )
 					);
@@ -503,7 +503,7 @@ class Decent_Comments_Renderer {
 				if ( $show_link ) {
 					$output .= '<span class="comment-link">';
 					$output .= sprintf(
-						_x( ' on %s', 'comment-link', DC_PLUGIN_DOMAIN ),
+						_x( ' on %s', 'comment-link', 'decent-comments' ),
 						'<a href="' . esc_url( get_comment_link( $comment->comment_ID ) ) . '">' . get_the_title( $comment->comment_post_ID ) . '</a>'
 					);
 					$output .= '</span>'; // .comment-link
