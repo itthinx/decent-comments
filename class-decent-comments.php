@@ -64,9 +64,8 @@ class Decent_Comments {
 	 * Enqueues scripts for non-admin pages.
 	 */
 	public static function print_scripts() {
-		global $DC_version;
 		if ( !is_admin() ) {
-			wp_enqueue_script( 'decent-comments', DC_PLUGIN_URL . 'js/decent-comments.js', array( 'jquery' ), $DC_version, true );
+			wp_enqueue_script( 'decent-comments', DC_PLUGIN_URL . 'js/decent-comments.js', array( 'jquery' ), DECENT_COMMENTS_PLUGIN_VERSION, true );
 		}
 	}
 
@@ -74,9 +73,8 @@ class Decent_Comments {
 	 * Enqueues styles for non-admin pages.
 	 */
 	public static function wp_print_styles() {
-		global $DC_version;
 		if ( !is_admin() ) {
-			wp_enqueue_style( 'decent-comments', DC_PLUGIN_URL . 'css/decent-comments.css', array(), $DC_version );
+			wp_enqueue_style( 'decent-comments', DC_PLUGIN_URL . 'css/decent-comments.css', array(), DECENT_COMMENTS_PLUGIN_VERSION );
 		}
 	}
 
@@ -84,15 +82,13 @@ class Decent_Comments {
 	 * Enqueues scripts for admin pages.
 	 */
 	public static function admin_print_styles() {
-		global $DC_version;
 		if ( is_admin() ) {
-			wp_enqueue_style( 'decent-comments-admin', DC_PLUGIN_URL . 'css/decent-comments-admin.css', array(), $DC_version );
+			wp_enqueue_style( 'decent-comments-admin', DC_PLUGIN_URL . 'css/decent-comments-admin.css', array(), DECENT_COMMENTS_PLUGIN_VERSION );
 		}
 	}
 
 	public static function admin_print_scripts() {
-		global $DC_version;
-		wp_enqueue_script( 'decent-comments-admin', DC_PLUGIN_URL . 'js/decent-comments-admin.js', array( 'jquery' ), $DC_version );
+		wp_enqueue_script( 'decent-comments-admin', DC_PLUGIN_URL . 'js/decent-comments-admin.js', array( 'jquery' ), DECENT_COMMENTS_PLUGIN_VERSION );
 	}
 
 	/**

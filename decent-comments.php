@@ -59,6 +59,15 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Plugin version.
+ *
+ * @since 3.0.0
+ *
+ * @var string
+ */
+define( 'DECENT_COMMENTS_PLUGIN_VERSION', '3.0.0' );
+
+/**
  * @var string plugin url
  */
 define( 'DC_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -84,17 +93,9 @@ define( 'DC_OPTIONS_NONCE', "dc-options-nonce" );
  * @return array plugin settings
  */
 function DC_get_settings() {
-	global $DC_settings, $DC_version;
+	global $DC_settings;
 	if ( !isset( $DC_settings ) ) {
 		$DC_settings = _DC_get_settings();
-		$DC_version = 'current';
-		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-		if ( function_exists( 'get_plugin_data' ) ) {
-			$plugin_data = get_plugin_data( __FILE__ );
-			if ( !empty( $plugin_data ) ) {
-				$DC_version = $plugin_data['Version'];
-			}
-		}
 	}
 	return $DC_settings;
 }

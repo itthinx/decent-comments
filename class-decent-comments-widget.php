@@ -227,10 +227,10 @@ class Decent_Comments_Widget extends WP_Widget {
 	 * Enqueue styles if at least one widget is used.
 	 */
 	public static function _wp_print_styles() {
-		global $wp_registered_widgets, $DC_version;
+		global $wp_registered_widgets;
 		foreach ( $wp_registered_widgets as $widget ) {
 			if ( $widget['name'] === self::DECENT_COMMENTS_WIDGET_NAME ) {
-				wp_enqueue_style( 'decent-comments-widget', DC_PLUGIN_URL . 'css/decent-comments-widget.css', array(), $DC_version );
+				wp_enqueue_style( 'decent-comments-widget', DC_PLUGIN_URL . 'css/decent-comments-widget.css', array(), DECENT_COMMENTS_PLUGIN_VERSION );
 				break;
 			}
 		}

@@ -8,6 +8,7 @@
 * Replaced occurrences of the language domain constant with the corresponding string literal.
 * Refactored parts of the plugin initialization.
 * Updated the translation template.
+* Added the plugin version constant and removed the global that was used to hold the version number.
 
 = 2.0.0 =
 * WordPress 6.7 compatible.
