@@ -22,7 +22,7 @@
 import apiFetch from '@wordpress/api-fetch';
 import { __ } from '@wordpress/i18n';
 
-export async function initializeComments() {
+async function initializeComments() {
 	const blocks = document.querySelectorAll('.wp-block-itthinx-decent-comments');
 	const results = [];
 	for (const block of blocks) {
@@ -36,7 +36,7 @@ export async function initializeComments() {
 	return results;
 }
 
-export async function processCommentBlock(block) {
+async function processCommentBlock(block) {
 	try {
 		const attributes = parseAttributes(block.dataset.attributes);
 		if (attributes.post_id === '[current]' || attributes.post_id === '{current}') {
@@ -73,7 +73,7 @@ export async function fetchComments(attributes, nonce) {
 	return response;
 }
 
-export function buildQuery(attributes) {
+function buildQuery(attributes) {
 	const params = {
 		number: attributes.number || 5,
 		offset: attributes.offset || 0,
@@ -93,7 +93,6 @@ export function buildQuery(attributes) {
 	};
 	return new URLSearchParams(params);
 }
-
 
 export const RenderComments = ({ comments, attributes }) => {
 	return (
@@ -179,7 +178,7 @@ export const RenderComment = ({ comment, attributes }) => {
 	);
 };
 
-export function formatExcerpt(content, attributes) {
+function formatExcerpt(content, attributes) {
 	let excerpt = attributes.show_excerpt ? content : '';
 
 	if (attributes.strip_tags) {
@@ -200,12 +199,12 @@ export function formatExcerpt(content, attributes) {
 	return createDivWithInnerHtml(excerpt);
 }
 
-export function handleError(block, error) {
+function handleError(block, error) {
 	block.innerHTML = `<p>${__('Error loading comments', 'decent-comments')}</p>`;
 	console.error('Decent Comments Error:', error);
 }
 
-export function createDivWithInnerHtml(str) {
+function createDivWithInnerHtml(str) {
 	const div = document.createElement('div');
 	div.textContent = str || '';
 	return div.innerHTML;
