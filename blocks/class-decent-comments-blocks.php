@@ -54,8 +54,6 @@ class Decent_Comments_Blocks {
 				'decent-comments-block-view',
 				'decentCommentsView',
 				array(
-					//'restUrl'  => rest_url( 'decent-comments/v1/comments' ),
-					'restURL'  => esc_url_raw( rest_url() ),
 					'nonce'    => wp_create_nonce('wp_rest'),
 					'site_url' => get_site_url(),
 					'current_post_id' => $current_post_id,
@@ -93,7 +91,6 @@ class Decent_Comments_Blocks {
 			'decentCommentsEdit',
 			array(
 				'nonce' => wp_create_nonce( 'wp_rest' ),
-				'restUrl' => rest_url( 'decent-comments/v1/comments'),
 				'post_types' => self::get_post_types(),
 				'current_id' => get_queried_object_id()
 			)
