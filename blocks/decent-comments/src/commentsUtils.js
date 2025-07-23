@@ -89,6 +89,7 @@ export function buildQuery(attributes) {
 		...(attributes.exclude_post_author && { exclude_post_author: attributes.exclude_post_author }),
 		...(attributes.pingback && { pingback: attributes.pingback }),
 		...(attributes.trackback && { trackback: attributes.trackback }),
+		...(attributes.avatar_size && { avatar_size: attributes.avatar_size }),
 	};
 	return new URLSearchParams(params);
 }

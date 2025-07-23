@@ -191,7 +191,6 @@ class Decent_Comments_Rest {
 
 		require_once( dirname( __FILE__ ) . '/class-decent-comment.php' );
 		$comments = Decent_Comment::get_comments( $comment_args );
-
 		if ( !empty( $comments ) ) {
 			foreach ( $comments as $comment ) {
 				$comment_data = array(
