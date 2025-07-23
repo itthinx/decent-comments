@@ -100,8 +100,6 @@ registerBlockType( metadata.name, {
 							label={__('Title', 'decent-comments')}
 							value={attributes.title}
 							onChange={(value) => setAttributes({title: value})}
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
 						/>
 						<TextControl
 							label={__('Number of Comments', 'decent-comments')}
@@ -109,8 +107,6 @@ registerBlockType( metadata.name, {
 							onChange={(value) => setAttributes({ number: parseInt(value) || 5 })}
 							min="1"
 							type="number"
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
 						/>
 						<SelectControl
 							label={__('Order by...', 'decent-comments')}
@@ -124,8 +120,6 @@ registerBlockType( metadata.name, {
 								{ label: __('Post', 'decent-comments'), value: 'comment_post_id' }
 							]}
 							onChange={(value) => setAttributes({ orderby: value })}
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
 						/>
 						<SelectControl
 							label={__('Sort order', 'decent-comments')}
@@ -135,38 +129,28 @@ registerBlockType( metadata.name, {
 								{ label: __('Ascending', 'decent-comments'), value: 'asc' }
 							]}
 							onChange={(value) => setAttributes({ order: value })}
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
 						/>
 						<TextControl
 							label={__('Post ID', 'decent-comments')}
 							value={attributes.post_id}
 							onChange={(value) => setAttributes({ post_id: value || '' })}
 							help={__('Title, empty, post ID or [current]', 'decent-comments')}
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
 						/>
 						<TextControl
 							label={__('Post type', 'decent-comments')}
 							value={attributes.post_type}
 							onChange={(value) => setAttributes({ post_type: value })}
 							help={__('Available post types: ' + decentCommentsEdit.post_types , 'decent-comments')}
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
 						/>
 						<ToggleControl
 							label={__('Exclude comments from post authors', 'decent-comments')}
 							checked={attributes.exclude_post_author}
 							onChange={(value) => setAttributes({ exclude_post_author: value })}
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
 						/>
 						<ToggleControl
 							label={__('Show comment excerpt', 'decent-comments')}
 							checked={attributes.show_excerpt}
 							onChange={(value) => setAttributes({ show_excerpt: value })}
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
 						/>
 						<TextControl
 							label={__('Number of words in excerpts', 'decent-comments')}
@@ -174,8 +158,6 @@ registerBlockType( metadata.name, {
 							onChange={(value) => setAttributes({ max_excerpt_words: parseInt(value) || 20 })}
 							min="0"
 							type="number"
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
 						/>
 						<TextControl
 							label={__('Number of characters in excerpts', 'decent-comments')}
@@ -183,41 +165,33 @@ registerBlockType( metadata.name, {
 							onChange={(value) => setAttributes({ max_excerpt_characters: parseInt(value) || 0 })}
 							min="0"
 							type="number"
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
 						/>
 						<TextControl
 							label={__('Ellipsis')}
 							value={attributes.ellipsis}
 							onChange={(value) => setAttributes({ ellipsis: value })}
 							help={__('The ellipsis is shown after the excerpt when there is more content.', 'decent-comments')}
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
 						/>
 						<ToggleControl
 							label={__('Show author', 'decent-comments')}
 							checked={attributes.show_author}
 							onChange={(value) => setAttributes({ show_author: value })}
-							__nextHasNoMarginBottom
 						/>
 						<ToggleControl
 							label={__('Show date', 'decent-comments')}
 							checked={attributes.show_date}
 							onChange={(value) => setAttributes({ show_date: value })}
-							__nextHasNoMarginBottom
 						/>
 						<ToggleControl
 							label={__('Link authors', 'decent-comments')}
 							checked={attributes.link_authors}
 							onChange={(value) => setAttributes({ link_authors: value })}
 							help={__('Whether to link comment authors to their website.', 'decent-comments')}
-							__nextHasNoMarginBottom
 						/>
 						<ToggleControl
 							label={__('Show avatar', 'decent-comments')}
 							checked={attributes.show_avatar}
 							onChange={(value) => setAttributes({ show_avatar: value })}
-							__nextHasNoMarginBottom
 						/>
 						<TextControl
 							label={__('Avatar size', 'decent-comments')}
@@ -225,20 +199,16 @@ registerBlockType( metadata.name, {
 							onChange={(value) => setAttributes({ avatar_size: parseInt(value) || 48 })}
 							min="0"
 							type="number"
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
 						/>
 						<ToggleControl
 							label={__('Show link to post', 'decent-comments')}
 							checked={attributes.show_link}
 							onChange={(value) => setAttributes({ show_link: value })}
-							__nextHasNoMarginBottom
 						/>
 						<ToggleControl
 							label={__('Show the comment', 'decent-comments')}
 							checked={attributes.show_comment}
 							onChange={(value) => setAttributes({ show_comment: value })}
-							__nextHasNoMarginBottom
 						/>
 						<SelectControl
 							label={__('Taxonomy', 'decent-comments')}
@@ -250,27 +220,21 @@ registerBlockType( metadata.name, {
 							]}
 							onChange={(value) => setAttributes({ taxonomy: value })}
 							help={__('Select category if you would like to show comments on posts in certain categories. Give the desired categories\' slugs in Term. For tags select post_tag and give the tags\' slugs in Term.', 'decent-comments')}
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
 						/>
 						<TextControl
 							label={__('Term', 'decent-comments')}
 							value={attributes.terms}
 							onChange={(value) => setAttributes({ terms: value })}
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
 						/>
 						<ToggleControl
 							label={__('Pingbacks', 'decent-comments')}
 							checked={attributes.pingback}
 							onChange={(value) => setAttributes({ pingback: value })}
-							__nextHasNoMarginBottom
 						/>
 						<ToggleControl
 							label={__('Trackbacks', 'decent-comments')}
 							checked={attributes.trackback}
 							onChange={(value) => setAttributes({ trackback: value })}
-							__nextHasNoMarginBottom
 						/>
 					</PanelBody>
 				</InspectorControls>
