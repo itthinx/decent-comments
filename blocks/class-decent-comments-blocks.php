@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Decent Comments Block, main class.
+ * Decent Comments Blocks, register the plugin's block and handles related resources.
  */
 class Decent_Comments_Blocks {
 
