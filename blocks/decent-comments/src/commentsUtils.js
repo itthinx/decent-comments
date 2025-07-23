@@ -102,7 +102,7 @@ export const RenderComments = ({ comments, attributes }) => {
 					{sanitizeHTML(attributes.title)}
 				</div>
 			)}
-			<ul className="decent-comments list-none">
+			<ul className="decent-comments">
 				{comments.length === 0 ? (
 					<li>{__('No Comments', 'decent-comments')}</li>
 				) : (
