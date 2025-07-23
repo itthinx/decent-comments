@@ -7,6 +7,7 @@
 * Fixed warning related to translations rendered too early.
 * Replaced occurrences of the language domain constant with the corresponding string literal.
 * Refactored parts of the plugin initialization.
+* Updated the translation template.
 
 = 2.0.0 =
 * WordPress 6.7 compatible.
