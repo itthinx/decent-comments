@@ -4,7 +4,7 @@
   "title": "Decent Comments",
   "category": "widgets",
   "icon": "admin-comments",
-  "description": "Displays comments with customizable options using the Decent Comments plugin via REST API.",
+  "description": "Displays comments using versatile customizable options.",
   "keywords": ["comments", "decent comments", "widget"],
   "supports": {
     "html": false
