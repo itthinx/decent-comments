@@ -1,1 +1,456 @@
-(()=>{"use strict";var e={338:(e,t,n)=>{var r=n(795);t.H=r.createRoot,r.hydrateRoot},609:e=>{e.exports=window.React},723:e=>{e.exports=window.wp.i18n},727:(e,t,n)=>{n.d(t,{PU:()=>i,p4:()=>m,vB:()=>s});var r=n(609);const o=window.wp.apiFetch;var a=n.n(o),c=n(723);function s(e){return JSON.parse(e||"{}")}async function m(e,t){const n=function(e){const t={number:e.number||5,offset:e.offset||0,order:e.order||"asc",orderby:e.orderby||"comment_author_email",...e.post_id&&{post_id:e.post_id},...e.post__in&&{post__in:e.post__in},...e.post__not_in&&{post__not_in:e.post__not_in},...e.post_type&&{post_type:e.post_type},...e.taxonomy&&{taxonomy:e.taxonomy},...e.terms&&{terms:e.terms},...e.term_ids&&{term_ids:e.term_ids},...e.exclude_post_author&&{exclude_post_author:e.exclude_post_author},...e.pingback&&{pingback:e.pingback},...e.trackback&&{trackback:e.trackback},...e.avatar_size&&{avatar_size:e.avatar_size}};return new URLSearchParams(t)}(e);return await a()({path:`decent-comments/v1/comments?${n.toString()}`,method:"GET",headers:{"X-WP-Nonce":t}})}const i=({comments:e,attributes:t})=>(0,r.createElement)("div",{className:"decent-comments"},t.title?.length>0&&(0,r.createElement)("div",{className:"decent-comments-heading gamma widget-title"},_(t.title)),(0,r.createElement)("ul",{className:"decent-comments"},0===e.length?(0,r.createElement)("li",null,(0,c.__)("No Comments","decent-comments")):e.filter(e=>!t.exclude_post_author||e.author_email!==e.post_author).map(e=>(0,r.createElement)(l,{key:e.id,comment:e,attributes:t})))),l=({comment:e,attributes:t})=>{const n=t.show_author?t.link_authors&&e.author_url?(0,r.createElement)("a",{href:_(e.author_url),className:"comment-author-link"},_(e.author)):_(e.author):null,o=t.show_date?`${new Date(e.date).toLocaleDateString(void 0,{year:"numeric",month:"long",day:"numeric",hour12:!0})} ${(0,c.__)("at","decent-comments")} ${new Date(e.date).toLocaleTimeString()}`:null;let a="",s="";e.author_url&&(a='<a href="'+e.author_url+'" rel="external">',s="</a>");const m=t.show_avatar&&e.avatar?(0,r.createElement)("span",{className:"comment-avatar",dangerouslySetInnerHTML:{__html:a+e.avatar+s}}):null,i=t.show_comment?function(e,t){let n=t.show_excerpt?e:"";if(t.strip_tags&&(n=n.replace(/(<([^>]+)>)/gi,"")),t.max_excerpt_words>0){const e=n.split(" ");n=e.slice(0,t.max_excerpt_words).join(" ")+(e.length>t.max_excerpt_words?_(t.ellipsis):"")}return t.max_excerpt_characters>0&&(n=n.substring(0,t.max_excerpt_characters)+(n.length>t.max_excerpt_characters?_(t.ellipsis):"")),_(n)}(e.content,t):"",l=t.show_link&&e.comment_link?(0,r.createElement)("span",{className:"comment-link"},(0,c.__)("on","decent-comments")," ",(0,r.createElement)("a",{href:_(e.comment_link||"#"),className:"comment-post-title"},_(e.post_title||""))):null;return(0,r.createElement)("li",{key:e.id,className:"comment"},m,(0,r.createElement)("div",{className:"comment-content"},n&&(0,r.createElement)("span",{className:"comment-author"},n," "),o&&(0,r.createElement)("span",{className:"comment-date"},o," "),l," ",i&&(0,r.createElement)("span",{className:"comment-excerpt"},i)))};function _(e){const t=document.createElement("div");return t.textContent=e||"",t.innerHTML}},795:e=>{e.exports=window.ReactDOM}},t={};function n(r){var o=t[r];if(void 0!==o)return o.exports;var a=t[r]={exports:{}};return e[r](a,a.exports,n),a.exports}n.n=e=>{var t=e&&e.__esModule?()=>e.default:()=>e;return n.d(t,{a:t}),t},n.d=(e,t)=>{for(var r in t)n.o(t,r)&&!n.o(e,r)&&Object.defineProperty(e,r,{enumerable:!0,get:t[r]})},n.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t);var r=n(609),o=n(338),a=n(723),c=n(727);let s=null,m=null;window.decentCommentsView&&(window.decentCommentsView.current_post_id&&(s=window.decentCommentsView.current_post_id),window.decentCommentsView.current_term_id&&(m=window.decentCommentsView.current_term_id)),document.addEventListener("DOMContentLoaded",async()=>{const e=document.querySelectorAll(".wp-block-itthinx-decent-comments");for(const t of e)try{const e=(0,c.vB)(t.dataset.attributes);"[current]"!==e.post_id&&"{current}"!==e.post_id||s&&(e.post_id=s),"[current]"!==e.terms&&"{current}"!==e.terms||m&&(e.term_ids=m);const n=window.decentCommentsView?.nonce||"",a=await(0,c.p4)(e,n);(0,o.H)(t).render((0,r.createElement)(c.PU,{comments:a.comments||[],attributes:e}))}catch(e){(0,o.H)(t).render((0,r.createElement)("p",{className:"text-red-500"},(0,a.__)("Error loading comments","decent-comments"))),console.error("Decent Comments Error:",e)}})})();
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./node_modules/react-dom/client.js":
+/*!******************************************!*\
+  !*** ./node_modules/react-dom/client.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+
+var m = __webpack_require__(/*! react-dom */ "react-dom");
+if (false) // removed by dead control flow
+{} else {
+  var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+  exports.createRoot = function(c, o) {
+    i.usingClientEntryPoint = true;
+    try {
+      return m.createRoot(c, o);
+    } finally {
+      i.usingClientEntryPoint = false;
+    }
+  };
+  exports.hydrateRoot = function(c, h, o) {
+    i.usingClientEntryPoint = true;
+    try {
+      return m.hydrateRoot(c, h, o);
+    } finally {
+      i.usingClientEntryPoint = false;
+    }
+  };
+}
+
+
+/***/ }),
+
+/***/ "./src/commentsUtils.js":
+/*!******************************!*\
+  !*** ./src/commentsUtils.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   RenderComment: () => (/* binding */ RenderComment),
+/* harmony export */   RenderComments: () => (/* binding */ RenderComments),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   fetchComments: () => (/* binding */ fetchComments),
+/* harmony export */   parseAttributes: () => (/* binding */ parseAttributes)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+
+/**
+ * commentsUtils.js
+ *
+ * Copyright (c) ww.itthinx.com
+ *
+ * This code is released under the GNU General Public License.
+ * See COPYRIGHT.txt and LICENSE.txt.
+ *
+ * This code is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * This header and all notices must be kept intact.
+ *
+ * @author George Tsiokos
+ * @package decent-comments
+ * @since decent-comments 3.0.0
+ */
+
+
+
+async function initializeComments() {
+  const blocks = document.querySelectorAll('.wp-block-itthinx-decent-comments');
+  const results = [];
+  for (const block of blocks) {
+    try {
+      const result = await processCommentBlock(block);
+      results.push({
+        block,
+        ...result
+      });
+    } catch (error) {
+      block.innerHTML = `<p>${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Error loading comments', 'decent-comments')}</p>`;
+    }
+  }
+  return results;
+}
+async function processCommentBlock(block) {
+  try {
+    const attributes = parseAttributes(block.dataset.attributes);
+    if (attributes.post_id === '[current]' || attributes.post_id === '{current}') {
+      if (window.current_post_id) {
+        attributes.post_id = window.current_post_id;
+      }
+    }
+    if (attributes.terms === '[current]' || attributes.terms === '{current}') {
+      if (window.current_term_id) {
+        attributes.term_ids = window.current_term_id;
+      }
+    }
+    const response = await fetchComments(attributes, block.dataset.nonce || window.decentCommentsNonce);
+    return {
+      comments: response.comments || [],
+      attributes
+    };
+  } catch (error) {
+    console.error('Decent Comments Error:', error);
+    throw error;
+  }
+}
+function parseAttributes(data) {
+  return JSON.parse(data || '{}');
+}
+async function fetchComments(attributes, nonce) {
+  const query = buildQuery(attributes);
+  const response = await _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default()({
+    path: `decent-comments/v1/comments?${query.toString()}`,
+    method: 'GET',
+    headers: {
+      'X-WP-Nonce': nonce
+    }
+  });
+  return response;
+}
+function buildQuery(attributes) {
+  const params = {
+    number: attributes.number || 5,
+    offset: attributes.offset || 0,
+    order: attributes.order || 'asc',
+    orderby: attributes.orderby || 'comment_author_email',
+    ...(attributes.post_id && {
+      post_id: attributes.post_id
+    }),
+    ...(attributes.post__in && {
+      post__in: attributes.post__in
+    }),
+    ...(attributes.post__not_in && {
+      post__not_in: attributes.post__not_in
+    }),
+    ...(attributes.post_type && {
+      post_type: attributes.post_type
+    }),
+    ...(attributes.taxonomy && {
+      taxonomy: attributes.taxonomy
+    }),
+    ...(attributes.terms && {
+      terms: attributes.terms
+    }),
+    ...(attributes.term_ids && {
+      term_ids: attributes.term_ids
+    }),
+    ...(attributes.exclude_post_author && {
+      exclude_post_author: attributes.exclude_post_author
+    }),
+    ...(attributes.pingback && {
+      pingback: attributes.pingback
+    }),
+    ...(attributes.trackback && {
+      trackback: attributes.trackback
+    }),
+    ...(attributes.avatar_size && {
+      avatar_size: attributes.avatar_size
+    })
+  };
+  return new URLSearchParams(params);
+}
+const RenderComments = ({
+  comments,
+  attributes
+}) => {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "decent-comments"
+  }, attributes.title?.length > 0 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "decent-comments-heading gamma widget-title"
+  }, attributes.title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
+    className: "decent-comments"
+  }, comments.length === 0 ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('No Comments', 'decent-comments')) : comments.filter(comment => !attributes.exclude_post_author || comment.author_email !== comment.post_author).map(comment => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(RenderComment, {
+    key: comment.id,
+    comment: comment,
+    attributes: attributes
+  }))));
+};
+const RenderComment = ({
+  comment,
+  attributes
+}) => {
+  const author = attributes.show_author ? attributes.link_authors && comment.author_url ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: safeEncodedUrl(comment.author_url),
+    className: "comment-author-link"
+  }, comment.author) : comment.author : null;
+  const date = attributes.show_date ? `${comment.date} ${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('at', 'decent-comments')} ${comment.time}` : null;
+  let pre_avatar = '';
+  let post_avatar = '';
+  if (comment.author_url) {
+    pre_avatar = '<a href="' + comment.author_url + '" rel="external">';
+    post_avatar = '</a>';
+  }
+  const avatar = attributes.show_avatar && comment.avatar ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "comment-avatar",
+    dangerouslySetInnerHTML: {
+      __html: pre_avatar + comment.avatar + post_avatar
+    }
+  }) : null;
+  const excerpt = attributes.show_comment ? formatExcerpt(comment.content, attributes) : '';
+  const link = attributes.show_link && comment.comment_link ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "comment-link"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('on', 'decent-comments'), ' ', (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: safeEncodedUrl(comment.comment_link),
+    className: "comment-post-title"
+  }, comment.post_title || '')) : null;
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+    key: comment.id,
+    className: "comment"
+  }, avatar, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "comment-content"
+  }, author && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "comment-author"
+  }, author, ' '), date && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "comment-date"
+  }, date, ' '), link, ' ', excerpt && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "comment-excerpt"
+  }, excerpt)));
+};
+function formatExcerpt(content, attributes) {
+  let excerpt = attributes.show_excerpt ? content : '';
+  if (attributes.strip_tags) {
+    excerpt = excerpt.replace(/(<([^>]+)>)/gi, '');
+  }
+  if (attributes.max_excerpt_words > 0) {
+    const words = excerpt.split(' ');
+    excerpt = words.slice(0, attributes.max_excerpt_words).join(' ') + (words.length > attributes.max_excerpt_words ? attributes.ellipsis : '');
+  }
+  if (attributes.max_excerpt_characters > 0) {
+    excerpt = excerpt.substring(0, attributes.max_excerpt_characters) + (excerpt.length > attributes.max_excerpt_characters ? attributes.ellipsis : '');
+  }
+  return excerpt;
+}
+function handleError(block, error) {
+  block.innerHTML = `<p>${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Error loading comments', 'decent-comments')}</p>`;
+  console.error('Decent Comments Error:', error);
+}
+function safeEncodedUrl(url) {
+  try {
+    const parsed = new URL(url);
+    if (['http:', 'https:'].includes(parsed.protocol)) {
+      return encodeURI(url);
+    }
+    return '#';
+  } catch {
+    return '#';
+  }
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RenderComments);
+
+/***/ }),
+
+/***/ "@wordpress/api-fetch":
+/*!**********************************!*\
+  !*** external ["wp","apiFetch"] ***!
+  \**********************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["apiFetch"];
+
+/***/ }),
+
+/***/ "@wordpress/i18n":
+/*!******************************!*\
+  !*** external ["wp","i18n"] ***!
+  \******************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["i18n"];
+
+/***/ }),
+
+/***/ "react":
+/*!************************!*\
+  !*** external "React" ***!
+  \************************/
+/***/ ((module) => {
+
+module.exports = window["React"];
+
+/***/ }),
+
+/***/ "react-dom":
+/*!***************************!*\
+  !*** external "ReactDOM" ***!
+  \***************************/
+/***/ ((module) => {
+
+module.exports = window["ReactDOM"];
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
+(() => {
+/*!*********************!*\
+  !*** ./src/view.js ***!
+  \*********************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _commentsUtils_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./commentsUtils.js */ "./src/commentsUtils.js");
+
+/**
+ * view.js
+ *
+ * Copyright (c) www.itthinx.com
+ *
+ * This code is released under the GNU General Public License.
+ * See COPYRIGHT.txt and LICENSE.txt.
+ *
+ * This code is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * This header and all notices must be kept intact.
+ *
+ * @author George Tsiokos
+ * @package decent-comments
+ * @since decent-comments 3.0.0
+ */
+
+
+
+
+let current_post_id = null;
+let current_term_id = null;
+if (window.decentCommentsView) {
+  if (window.decentCommentsView.current_post_id) {
+    current_post_id = window.decentCommentsView.current_post_id;
+  }
+  if (window.decentCommentsView.current_term_id) {
+    current_term_id = window.decentCommentsView.current_term_id;
+  }
+}
+document.addEventListener('DOMContentLoaded', async () => {
+  const blocks = document.querySelectorAll('.wp-block-itthinx-decent-comments');
+  for (const block of blocks) {
+    try {
+      const attributes = (0,_commentsUtils_js__WEBPACK_IMPORTED_MODULE_3__.parseAttributes)(block.dataset.attributes);
+      if (attributes.post_id === '[current]' || attributes.post_id === '{current}') {
+        if (current_post_id) {
+          attributes.post_id = current_post_id;
+        }
+      }
+      if (attributes.terms === '[current]' || attributes.terms === '{current}') {
+        if (current_term_id) {
+          attributes.term_ids = current_term_id;
+        }
+      }
+      const nonce = window.decentCommentsView?.nonce || '';
+      const response = await (0,_commentsUtils_js__WEBPACK_IMPORTED_MODULE_3__.fetchComments)(attributes, nonce);
+      const root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(block);
+      root.render((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_commentsUtils_js__WEBPACK_IMPORTED_MODULE_3__.RenderComments, {
+        comments: response.comments || [],
+        attributes: attributes
+      }));
+    } catch (error) {
+      const root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(block);
+      root.render((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+        className: "text-red-500"
+      }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Error loading comments', 'decent-comments')));
+      console.error('Decent Comments Error:', error);
+    }
+  }
+});
+})();
+
+/******/ })()
+;
+//# sourceMappingURL=view.js.map

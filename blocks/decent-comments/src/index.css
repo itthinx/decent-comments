@@ -1,23 +1,26 @@
+.wp-block-itthinx-decent-comments {
+	padding: 1em;
+}
 ul.decent-comments {
-  list-style: none;
-  padding: 0;
-  margin-left: 0;
+	list-style: none;
+	padding: 0;
+	margin-left: 0;
 }
 .decent-comments .comment {
-  margin-bottom: 1em;
+	margin-bottom: 1em;
 }
 .decent-comments .comment img {
-  margin-right: 10px;
+	margin-right: 10px;
 }
 .decent-comments .comment-content {
-  overflow: hidden;
+	overflow: hidden;
 }
 /*.decent-comments .comment-author,
 .decent-comments .comment-date,
 .decent-comments .comment-excerpt,
 .decent-comments .comment-post-title {
-  display: block;
+	display: block;
 }*/
 .decent-comments .comment-date {
-  font-style: italic;
+	font-style: italic;
 }
