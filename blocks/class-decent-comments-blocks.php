@@ -82,7 +82,7 @@ class Decent_Comments_Blocks {
 			'decent-comments-block-style',
 			plugins_url( 'decent-comments/build/index.css', __FILE__ ),
 			array(),
-			filemtime( plugin_dir_path( __FILE__ ) . 'decent-comments/build/index.css' )
+			DECENT_COMMENTS_PLUGIN_VERSION
 		);
 
 		wp_enqueue_script(
@@ -107,8 +107,8 @@ class Decent_Comments_Blocks {
 			true
 		);
 
-		wp_set_script_translations( 'decent-comments-block-editor', 'decent-comments', plugin_dir_path(__FILE__) . 'languages/' );
-		wp_set_script_translations( 'decent-comments-block-view', 'decent-comments', plugin_dir_path(__FILE__) . 'languages/' );
+		wp_set_script_translations( 'decent-comments-block-editor', 'decent-comments', plugin_dir_path(__FILE__) . 'languages' );
+		wp_set_script_translations( 'decent-comments-block-view', 'decent-comments', plugin_dir_path(__FILE__) . 'languages' );
 
 		register_block_type(
 			__DIR__ . '/decent-comments/build/block.json',
