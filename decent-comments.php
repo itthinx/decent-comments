@@ -3,8 +3,8 @@
  * Plugin Name: Decent Comments
  * Plugin URI: https://www.itthinx.com/plugins/decent-comments
  * Description: Provides configurable means to display comments that include author's avatars, author link, link to post and most importantly an excerpt of each comment. Thanks for supporting our work with a purchase in our <a href="https://www.itthinx.com/shop/">Shop</a>!
- * Version: 2.0.0
- * Requires at least: 6.0
+ * Version: 3.0.0
+ * Requires at least: 6.5
  * Requires PHP: 7.4
  * Author: itthinx
  * Author URI: https://www.itthinx.com
@@ -59,6 +59,15 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Plugin version.
+ *
+ * @since 3.0.0
+ *
+ * @var string
+ */
+define( 'DECENT_COMMENTS_PLUGIN_VERSION', '3.0.0' );
+
+/**
  * @var string plugin url
  */
 define( 'DC_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -84,17 +93,9 @@ define( 'DC_OPTIONS_NONCE', "dc-options-nonce" );
  * @return array plugin settings
  */
 function DC_get_settings() {
-	global $DC_settings, $DC_version;
+	global $DC_settings;
 	if ( !isset( $DC_settings ) ) {
 		$DC_settings = _DC_get_settings();
-		$DC_version = 'current';
-		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-		if ( function_exists( 'get_plugin_data' ) ) {
-			$plugin_data = get_plugin_data( __FILE__ );
-			if ( !empty( $plugin_data ) ) {
-				$DC_version = $plugin_data['Version'];
-			}
-		}
 	}
 	return $DC_settings;
 }
@@ -156,142 +157,4 @@ function DC_deactivate() {
 	}
 }
 
-add_action( 'admin_menu', 'DC_admin_menu' );
-/**
- * Add administration options.
- */
-function DC_admin_menu() {
-	if ( function_exists( 'add_submenu_page' ) ) {
-		add_submenu_page( 'plugins.php', esc_html__( 'Decent Comments Options', DC_PLUGIN_DOMAIN ), esc_html__( 'Decent Comments', DC_PLUGIN_DOMAIN ), 'manage_options', 'decent-comments-options', 'DC_options');
-	}
-}
-
-/**
- * Renders options screen and handles settings submission.
- */
-function DC_options() {
-
-	if ( !current_user_can( 'manage_options' ) ) {
-		wp_die( esc_html__( 'Access denied.', DC_PLUGIN_DOMAIN ) );
-	}
-
-	echo
-		'<div>' .
-			'<h2>' .
-				esc_html__( 'Decent Comments Options', DC_PLUGIN_DOMAIN ) .
-			'</h2>' .
-		'</div>';
-
-	// handle form submission
-	if ( isset( $_POST['submit'] ) ) {
-		if ( wp_verify_nonce( $_POST[DC_OPTIONS_NONCE], plugin_basename( __FILE__ ) ) ) {
-			$settings = _DC_get_settings();
-			if ( !empty( $_POST['delete-data'] ) ) {
-				$settings['delete_data'] = true;
-			} else {
-				$settings['delete_data'] = false;
-			}
-			_DC_update_settings( $settings );
-		}
-	}
-
-	$delete_data = DC_get_setting( 'delete_data', false );
-
-	// render options form
-	echo
-		'<form action="" name="options" method="post">' .
-			'<div>' .
-				'<h3>' . esc_html__( 'Settings', DC_PLUGIN_DOMAIN ) . '</h3>' .
-				'<p>' .
-					'<input name="delete-data" type="checkbox" ' . ( $delete_data ? 'checked="checked"' : '' ) . '/>' .
-					'<label for="delete-data">' . esc_html__( 'Delete settings when the plugin is deactivated', DC_PLUGIN_DOMAIN ) . '</label>' .
-				'</p>' .
-				'<p>' .
-					wp_nonce_field( plugin_basename( __FILE__ ), DC_OPTIONS_NONCE, true, false ) .
-					'<input type="submit" name="submit" class="button button-primary" value="' . esc_html__( 'Save', DC_PLUGIN_DOMAIN ) . '"/>' .
-				'</p>' .
-			'</div>' .
-		'</form>';
-}
-
-add_filter( 'plugin_action_links', 'DC_plugin_action_links', 10, 2 );
-/**
- * Adds an administrative link.
- *
- * @param array $links
- * @param string $file
- *
- * @return array
- */
-function DC_plugin_action_links( $links, $file ) {
-	if ( $file == plugin_basename( dirname( __FILE__ ) . '/decent-comments.php' ) ) {
-		$links[] = '<a href="plugins.php?page=decent-comments-options">' . esc_html__( 'Options', DC_PLUGIN_DOMAIN ) . '</a>';
-	}
-	return $links;
-}
-
-// @todo enable when needed
-//add_action( 'wp_print_scripts', 'DC_print_scripts' );
-/**
- * Enqueues scripts for non-admin pages.
- */
-function DC_print_scripts() {
-	global $DC_version;
-	if ( !is_admin() ) {
-		wp_enqueue_script( 'decent-comments', DC_PLUGIN_URL . 'js/decent-comments.js', array( 'jquery' ), $DC_version, true );
-	}
-}
-
-// @todo enable when needed
-//add_action( 'wp_print_styles', 'DC_wp_print_styles' );
-/**
- * Enqueues styles for non-admin pages.
- */
-function DC_wp_print_styles() {
-	global $DC_version;
-	if ( !is_admin() ) {
-		wp_enqueue_style( 'decent-comments', DC_PLUGIN_URL . 'css/decent-comments.css', array(), $DC_version );
-	}
-}
-
-// @todo enable when needed
-//add_action( 'admin_print_styles', 'DC_admin_print_styles' );
-/**
- * Enqueues scripts for admin pages.
- */
-function DC_admin_print_styles() {
-	global $DC_version;
-	if ( is_admin() ) {
-		wp_enqueue_style( 'decent-comments-admin', DC_PLUGIN_URL . 'css/decent-comments-admin.css', array(), $DC_version );
-	}
-}
-
-// @todo enable when needed
-//add_action( 'admin_print_scripts', 'DC_admin_print_scripts' );
-function DC_admin_print_scripts() {
-	global $DC_version;
-	wp_enqueue_script( 'decent-comments-admin', DC_PLUGIN_URL . 'js/decent-comments-admin.js', array( 'jquery' ), $DC_version );
-}
-
-require_once( dirname( __FILE__ ) . '/class-decent-comments-helper.php' );
-require_once( dirname( __FILE__ ) . '/class-decent-comments-renderer.php' );
-
-add_action( 'widgets_init', 'DC_widgets_init' );
-/**
- * Register widgets
- */
-function DC_widgets_init() {
-	require_once( dirname( __FILE__ ) . '/class-decent-comments-widget.php' );
-}
-
-add_action( 'init', 'DC_init' );
-
-/**
- * Initialization.
- * - Loads the plugin's translations.
- */
-function DC_init() {
-	load_plugin_textdomain( DC_PLUGIN_DOMAIN, null, 'decent-comments/languages' );
-}
-
-require_once( dirname( __FILE__ ) . '/class-decent-comments-shortcode.php' );
+require_once dirname( __FILE__ ) . '/class-decent-comments.php';

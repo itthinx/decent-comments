@@ -1,0 +1,1 @@
+(()=>{"use strict";var r={723(r){r.exports=window.wp.i18n},790(r){r.exports=window.ReactJSXRuntime}},t={};function e(o){var i=t[o];if(void 0!==i)return i.exports;var n=t[o]={exports:{}};return r[o](n,n.exports,e),n.exports}window.wp.apiFetch,e(723),e(790)})();

@@ -99,16 +99,16 @@ class Decent_Comments_Renderer {
 	 */
 	public static function init() {
 		self::$orderby_options = array(
-			'comment_author_email' => esc_html__( 'Author Email', DC_PLUGIN_DOMAIN ),
-			'comment_author_url'   => esc_html__( 'Author URL', DC_PLUGIN_DOMAIN ),
-			'comment_content'      => esc_html__( 'Content', DC_PLUGIN_DOMAIN ),
-			'comment_date_gmt'     => esc_html__( 'Date', DC_PLUGIN_DOMAIN ),
-			'comment_karma'        => esc_html__( 'Karma', DC_PLUGIN_DOMAIN ),
-			'comment_post_ID'      => esc_html__( 'Post', DC_PLUGIN_DOMAIN )
+			'comment_author_email' => esc_html__( 'Author Email', 'decent-comments' ),
+			'comment_author_url'   => esc_html__( 'Author URL', 'decent-comments' ),
+			'comment_content'      => esc_html__( 'Content', 'decent-comments' ),
+			'comment_date_gmt'     => esc_html__( 'Date', 'decent-comments' ),
+			'comment_karma'        => esc_html__( 'Karma', 'decent-comments' ),
+			'comment_post_ID'      => esc_html__( 'Post', 'decent-comments' )
 		);
 		self::$order_options = array(
-			'ASC'  => esc_html__( 'Ascending', DC_PLUGIN_DOMAIN ),
-			'DESC' => esc_html__( 'Descending', DC_PLUGIN_DOMAIN )
+			'ASC'  => esc_html__( 'Ascending', 'decent-comments' ),
+			'DESC' => esc_html__( 'Descending', 'decent-comments' )
 		);
 	}
 
@@ -459,16 +459,16 @@ class Decent_Comments_Renderer {
 			}
 
 			$output .= '<div class="decent-comments">';
-			$output .= '<ul>';
+			$output .= '<ul class="decent-comments-list">';
 
 			foreach ( $comments as $comment) {
 
-				$output .= '<li>';
+				$output .= '<li class="comment-entry">';
 
-				$output .= '<div class="comment">';
+				$output .= '<div class="comment-content">';
 
 				if ( $show_avatar ) {
-					$output .= '<span class="comment-avatar">';
+					$output .= '<div class="comment-avatar">';
 					$comment_author_url = get_comment_author_url( $comment->comment_ID );
 					if ( !empty( $comment_author_url ) && $link_author ) {
 						$output .= '<a href="'. $comment_author_url . '" rel="external">';
@@ -477,40 +477,40 @@ class Decent_Comments_Renderer {
 					if ( !empty( $comment_author_url ) ) {
 						$output .= '</a>';
 					}
-					$output .= '</span>'; // .comment-avatar
+					$output .= '</div>'; // .comment-avatar
 				}
 
 				if ( $show_author ) {
-					$output .= '<span class="comment-author">';
+					$output .= '<div class="comment-author">';
 					if ( $link_author ) {
 						$output .= get_comment_author_link( $comment->comment_ID );
 					} else {
 						$output .= get_comment_author( $comment->comment_ID );
 					}
-					$output .= '</span>'; // .comment-author
+					$output .= '</div>'; // .comment-author
 				}
 
 				if ( $show_date ) {
-					$output .= '<span class="comment-date">';
+					$output .= '<div class="comment-date">';
 					$output .= sprintf(
-						_x( ' %1$s at %2$s', 'comment-date', DC_PLUGIN_DOMAIN ), // translators : the first argument is the date of the comment, the second is the time
+						_x( '%1$s at %2$s', 'comment-date', 'decent-comments' ), // translators : the first argument is the date of the comment, the second is the time
 						mysql2date( get_option( 'date_format' ), $comment->comment_date ),
 						mysql2date( get_option( 'time_format' ), $comment->comment_date, true )
 					);
-					$output .= '</span>'; // .comment-date
+					$output .= '</div>'; // .comment-date
 				}
 
 				if ( $show_link ) {
-					$output .= '<span class="comment-link">';
+					$output .= '<div class="comment-link">';
 					$output .= sprintf(
-						_x( ' on %s', 'comment-link', DC_PLUGIN_DOMAIN ),
+						_x( 'on %s', 'comment-link', 'decent-comments' ),
 						'<a href="' . esc_url( get_comment_link( $comment->comment_ID ) ) . '">' . get_the_title( $comment->comment_post_ID ) . '</a>'
 					);
-					$output .= '</span>'; // .comment-link
+					$output .= '</div>'; // .comment-link
 				}
 
 				if ( $show_comment ) {
-					$output .= '<span class="comment-' . ( $excerpt ? "excerpt" : "body" ) . '">';
+					$output .= '<div class="comment-' . ( $excerpt ? "excerpt" : "body" ) . '">';
 					$output .= self::get_comment(
 						$comment,
 						array(
@@ -521,7 +521,7 @@ class Decent_Comments_Renderer {
 							'strip_tags' => $strip_tags
 						)
 					);
-					$output .= '</span>'; // .comment-body or .comment-excerpt
+					$output .= '</div>'; // .comment-body or .comment-excerpt
 				}
 
 				$output .= '</div>'; // .comment
@@ -531,7 +531,7 @@ class Decent_Comments_Renderer {
 
 			$output .= '</ul>';
 			$output .= '</div>'; // .decent-comments
- 		}
+		}
 		return apply_filters( 'decent_comments_comments_output', $output, $comments, $options );
 	}
 } // class Decent_Comments_Renderer

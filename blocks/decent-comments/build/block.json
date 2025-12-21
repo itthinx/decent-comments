@@ -1,0 +1,120 @@
+{
+  "apiVersion": 3,
+  "name": "decent-comments-block/decent-comments",
+  "title": "Decent Comments",
+  "category": "widgets",
+  "icon": "admin-comments",
+  "description": "Displays comments using versatile customizable options.",
+  "keywords": [
+    "comments",
+    "decent comments",
+    "widget"
+  ],
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": ""
+    },
+    "number": {
+      "type": "number",
+      "default": 5
+    },
+    "offset": {
+      "type": "number",
+      "default": 0
+    },
+    "post_id": {
+      "type": "string",
+      "default": ""
+    },
+    "post__in": {
+      "type": "string",
+      "default": ""
+    },
+    "post__not_in": {
+      "type": "string",
+      "default": ""
+    },
+    "post_tag": {
+      "type": "string",
+      "default": ""
+    },
+    "exclude_post_author": {
+      "type": "boolean",
+      "default": false
+    },
+    "show_author": {
+      "type": "boolean",
+      "default": true
+    },
+    "show_date": {
+      "type": "boolean",
+      "default": true
+    },
+    "link_authors": {
+      "type": "boolean",
+      "default": true
+    },
+    "show_avatar": {
+      "type": "boolean",
+      "default": true
+    },
+    "avatar_size": {
+      "type": "number",
+      "default": 48
+    },
+    "show_link": {
+      "type": "boolean",
+      "default": true
+    },
+    "show_excerpt": {
+      "type": "boolean",
+      "default": true
+    },
+    "max_excerpt_words": {
+      "type": "number",
+      "default": 20
+    },
+    "max_excerpt_characters": {
+      "type": "number",
+      "default": 0
+    },
+    "ellipsis": {
+      "type": "string",
+      "default": ""
+    },
+    "strip_tags": {
+      "type": "boolean",
+      "default": true
+    },
+    "order": {
+      "type": "string",
+      "default": "desc"
+    },
+    "orderby": {
+      "type": "string",
+      "default": "date_gmt"
+    },
+    "show_post_title": {
+      "type": "boolean",
+      "default": false
+    },
+    "class": {
+      "type": "string",
+      "default": ""
+    },
+    "post_type": {
+      "type": "string",
+      "default": "post"
+    }
+  },
+  "textdomain": "decent-comments",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "style": "file:./styles.css",
+  "viewScript": "file:./view.js",
+  "script": "file:./commentsUtils.js"
+}

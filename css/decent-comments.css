@@ -1,0 +1,100 @@
+/*!
+ * decent-comments.css
+ *
+ * Copyright (c) "kento" Karim Rahimpur www.itthinx.com
+ *
+ * This code is released under the GNU General Public License.
+ * See COPYRIGHT.txt and LICENSE.txt.
+ *
+ * This code is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * This header and all notices must be kept intact.
+ *
+ * @author Karim Rahimpur
+ * @package decent-comments
+ * @since decent-comments 1.0.0
+ */
+
+ul.decent-comments-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.decent-comments-list .comment-entry {
+	margin: 0 0 16px 0;
+}
+
+/* grid */
+.decent-comments-list .comment-entry .comment-content {
+	display: grid;
+	grid-template-columns: min-content 1fr;
+	grid-template-rows: auto;
+	justify-content: stretch;
+	gap: 0;
+	padding-bottom: 16px;
+}
+.decent-comments-list .comment-entry .comment-content > div {
+	padding: 4px;
+}
+
+.decent-comments-list .comment-entry .comment-content .comment-avatar {
+	grid-column: 1 / 1;
+	grid-row: 1 / span 1;
+	align-content: center;
+}
+
+.decent-comments-list .comment-entry .comment-content .comment-author {
+	grid-column: 2 / 2;
+	grid-row: 1 / span 1;
+	align-content: center;
+}
+
+.decent-comments-list .comment-entry .comment-content .comment-date {
+	grid-column: 2 / 2;
+	grid-row: 2 / span 1;
+	align-content: center;
+}
+.decent-comments-list .comment-entry .comment-content .comment-link {
+	grid-column: 2 / 2;
+	grid-row: 3 / span 1;
+	align-content: center;
+}
+
+.decent-comments-list .comment-entry .comment-content .comment-excerpt {
+	grid-column: 2 / 2;
+	grid-row: 4 / span 1;
+	align-content: start;
+	border-radius: 0 12px 12px 12px;
+	padding: 8px;
+	background-color: hsl( 0, 0%, 95%);
+}
+
+.decent-comments-list .comment-entry .comment-content .comment-avatar img {
+	vertical-align: middle;
+}
+
+/* flex */
+.decent-comments-list.flex .comment-entry .comment-content {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: stretch;
+	column-gap: 8px;
+	justify-content: flex-start;
+}
+
+.decent-comments-list.flex .comment-entry .comment-content > div {
+	align-content: center;
+}
+
+.decent-comments-list.flex .comment-entry .comment-content .comment-excerpt {
+	flex-basis: 100%;
+}
+
+.decent-comments-list.flex .comment-entry .comment-content .comment-avatar img {
+	vertical-align: middle;
+}

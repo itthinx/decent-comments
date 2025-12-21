@@ -2,23 +2,25 @@
 Contributors: itthinx
 Donate link: https://www.itthinx.com/shop/
 Tags: comment, comments, shortcode, discussion, feedback
-Requires at least: 6.0
-Tested up to: 6.7
+Requires at least: 6.5
+Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 2.0.0
+Stable tag: 3.0.0
 License: GPLv3
 
-Decent Comments shows what people say. Provides widgets, shortcodes and API to display comments including author avatars, links, comment excerpts.
+Decent Comments shows what people say. A more engaging way to show comments.
 
 == Description ==
 
 __Decent Comments shows what people say.__
 
-If you want to show comments along with their author's avatars _and_ an excerpt of their comment, then this is the right plugin for you.
+The Decent Comments plugin helps you show comments on your site in a neat way. It lets you display comments along with avatars of the people who wrote them and previews of what they said. This makes your site more engaging for visitors.
 
-And it's not limited to just a widget showing recent comments: The plugin provides configurable widgets, shortcodes and an API to display comments in sensible ways, including author avatars, links, comment excerpts ...
+If you want to show comments along with their author's avatars _and_ an excerpt of their comment, recent comments on any of your posts, posts from certain categories and other criteria ... then this might just be the right plugin for you.
 
-Anywhere you place comments, by means of a widget, a shortcode or an API call, you can:
+The plugin provides configurable blocks, widgets, shortcodes and an API to display comments in sensible ways. This includes author avatars, links, comment excerpts ...
+
+Anywhere you place comments, by means of its block, widget, shortcode or by using its API, you can:
 
 - Show an excerpt or the full comment. You can choose to not show the comment as well.
 - Determine the number of words shown for excerpts.
@@ -32,12 +34,13 @@ Anywhere you place comments, by means of a widget, a shortcode or an API call, y
 - Show comments for a set of posts and/or excluding a set of posts.
 - and more to come ... got suggestions?
 
-__Feedback__ is welcome!
-If you need help, have problems, want to leave feedback or want to provide constructive criticism, please do so here at the [Decent Comments plugin page](https://www.itthinx.com/plugins/decent-comments).
+Visit the [Documentation](https://docs.itthinx.com/document/decent-comments) pages for details.
+
+Feedback is welcome. If you need help, have problems, want to leave feedback or want to provide constructive criticism, please do so at the [Decent Comments](https://www.itthinx.com/plugins/decent-comments) plugin page.
 
 Please try to solve problems there before you rate this plugin or say it doesn't work. There goes a _lot_ of work into providing you with free quality plugins! Please appreciate that and help with your feedback. Thanks!
 
-Follow [@itthinx](https://twitter.com/itthinx) for updates on this and other plugins.
+Follow [@itthinx on X](https://x.com/itthinx), [@itthinx on Mastodon](https://mastodon.social/@itthinx), [@itthinx on Reddit](https://www.reddit.com/r/itthinx/) for news and updates on this and other plugins and tools.
 
 __Translations__
 
@@ -58,9 +61,11 @@ Many thanks!
 1. Upload or extract the `decent-comments` folder to your site's `/wp-content/plugins/` directory. Or you could use the *Add new* option found in the *Plugins* menu in WordPress.
 2. Enable the plugin from the *Plugins* menu in WordPress.
 
-Please also visit the [Decent Comments plugin page](https://www.itthinx.com/plugins/decent-comments) for the latest info.
-
 == Frequently Asked Questions ==
+
+= Does it have a block? =
+
+Yes. Look for the "Decent Comments" block in the block browser.
 
 = Can this plugin show excerpts of comments or even full comments? =
 
@@ -78,7 +83,7 @@ Yes. Yes. Yes.
 
 Yes.
 
-= Can I place more than one comment widget with different settings? =
+= Can I place more than one comment block, widget, shortcode ... with different settings? =
 
 Yes.
 
@@ -92,25 +97,21 @@ Yes.
 
 = What else does it do? =
 
-It's highly configurable!
-
-Please visit the [Decent Comments plugin page](https://www.itthinx.com/plugins/decent-comments) for the latest info.
-
-If you need something that is not available yet, get in touch. Feedback is welcome!
+Visit the [Documentation](https://docs.itthinx.com/document/decent-comments).
 
 = Help! =
 
-Get help at the [Decent Comments plugin page](https://www.itthinx.com/plugins/decent-comments).
+Get help by posting a comment on the [Decent Comments](https://www.itthinx.com/plugins/decent-comments) page or post on the [Support Forum](https://wordpress.org/support/plugin/decent-comments/).
 
 = I really appreciate this, how can I contribute? =
 
-Please visit the [Decent Comments plugin page](https://www.itthinx.com/plugins/decent-comments) and you should find a way to donate or contribute with feedback and ideas.
+Visit the [Decent Comments](https://www.itthinx.com/plugins/decent-comments) page to provide feedback and ideas.
+
+Visit the [Shop](https://www.itthinx.com/shop/) to purchase our tools and support our work.
 
 Translations are also welcome!
 
 == Screenshots ==
-
-1. Decent Comments widget configuration.
 
 == Changelog ==
 
