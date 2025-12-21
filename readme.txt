@@ -113,8 +113,6 @@ Translations are also welcome!
 
 == Screenshots ==
 
-1. Decent Comments widget configuration.
-
 == Changelog ==
 
 For the full changelog see [changelog.txt](https://github.com/itthinx/decent-comments/blob/master/changelog.txt).
