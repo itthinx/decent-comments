@@ -18,7 +18,6 @@
  * @since decent-comments 3.0.0
  */
 
-//import React from 'react';
 import apiFetch from '@wordpress/api-fetch';
 import { __ } from '@wordpress/i18n';
 
@@ -99,7 +98,7 @@ export const RenderComments = ({ comments, attributes }) => {
 		<div className="decent-comments">
 			{attributes.title?.length > 0 && (
 				<div className="decent-comments-heading gamma widget-title">
-					{createDivWithInnerHtml(attributes.title)}
+					{attributes.title}
 				</div>
 			)}
 			<ul className="decent-comments">
@@ -124,22 +123,16 @@ export const RenderComments = ({ comments, attributes }) => {
 export const RenderComment = ({ comment, attributes }) => {
 	const author = attributes.show_author ? (
 		attributes.link_authors && comment.author_url ? (
-			<a href={createDivWithInnerHtml(comment.author_url)} className="comment-author-link">
-				{createDivWithInnerHtml(comment.author)}
+			<a href={safeEncodedUrl(comment.author_url)} className="comment-author-link">
+				{comment.author}
 			</a>
 		) : (
-			createDivWithInnerHtml(comment.author)
+			comment.author
 		)
 	) : null;
 
-	const dateOptions = {
-		year: 'numeric',
-		month: 'long',
-		day: 'numeric',
-		hour12: true,
-	};
 	const date = attributes.show_date ? (
-		`${new Date(comment.date).toLocaleDateString(undefined, dateOptions)} ${__('at', 'decent-comments')} ${new Date(comment.date).toLocaleTimeString()}`
+		`${comment.date} ${__('at', 'decent-comments')} ${comment.time}`
 	) : null;
 
 	let pre_avatar = '';
@@ -159,8 +152,8 @@ export const RenderComment = ({ comment, attributes }) => {
 	const link = attributes.show_link && comment.comment_link ? (
 		<span className="comment-link">
 			{ __( 'on', 'decent-comments' ) }{ ' ' }
-			<a href={ createDivWithInnerHtml( comment.comment_link || '#' ) } className="comment-post-title">
-				{createDivWithInnerHtml(comment.post_title || '')}
+			<a href={safeEncodedUrl( comment.comment_link ) } className="comment-post-title">
+				{(comment.post_title || '')}
 			</a>
 		</span>
 	) : null;
@@ -188,15 +181,15 @@ function formatExcerpt(content, attributes) {
 	if (attributes.max_excerpt_words > 0) {
 		const words = excerpt.split(' ');
 		excerpt = words.slice(0, attributes.max_excerpt_words).join(' ') +
-		(words.length > attributes.max_excerpt_words ? createDivWithInnerHtml(attributes.ellipsis) : '');
+		(words.length > attributes.max_excerpt_words ? attributes.ellipsis : '');
 	}
 
 	if (attributes.max_excerpt_characters > 0) {
 		excerpt = excerpt.substring(0, attributes.max_excerpt_characters) +
-		(excerpt.length > attributes.max_excerpt_characters ? createDivWithInnerHtml(attributes.ellipsis) : '');
+		(excerpt.length > attributes.max_excerpt_characters ? attributes.ellipsis : '');
 	}
 
-	return createDivWithInnerHtml(excerpt);
+	return excerpt;
 }
 
 function handleError(block, error) {
@@ -204,10 +197,16 @@ function handleError(block, error) {
 	console.error('Decent Comments Error:', error);
 }
 
-function createDivWithInnerHtml(str) {
-	const div = document.createElement('div');
-	div.textContent = str || '';
-	return div.innerHTML;
+function safeEncodedUrl(url) {
+	try {
+		const parsed = new URL(url);
+		if (['http:', 'https:'].includes(parsed.protocol)) {
+			return encodeURI(url);
+		}
+		return '#';
+	} catch {
+		return '#';
+	}
 }
 
 export default RenderComments;
