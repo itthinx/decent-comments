@@ -113,6 +113,7 @@ class Decent_Comments_Blocks {
 		register_block_type(
 			__DIR__ . '/decent-comments/build/block.json',
 			array(
+				'style_handles' => array( 'decent-comments' ),
 				'editor_script' => 'decent-comments-block-editor',
 				'editor_style'  => 'decent-comments-block-editor',
 				'attributes' => array(
