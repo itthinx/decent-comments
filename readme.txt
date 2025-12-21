@@ -14,7 +14,7 @@ Decent Comments shows what people say. A more engaging way to show comments.
 
 __Decent Comments shows what people say.__
 
-The Decent Comments plugin helps you show comments on your WordPress website in a neat way. It lets you display comments along with avatars of the people who wrote them and short previews of what they said. This makes your site more engaging for visitors.
+The Decent Comments plugin helps you show comments on your site in a neat way. It lets you display comments along with avatars of the people who wrote them and previews of what they said. This makes your site more engaging for visitors.
 
 If you want to show comments along with their author's avatars _and_ an excerpt of their comment, recent comments on any of your posts, posts from certain categories and other criteria ... then this might just be the right plugin for you.
 
@@ -36,8 +36,7 @@ Anywhere you place comments, by means of its block, widget, shortcode or by usin
 
 Visit the [Documentation](https://docs.itthinx.com/document/decent-comments) pages for details.
 
-__Feedback__ is welcome!
-If you need help, have problems, want to leave feedback or want to provide constructive criticism, please do so here at the [Decent Comments](https://www.itthinx.com/plugins/decent-comments) plugin page.
+Feedback is welcome. If you need help, have problems, want to leave feedback or want to provide constructive criticism, please do so at the [Decent Comments](https://www.itthinx.com/plugins/decent-comments) plugin page.
 
 Please try to solve problems there before you rate this plugin or say it doesn't work. There goes a _lot_ of work into providing you with free quality plugins! Please appreciate that and help with your feedback. Thanks!
 
