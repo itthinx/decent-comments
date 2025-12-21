@@ -22,7 +22,7 @@ import { registerBlockType } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 import { PanelBody, TextControl, ToggleControl, SelectControl, NumberControl } from '@wordpress/components';
-import './index.css';
+import './editor.css';
 import metadata from './block.json';
 import { useState, useEffect } from '@wordpress/element';
 import { fetchComments, RenderComments } from './commentsUtils.js';

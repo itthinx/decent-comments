@@ -4,7 +4,7 @@
  * Plugin URI: https://www.itthinx.com/plugins/decent-comments
  * Description: Provides configurable means to display comments that include author's avatars, author link, link to post and most importantly an excerpt of each comment. Thanks for supporting our work with a purchase in our <a href="https://www.itthinx.com/shop/">Shop</a>!
  * Version: 3.0.0
- * Requires at least: 6.0
+ * Requires at least: 6.5
  * Requires PHP: 7.4
  * Author: itthinx
  * Author URI: https://www.itthinx.com

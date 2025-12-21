@@ -1,5 +1,5 @@
 /*!
- * decent-comments-widget.css
+ * decent-comments.css
  *
  * Copyright (c) 2011 "kento" Karim Rahimpur www.itthinx.com
  *
@@ -17,6 +17,8 @@
  * @package decent-comments
  * @since decent-comments 1.0.0
  */
+
+/*
 .decent-comments .comment {
 	padding-top: 4px;
 }
@@ -38,4 +40,27 @@
 .decent-comments .comment-body,
 .decent-comments .comment-excerpt {
 	display: block;
+}
+*/
+
+
+ul.decent-comments-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.decent-comments-list .comment-entry {
+	margin: 0 0 16px 0;
+}
+.decent-comments-list .comment-entry .comment-content {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	column-gap: 8px;
+}
+
+.decent-comments-list .comment-entry .comment-content .comment-excerpt {
+	flex-basis: 100%;
 }

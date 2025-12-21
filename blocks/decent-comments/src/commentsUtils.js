@@ -101,9 +101,9 @@ export const RenderComments = ({ comments, attributes }) => {
 					{attributes.title}
 				</div>
 			)}
-			<ul className="decent-comments">
+			<ul className="decent-comments-list">
 				{comments.length === 0 ? (
-					<li>{__('No Comments', 'decent-comments')}</li>
+					<li className="comment no-comment">{ __( 'No comments', 'decent-comments' ) }</li>
 				) : (
 					comments
 					.filter(
@@ -143,29 +143,29 @@ export const RenderComment = ({ comment, attributes }) => {
 	}
 
 	const avatar = attributes.show_avatar && comment.avatar ?
-		<span className="comment-avatar" dangerouslySetInnerHTML={{ __html: pre_avatar + comment.avatar + post_avatar }} />
+		<div className="comment-avatar" dangerouslySetInnerHTML={{ __html: pre_avatar + comment.avatar + post_avatar }} />
 		:
 		null;
 
 	const excerpt = attributes.show_comment ? formatExcerpt(comment.content, attributes) : '';
 
 	const link = attributes.show_link && comment.comment_link ? (
-		<span className="comment-link">
+		<div className="comment-link">
 			{ __( 'on', 'decent-comments' ) }{ ' ' }
 			<a href={safeEncodedUrl( comment.comment_link ) } className="comment-post-title">
 				{(comment.post_title || '')}
 			</a>
-		</span>
+		</div>
 	) : null;
 
 	return (
-		<li key={comment.id} className="comment">
-			{ avatar }
+		<li key={comment.id} className="comment-entry">
 			<div className="comment-content">
-				{author && <span className="comment-author">{author}{' '}</span>}
-				{date && <span className="comment-date">{date}{' '}</span>}
+				{ avatar }
+				{author && <div className="comment-author">{author}{' '}</div>}
+				{date && <div className="comment-date">{date}{' '}</div>}
 				{link}{' '}
-				{excerpt && <span className="comment-excerpt">{excerpt}</span>}
+				{excerpt && <div className="comment-excerpt">{excerpt}</div>}
 			</div>
 		</li>
 	);

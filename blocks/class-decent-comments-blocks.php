@@ -79,8 +79,8 @@ class Decent_Comments_Blocks {
 		);
 
 		wp_register_style(
-			'decent-comments-block-style',
-			plugins_url( 'decent-comments/build/index.css', __FILE__ ),
+			'decent-comments-block-editor',
+			plugins_url( 'decent-comments/build/editor.css', __FILE__ ),
 			array(),
 			DECENT_COMMENTS_PLUGIN_VERSION
 		);
@@ -114,7 +114,7 @@ class Decent_Comments_Blocks {
 			__DIR__ . '/decent-comments/build/block.json',
 			array(
 				'editor_script' => 'decent-comments-block-editor',
-				'editor_style'  => 'decent-comments-block-style',
+				'editor_style'  => 'decent-comments-block-editor',
 				'attributes' => array(
 					'title' => array(
 						'type'    => 'string',

@@ -52,8 +52,8 @@ class Decent_Comments_Widget extends WP_Widget {
 	 * Initialize class.
 	 */
 	public static function init() {
-		if ( !has_action( 'wp_print_styles', array( __CLASS__, '_wp_print_styles' ) ) ) {
-			add_action( 'wp_print_styles', array( __CLASS__, '_wp_print_styles' ) );
+		if ( !has_action( 'wp_print_styles', array( __CLASS__, 'wp_print_styles' ) ) ) {
+			add_action( 'wp_print_styles', array( __CLASS__, 'wp_print_styles' ) );
 		}
 		if ( !has_action( 'comment_post', array( __CLASS__, 'comment_post' ) ) ) {
 			add_action( 'comment_post', array( __CLASS__, 'comment_post' ), 10, 3 );
@@ -226,11 +226,11 @@ class Decent_Comments_Widget extends WP_Widget {
 	/**
 	 * Enqueue styles if at least one widget is used.
 	 */
-	public static function _wp_print_styles() {
+	public static function wp_print_styles() {
 		global $wp_registered_widgets;
 		foreach ( $wp_registered_widgets as $widget ) {
 			if ( $widget['name'] === self::DECENT_COMMENTS_WIDGET_NAME ) {
-				wp_enqueue_style( 'decent-comments-widget', DC_PLUGIN_URL . 'css/decent-comments-widget.css', array(), DECENT_COMMENTS_PLUGIN_VERSION );
+				wp_enqueue_style( 'decent-comments', DC_PLUGIN_URL . 'css/decent-comments.css', array(), DECENT_COMMENTS_PLUGIN_VERSION );
 				break;
 			}
 		}

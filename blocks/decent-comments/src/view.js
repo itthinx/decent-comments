@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 						{__('Error loading comments', 'decent-comments')}
 					</p>
 				);
-			console.error('Decent Comments Error:', error);
+			console.error( 'Decent Comments Error:', error );
 		}
 	}
 });
