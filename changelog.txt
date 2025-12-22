@@ -3,6 +3,7 @@
 = 3.0.1 =
 * WordPress 6.9 compatible.
 * Updated the translation template.
+* Updated the Spanish translation.
 
 = 3.0.0 =
 * WordPress 6.9 compatible.
