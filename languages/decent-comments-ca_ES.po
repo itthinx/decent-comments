@@ -7,91 +7,95 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-28 11:24+0200\n"
-"PO-Revision-Date: 2017-08-10 12:07+0200\n"
+"POT-Creation-Date: 2025-12-22 21:09+0100\n"
+"PO-Revision-Date: 2025-12-23 11:38+0100\n"
+"Last-Translator: Chema Bescos <jmbescos@ibidemgroup.com>\n"
 "Language-Team: \n"
+"Language: ca_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.2\n"
-"Last-Translator: Chema Bescos <jmbescos@ibidemgroup.com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: ca_ES\n"
+"X-Generator: Poedit 3.4.4\n"
 
-#: class-decent-comments-renderer.php:386
+#: blocks/decent-comments/node_modules/@wordpress/style-engine/class-wp-style-engine-processor.php:44
+msgid "$store must be an instance of WP_Style_Engine_CSS_Rules_Store"
+msgstr "$store ha de ser una instància de WP_Style_Engine_CSS_Rules_Store"
+
+#: class-decent-comments-renderer.php:496
 #, php-format
 msgctxt "comment-date"
-msgid " %1$s at %2$s"
-msgstr " %1$s a les %2$s"
+msgid "%1$s at %2$s"
+msgstr "%1$s a les %2$s"
 
-#: class-decent-comments-renderer.php:396
-#, php-format
-msgctxt "comment-link"
-msgid " on %s"
-msgstr " en %s"
-
-#: class-decent-comments-widget.php:437
+#: class-decent-comments-widget.php:615
 msgid "A taxonomy, e.g. category or post_tag"
 msgstr "Una taxonomia, per exemple, categoria o post_tag"
 
-#: decent-comments.php:136
+#: class-decent-comments.php:136
 msgid "Access denied."
 msgstr "Accés denegat."
 
-#: class-decent-comments-renderer.php:103
+#: class-decent-comments-renderer.php:110
 msgid "Ascending"
 msgstr "Ascendent"
 
-#: class-decent-comments-renderer.php:95
+#: class-decent-comments-renderer.php:102
 msgid "Author Email"
 msgstr "Correu de l&apos; autor"
 
-#: class-decent-comments-renderer.php:96
+#: class-decent-comments-renderer.php:103
 msgid "Author URL"
 msgstr "URL de l'autor"
 
-#: class-decent-comments-widget.php:344
+#: class-decent-comments-widget.php:522
 #, php-format
 msgid "Available post types: %s"
 msgstr "Tipus de publicacions disponibles:%s"
 
-#: class-decent-comments-widget.php:416
+#: class-decent-comments-widget.php:594
 msgid "Avatar size"
 msgstr "Mida de l'Avatar"
 
-#: class-decent-comments-renderer.php:97
+#: class-decent-comments-renderer.php:104
 msgid "Content"
 msgstr "Contingut"
 
-#: class-decent-comments-renderer.php:98
+#: class-decent-comments-renderer.php:105
 msgid "Date"
 msgstr "Data"
 
-#: decent-comments.php:126
+#: class-decent-comments.php:122
 msgid "Decent Comments"
 msgstr "Decent Comments"
 
-#: decent-comments.php:126 decent-comments.php:142
+#: class-decent-comments.php:121 class-decent-comments.php:157
 msgid "Decent Comments Options"
 msgstr "Opcions de Decent Comments"
 
-#: decent-comments.php:168
+#: class-decent-comments.php:168
 msgid "Delete settings when the plugin is deactivated"
 msgstr "Esborrar la configuració quan en desactivar el plugin"
 
-#: class-decent-comments-renderer.php:104
+#: class-decent-comments-renderer.php:111
 msgid "Descending"
 msgstr "Descendent"
 
-#: class-decent-comments-widget.php:381
+#: class-decent-comments-widget.php:559
 msgid "Ellipsis"
 msgstr "Punts suspensius"
 
-#: class-decent-comments-widget.php:354
+#: class-decent-comments-widget.php:532 class-decent-comments-rest.php:114
 msgid "Exclude comments from post authors"
 msgstr "Exclou els comentaris dels autors de les publicació"
 
-#: class-decent-comments-widget.php:452
+#: class-decent-comments-rest.php:58
+msgid "ID of the post to get comments for (0 for all posts)"
+msgstr ""
+"ID de la publicació per a la qual es vol obtenir comentaris (0 per a totes "
+"les publicacions)"
+
+#: class-decent-comments-widget.php:630
 msgid ""
 "If a taxonomy is given , indicate terms in that taxonomy separated by comma "
 "to show comments for all posts related to these terms. To show comments on "
@@ -101,16 +105,16 @@ msgstr ""
 "Si es dóna una taxonomia, indiqueu els termes d'aquesta taxonomia separats "
 "per coma per mostrar comentaris per a totes les publicacions relacionades "
 "amb aquests termes. Per mostrar comentaris en publicacions relacionades amb "
-"els mateixos termes que la publicació actual, indiqueu: {actual}. Si es dóna "
-"una taxonomia i els termes estan buits, no es mostrarà cap comentari."
+"els mateixos termes que la publicació actual, indiqueu: {current}. Si es "
+"dóna una taxonomia i els termes estan buits, no es mostrarà cap comentari."
 
-#: class-decent-comments-widget.php:354
+#: class-decent-comments-widget.php:532
 msgid "If checked, excludes comments from post authors on their own posts."
 msgstr ""
 "Si està marcada, exclou els comentaris dels autors de a les seves "
 "publicacions."
 
-#: class-decent-comments-widget.php:361
+#: class-decent-comments-widget.php:539
 msgid ""
 "If checked, shows an excerpt of the comment. Otherwise the full text of the "
 "comment is displayed."
@@ -118,15 +122,15 @@ msgstr ""
 "Si està marcada, mostra un extracte del comentari. En cas contrari es "
 "mostrarà el text complet."
 
-#: class-decent-comments-widget.php:462
+#: class-decent-comments-widget.php:640
 msgid "Include pingbacks."
 msgstr "Inclou pingbacks."
 
-#: class-decent-comments-widget.php:469
+#: class-decent-comments-widget.php:647
 msgid "Include trackbacks."
 msgstr "Inclou trackbacks."
 
-#: class-decent-comments-widget.php:440
+#: class-decent-comments-widget.php:618
 msgid ""
 "Indicate <strong>category</strong> if you would like to show comments on "
 "posts in certain categories. Give the desired categories' slugs in "
@@ -138,11 +142,11 @@ msgstr ""
 "als <strong>Termes</strong> . Per a les etiquetes, useu <strong>post_tag</"
 "strong> i poseu les etiquetes als <strong>termes</strong> ."
 
-#: class-decent-comments-renderer.php:99
+#: class-decent-comments-renderer.php:106
 msgid "Karma"
 msgstr "Karma"
 
-#: class-decent-comments-widget.php:341
+#: class-decent-comments-widget.php:513
 msgid ""
 "Leave empty to show comments for all post types. To show comments for a "
 "specific post type only, indicate the post type."
@@ -151,7 +155,7 @@ msgstr ""
 "publicació. Per mostrar comentaris només per a un tipus de publicació "
 "concret, indiqueu el tipus de publicació."
 
-#: class-decent-comments-widget.php:324
+#: class-decent-comments-widget.php:493
 msgid ""
 "Leave empty to show comments for all posts. To show comments for a specific "
 "post only, indicate either part of the title or the post ID. To show posts "
@@ -162,161 +166,212 @@ msgstr ""
 "indiqueu-ne una part del títol o l'ID de publicació. Per mostrar "
 "publicacions per a la publicació actual, indiqueu: [actual]"
 
-#: class-decent-comments-widget.php:403
+#: class-decent-comments-widget.php:581
 msgid "Link authors"
 msgstr "Enllaçar autors"
 
-#: class-decent-comments-widget.php:374
+#: class-decent-comments-widget.php:552
 msgid "Number of characters in excerpts"
 msgstr "Nombre de caràcters als extractes"
 
-#: class-decent-comments-widget.php:286
+#: class-decent-comments-widget.php:455
 msgid "Number of comments"
 msgstr "Nombre de comentaris"
 
-#: class-decent-comments-widget.php:367
+#: class-decent-comments-rest.php:41
+msgid "Number of comments to return"
+msgstr "Nombre de comentaris"
+
+#: class-decent-comments-widget.php:545
 msgid "Number of words in excerpts"
 msgstr "Nombre de paraules als extractes"
 
-#: decent-comments.php:186
+#: class-decent-comments.php:58
 msgid "Options"
 msgstr "Opcions"
 
-#: class-decent-comments-widget.php:293
+#: class-decent-comments-widget.php:462
 msgid "Order by ..."
 msgstr "Ordenar per..."
 
-#: class-decent-comments-widget.php:462
+#: class-decent-comments-widget.php:640
 msgid "Pingbacks"
 msgstr "Pingbacks"
 
-#: class-decent-comments-renderer.php:100
+#: class-decent-comments-renderer.php:107
 msgid "Post"
 msgstr "Publicació"
 
-#: class-decent-comments-widget.php:324
+#: class-decent-comments-widget.php:493
 msgid "Post ID"
 msgstr "ID de la publicació"
 
-#: class-decent-comments-widget.php:341
+#: class-decent-comments-widget.php:518
 msgid "Post Type"
 msgstr "Tipus d’entrada"
 
-#: decent-comments.php:172
+#: class-decent-comments-rest.php:99
+msgid "Post category or tag"
+msgstr "Categoria o etiqueta de publicació"
+
+#: class-decent-comments.php:172
 msgid "Save"
 msgstr "Desar"
 
-#: class-decent-comments-widget.php:330
+#: class-decent-comments-widget.php:499
 #, php-format
 msgid "Selected post: <em>%s</em>"
 msgstr "Publicació seleccionada: <em>%s</em>"
 
-#: decent-comments.php:165
+#: class-decent-comments.php:165
 msgid "Settings"
 msgstr "Configuració"
 
-#: class-decent-comments-widget.php:424
+#: class-decent-comments-widget.php:602
 msgid "Show a link to the post that the comment applies to."
 msgstr "Mostra un enllaç a la publicació on es troba el comentari."
 
-#: class-decent-comments-widget.php:431
+#: class-decent-comments-widget.php:609
 msgid "Show an excerpt of the comment or the full comment."
 msgstr "Mostra un extracte del comentari o del comentari complet."
 
-#: class-decent-comments-widget.php:389
+#: class-decent-comments-widget.php:567
 msgid "Show author"
 msgstr "Mostra l'autor"
 
-#: class-decent-comments-widget.php:410
+#: class-decent-comments-widget.php:588
 msgid "Show avatar"
 msgstr "Mostra l'avatar"
 
-#: class-decent-comments-widget.php:361
+#: class-decent-comments-widget.php:539
 msgid "Show comment excerpt"
 msgstr "Mostra l'extracte del comentari"
 
-#: class-decent-comments-widget.php:396
+#: class-decent-comments-widget.php:574
 msgid "Show date"
 msgstr "Mostra la data"
 
-#: class-decent-comments-widget.php:424
+#: class-decent-comments-widget.php:602
 msgid "Show link to post"
 msgstr "Mostra l'enllaç a la publicació"
 
-#: class-decent-comments-widget.php:410
+#: class-decent-comments-widget.php:588
 msgid "Show the avatar of the author."
 msgstr "Mostra l'avatar de l'autor."
 
-#: class-decent-comments-widget.php:431
+#: class-decent-comments-widget.php:609
 msgid "Show the comment"
 msgstr "Mostra el comentari"
 
-#: class-decent-comments-widget.php:396
+#: class-decent-comments-widget.php:574
 msgid "Show the date and time when the comment was posted."
 msgstr "Mostra la data i l'hora en què s'ha publicat el comentari."
 
-#: class-decent-comments-widget.php:305
+#: class-decent-comments-rest.php:50
+msgid "Size of author avatars in pixels"
+msgstr "La mida de l'avatar en píxels"
+
+#: class-decent-comments-rest.php:74
+msgid "Sort comments by: date, author_email, author_url, content, karma, post"
+msgstr ""
+"Ordena els comentaris per: date, author_email, author_url, content, karma, "
+"post"
+
+#: class-decent-comments-widget.php:474
 msgid "Sort order"
 msgstr "Ordre de classificació"
 
-#: class-decent-comments-widget.php:305
+#: class-decent-comments-widget.php:474
 msgid "Sort order."
 msgstr "Ordre de classificació."
 
-#: class-decent-comments-widget.php:293
+#: class-decent-comments-rest.php:90
+msgid "Sort order: asc or desc"
+msgstr "Ordre de classificació: asc o desc"
+
+#: class-decent-comments-widget.php:462
 msgid "Sorting criteria."
 msgstr "Criteris de classificació."
 
-#: class-decent-comments-widget.php:437
+#: class-decent-comments-widget.php:615
 msgid "Taxonomy"
 msgstr "Taxonomia"
 
-#: class-decent-comments-widget.php:452
+#: class-decent-comments-rest.php:107
+msgid "Term ids or slugs"
+msgstr "Identificadors de termes o slugs"
+
+#: class-decent-comments-widget.php:630
 msgid "Terms"
 msgstr "Termes"
 
-#: class-decent-comments-widget.php:455
+#: class-decent-comments-widget.php:633
 msgid "Terms or {current}. A <strong>Taxonomy</strong> must be given."
 msgstr "Termes o {current}. S'ha de donar una <strong>taxonomia</strong> ."
 
-#: class-decent-comments-widget.php:381
+#: class-decent-comments-widget.php:442
+#, php-format
+msgid "Thanks for supporting our work with a purchase in our %sShop%s!"
+msgstr ""
+"Gràcies per donar suport a la nostra feina amb una compra a la nostra "
+"%sBotiga%s!"
+
+#: class-decent-comments-widget.php:559
 msgid "The ellipsis is shown after the excerpt when there is more content."
 msgstr ""
 "Els punts suspensius es mostren després de l'extracte, si hi ha més "
 "contingut."
 
-#: class-decent-comments-widget.php:374
+#: class-decent-comments-widget.php:552
 msgid "The maximum number of characters shown in excerpts."
 msgstr "El nombre màxim de caràcters que es mostren als extractes."
 
-#: class-decent-comments-widget.php:367
+#: class-decent-comments-widget.php:545
 msgid "The maximum number of words shown in excerpts."
 msgstr "El nombre màxim de paraules que es mostren als extractes."
 
-#: class-decent-comments-widget.php:286
+#: class-decent-comments-widget.php:455
 msgid "The number of comments to show."
 msgstr "El nombre de comentaris que es mostraran."
 
-#: class-decent-comments-widget.php:416
+#: class-decent-comments-widget.php:594
 msgid "The size of the avatar in pixels."
 msgstr "La mida de l'avatar en píxels."
 
-#: class-decent-comments-widget.php:279
+#: class-decent-comments-widget.php:448
 msgid "Title"
 msgstr "Títol"
 
-#: class-decent-comments-widget.php:327
+#: class-decent-comments-widget.php:496
 msgid "Title, empty, post ID or [current]"
 msgstr "Títol, buit, ID de la publicació o [actual]"
 
-#: class-decent-comments-widget.php:469
+#: class-decent-comments-widget.php:647
 msgid "Trackbacks"
 msgstr "Trackbacks"
 
-#: class-decent-comments-widget.php:403
+#: class-decent-comments-rest.php:122
+msgid "Whether to include Pingbacks"
+msgstr "Inclou pingbacks"
+
+#: class-decent-comments-rest.php:130
+msgid "Whether to include Trackbacks"
+msgstr "Inclou trackbacks"
+
+#: class-decent-comments-widget.php:581
 msgid "Whether to link comment authors to their website."
 msgstr "Enllaçar els autors de comentaris al seu lloc web o no."
 
-#: class-decent-comments-widget.php:389
+#: class-decent-comments-widget.php:567
 msgid "Whether to show the author of each comment."
 msgstr "Mostrar l'autor de cada comentari o no."
+
+#: class-decent-comments-widget.php:515
+msgid "You can indicate one ore more post types separated by comma."
+msgstr "Podeu indicar un o més tipus de publicació separats per coma."
+
+#: class-decent-comments-renderer.php:506
+#, php-format
+msgctxt "comment-link"
+msgid "on %s"
+msgstr "en %s"
