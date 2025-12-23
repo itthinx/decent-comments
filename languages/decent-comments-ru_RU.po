@@ -7,92 +7,98 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-08 11:39+0200\n"
-"PO-Revision-Date: 2017-12-13 16:14+0100\n"
+"POT-Creation-Date: 2025-12-22 21:09+0100\n"
+"PO-Revision-Date: 2025-12-23 11:24+0100\n"
 "Last-Translator: Igor <akigleo@ukr.net>\n"
 "Language-Team: \n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.5\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.4.4\n"
 
-#: class-decent-comments-renderer.php:405
+#: blocks/decent-comments/node_modules/@wordpress/style-engine/class-wp-style-engine-processor.php:44
+msgid "$store must be an instance of WP_Style_Engine_CSS_Rules_Store"
+msgstr ""
+"Переменная $store должна быть экземпляром класса "
+"WP_Style_Engine_CSS_Rules_Store"
+
+#: class-decent-comments-renderer.php:496
 #, php-format
 msgctxt "comment-date"
-msgid " %1$s at %2$s"
-msgstr " %1$s в %2$s"
+msgid "%1$s at %2$s"
+msgstr "%1$s в %2$s"
 
-#: class-decent-comments-renderer.php:415
-#, php-format
-msgctxt "comment-link"
-msgid " on %s"
-msgstr " на %s"
-
-#: class-decent-comments-widget.php:448
+#: class-decent-comments-widget.php:615
 msgid "A taxonomy, e.g. category or post_tag"
 msgstr "Таксономия, например категория или post_tag"
 
-#: decent-comments.php:136
+#: class-decent-comments.php:136
 msgid "Access denied."
 msgstr "Доступ заблокирован."
 
-#: class-decent-comments-renderer.php:103
+#: class-decent-comments-renderer.php:110
 msgid "Ascending"
 msgstr "По возрастанию"
 
-#: class-decent-comments-renderer.php:95
+#: class-decent-comments-renderer.php:102
 msgid "Author Email"
 msgstr "Email автора"
 
-#: class-decent-comments-renderer.php:96
+#: class-decent-comments-renderer.php:103
 msgid "Author URL"
 msgstr "URL Автора"
 
-#: class-decent-comments-widget.php:355
+#: class-decent-comments-widget.php:522
 #, php-format
 msgid "Available post types: %s"
 msgstr "Доступные типы сообщений:  %s"
 
-#: class-decent-comments-widget.php:427
+#: class-decent-comments-widget.php:594
 msgid "Avatar size"
 msgstr "Размер аватара"
 
-#: class-decent-comments-renderer.php:97
+#: class-decent-comments-renderer.php:104
 msgid "Content"
 msgstr "Содержание"
 
-#: class-decent-comments-renderer.php:98
+#: class-decent-comments-renderer.php:105
 msgid "Date"
 msgstr "Дата"
 
-#: decent-comments.php:126
+#: class-decent-comments.php:122
 msgid "Decent Comments"
 msgstr "Достойные комментарии"
 
-#: decent-comments.php:126 decent-comments.php:142
+#: class-decent-comments.php:121 class-decent-comments.php:157
 msgid "Decent Comments Options"
 msgstr "Достойные комментарии. Опции"
 
-#: decent-comments.php:168
+#: class-decent-comments.php:168
 msgid "Delete settings when the plugin is deactivated"
 msgstr "Удаление настроек при отключении плагина"
 
-#: class-decent-comments-renderer.php:104
+#: class-decent-comments-renderer.php:111
 msgid "Descending"
 msgstr "По убывание"
 
-#: class-decent-comments-widget.php:392
+#: class-decent-comments-widget.php:559
 msgid "Ellipsis"
 msgstr "Многоточие"
 
-#: class-decent-comments-widget.php:365
+#: class-decent-comments-widget.php:532 class-decent-comments-rest.php:114
 msgid "Exclude comments from post authors"
 msgstr "Исключить комментарии от авторов сообщения"
 
-#: class-decent-comments-widget.php:463
+#: class-decent-comments-rest.php:58
+msgid "ID of the post to get comments for (0 for all posts)"
+msgstr ""
+"Идентификатор записи, для которой нужно получить комментарии (0 — для всех "
+"записей)"
+
+#: class-decent-comments-widget.php:630
 msgid ""
 "If a taxonomy is given , indicate terms in that taxonomy separated by comma "
 "to show comments for all posts related to these terms. To show comments on "
@@ -105,13 +111,13 @@ msgstr ""
 "терминам, что и текущая публикация, укажите: {current}. Если дана таксономия "
 "и условия пусты, комментарии не будут отображаться."
 
-#: class-decent-comments-widget.php:365
+#: class-decent-comments-widget.php:532
 msgid "If checked, excludes comments from post authors on their own posts."
 msgstr ""
 "Если отмечено, исключает комментарии авторов сообщений на свои собственные "
 "сообщения."
 
-#: class-decent-comments-widget.php:372
+#: class-decent-comments-widget.php:539
 msgid ""
 "If checked, shows an excerpt of the comment. Otherwise the full text of the "
 "comment is displayed."
@@ -119,15 +125,15 @@ msgstr ""
 "Если отмечено, отобразится отрывок комментария. В противном случае "
 "отображается полный текст комментария."
 
-#: class-decent-comments-widget.php:473
+#: class-decent-comments-widget.php:640
 msgid "Include pingbacks."
 msgstr "Включите pingbacks."
 
-#: class-decent-comments-widget.php:480
+#: class-decent-comments-widget.php:647
 msgid "Include trackbacks."
 msgstr "Включите трекбэки."
 
-#: class-decent-comments-widget.php:451
+#: class-decent-comments-widget.php:618
 msgid ""
 "Indicate <strong>category</strong> if you would like to show comments on "
 "posts in certain categories. Give the desired categories' slugs in "
@@ -135,15 +141,15 @@ msgid ""
 "tags' slugs in <strong>Terms</strong>."
 msgstr ""
 "Укажите <strong>категорию,</strong> если вы хотите показывать комментарии к "
-"сообщениям в определенных категориях. Дайте slugs желаемых категорий в « "
-"<strong>Terms</strong> . Для тегов использовать <strong>post_tag</strong> и "
-"дать тэги slugs в <strong>Terms</strong>."
+"сообщениям в определенных категориях. Дайте slugs желаемых категорий в "
+"« <strong>Terms</strong> . Для тегов использовать <strong>post_tag</strong> "
+"и дать тэги slugs в <strong>Terms</strong>."
 
-#: class-decent-comments-renderer.php:99
+#: class-decent-comments-renderer.php:106
 msgid "Karma"
 msgstr "Ка́рма"
 
-#: class-decent-comments-widget.php:346
+#: class-decent-comments-widget.php:513
 msgid ""
 "Leave empty to show comments for all post types. To show comments for a "
 "specific post type only, indicate the post type."
@@ -152,7 +158,7 @@ msgstr ""
 "Чтобы показывать комментарии только для определенного типа сообщения, "
 "укажите тип сообщения."
 
-#: class-decent-comments-widget.php:326
+#: class-decent-comments-widget.php:493
 msgid ""
 "Leave empty to show comments for all posts. To show comments for a specific "
 "post only, indicate either part of the title or the post ID. To show posts "
@@ -163,166 +169,213 @@ msgstr ""
 "названия, либо идентификатор сообщения. Чтобы показать сообщения для текущей "
 "публикации, укажите: [текущий]"
 
-#: class-decent-comments-widget.php:414
+#: class-decent-comments-widget.php:581
 msgid "Link authors"
 msgstr "Авторы ссылок"
 
-#: class-decent-comments-widget.php:385
+#: class-decent-comments-widget.php:552
 msgid "Number of characters in excerpts"
 msgstr "Количество символов в анонсе"
 
-#: class-decent-comments-widget.php:288
+#: class-decent-comments-widget.php:455
 msgid "Number of comments"
 msgstr "Число комментариев"
 
-#: class-decent-comments-widget.php:378
+#: class-decent-comments-rest.php:41
+msgid "Number of comments to return"
+msgstr "Число комментариев"
+
+#: class-decent-comments-widget.php:545
 msgid "Number of words in excerpts"
 msgstr "Количество слов в анонсах"
 
-#: decent-comments.php:186
+#: class-decent-comments.php:58
 msgid "Options"
 msgstr "Настройки"
 
-#: class-decent-comments-widget.php:295
+#: class-decent-comments-widget.php:462
 msgid "Order by ..."
 msgstr "Сортровать по ..."
 
-#: class-decent-comments-widget.php:473
+#: class-decent-comments-widget.php:640
 msgid "Pingbacks"
 msgstr "Уведомления"
 
-#: class-decent-comments-renderer.php:100
+#: class-decent-comments-renderer.php:107
 msgid "Post"
 msgstr "Статья"
 
-#: class-decent-comments-widget.php:326
+#: class-decent-comments-widget.php:493
 msgid "Post ID"
 msgstr "ID поста"
 
-#: class-decent-comments-widget.php:351
+#: class-decent-comments-widget.php:518
 msgid "Post Type"
 msgstr "Тип сообщения"
 
-#: decent-comments.php:172
+#: class-decent-comments-rest.php:99
+msgid "Post category or tag"
+msgstr "Категория или тег публикации"
+
+#: class-decent-comments.php:172
 msgid "Save"
 msgstr "Сохранить"
 
-#: class-decent-comments-widget.php:332
+#: class-decent-comments-widget.php:499
 #, php-format
 msgid "Selected post: <em>%s</em>"
 msgstr "Выбранное сообщение: <em>%s</em>"
 
-#: decent-comments.php:165
+#: class-decent-comments.php:165
 msgid "Settings"
 msgstr "Управление"
 
-#: class-decent-comments-widget.php:435
+#: class-decent-comments-widget.php:602
 msgid "Show a link to the post that the comment applies to."
 msgstr "Показывать ссылку на сообщение, к которому относится комментарий."
 
-#: class-decent-comments-widget.php:442
+#: class-decent-comments-widget.php:609
 msgid "Show an excerpt of the comment or the full comment."
 msgstr "Покажите отрывок комментария или полный комментарий."
 
-#: class-decent-comments-widget.php:400
+#: class-decent-comments-widget.php:567
 msgid "Show author"
 msgstr "Показать Информацию Об Авторе"
 
-#: class-decent-comments-widget.php:421
+#: class-decent-comments-widget.php:588
 msgid "Show avatar"
 msgstr "Показать аватар"
 
-#: class-decent-comments-widget.php:372
+#: class-decent-comments-widget.php:539
 msgid "Show comment excerpt"
 msgstr "Показывать анонс комментария"
 
-#: class-decent-comments-widget.php:407
+#: class-decent-comments-widget.php:574
 msgid "Show date"
 msgstr "Показать дату"
 
-#: class-decent-comments-widget.php:435
+#: class-decent-comments-widget.php:602
 msgid "Show link to post"
 msgstr "Показать ссылку для публикацию"
 
-#: class-decent-comments-widget.php:421
+#: class-decent-comments-widget.php:588
 msgid "Show the avatar of the author."
 msgstr "Показать аватар автора."
 
-#: class-decent-comments-widget.php:442
+#: class-decent-comments-widget.php:609
 msgid "Show the comment"
 msgstr "Показать комментарий"
 
-#: class-decent-comments-widget.php:407
+#: class-decent-comments-widget.php:574
 msgid "Show the date and time when the comment was posted."
 msgstr "Показывать дату и время публикации комментария."
 
-#: class-decent-comments-widget.php:307
+#: class-decent-comments-rest.php:50
+msgid "Size of author avatars in pixels"
+msgstr "Размер аватара в пикселях"
+
+#: class-decent-comments-rest.php:74
+msgid "Sort comments by: date, author_email, author_url, content, karma, post"
+msgstr ""
+"Сортировать комментарии по: date, author_email, author_url, content, karma, "
+"post"
+
+#: class-decent-comments-widget.php:474
 msgid "Sort order"
 msgstr "Порядок сортировки"
 
-#: class-decent-comments-widget.php:307
+#: class-decent-comments-widget.php:474
 msgid "Sort order."
 msgstr "Порядок сортировки."
 
-#: class-decent-comments-widget.php:295
+#: class-decent-comments-rest.php:90
+msgid "Sort order: asc or desc"
+msgstr "Порядок сортировки: asc или desc"
+
+#: class-decent-comments-widget.php:462
 msgid "Sorting criteria."
 msgstr "Критерии сортировки."
 
-#: class-decent-comments-widget.php:448
+#: class-decent-comments-widget.php:615
 msgid "Taxonomy"
 msgstr "Таксономия"
 
-#: class-decent-comments-widget.php:463
+#: class-decent-comments-rest.php:107
+msgid "Term ids or slugs"
+msgstr "Идентификаторы или псевдонимы терминов"
+
+#: class-decent-comments-widget.php:630
 msgid "Terms"
 msgstr "Сроки и условия"
 
-#: class-decent-comments-widget.php:466
+#: class-decent-comments-widget.php:633
 msgid "Terms or {current}. A <strong>Taxonomy</strong> must be given."
 msgstr ""
 "Термины или текущие - {current}. Должна быть дана таксономия "
 "<strong>Taxonomy</strong> ."
 
-#: class-decent-comments-widget.php:392
+#: class-decent-comments-widget.php:442
+#, php-format
+msgid "Thanks for supporting our work with a purchase in our %sShop%s!"
+msgstr ""
+"Спасибо за поддержку нашей работы, совершив покупку в нашем магазине "
+"%sМагазин%s!"
+
+#: class-decent-comments-widget.php:559
 msgid "The ellipsis is shown after the excerpt when there is more content."
 msgstr "Многоточие показывается после анонса, когда есть больше контента."
 
-#: class-decent-comments-widget.php:385
+#: class-decent-comments-widget.php:552
 msgid "The maximum number of characters shown in excerpts."
 msgstr "Максимальное количество символов, показанных в анонсах."
 
-#: class-decent-comments-widget.php:378
+#: class-decent-comments-widget.php:545
 msgid "The maximum number of words shown in excerpts."
 msgstr "Максимальное количество слов, указанных в анонсах."
 
-#: class-decent-comments-widget.php:288
+#: class-decent-comments-widget.php:455
 msgid "The number of comments to show."
 msgstr "Количество комментариев для отображения."
 
-#: class-decent-comments-widget.php:427
+#: class-decent-comments-widget.php:594
 msgid "The size of the avatar in pixels."
 msgstr "Размер аватара в пикселях."
 
-#: class-decent-comments-widget.php:281
+#: class-decent-comments-widget.php:448
 msgid "Title"
 msgstr "Заголовок"
 
-#: class-decent-comments-widget.php:329
+#: class-decent-comments-widget.php:496
 msgid "Title, empty, post ID or [current]"
 msgstr "Заголовок, пустой, ID идентификатор или текущий [current]"
 
-#: class-decent-comments-widget.php:480
+#: class-decent-comments-widget.php:647
 msgid "Trackbacks"
 msgstr "Обратные ссылки"
 
-#: class-decent-comments-widget.php:414
+#: class-decent-comments-rest.php:122
+msgid "Whether to include Pingbacks"
+msgstr "Включите pingbacks"
+
+#: class-decent-comments-rest.php:130
+msgid "Whether to include Trackbacks"
+msgstr "Включите трекбэки"
+
+#: class-decent-comments-widget.php:581
 msgid "Whether to link comment authors to their website."
 msgstr "Связывать ли авторы комментариев с их сайтом."
 
-#: class-decent-comments-widget.php:400
+#: class-decent-comments-widget.php:567
 msgid "Whether to show the author of each comment."
 msgstr "Показывать автору каждого комментария."
 
-#: class-decent-comments-widget.php:348
+#: class-decent-comments-widget.php:515
 msgid "You can indicate one ore more post types separated by comma."
 msgstr ""
 "Вы можете указать один или несколько типов сообщений, разделенных запятой."
+
+#: class-decent-comments-renderer.php:506
+#, php-format
+msgctxt "comment-link"
+msgid "on %s"
+msgstr "на %s"

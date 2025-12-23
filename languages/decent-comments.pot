@@ -7,7 +7,7 @@
 msgid   ""
 msgstr  "Project-Id-Version: PACKAGE VERSION\n"
         "Report-Msgid-Bugs-To: \n"
-        "POT-Creation-Date: 2025-07-23 12:15+0200\n"
+        "POT-Creation-Date: 2025-12-22 21:09+0100\n"
         "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
         "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
         "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,23 +16,21 @@ msgstr  "Project-Id-Version: PACKAGE VERSION\n"
         "Content-Type: text/plain; charset=CHARSET\n"
         "Content-Transfer-Encoding: 8bit\n"
 
+#: blocks/decent-comments/node_modules/@wordpress/style-engine/class-wp-style-engine-processor.php:44
+msgid   "$store must be an instance of WP_Style_Engine_CSS_Rules_Store"
+msgstr  ""
+
 #: class-decent-comments-renderer.php:496
 #, php-format
 msgctxt "comment-date"
-msgid   " %1$s at %2$s"
-msgstr  ""
-
-#: class-decent-comments-renderer.php:506
-#, php-format
-msgctxt "comment-link"
-msgid   " on %s"
+msgid   "%1$s at %2$s"
 msgstr  ""
 
 #: class-decent-comments-widget.php:615
 msgid   "A taxonomy, e.g. category or post_tag"
 msgstr  ""
 
-#: class-decent-comments.php:140
+#: class-decent-comments.php:136
 msgid   "Access denied."
 msgstr  ""
 
@@ -65,15 +63,15 @@ msgstr  ""
 msgid   "Date"
 msgstr  ""
 
-#: class-decent-comments.php:126
+#: class-decent-comments.php:122
 msgid   "Decent Comments"
 msgstr  ""
 
-#: class-decent-comments.php:125 class-decent-comments.php:161
+#: class-decent-comments.php:121 class-decent-comments.php:157
 msgid   "Decent Comments Options"
 msgstr  ""
 
-#: class-decent-comments.php:172
+#: class-decent-comments.php:168
 msgid   "Delete settings when the plugin is deactivated"
 msgstr  ""
 
@@ -189,7 +187,7 @@ msgstr  ""
 msgid   "Post category or tag"
 msgstr  ""
 
-#: class-decent-comments.php:176
+#: class-decent-comments.php:172
 msgid   "Save"
 msgstr  ""
 
@@ -198,7 +196,7 @@ msgstr  ""
 msgid   "Selected post: <em>%s</em>"
 msgstr  ""
 
-#: class-decent-comments.php:169
+#: class-decent-comments.php:165
 msgid   "Settings"
 msgstr  ""
 
@@ -338,4 +336,10 @@ msgstr  ""
 
 #: class-decent-comments-widget.php:515
 msgid   "You can indicate one ore more post types separated by comma."
+msgstr  ""
+
+#: class-decent-comments-renderer.php:506
+#, php-format
+msgctxt "comment-link"
+msgid   "on %s"
 msgstr  ""
