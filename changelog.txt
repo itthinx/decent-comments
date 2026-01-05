@@ -1,5 +1,8 @@
 == Decent Comments by itthinx - changelog.txt ==
 
+= 3.0.2 =
+* WordPress 6.9 compatible.
+
 = 3.0.1 =
 * WordPress 6.9 compatible.
 * Updated the translation template.

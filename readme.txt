@@ -5,7 +5,7 @@ Tags: comment, comments, shortcode, discussion, feedback
 Requires at least: 6.5
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 3.0.1
+Stable tag: 3.0.2
 License: GPLv3
 
 Decent Comments shows what people say. A more engaging way to show comments.
