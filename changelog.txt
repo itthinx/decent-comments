@@ -6,6 +6,9 @@
 * Providing author display name instead of email for post authors in REST response.
 * Fixed warning in Decent Comments Block widget when rendering on the frontend.
 * Added support for comment_ID as orderby option in REST requests.
+* Added support for excerpt, max_excerpt_words, max_excerpt_characters, show_author, show_date, show_comment options in REST request.
+* Added instances of missing code documentation.
+* Fixed some code formatting issues.
 
 = 3.0.1 =
 * WordPress 6.9 compatible.
