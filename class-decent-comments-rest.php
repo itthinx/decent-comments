@@ -78,7 +78,8 @@ class Decent_Comments_Rest {
 						'comment_author_url',
 						'comment_content',
 						'comment_karma',
-						'comment_post_id'
+						'comment_post_id',
+						'comment_ID'
 					),
 					'validate_callback' => 'rest_validate_request_arg'
 				),
@@ -204,7 +205,7 @@ class Decent_Comments_Rest {
 					'comment_post_id' => $comment->comment_post_ID,
 					'post_title'      => get_the_title( $comment->comment_post_ID ),
 					'comment_link'    => get_comment_link( $comment->comment_ID ),
-					'post_author'     => self::get_the_post_author_by_post_id( $comment->comment_post_ID ),
+					'post_author'     => self::get_post_author( $comment->comment_post_ID ),
 				);
 				$comments_data[] = $comment_data;
 			}
@@ -222,18 +223,29 @@ class Decent_Comments_Rest {
 
 	}
 
-	private static function get_the_post_author_by_post_id( $comment_post_id ) {
-		$post_author_email = null;
-		$post = get_post( $comment_post_id );
-		if ( $post ) {
-			$post_author_id = $post->post_author;
-			$post_author_user = get_user( $post_author_id );
-			if ( $post_author_user ) {
-				$post_author_email = $post_author_user->user_email;
+	/**
+	 * Provide the post author for display.
+	 *
+	 * @since 3.0.2
+	 *
+	 * @param int $post_id
+	 *
+	 * @return string
+	 */
+	private static function get_post_author( $post_id ) {
+		$author = '';
+		$post = get_post( $post_id );
+		if ( $post && !empty( $post->post_author ) ) {
+			$user = get_user( $post->post_author );
+			if ( $user ) {
+				if ( !empty( $user->display_name ) ) {
+					$author = $user->display_name;
+				} else {
+					$author = $user->user_login;
+				}
 			}
 		}
-
-		return $post_author_email;
+		return $author;
 	}
 
 	public static function to_boolean( $value, $default = false ) {
@@ -272,4 +284,6 @@ class Decent_Comments_Rest {
 		}
 		return $value;
 	}
-} Decent_Comments_Rest::boot();
+}
+
+Decent_Comments_Rest::boot();

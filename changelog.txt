@@ -2,8 +2,10 @@
 
 = 3.0.2 =
 * WordPress 6.9 compatible.
-* Removed unecessary author_email field from REST API endpoint.
+* Removed author email from REST response.
+* Providing author display name instead of email for post authors in REST response.
 * Fixed warning in Decent Comments Block widget when rendering on the frontend.
+* Added support for comment_ID as orderby option in REST requests.
 
 = 3.0.1 =
 * WordPress 6.9 compatible.
