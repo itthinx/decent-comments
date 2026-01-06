@@ -9,6 +9,8 @@
 * Added support for excerpt, max_excerpt_words, max_excerpt_characters, show_author, show_date, show_comment options in REST request.
 * Added instances of missing code documentation.
 * Fixed some code formatting issues.
+* Changed block placeholder to generic verbiage.
+* Updated the translation template.
 
 = 3.0.1 =
 * WordPress 6.9 compatible.
