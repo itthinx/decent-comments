@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Decent Comments 1.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-22 21:09+0100\n"
-"PO-Revision-Date: 2025-12-23 11:18+0100\n"
+"POT-Creation-Date: 2026-01-06 14:45+0100\n"
+"PO-Revision-Date: 2026-01-06 14:58+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #: blocks/decent-comments/node_modules/@wordpress/style-engine/class-wp-style-engine-processor.php:44
 msgid "$store must be an instance of WP_Style_Engine_CSS_Rules_Store"
-msgstr ""
+msgstr "$store doit être une instance de WP_Style_Engine_CSS_Rules_Store"
 
 #: class-decent-comments-renderer.php:496
 #, php-format
@@ -81,13 +81,19 @@ msgstr "Descendant"
 msgid "Ellipsis"
 msgstr "Ellipse"
 
-#: class-decent-comments-widget.php:532 class-decent-comments-rest.php:114
+#: class-decent-comments-widget.php:532 class-decent-comments-rest.php:142
 msgid "Exclude comments from post authors"
 msgstr "Exclure les commentaires des auteurs"
 
-#: class-decent-comments-rest.php:58
+#: class-decent-comments-rest.php:74
+msgid "Generate an excerpt"
+msgstr "Générer un extrait"
+
+#: class-decent-comments-rest.php:67
 msgid "ID of the post to get comments for (0 for all posts)"
 msgstr ""
+"ID de l'article pour lequel obtenir les commentaires (0 pour tous les "
+"articles)"
 
 #: class-decent-comments-widget.php:630
 msgid ""
@@ -169,17 +175,25 @@ msgstr "Lien vers les auteurs"
 msgid "Number of characters in excerpts"
 msgstr "Nombre de caractères dans les extraits"
 
+#: class-decent-comments-rest.php:93
+msgid "Number of characters shown as an excerpt"
+msgstr "Nombre de caractères affichés comme extrait"
+
 #: class-decent-comments-widget.php:455
 msgid "Number of comments"
 msgstr "Nombre de commentaires"
 
-#: class-decent-comments-rest.php:41
+#: class-decent-comments-rest.php:50
 msgid "Number of comments to return"
 msgstr "Nombre de commentaires"
 
 #: class-decent-comments-widget.php:545
 msgid "Number of words in excerpts"
 msgstr "Nombre de mots dans un excerpt"
+
+#: class-decent-comments-rest.php:84
+msgid "Number of words shown as an excerpt"
+msgstr "Nombre de mots affichés comme extrait"
 
 #: class-decent-comments.php:58
 msgid "Options"
@@ -205,9 +219,9 @@ msgstr "ID d'Article"
 msgid "Post Type"
 msgstr "Type d'Article"
 
-#: class-decent-comments-rest.php:99
+#: class-decent-comments-rest.php:127
 msgid "Post category or tag"
-msgstr ""
+msgstr "Catégorie ou étiquette de l'article"
 
 #: class-decent-comments.php:172
 msgid "Save"
@@ -238,11 +252,19 @@ msgstr "Afficher l'auteur"
 msgid "Show avatar"
 msgstr "Afficher l'avatar"
 
+#: class-decent-comments-rest.php:182
+msgid "Show comment"
+msgstr "Afficher le commentaire"
+
+#: class-decent-comments-rest.php:166
+msgid "Show comment author"
+msgstr "Afficher l'auteur du commentaire"
+
 #: class-decent-comments-widget.php:539
 msgid "Show comment excerpt"
 msgstr "Afficher l'excerpt du commentaire"
 
-#: class-decent-comments-widget.php:574
+#: class-decent-comments-widget.php:574 class-decent-comments-rest.php:174
 msgid "Show date"
 msgstr "Montrez la date"
 
@@ -262,13 +284,15 @@ msgstr "Afficher le commentaire"
 msgid "Show the date and time when the comment was posted."
 msgstr "Montrez la date et l'heure à laquelle le commentaire a été publié."
 
-#: class-decent-comments-rest.php:50
+#: class-decent-comments-rest.php:59
 msgid "Size of author avatars in pixels"
 msgstr "La taille de l'avatar en pixels"
 
-#: class-decent-comments-rest.php:74
+#: class-decent-comments-rest.php:101
 msgid "Sort comments by: date, author_email, author_url, content, karma, post"
 msgstr ""
+"Trier les commentaires par : date, author_email, author_url, content, karma, "
+"post"
 
 #: class-decent-comments-widget.php:474
 msgid "Sort order"
@@ -278,7 +302,7 @@ msgstr "Ordonnancement"
 msgid "Sort order."
 msgstr "Ordonnancement."
 
-#: class-decent-comments-rest.php:90
+#: class-decent-comments-rest.php:118
 msgid "Sort order: asc or desc"
 msgstr "Ordonnancement: asc ou desc"
 
@@ -290,9 +314,9 @@ msgstr "Critère d'ordonnancement."
 msgid "Taxonomy"
 msgstr "Taxonomie"
 
-#: class-decent-comments-rest.php:107
+#: class-decent-comments-rest.php:135
 msgid "Term ids or slugs"
-msgstr ""
+msgstr "IDs ou slugs des termes"
 
 #: class-decent-comments-widget.php:630
 msgid "Terms"
@@ -306,6 +330,8 @@ msgstr "Termes de {current}. Une <strong>Taxonomie</strong> doit être donnée."
 #, php-format
 msgid "Thanks for supporting our work with a purchase in our %sShop%s!"
 msgstr ""
+"Merci de soutenir notre travail en effectuant un achat dans notre "
+"%sBoutique%s!"
 
 #: class-decent-comments-widget.php:559
 msgid "The ellipsis is shown after the excerpt when there is more content."
@@ -340,11 +366,11 @@ msgstr "Titre, vide, ID du post ou [current]"
 msgid "Trackbacks"
 msgstr "Trackbacks"
 
-#: class-decent-comments-rest.php:122
+#: class-decent-comments-rest.php:150
 msgid "Whether to include Pingbacks"
 msgstr "Inclure les pingbacks"
 
-#: class-decent-comments-rest.php:130
+#: class-decent-comments-rest.php:158
 msgid "Whether to include Trackbacks"
 msgstr "Inclure les trackbacks"
 

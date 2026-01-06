@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Decent Comments 1.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-22 21:09+0100\n"
-"PO-Revision-Date: 2025-12-23 11:20+0100\n"
+"POT-Creation-Date: 2026-01-06 14:45+0100\n"
+"PO-Revision-Date: 2026-01-06 15:06+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_PT\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #: blocks/decent-comments/node_modules/@wordpress/style-engine/class-wp-style-engine-processor.php:44
 msgid "$store must be an instance of WP_Style_Engine_CSS_Rules_Store"
-msgstr ""
+msgstr "$store deve ser uma instância de WP_Style_Engine_CSS_Rules_Store"
 
 #: class-decent-comments-renderer.php:496
 #, php-format
@@ -81,13 +81,19 @@ msgstr "Descendente"
 msgid "Ellipsis"
 msgstr "Elipse"
 
-#: class-decent-comments-widget.php:532 class-decent-comments-rest.php:114
+#: class-decent-comments-widget.php:532 class-decent-comments-rest.php:142
 msgid "Exclude comments from post authors"
 msgstr ""
 
-#: class-decent-comments-rest.php:58
+#: class-decent-comments-rest.php:74
+msgid "Generate an excerpt"
+msgstr "Gerar um excerto"
+
+#: class-decent-comments-rest.php:67
 msgid "ID of the post to get comments for (0 for all posts)"
 msgstr ""
+"ID da publicação para a qual pretende obter comentários (0 para todas as "
+"publicações)"
 
 #: class-decent-comments-widget.php:630
 msgid ""
@@ -163,17 +169,25 @@ msgstr ""
 msgid "Number of characters in excerpts"
 msgstr ""
 
+#: class-decent-comments-rest.php:93
+msgid "Number of characters shown as an excerpt"
+msgstr "Número de caracteres apresentados como excerto"
+
 #: class-decent-comments-widget.php:455
 msgid "Number of comments"
 msgstr "Número de cometários"
 
-#: class-decent-comments-rest.php:41
+#: class-decent-comments-rest.php:50
 msgid "Number of comments to return"
 msgstr "Número de cometários"
 
 #: class-decent-comments-widget.php:545
 msgid "Number of words in excerpts"
 msgstr "Número de palavras nos resumos"
+
+#: class-decent-comments-rest.php:84
+msgid "Number of words shown as an excerpt"
+msgstr "Número de palavras apresentadas como excerto"
 
 #: class-decent-comments.php:58
 msgid "Options"
@@ -199,9 +213,9 @@ msgstr "ID do artigo"
 msgid "Post Type"
 msgstr ""
 
-#: class-decent-comments-rest.php:99
+#: class-decent-comments-rest.php:127
 msgid "Post category or tag"
-msgstr ""
+msgstr "Categoria ou etiqueta da publicação"
 
 #: class-decent-comments.php:172
 msgid "Save"
@@ -232,11 +246,19 @@ msgstr "Exibir o autor"
 msgid "Show avatar"
 msgstr "Exibir avatar"
 
+#: class-decent-comments-rest.php:182
+msgid "Show comment"
+msgstr "Exibir comentário"
+
+#: class-decent-comments-rest.php:166
+msgid "Show comment author"
+msgstr "Ver autor do comentário"
+
 #: class-decent-comments-widget.php:539
 msgid "Show comment excerpt"
 msgstr "Mostrar resumo do comentário"
 
-#: class-decent-comments-widget.php:574
+#: class-decent-comments-widget.php:574 class-decent-comments-rest.php:174
 msgid "Show date"
 msgstr ""
 
@@ -256,13 +278,14 @@ msgstr "Mostrar comentário"
 msgid "Show the date and time when the comment was posted."
 msgstr ""
 
-#: class-decent-comments-rest.php:50
+#: class-decent-comments-rest.php:59
 msgid "Size of author avatars in pixels"
 msgstr "Dimesão do avatar em pixeis"
 
-#: class-decent-comments-rest.php:74
+#: class-decent-comments-rest.php:101
 msgid "Sort comments by: date, author_email, author_url, content, karma, post"
 msgstr ""
+"Ordenar comentários por: date, author_email, author_url, content, karma, post"
 
 #: class-decent-comments-widget.php:474
 msgid "Sort order"
@@ -272,7 +295,7 @@ msgstr "Ordenar"
 msgid "Sort order."
 msgstr "Ordenar."
 
-#: class-decent-comments-rest.php:90
+#: class-decent-comments-rest.php:118
 msgid "Sort order: asc or desc"
 msgstr "Ordenar: asc ou desc"
 
@@ -284,9 +307,9 @@ msgstr "Ordem dos critérios."
 msgid "Taxonomy"
 msgstr "Taxonomia"
 
-#: class-decent-comments-rest.php:107
+#: class-decent-comments-rest.php:135
 msgid "Term ids or slugs"
-msgstr ""
+msgstr "IDs ou slugs dos termos"
 
 #: class-decent-comments-widget.php:630
 msgid "Terms"
@@ -300,7 +323,7 @@ msgstr ""
 #: class-decent-comments-widget.php:442
 #, php-format
 msgid "Thanks for supporting our work with a purchase in our %sShop%s!"
-msgstr ""
+msgstr "Obrigado por apoiar o nosso trabalho com uma compra na nossa %sShop%s!"
 
 #: class-decent-comments-widget.php:559
 msgid "The ellipsis is shown after the excerpt when there is more content."
@@ -334,11 +357,11 @@ msgstr "Título, vazio, ID do artigo ou [atual]"
 msgid "Trackbacks"
 msgstr ""
 
-#: class-decent-comments-rest.php:122
+#: class-decent-comments-rest.php:150
 msgid "Whether to include Pingbacks"
 msgstr ""
 
-#: class-decent-comments-rest.php:130
+#: class-decent-comments-rest.php:158
 msgid "Whether to include Trackbacks"
 msgstr ""
 

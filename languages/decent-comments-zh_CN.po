@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Decent Comments 1.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-22 21:09+0100\n"
-"PO-Revision-Date: 2025-12-23 11:34+0100\n"
+"POT-Creation-Date: 2026-01-06 14:45+0100\n"
+"PO-Revision-Date: 2026-01-06 15:11+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -81,11 +81,15 @@ msgstr "从大到小"
 msgid "Ellipsis"
 msgstr "更多内容提示"
 
-#: class-decent-comments-widget.php:532 class-decent-comments-rest.php:114
+#: class-decent-comments-widget.php:532 class-decent-comments-rest.php:142
 msgid "Exclude comments from post authors"
 msgstr "排除帖子作者的评论"
 
-#: class-decent-comments-rest.php:58
+#: class-decent-comments-rest.php:74
+msgid "Generate an excerpt"
+msgstr "生成摘录"
+
+#: class-decent-comments-rest.php:67
 msgid "ID of the post to get comments for (0 for all posts)"
 msgstr "要获取评论的帖子的ID（0表示所有帖子）"
 
@@ -125,9 +129,9 @@ msgid ""
 "<strong>Terms</strong>. For tags use <strong>post_tag</strong> and give the "
 "tags' slugs in <strong>Terms</strong>."
 msgstr ""
-"若想显示某种分类里的留言请选择 <strong>category</strong> 。请在"
-"<strong>Terms</strong>里选择分类短语。标签请选择<strong>post_tag</strong> 然"
-"后在 <strong>Termes</strong>选择标签短语。"
+"若想显示某种分类里的留言请选择 <strong>category</strong> 。请在<strong>词汇</"
+"strong>里选择分类短语。标签请选择<strong>post_tag</strong> 然后在 <strong>词"
+"汇</strong>选择标签短语。"
 
 #: class-decent-comments-renderer.php:106
 msgid "Karma"
@@ -158,17 +162,25 @@ msgstr "链接作者"
 msgid "Number of characters in excerpts"
 msgstr "摘录中的字符数"
 
+#: class-decent-comments-rest.php:93
+msgid "Number of characters shown as an excerpt"
+msgstr "显示为摘录的字符数"
+
 #: class-decent-comments-widget.php:455
 msgid "Number of comments"
 msgstr "留言总数"
 
-#: class-decent-comments-rest.php:41
+#: class-decent-comments-rest.php:50
 msgid "Number of comments to return"
 msgstr "要返回的评论数量"
 
 #: class-decent-comments-widget.php:545
 msgid "Number of words in excerpts"
 msgstr "预览字数量"
+
+#: class-decent-comments-rest.php:84
+msgid "Number of words shown as an excerpt"
+msgstr "显示为摘录的单词数"
 
 #: class-decent-comments.php:58
 msgid "Options"
@@ -194,7 +206,7 @@ msgstr "文章 ID"
 msgid "Post Type"
 msgstr "帖子类型"
 
-#: class-decent-comments-rest.php:99
+#: class-decent-comments-rest.php:127
 msgid "Post category or tag"
 msgstr "发布类别或标签"
 
@@ -227,11 +239,19 @@ msgstr "显示作者"
 msgid "Show avatar"
 msgstr "显示头像"
 
+#: class-decent-comments-rest.php:182
+msgid "Show comment"
+msgstr "显示评论"
+
+#: class-decent-comments-rest.php:166
+msgid "Show comment author"
+msgstr "显示评论作者"
+
 #: class-decent-comments-widget.php:539
 msgid "Show comment excerpt"
 msgstr "显示留言预览"
 
-#: class-decent-comments-widget.php:574
+#: class-decent-comments-widget.php:574 class-decent-comments-rest.php:174
 msgid "Show date"
 msgstr "显示日期"
 
@@ -251,11 +271,11 @@ msgstr "显示留言"
 msgid "Show the date and time when the comment was posted."
 msgstr "显示评论发布的日期和时间。"
 
-#: class-decent-comments-rest.php:50
+#: class-decent-comments-rest.php:59
 msgid "Size of author avatars in pixels"
 msgstr "作者头像的尺寸（以像素为单位）"
 
-#: class-decent-comments-rest.php:74
+#: class-decent-comments-rest.php:101
 msgid "Sort comments by: date, author_email, author_url, content, karma, post"
 msgstr "评论排序方式：日期、作者邮箱、作者网址、内容、积分、帖子"
 
@@ -267,7 +287,7 @@ msgstr "排序"
 msgid "Sort order."
 msgstr "排序."
 
-#: class-decent-comments-rest.php:90
+#: class-decent-comments-rest.php:118
 msgid "Sort order: asc or desc"
 msgstr "排序顺序：asc 或 desc"
 
@@ -279,7 +299,7 @@ msgstr "排序规律."
 msgid "Taxonomy"
 msgstr "分类"
 
-#: class-decent-comments-rest.php:107
+#: class-decent-comments-rest.php:135
 msgid "Term ids or slugs"
 msgstr "术语ID或别名"
 
@@ -328,11 +348,11 @@ msgstr "题目、空白、文章 ID 或者 [current]"
 msgid "Trackbacks"
 msgstr "引用链接"
 
-#: class-decent-comments-rest.php:122
+#: class-decent-comments-rest.php:150
 msgid "Whether to include Pingbacks"
 msgstr "是否包含引用通知"
 
-#: class-decent-comments-rest.php:130
+#: class-decent-comments-rest.php:158
 msgid "Whether to include Trackbacks"
 msgstr "是否包含引用链接"
 

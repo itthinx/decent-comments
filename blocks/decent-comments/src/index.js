@@ -258,7 +258,7 @@ registerBlockType( metadata.name, {
 	save: ({ attributes }) => {
 		return (
 			<div className="wp-block-itthinx-decent-comments" data-attributes={JSON.stringify(attributes)}>
-				<p>{__('Decent Comments Placeholder', 'decent-comments')}</p>
+				<p>{ __( 'Comments', 'decent-comments' ) } &hellip;</p>
 			</div>
 		);
 	}
