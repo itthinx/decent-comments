@@ -196,24 +196,24 @@ class Decent_Comments_Rest {
 	 */
 	public static function decent_comments_rest_endpoint( WP_REST_Request $request ) {
 		$args = array(
-			'number'              => $request->get_param( 'number' ),
-			'avatar_size'         => $request->get_param( 'avatar_size' ),
-			'post_id'             => $request->get_param( 'post_id' ),
-			'post_type'           => $request->get_param( 'post_type' ),
-			'excerpt'             => $request->get_param( 'excerpt' ),
-			'max_excerpt_words'   => $request->get_param( 'max_excerpt_words' ),
+			'number'                 => $request->get_param( 'number' ),
+			'avatar_size'            => $request->get_param( 'avatar_size' ),
+			'post_id'                => $request->get_param( 'post_id' ),
+			'post_type'              => $request->get_param( 'post_type' ),
+			'excerpt'                => $request->get_param( 'excerpt' ),
+			'max_excerpt_words'      => $request->get_param( 'max_excerpt_words' ),
 			'max_excerpt_characters' => $request->get_param( 'max_excerpt_characters' ),
-			'orderby'             => $request->get_param( 'orderby' ),
-			'order'               => $request->get_param( 'order' ) === 'asc' ? 'asc' : 'desc',
-			'show_date'           => $request->get_param( 'show_date' ),
-			'show_author'         => $request->get_param( 'show_author' ),
-			'show_comment'        => $request->get_param( 'show_comment' ),
-			'taxonomy'            => $request->get_param( 'taxonomy' ),
-			'terms'               => $request->get_param( 'terms' ),
-			'term_ids'            => $request->get_param( 'term_ids'),
-			'pingback'            => $request->get_param( 'pingback' ),
-			'trackback'           => $request->get_param( 'trackback' ),
-			'exclude_post_author' => $request->get_param( 'exclude_post_author' )
+			'orderby'                => $request->get_param( 'orderby' ),
+			'order'                  => $request->get_param( 'order' ) === 'asc' ? 'asc' : 'desc',
+			'show_date'              => $request->get_param( 'show_date' ),
+			'show_author'            => $request->get_param( 'show_author' ),
+			'show_comment'           => $request->get_param( 'show_comment' ),
+			'taxonomy'               => $request->get_param( 'taxonomy' ),
+			'terms'                  => $request->get_param( 'terms' ),
+			'term_ids'               => $request->get_param( 'term_ids'),
+			'pingback'               => $request->get_param( 'pingback' ),
+			'trackback'              => $request->get_param( 'trackback' ),
+			'exclude_post_author'    => $request->get_param( 'exclude_post_author' )
 		);
 
 		// Parse the rendered HTML to extract comment data
@@ -231,19 +231,19 @@ class Decent_Comments_Rest {
 		}
 
 		$comment_args = array(
-			'number'    => $args['number'],
-			'post_id'   => $args['post_id'],
-			'post_type' => $args['post_type'],
-			'taxonomy'  => $args['taxonomy'],
-			'terms'     => $args['terms'],
-			'term_ids'  => $term_ids,
-			'pingback'  => $args['pingback'],
-			'trackback' => $args['trackback'],
-			'status'    => 'approve',
-			'order'     => $args['order'],
-			'orderby'   => $args['orderby'],
-			'excerpt'   => $args['excerpt'],
-			'max_excerpt_words' => $args['max_excerpt_words'],
+			'number'                 => $args['number'],
+			'post_id'                => $args['post_id'],
+			'post_type'              => $args['post_type'],
+			'taxonomy'               => $args['taxonomy'],
+			'terms'                  => $args['terms'],
+			'term_ids'               => $term_ids,
+			'pingback'               => $args['pingback'],
+			'trackback'              => $args['trackback'],
+			'status'                 => 'approve',
+			'order'                  => $args['order'],
+			'orderby'                => $args['orderby'],
+			'excerpt'                => $args['excerpt'],
+			'max_excerpt_words'      => $args['max_excerpt_words'],
 			'max_excerpt_characters' => $args['max_excerpt_characters']
 		);
 
