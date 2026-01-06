@@ -196,7 +196,6 @@ class Decent_Comments_Rest {
 				$comment_data = array(
 					'id'              => $comment->comment_ID,
 					'author'          => $comment->comment_author,
-					'author_email'    => $comment->comment_author_email,
 					'author_url'      => $comment->comment_author_url,
 					'date'            => mysql2date( get_option( 'date_format' ), $comment->comment_date ),
 					'time'            => mysql2date( get_option( 'time_format' ), $comment->comment_date, true ),
