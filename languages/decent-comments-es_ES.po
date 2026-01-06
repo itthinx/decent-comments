@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: decent-comments 1.3.11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-22 21:09+0100\n"
-"PO-Revision-Date: 2025-12-22 21:17+0100\n"
+"POT-Creation-Date: 2026-01-06 14:45+0100\n"
+"PO-Revision-Date: 2026-01-06 14:52+0100\n"
 "Last-Translator: kento <http://www.itthinx.com/plugins/decent-comments/>\n"
 "Language-Team: Spanish <http://www.itthinx.com/plugins/decent-comments/>\n"
 "Language: es_ES\n"
@@ -84,11 +84,15 @@ msgstr "Descendente"
 msgid "Ellipsis"
 msgstr "Elipsis"
 
-#: class-decent-comments-widget.php:532 class-decent-comments-rest.php:114
+#: class-decent-comments-widget.php:532 class-decent-comments-rest.php:142
 msgid "Exclude comments from post authors"
 msgstr "Excluir los comentarios de los autores de los artículos"
 
-#: class-decent-comments-rest.php:58
+#: class-decent-comments-rest.php:74
+msgid "Generate an excerpt"
+msgstr "Generar un extracto"
+
+#: class-decent-comments-rest.php:67
 msgid "ID of the post to get comments for (0 for all posts)"
 msgstr "ID del artículo para el que obtener comentarios (0 para todos)"
 
@@ -167,17 +171,25 @@ msgstr "Enlazar autores"
 msgid "Number of characters in excerpts"
 msgstr "Número de caracteres en el resumen"
 
+#: class-decent-comments-rest.php:93
+msgid "Number of characters shown as an excerpt"
+msgstr "Número de caracteres en el extracto"
+
 #: class-decent-comments-widget.php:455
 msgid "Number of comments"
 msgstr "Número de comentarios"
 
-#: class-decent-comments-rest.php:41
+#: class-decent-comments-rest.php:50
 msgid "Number of comments to return"
 msgstr "Número de comentarios a retornar"
 
 #: class-decent-comments-widget.php:545
 msgid "Number of words in excerpts"
 msgstr "Número de palabras del resumen"
+
+#: class-decent-comments-rest.php:84
+msgid "Number of words shown as an excerpt"
+msgstr "Número de palabras del extracto"
 
 #: class-decent-comments.php:58
 msgid "Options"
@@ -203,7 +215,7 @@ msgstr "ID de artículo"
 msgid "Post Type"
 msgstr "Tipo de post"
 
-#: class-decent-comments-rest.php:99
+#: class-decent-comments-rest.php:127
 msgid "Post category or tag"
 msgstr "Categoría o etiqueta de artículo"
 
@@ -236,11 +248,19 @@ msgstr "Mostrar autor"
 msgid "Show avatar"
 msgstr "Mostrar avatar"
 
+#: class-decent-comments-rest.php:182
+msgid "Show comment"
+msgstr "Mostrar el comentario"
+
+#: class-decent-comments-rest.php:166
+msgid "Show comment author"
+msgstr "Mostrar autor del comentario"
+
 #: class-decent-comments-widget.php:539
 msgid "Show comment excerpt"
 msgstr "Mostrar resumen del comentario"
 
-#: class-decent-comments-widget.php:574
+#: class-decent-comments-widget.php:574 class-decent-comments-rest.php:174
 msgid "Show date"
 msgstr "Mostrar fecha"
 
@@ -260,11 +280,11 @@ msgstr "Mostrar el comentario"
 msgid "Show the date and time when the comment was posted."
 msgstr "Mostrar la fecha y hora cuando el comentario fue publicado."
 
-#: class-decent-comments-rest.php:50
+#: class-decent-comments-rest.php:59
 msgid "Size of author avatars in pixels"
 msgstr "Tamaño del avatar en píxeles"
 
-#: class-decent-comments-rest.php:74
+#: class-decent-comments-rest.php:101
 msgid "Sort comments by: date, author_email, author_url, content, karma, post"
 msgstr ""
 "Ordernar comentarios por: date, author_email, author_url, content, karma, "
@@ -278,7 +298,7 @@ msgstr "Sentido de ordenación"
 msgid "Sort order."
 msgstr "Sentido de ordenación."
 
-#: class-decent-comments-rest.php:90
+#: class-decent-comments-rest.php:118
 msgid "Sort order: asc or desc"
 msgstr "Sentido de ordenación"
 
@@ -290,7 +310,7 @@ msgstr "Criterio de ordenación."
 msgid "Taxonomy"
 msgstr "Taxonomía"
 
-#: class-decent-comments-rest.php:107
+#: class-decent-comments-rest.php:135
 msgid "Term ids or slugs"
 msgstr "Ids de términos o slugs"
 
@@ -340,11 +360,11 @@ msgstr "Título, vacío, ID de artículo o [current]"
 msgid "Trackbacks"
 msgstr "Trackbacks"
 
-#: class-decent-comments-rest.php:122
+#: class-decent-comments-rest.php:150
 msgid "Whether to include Pingbacks"
 msgstr "Incluir pingbacks"
 
-#: class-decent-comments-rest.php:130
+#: class-decent-comments-rest.php:158
 msgid "Whether to include Trackbacks"
 msgstr "Incluir trackbacks"
 

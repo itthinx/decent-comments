@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: decent-comments 1.1.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-22 21:09+0100\n"
-"PO-Revision-Date: 2025-12-23 11:41+0100\n"
+"POT-Creation-Date: 2026-01-06 14:45+0100\n"
+"PO-Revision-Date: 2026-01-06 14:55+0100\n"
 "Last-Translator: kento <http://www.itthinx.com/plugins/decent-comments/>\n"
 "Language-Team: German <http://www.itthinx.com/plugins/decent-comments/>\n"
 "Language: de_DE\n"
@@ -84,11 +84,15 @@ msgstr "Absteigend"
 msgid "Ellipsis"
 msgstr "Ellipse"
 
-#: class-decent-comments-widget.php:532 class-decent-comments-rest.php:114
+#: class-decent-comments-widget.php:532 class-decent-comments-rest.php:142
 msgid "Exclude comments from post authors"
 msgstr "Kommentare von Eintragsautoren ausschließen"
 
-#: class-decent-comments-rest.php:58
+#: class-decent-comments-rest.php:74
+msgid "Generate an excerpt"
+msgstr "Auszug generieren"
+
+#: class-decent-comments-rest.php:67
 msgid "ID of the post to get comments for (0 for all posts)"
 msgstr "ID des Artikels mit Kommentaren (0 für alle Artikel)"
 
@@ -173,16 +177,24 @@ msgstr "Autoren verlinken"
 msgid "Number of characters in excerpts"
 msgstr "Anzahl der Zeichen in Auszügen"
 
+#: class-decent-comments-rest.php:93
+msgid "Number of characters shown as an excerpt"
+msgstr "Anzahl der Zeichen in Auszügen"
+
 #: class-decent-comments-widget.php:455
 msgid "Number of comments"
 msgstr "Anzahl der Kommentare"
 
-#: class-decent-comments-rest.php:41
+#: class-decent-comments-rest.php:50
 msgid "Number of comments to return"
 msgstr "Anzahl der Kommentare"
 
 #: class-decent-comments-widget.php:545
 msgid "Number of words in excerpts"
+msgstr "Anzahl der Worte in Auszügen"
+
+#: class-decent-comments-rest.php:84
+msgid "Number of words shown as an excerpt"
 msgstr "Anzahl der Worte in Auszügen"
 
 #: class-decent-comments.php:58
@@ -209,7 +221,7 @@ msgstr "Artikel-ID"
 msgid "Post Type"
 msgstr "Eintragstyp"
 
-#: class-decent-comments-rest.php:99
+#: class-decent-comments-rest.php:127
 msgid "Post category or tag"
 msgstr "Artikelkategorie oder Etikett"
 
@@ -242,11 +254,19 @@ msgstr "Den Autor anzeigen"
 msgid "Show avatar"
 msgstr "Den Avatar anzeigen"
 
+#: class-decent-comments-rest.php:182
+msgid "Show comment"
+msgstr "Den Kommentar anzeigen"
+
+#: class-decent-comments-rest.php:166
+msgid "Show comment author"
+msgstr "Den Autor der Kommentars anzeigen"
+
 #: class-decent-comments-widget.php:539
 msgid "Show comment excerpt"
 msgstr "Den Auszug anzeigen"
 
-#: class-decent-comments-widget.php:574
+#: class-decent-comments-widget.php:574 class-decent-comments-rest.php:174
 msgid "Show date"
 msgstr "Datum anzeigen"
 
@@ -266,11 +286,11 @@ msgstr "Den Kommentar anzeigen"
 msgid "Show the date and time when the comment was posted."
 msgstr "Das Datum und die Uhrzeit des Kommentars anzeigen."
 
-#: class-decent-comments-rest.php:50
+#: class-decent-comments-rest.php:59
 msgid "Size of author avatars in pixels"
 msgstr "Die Größe des Avatars in Pixeln"
 
-#: class-decent-comments-rest.php:74
+#: class-decent-comments-rest.php:101
 msgid "Sort comments by: date, author_email, author_url, content, karma, post"
 msgstr ""
 "Kommentare sortieren nach: date, author_email, author_url, content, karma, "
@@ -284,7 +304,7 @@ msgstr "Reihenfolge"
 msgid "Sort order."
 msgstr "Reihenfolge."
 
-#: class-decent-comments-rest.php:90
+#: class-decent-comments-rest.php:118
 msgid "Sort order: asc or desc"
 msgstr "Reihenfolge: asc oder desc"
 
@@ -296,7 +316,7 @@ msgstr "Sortierkriterium."
 msgid "Taxonomy"
 msgstr "Taxonomie"
 
-#: class-decent-comments-rest.php:107
+#: class-decent-comments-rest.php:135
 msgid "Term ids or slugs"
 msgstr "Begriffs-IDs oder Slugs"
 
@@ -349,11 +369,11 @@ msgstr "Titel, leer, Artikel-ID oder [current]"
 msgid "Trackbacks"
 msgstr "Trackbacks"
 
-#: class-decent-comments-rest.php:122
+#: class-decent-comments-rest.php:150
 msgid "Whether to include Pingbacks"
 msgstr "Pingbacks einbeziehen"
 
-#: class-decent-comments-rest.php:130
+#: class-decent-comments-rest.php:158
 msgid "Whether to include Trackbacks"
 msgstr "Trackbacks einbeziehen"
 

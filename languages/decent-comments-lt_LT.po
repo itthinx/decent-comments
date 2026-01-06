@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Decent Comments 1.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-22 21:09+0100\n"
-"PO-Revision-Date: 2025-12-23 11:20+0100\n"
+"POT-Creation-Date: 2026-01-06 14:45+0100\n"
+"PO-Revision-Date: 2026-01-06 15:04+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: lt\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #: blocks/decent-comments/node_modules/@wordpress/style-engine/class-wp-style-engine-processor.php:44
 msgid "$store must be an instance of WP_Style_Engine_CSS_Rules_Store"
-msgstr ""
+msgstr "„$store“ turi būti WP_Style_Engine_CSS_Rules_Store egzempliorius"
 
 #: class-decent-comments-renderer.php:496
 #, php-format
@@ -81,13 +81,17 @@ msgstr "Mažėjančia tvarka"
 msgid "Ellipsis"
 msgstr "Elipsė"
 
-#: class-decent-comments-widget.php:532 class-decent-comments-rest.php:114
+#: class-decent-comments-widget.php:532 class-decent-comments-rest.php:142
 msgid "Exclude comments from post authors"
 msgstr ""
 
-#: class-decent-comments-rest.php:58
-msgid "ID of the post to get comments for (0 for all posts)"
+#: class-decent-comments-rest.php:74
+msgid "Generate an excerpt"
 msgstr ""
+
+#: class-decent-comments-rest.php:67
+msgid "ID of the post to get comments for (0 for all posts)"
+msgstr "Įrašo ID, kad būtų galima gauti komentarus (0 visiems įrašams)"
 
 #: class-decent-comments-widget.php:630
 msgid ""
@@ -164,17 +168,25 @@ msgstr ""
 msgid "Number of characters in excerpts"
 msgstr ""
 
+#: class-decent-comments-rest.php:93
+msgid "Number of characters shown as an excerpt"
+msgstr "Simbolių skaičius, rodomas kaip ištrauka"
+
 #: class-decent-comments-widget.php:455
 msgid "Number of comments"
 msgstr "Komentarų skaičius"
 
-#: class-decent-comments-rest.php:41
+#: class-decent-comments-rest.php:50
 msgid "Number of comments to return"
 msgstr "Komentarų skaičius"
 
 #: class-decent-comments-widget.php:545
 msgid "Number of words in excerpts"
 msgstr "Žodžių skaičius ištraukose"
+
+#: class-decent-comments-rest.php:84
+msgid "Number of words shown as an excerpt"
+msgstr "Žodžių skaičius, rodomas kaip ištrauka"
 
 #: class-decent-comments.php:58
 msgid "Options"
@@ -200,9 +212,9 @@ msgstr "Įrašo identifikatorius"
 msgid "Post Type"
 msgstr ""
 
-#: class-decent-comments-rest.php:99
+#: class-decent-comments-rest.php:127
 msgid "Post category or tag"
-msgstr ""
+msgstr "Įrašo kategorija arba žyma"
 
 #: class-decent-comments.php:172
 msgid "Save"
@@ -233,11 +245,19 @@ msgstr "Rodyti autorių"
 msgid "Show avatar"
 msgstr "Rodyti pseudoportretą"
 
+#: class-decent-comments-rest.php:182
+msgid "Show comment"
+msgstr "Rodyti komentarą"
+
+#: class-decent-comments-rest.php:166
+msgid "Show comment author"
+msgstr "Rodyti komentaro autorių"
+
 #: class-decent-comments-widget.php:539
 msgid "Show comment excerpt"
 msgstr "Rodyti komentaro ištrauką"
 
-#: class-decent-comments-widget.php:574
+#: class-decent-comments-widget.php:574 class-decent-comments-rest.php:174
 msgid "Show date"
 msgstr ""
 
@@ -257,13 +277,15 @@ msgstr "Rodyti komentarą"
 msgid "Show the date and time when the comment was posted."
 msgstr ""
 
-#: class-decent-comments-rest.php:50
+#: class-decent-comments-rest.php:59
 msgid "Size of author avatars in pixels"
 msgstr "Pseudoportreto dydis, taškais"
 
-#: class-decent-comments-rest.php:74
+#: class-decent-comments-rest.php:101
 msgid "Sort comments by: date, author_email, author_url, content, karma, post"
 msgstr ""
+"Rūšiuoti komentarus pagal: date, author_email, author_url, content, karma, "
+"post"
 
 #: class-decent-comments-widget.php:474
 msgid "Sort order"
@@ -273,7 +295,7 @@ msgstr "Rikiavimo tvarka"
 msgid "Sort order."
 msgstr "Rikiavimo tvarka."
 
-#: class-decent-comments-rest.php:90
+#: class-decent-comments-rest.php:118
 msgid "Sort order: asc or desc"
 msgstr "Rikiavimo tvarka: asc arba post_tag"
 
@@ -285,9 +307,9 @@ msgstr "Rikiavimo kriterijai."
 msgid "Taxonomy"
 msgstr "Taksonomija"
 
-#: class-decent-comments-rest.php:107
+#: class-decent-comments-rest.php:135
 msgid "Term ids or slugs"
-msgstr ""
+msgstr "Terminų ID arba šliuzus"
 
 #: class-decent-comments-widget.php:630
 msgid "Terms"
@@ -301,7 +323,7 @@ msgstr ""
 #: class-decent-comments-widget.php:442
 #, php-format
 msgid "Thanks for supporting our work with a purchase in our %sShop%s!"
-msgstr ""
+msgstr "Dėkojame, kad remiate mūsų darbą pirkdami mūsų %sShop%s!"
 
 #: class-decent-comments-widget.php:559
 msgid "The ellipsis is shown after the excerpt when there is more content."
@@ -335,11 +357,11 @@ msgstr "Antraštė, tuščia, įrašo identifikatorius arba [current]"
 msgid "Trackbacks"
 msgstr ""
 
-#: class-decent-comments-rest.php:122
+#: class-decent-comments-rest.php:150
 msgid "Whether to include Pingbacks"
 msgstr ""
 
-#: class-decent-comments-rest.php:130
+#: class-decent-comments-rest.php:158
 msgid "Whether to include Trackbacks"
 msgstr ""
 

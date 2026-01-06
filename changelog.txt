@@ -11,6 +11,7 @@
 * Fixed some code formatting issues.
 * Changed block placeholder to generic verbiage.
 * Updated the translation template.
+* Updated the included translations.
 
 = 3.0.1 =
 * WordPress 6.9 compatible.
