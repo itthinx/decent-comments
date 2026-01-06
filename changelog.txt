@@ -2,6 +2,8 @@
 
 = 3.0.2 =
 * WordPress 6.9 compatible.
+* Removed unecessary author_email field from REST API endpoint.
+* Fixed warning in Decent Comments Block widget when rendering on the frontend.
 
 = 3.0.1 =
 * WordPress 6.9 compatible.

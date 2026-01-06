@@ -36,7 +36,13 @@ if (window.decentCommentsView) {
 
 document.addEventListener('DOMContentLoaded', async () => {
 	const blocks = document.querySelectorAll('.wp-block-itthinx-decent-comments');
- 	for (const block of blocks) {
+
+	for (const block of blocks) {
+		if (!block._decentCommentsRoot) {
+			block._decentCommentsRoot = createRoot(block);
+		}
+		const root = block._decentCommentsRoot;
+
 		try {
 			const attributes = parseAttributes(block.dataset.attributes);
 			if (attributes.post_id === '[current]' || attributes.post_id === '{current}') {
@@ -52,18 +58,17 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 			const nonce = window.decentCommentsView?.nonce || '';
 			const response = await fetchComments(attributes, nonce);
-			const root = createRoot(block);
 			root.render(
 				<RenderComments comments={response.comments || []} attributes={attributes} />
 			);
 		} catch (error) {
-			const root = createRoot(block);
-				root.render(
-					<p className="text-red-500">
-						{__('Error loading comments', 'decent-comments')}
-					</p>
-				);
+			root.render(
+				<p className="text-red-500">
+					{__('Error loading comments', 'decent-comments')}
+				</p>
+			);
 			console.error( 'Decent Comments Error:', error );
 		}
+
 	}
 });
