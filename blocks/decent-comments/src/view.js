@@ -56,8 +56,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 				}
 			}
 
-			const nonce = window.decentCommentsView?.nonce || '';
-			const response = await fetchComments(attributes, nonce);
+			const token = window.decentCommentsView?.token || '';
+			const response = await fetchComments(attributes, token);
 			root.render(
 				<RenderComments comments={response.comments || []} attributes={attributes} />
 			);

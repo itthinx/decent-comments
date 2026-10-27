@@ -1,5 +1,5 @@
 === Decent Comments ===
-Contributors: itthinx
+Contributors: itthinx, gtsiokos
 Donate link: https://www.itthinx.com/shop/
 Tags: comment, comments, shortcode, discussion, feedback
 Requires at least: 6.5

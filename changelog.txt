@@ -2,6 +2,10 @@
 
 = 3.0.3 =
 * WordPress 6.9 compatible.
+* Added REST endpoint permission callback.
+* Changed default orderby argument to comment date.
+* Refactored apiFetch call, added Authorization header argument.
+* Formatting.
 
 = 3.0.2 =
 * WordPress 6.9 compatible.
