@@ -60,16 +60,23 @@ export function parseAttributes(data) {
 	return JSON.parse(data || '{}');
 }
 
-export async function fetchComments(attributes, nonce) {
+export async function fetchComments(attributes, token = null) {
 	const query = buildQuery(attributes);
-	const response = await apiFetch({
-		path: `decent-comments/v1/comments?${query.toString()}`,
-		method: 'GET',
-		headers: {
-			'X-WP-Nonce': nonce,
-		},
-	});
-	return response;
+
+	try {
+		const response = await apiFetch({
+			path: `decent-comments/v1/comments?${query.toString()}`,
+			method: 'GET',
+			headers: {
+				'Authorization': token,
+				'Content-Type': 'application/json',
+			},
+		});
+
+		return response;
+	} catch (error) {
+		console.error('Failed to fetch comments:', error);
+	}
 }
 
 function buildQuery(attributes) {

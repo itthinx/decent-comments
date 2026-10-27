@@ -79,8 +79,8 @@ registerBlockType( metadata.name, {
 						updatedAttributes.term_ids = '';
 					}
 
-					const nonce = window.decentCommentsEdit?.nonce || '';
-					const response = await fetchComments(updatedAttributes, nonce);
+					const token = window.decentCommentsEdit?.token || '';
+					const response = await fetchComments(updatedAttributes, token);
 					setComments(response.comments || []);
 					setError(null);
 				} catch (err) {

@@ -19,10 +19,16 @@
  * @since decent-comments 3.0.0
  */
 
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * REST API handling.
  */
 class Decent_Comments_Rest {
+
+	private $token = null;
 
 	/**
 	 * Initialization.
@@ -36,155 +42,158 @@ class Decent_Comments_Rest {
 	 */
 	public static function rest_api_init() {
 		register_rest_route(
-			'decent-comments/v1', '/comments', array(
-			'methods'             => WP_REST_Server::READABLE,
-			'callback'            => array( __CLASS__, 'decent_comments_rest_endpoint' ),
-			'permission_callback' => '__return_true', // Public access; adjust as needed
-			'args' => array(
-				'number' => array(
-					'default'           => 5,
-					'minimum'           => 1,
-					'required'          => false,
-					'type'              => 'integer',
-					'sanitize_callback' => 'absint',
-					'description'       => __( 'Number of comments to return', 'decent-comments' ),
-					'validate_callback' => 'rest_validate_request_arg'
-				),
-				'avatar_size' => array(
-					'default'           => 48,
-					'minimum'           => 24,
-					'required'          => false,
-					'type'              => 'integer',
-					'sanitize_callback' => 'absint',
-					'description'       => __( 'Size of author avatars in pixels', 'decent-comments' ),
-					'validate_callback' => 'rest_validate_request_arg'
-				),
-				'post_id' => array(
-					'default'           => '',
-					'required'          => false,
-					'type'              => 'string',
-					'sanitize_callback' => 'sanitize_text_field',
-					'description'       => __( 'ID of the post to get comments for (0 for all posts)', 'decent-comments' ),
-					'validate_callback' => 'rest_validate_request_arg'
-				),
-				'excerpt' => array(
-					'default'           => false,
-					'required'          => false,
-					'type'              => 'boolean',
-					'description'       => __( 'Generate an excerpt', 'decent-comments' ),
-					'sanitize_callback' => array( __CLASS__, 'to_boolean' ),
-					'validate_callback' => 'rest_validate_request_arg'
-				),
-				'max_excerpt_words' => array(
-					'default'           => 20,
-					'minimum'           => 1,
-					'required'          => false,
-					'type'              => 'integer',
-					'sanitize_callback' => 'absint',
-					'description'       => __( 'Number of words shown as an excerpt', 'decent-comments' ),
-					'validate_callback' => 'rest_validate_request_arg'
-				),
-				'max_excerpt_characters' => array(
-					'default'           => 0,
-					'minimum'           => 0,
-					'required'          => false,
-					'type'              => 'integer',
-					'sanitize_callback' => 'absint',
-					'description'       => __( 'Number of characters shown as an excerpt', 'decent-comments' ),
-					'validate_callback' => 'rest_validate_request_arg'
-				),
-				'orderby' => array(
-					'default'           => 'comment_author_email',
-					'required'          => false,
-					'type'              => 'string',
-					'sanitize_callback' => 'sanitize_text_field',
-					'description'       => __( 'Sort comments by: date, author_email, author_url, content, karma, post', 'decent-comments' ),
-					'enum'              => array(
-						'comment_date_gmt',
-						'comment_author_email',
-						'comment_author_url',
-						'comment_content',
-						'comment_karma',
-						'comment_post_id',
-						'comment_ID'
+			'decent-comments/v1',
+			'/comments',
+			array(
+				'methods'             => WP_REST_Server::READABLE,
+				'callback'            => array( __CLASS__, 'decent_comments_rest_endpoint' ),
+				'permission_callback' => array( __CLASS__, 'decent_comments_rest_permission_callback' ),
+				'args' => array(
+					'number' => array(
+						'default'           => 5,
+						'minimum'           => 1,
+						'required'          => false,
+						'type'              => 'integer',
+						'sanitize_callback' => 'absint',
+						'description'       => __( 'Number of comments to return', 'decent-comments' ),
+						'validate_callback' => 'rest_validate_request_arg'
 					),
-					'validate_callback' => 'rest_validate_request_arg'
-				),
-				'order' => array(
-					'default'           => 'desc',
-					'required'          => false,
-					'type'              => 'string',
-					'sanitize_callback' => 'sanitize_text_field',
-					'description'       => __( 'Sort order: asc or desc', 'decent-comments' ),
-					'enum'              => array('asc', 'desc'),
-					'validate_callback' => 'rest_validate_request_arg'
-				),
-				'taxonomy' => array(
-					'default'           => '',
-					'required'          => false,
-					'type'              => 'string',
-					'sanitize_callback' => 'sanitize_text_field',
-					'description'       => __( 'Post category or tag', 'decent-comments' ),
-					'validate_callback' => 'rest_validate_request_arg'
-				),
-				'terms' => array(
-					'default'           => '',
-					'required'          => false,
-					'type'              => 'string',
-					'sanitize_callback' => 'sanitize_text_field',
-					'description'       => __( 'Term ids or slugs', 'decent-comments' ),
-					'validate_callback' => 'rest_validate_request_arg'
-				),
-				'exclude_post_author' => array(
-					'default'           => false,
-					'required'          => false,
-					'type'              => 'boolean',
-					'description'       => __( 'Exclude comments from post authors', 'decent-comments' ),
-					'sanitize_callback' => array( __CLASS__, 'to_boolean' ),
-					'validate_callback' => 'rest_validate_request_arg'
-				),
-				'pingback' => array(
-					'default'           => true,
-					'required'          => false,
-					'type'              => 'boolean',
-					'description'       => __( 'Whether to include Pingbacks', 'decent-comments' ),
-					'sanitize_callback' => array( __CLASS__, 'to_boolean' ),
-					'validate_callback' => 'rest_validate_request_arg'
-				),
-				'trackback' => array(
-					'default'           => true,
-					'required'          => false,
-					'type'              => 'boolean',
-					'description'       => __( 'Whether to include Trackbacks', 'decent-comments' ),
-					'sanitize_callback' => array( __CLASS__, 'to_boolean' ),
-					'validate_callback' => 'rest_validate_request_arg'
-				),
-				'show_author' => array(
-					'default'           => true,
-					'required'          => false,
-					'type'              => 'boolean',
-					'description'       => __( 'Show comment author', 'decent-comments' ),
-					'sanitize_callback' => array( __CLASS__, 'to_boolean' ),
-					'validate_callback' => 'rest_validate_request_arg'
-				),
-				'show_date' => array(
-					'default'           => true,
-					'required'          => false,
-					'type'              => 'boolean',
-					'description'       => __( 'Show date', 'decent-comments' ),
-					'sanitize_callback' => array( __CLASS__, 'to_boolean' ),
-					'validate_callback' => 'rest_validate_request_arg'
-				),
-				'show_comment' => array(
-					'default'           => true,
-					'required'          => false,
-					'type'              => 'boolean',
-					'description'       => __( 'Show comment', 'decent-comments' ),
-					'sanitize_callback' => array( __CLASS__, 'to_boolean' ),
-					'validate_callback' => 'rest_validate_request_arg'
-				)
-			),
-		));
+					'avatar_size' => array(
+						'default'           => 48,
+						'minimum'           => 24,
+						'required'          => false,
+						'type'              => 'integer',
+						'sanitize_callback' => 'absint',
+						'description'       => __( 'Size of author avatars in pixels', 'decent-comments' ),
+						'validate_callback' => 'rest_validate_request_arg'
+					),
+					'post_id' => array(
+						'default'           => '',
+						'required'          => false,
+						'type'              => 'string',
+						'sanitize_callback' => 'sanitize_text_field',
+						'description'       => __( 'ID of the post to get comments for (0 for all posts)', 'decent-comments' ),
+						'validate_callback' => 'rest_validate_request_arg'
+					),
+					'excerpt' => array(
+						'default'           => false,
+						'required'          => false,
+						'type'              => 'boolean',
+						'description'       => __( 'Generate an excerpt', 'decent-comments' ),
+						'sanitize_callback' => array( __CLASS__, 'to_boolean' ),
+						'validate_callback' => 'rest_validate_request_arg'
+					),
+					'max_excerpt_words' => array(
+						'default'           => 20,
+						'minimum'           => 1,
+						'required'          => false,
+						'type'              => 'integer',
+						'sanitize_callback' => 'absint',
+						'description'       => __( 'Number of words shown as an excerpt', 'decent-comments' ),
+						'validate_callback' => 'rest_validate_request_arg'
+					),
+					'max_excerpt_characters' => array(
+						'default'           => 0,
+						'minimum'           => 0,
+						'required'          => false,
+						'type'              => 'integer',
+						'sanitize_callback' => 'absint',
+						'description'       => __( 'Number of characters shown as an excerpt', 'decent-comments' ),
+						'validate_callback' => 'rest_validate_request_arg'
+					),
+					'orderby' => array(
+						'default'           => 'comment_date_gmt',
+						'required'          => false,
+						'type'              => 'string',
+						'sanitize_callback' => 'sanitize_text_field',
+						'description'       => __( 'Sort comments by: date, author_email, author_url, content, karma, post', 'decent-comments' ),
+						'enum'              => array(
+							'comment_date_gmt',
+							'comment_author_email',
+							'comment_author_url',
+							'comment_content',
+							'comment_karma',
+							'comment_post_id',
+							'comment_ID'
+						),
+						'validate_callback' => 'rest_validate_request_arg'
+					),
+					'order' => array(
+						'default'           => 'desc',
+						'required'          => false,
+						'type'              => 'string',
+						'sanitize_callback' => 'sanitize_text_field',
+						'description'       => __( 'Sort order: asc or desc', 'decent-comments' ),
+						'enum'              => array('asc', 'desc'),
+						'validate_callback' => 'rest_validate_request_arg'
+					),
+					'taxonomy' => array(
+						'default'           => '',
+						'required'          => false,
+						'type'              => 'string',
+						'sanitize_callback' => 'sanitize_text_field',
+						'description'       => __( 'Post category or tag', 'decent-comments' ),
+						'validate_callback' => 'rest_validate_request_arg'
+					),
+					'terms' => array(
+						'default'           => '',
+						'required'          => false,
+						'type'              => 'string',
+						'sanitize_callback' => 'sanitize_text_field',
+						'description'       => __( 'Term ids or slugs', 'decent-comments' ),
+						'validate_callback' => 'rest_validate_request_arg'
+					),
+					'exclude_post_author' => array(
+						'default'           => false,
+						'required'          => false,
+						'type'              => 'boolean',
+						'description'       => __( 'Exclude comments from post authors', 'decent-comments' ),
+						'sanitize_callback' => array( __CLASS__, 'to_boolean' ),
+						'validate_callback' => 'rest_validate_request_arg'
+					),
+					'pingback' => array(
+						'default'           => true,
+						'required'          => false,
+						'type'              => 'boolean',
+						'description'       => __( 'Whether to include Pingbacks', 'decent-comments' ),
+						'sanitize_callback' => array( __CLASS__, 'to_boolean' ),
+						'validate_callback' => 'rest_validate_request_arg'
+					),
+					'trackback' => array(
+						'default'           => true,
+						'required'          => false,
+						'type'              => 'boolean',
+						'description'       => __( 'Whether to include Trackbacks', 'decent-comments' ),
+						'sanitize_callback' => array( __CLASS__, 'to_boolean' ),
+						'validate_callback' => 'rest_validate_request_arg'
+					),
+					'show_author' => array(
+						'default'           => true,
+						'required'          => false,
+						'type'              => 'boolean',
+						'description'       => __( 'Show comment author', 'decent-comments' ),
+						'sanitize_callback' => array( __CLASS__, 'to_boolean' ),
+						'validate_callback' => 'rest_validate_request_arg'
+					),
+					'show_date' => array(
+						'default'           => true,
+						'required'          => false,
+						'type'              => 'boolean',
+						'description'       => __( 'Show date', 'decent-comments' ),
+						'sanitize_callback' => array( __CLASS__, 'to_boolean' ),
+						'validate_callback' => 'rest_validate_request_arg'
+					),
+					'show_comment' => array(
+						'default'           => true,
+						'required'          => false,
+						'type'              => 'boolean',
+						'description'       => __( 'Show comment', 'decent-comments' ),
+						'sanitize_callback' => array( __CLASS__, 'to_boolean' ),
+						'validate_callback' => 'rest_validate_request_arg'
+					)
+				), // args array
+			) // endpoint methods/args
+		); // register_rest_route
 	}
 
 	/**
@@ -296,6 +305,76 @@ class Decent_Comments_Rest {
 			200
 		);
 
+	}
+
+	/**
+	 * Permission callback for the REST endpoint
+	 *
+	 * @since 3.0.3
+	 * @param WP_REST_Request $request
+	 * @return WP_Error|boolean
+	 */
+	public static function decent_comments_rest_permission_callback( $request ) {
+		$forbidden_params = array();
+		$protected_params = array( 'comment_author_email' );
+		$current_user_id = get_current_user_id();
+
+		foreach ( $protected_params as $param ) {
+			if ( $param === 'comment_author_email' ) {
+				if (
+					$request['orderby'] === $param &&
+					!$current_user_id
+				) {
+					$forbidden_params[] = $param;
+				}
+			}
+		}
+
+		if ( !empty( $forbidden_params ) && $current_user_id ) {
+
+			$request_headers = $request->get_headers();
+			if ( isset( $request_headers['authorization'] ) ) {
+				if ( isset( $request_headers['authorization'][0] ) ) {
+					$token = get_transient( 'decent_comments_rest_token_' . $current_user_id );
+					if ( $token ) {
+						if ( !hash_equals( $token, $request_headers['authorization'][0] ) ) {
+							return new WP_Error(
+								'rest_forbidden_param',
+							/* translators: %s: List of forbidden parameters. */
+								sprintf( __( 'Query parameter not permitted: %s', 'decent-comments' ), implode( ', ', $forbidden_params ) ),
+								array( 'status' => rest_authorization_required_code() )
+							);
+						}
+					}
+				}
+			}
+		}
+
+		return true;
+	}
+
+	public static function generate_token( $request_args = array() ) {
+
+		if ( !is_user_logged_in() ) {
+			return false;
+		}
+
+		$current_user_id = get_current_user_id();
+		$existing_token = get_transient( 'decent_comments_rest_token_' . $current_user_id );
+		if ( $existing_token !== false ) {
+			$token = $existing_token;
+		} else {
+			$data = array(
+				'args' => $request_args,
+				'time' => time(),
+				'salt' => rand( 0, PHP_INT_MAX )
+			);
+
+			$token = hash( 'sha256', json_encode( $data ) );
+			set_transient( 'decent_comments_rest_token', $token, HOUR_IN_SECONDS );
+
+		}
+		return $token;
 	}
 
 	/**
