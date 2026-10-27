@@ -3,9 +3,9 @@ Contributors: itthinx, gtsiokos
 Donate link: https://www.itthinx.com/shop/
 Tags: comment, comments, shortcode, discussion, feedback
 Requires at least: 6.5
-Tested up to: 6.9
+Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 3.0.3
+Stable tag: 4.0.0
 License: GPLv3
 
 Decent Comments shows what people say. A more engaging way to show comments.
