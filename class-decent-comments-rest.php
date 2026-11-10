@@ -284,8 +284,8 @@ class Decent_Comments_Rest {
 					$comment_data['content'] = Decent_Comments_Renderer::get_comment(
 						$comment->comment_ID,
 						array(
-							'excerpt' => $args['excerpt'],
-							'max_excerpt_words' => $args['max_excerpt_words'],
+							'excerpt'                => $args['excerpt'],
+							'max_excerpt_words'      => $args['max_excerpt_words'],
 							'max_excerpt_characters' => $args['max_excerpt_characters']
 						)
 					);
@@ -366,7 +366,7 @@ class Decent_Comments_Rest {
 		$author = '';
 		$post = get_post( $post_id );
 		if ( $post && !empty( $post->post_author ) ) {
-			$user = get_user( $post->post_author );
+			$user = get_user_by( 'id', $post->post_author );
 			if ( $user ) {
 				if ( !empty( $user->display_name ) ) {
 					$author = $user->display_name;

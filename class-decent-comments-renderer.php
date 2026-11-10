@@ -152,7 +152,7 @@ class Decent_Comments_Renderer {
 		if ( $comment ) {
 
 			if ( $strip_tags ) {
-				$content = strip_tags( $comment->comment_content );
+				$content = strip_tags( $comment->comment_content ); // phpcs:ignore WordPress.WP.AlternativeFunctions.strip_tags_strip_tags
 			} else {
 				$content = $comment->comment_content;
 			}
@@ -508,7 +508,8 @@ class Decent_Comments_Renderer {
 				if ( $show_date ) {
 					$output .= '<div class="comment-date">';
 					$output .= sprintf(
-						_x( '%1$s at %2$s', 'comment-date', 'decent-comments' ), // translators : the first argument is the date of the comment, the second is the time
+						/* translators: 1: date of the comment, 2: time */
+						_x( '%1$s at %2$s', 'comment-date', 'decent-comments' ),
 						mysql2date( get_option( 'date_format' ), $comment->comment_date ),
 						mysql2date( get_option( 'time_format' ), $comment->comment_date, true )
 					);
@@ -518,6 +519,7 @@ class Decent_Comments_Renderer {
 				if ( $show_link ) {
 					$output .= '<div class="comment-link">';
 					$output .= sprintf(
+						/* translators: comment link */
 						_x( 'on %s', 'comment-link', 'decent-comments' ),
 						'<a href="' . esc_url( get_comment_link( $comment->comment_ID ) ) . '">' . get_the_title( $comment->comment_post_ID ) . '</a>'
 					);

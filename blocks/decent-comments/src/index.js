@@ -21,7 +21,7 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
-import { PanelBody, TextControl, ToggleControl, SelectControl, NumberControl } from '@wordpress/components';
+import { PanelBody, TextControl, ToggleControl, SelectControl } from '@wordpress/components';
 import './editor.css';
 import metadata from './block.json';
 import { useState, useEffect } from '@wordpress/element';
@@ -63,7 +63,6 @@ registerBlockType( metadata.name, {
 		post_type: { type: 'string', default: 'post' },
 	},
 	edit: ({ attributes, setAttributes }) => {
-		const blockProps = useBlockProps();
 		const [comments, setComments] = useState([]);
 		const [error, setError] = useState(null);
 
@@ -79,8 +78,8 @@ registerBlockType( metadata.name, {
 						updatedAttributes.term_ids = '';
 					}
 
-					const token = window.decentCommentsEdit?.token || '';
-					const response = await fetchComments(updatedAttributes, token);
+					const nonce = window.decentCommentsEdit?.nonce || '';
+					const response = await fetchComments(updatedAttributes, nonce);
 					setComments(response.comments || []);
 					setError(null);
 				} catch (err) {
@@ -91,6 +90,11 @@ registerBlockType( metadata.name, {
 
 			getComments();
 		}, [attributes]);
+
+		const blockProps = useBlockProps({
+			className: 'wp-block-itthinx-decent-comments',
+			'data-attributes': JSON.stringify(attributes)
+		});
 
 		return (
 			<>
@@ -238,7 +242,7 @@ registerBlockType( metadata.name, {
 						/>
 					</PanelBody>
 				</InspectorControls>
-				<div {...useBlockProps({ className: 'wp-block-itthinx-decent-comments', 'data-attributes': JSON.stringify(attributes) })}>
+				<div {...blockProps}>
 					{error ? (
 						<div className="decent-comments-error">
 							<p>
@@ -256,8 +260,12 @@ registerBlockType( metadata.name, {
 		);
 	},
 	save: ({ attributes }) => {
+		const blockProps = useBlockProps.save({ 
+			className: 'wp-block-itthinx-decent-comments',
+			'data-attributes': JSON.stringify(attributes)
+		});
 		return (
-			<div className="wp-block-itthinx-decent-comments" data-attributes={JSON.stringify(attributes)}>
+			<div {...blockProps}>
 				<p>{ __( 'Comments', 'decent-comments' ) } &hellip;</p>
 			</div>
 		);

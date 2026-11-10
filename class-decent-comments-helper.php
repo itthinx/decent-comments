@@ -41,18 +41,21 @@ class Decent_Comments_Helper {
 		global $wpdb;
 		$post = null;
 		if ( $post_type == null ) {
-			$query = $wpdb->prepare(
-				"SELECT ID FROM $wpdb->posts WHERE post_title LIKE '%%%s%%'",
-				$title
+			$result = $wpdb->get_row(
+				$wpdb->prepare(
+					"SELECT ID FROM $wpdb->posts WHERE post_title LIKE %s",
+					'%' . $wpdb->esc_like( $title ) . '%'
+				)
 			);
 		} else {
-			$query = $wpdb->prepare(
-				"SELECT ID FROM $wpdb->posts WHERE post_title LIKE '%%%s%%' AND post_type= %s",
-				$title,
-				$post_type
+			$result = $wpdb->get_row(
+				$wpdb->prepare(
+					"SELECT ID FROM $wpdb->posts WHERE post_title LIKE %s AND post_type= %s",
+					'%' . $wpdb->esc_like( $title ) . '%',
+					$post_type
+				)
 			);
 		}
-		$result = $wpdb->get_row( $query );
 		if ( !empty( $result ) ) {
 			$post_id = $result->ID;
 			$post = get_post( $post_id, $output );
