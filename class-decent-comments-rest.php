@@ -59,7 +59,7 @@ class Decent_Comments_Rest {
 						'validate_callback' => 'rest_validate_request_arg'
 					),
 					'avatar_size' => array(
-						'default'           => 48,
+						'default'           => 24,
 						'minimum'           => 24,
 						'required'          => false,
 						'type'              => 'integer',

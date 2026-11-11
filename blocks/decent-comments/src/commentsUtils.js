@@ -142,7 +142,7 @@ export const RenderComment = ({ comment, attributes }) => {
 		`${comment.date} ${__('at', 'decent-comments')} ${comment.time}`
 	) : null;
 
-	const avatarSize = attributes.avatar_size || 48;
+	const avatarSize = attributes.avatar_size || 24;
 	const avatarStyle = {
 		width: `${avatarSize}px`,
 		height: `${avatarSize}px`,
@@ -212,7 +212,7 @@ function formatExcerpt(string, attributes) {
 
 function decodeEntities(text) {
 	if (!text || typeof text !== 'string') return '';
-	
+
 	return text
 		.replace(/&#8211;/g, '–')   // En-dash
 		.replace(/&#8212;/g, '—')   // Em-dash

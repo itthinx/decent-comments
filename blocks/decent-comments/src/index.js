@@ -45,7 +45,7 @@ registerBlockType( metadata.name, {
 		show_date: { type: 'boolean', default: true },
 		link_authors: { type: 'boolean', default: true },
 		show_avatar: { type: 'boolean', default: true },
-		avatar_size: { type: 'number', default: 48 },
+		avatar_size: { type: 'number', default: 24 },
 		show_link: { type: 'boolean', default: true },
 		show_comment: { type: 'boolean', default: true },
 		taxonomy: { type: 'string', default: ''},
@@ -200,8 +200,8 @@ registerBlockType( metadata.name, {
 						<TextControl
 							label={__('Avatar size', 'decent-comments')}
 							value={attributes.avatar_size}
-							onChange={(value) => setAttributes({ avatar_size: parseInt(value) || 48 })}
-							min="0"
+							onChange={(value) => setAttributes({ avatar_size: parseInt(value) || 24 })}
+							min="24"
 							type="number"
 						/>
 						<ToggleControl

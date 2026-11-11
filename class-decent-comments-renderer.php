@@ -312,7 +312,7 @@ class Decent_Comments_Renderer {
 		}
 
 		// @since 1.10.0
-		// @todo No default post_status?????
+		$post_status = 'publish';
 		if ( isset( $options['post_status'] ) ) {
 			$post_status = $options['post_status'];
 			if ( is_string( $post_status ) ) {
@@ -436,39 +436,63 @@ class Decent_Comments_Renderer {
 		if ( !empty( $comments ) ) {
 
 			// display options
+
+			$avatar_size = self::$defaults['avatar_size'];
 			if ( isset( $options['avatar_size'] ) ) {
 				$avatar_size = intval( $options['avatar_size'] );
 			}
+
+			$excerpt = self::$defaults['excerpt'];
 			if ( isset( $options['excerpt'] ) ) {
 				$excerpt = ( $options['excerpt'] !== 'false' && $options['excerpt'] !== false );
 			}
+
+			$max_excerpt_words = self::$defaults['max_excerpt_words'];
 			if ( isset( $options['max_excerpt_words'] ) ) {
 				$max_excerpt_words = intval( $options['max_excerpt_words'] );
 			}
+
+			$max_excerpt_characters = self::$defaults['max_excerpt_characters'];
 			if ( isset( $options['max_excerpt_characters'] ) ) {
 				$max_excerpt_characters = intval( $options['max_excerpt_characters'] );
 			}
+
+			$ellipsis = self::$defaults['ellipsis'];
 			if ( isset( $options['ellipsis'] ) ) {
 				$ellipsis = $options['ellipsis'];
 			}
+
+			$show_author = self::$defaults['show_author'];
 			if ( isset( $options['show_author'] ) ) {
 				$show_author = ( $options['show_author'] !== 'false' && $options['show_author'] !== false );
 			}
+
+			$show_date = self::$defaults['show_date'];
 			if ( isset( $options['show_date'] ) ) {
 				$show_date = ( $options['show_date'] !== 'false' && $options['show_date'] !== false );
 			}
+
+			$link_author = self::$defaults['link_author'];
 			if ( isset( $options['link_author'] ) ) {
 				$link_author = ( $options['link_author'] !== 'false' && $options['link_author'] !== false );
 			}
+
+			$show_avatar = self::$defaults['show_avatar'];
 			if ( isset( $options['show_avatar'] ) ) {
 				$show_avatar = ( $options['show_avatar'] !== 'false' && $options['show_avatar'] !== false );
 			}
+
+			$show_link = self::$defaults['show_link'];
 			if ( isset( $options['show_link'] ) ) {
 				$show_link = ( $options['show_link'] !== 'false' && $options['show_link'] !== false );
 			}
+
+			$show_comment = self::$defaults['show_comment'];
 			if ( isset( $options['show_comment'] ) ) {
 				$show_comment = ( $options['show_comment'] !== 'false' && $options['show_comment'] !== false );
 			}
+
+			$strip_tags = self::$defaults['strip_tags'];
 			if ( isset( $options['strip_tags'] ) ) {
 				$strip_tags = ( $options['strip_tags'] !== 'false' && $options['strip_tags'] !== false );
 			}
