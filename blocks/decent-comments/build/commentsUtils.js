@@ -1,1 +1,1 @@
-(()=>{"use strict";var r={723(r){r.exports=window.wp.i18n},790(r){r.exports=window.ReactJSXRuntime}},t={};function e(o){var i=t[o];if(void 0!==i)return i.exports;var n=t[o]={exports:{}};return r[o](n,n.exports,e),n.exports}window.wp.apiFetch,e(723),e(790)})();
+(()=>{"use strict";var t={790(t){t.exports=window.ReactJSXRuntime},723(t){t.exports=window.wp.i18n}};const o={};function e(n){const r=o[n];if(void 0!==r)return r.exports;const s=o[n]={exports:{}};return t[n](s,s.exports,e),s.exports}window.wp.apiFetch,e(723),e(790)})();

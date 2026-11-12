@@ -106,7 +106,6 @@ class Decent_Comments {
 	 * Loads the shortcode handler class.
 	 */
 	public static function init() {
-		load_plugin_textdomain( 'decent-comments', null, 'decent-comments/languages' );
 		require_once( dirname( __FILE__ ) . '/class-decent-comments-renderer.php' );
 		require_once( dirname( __FILE__ ) . '/class-decent-comments-shortcode.php' );
 	}
@@ -159,20 +158,19 @@ class Decent_Comments {
 			'</div>';
 
 		// render options form
-		echo
-			'<form action="" name="options" method="post">' .
-			'<div>' .
-			'<h3>' . esc_html__( 'Settings', 'decent-comments' ) . '</h3>' .
-			'<p>' .
-			'<input name="delete-data" type="checkbox" ' . ( $delete_data ? 'checked="checked"' : '' ) . '/>' .
-			'<label for="delete-data">' . esc_html__( 'Delete settings when the plugin is deactivated', 'decent-comments' ) . '</label>' .
-			'</p>' .
-			'<p>' .
-			wp_nonce_field( plugin_basename( __FILE__ ), DC_OPTIONS_NONCE, true, false ) .
-			'<input type="submit" name="submit" class="button button-primary" value="' . esc_html__( 'Save', 'decent-comments' ) . '"/>' .
-			'</p>' .
-			'</div>' .
-			'</form>';
+		echo '<form action="" name="options" method="post">';
+		echo '<div>';
+		echo '<h3>' . esc_html__( 'Settings', 'decent-comments' ) . '</h3>';
+		echo '<p>';
+		echo '<input name="delete-data" type="checkbox" ' . ( $delete_data ? 'checked="checked"' : '' ) . '/>';
+		echo '<label for="delete-data">' . esc_html__( 'Delete settings when the plugin is deactivated', 'decent-comments' ) . '</label>';
+		echo '</p>';
+		echo '<p>';
+		wp_nonce_field( plugin_basename( __FILE__ ), DC_OPTIONS_NONCE, true, true );
+		echo '<input type="submit" name="submit" class="button button-primary" value="' . esc_html__( 'Save', 'decent-comments' ) . '"/>';
+		echo '</p>';
+		echo '</div>';
+		echo '</form>';
 	}
 }
 

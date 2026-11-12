@@ -102,7 +102,7 @@ class Decent_Comments_Widget extends WP_Widget {
 
 		global $wp_registered_sidebars, $wp_registered_widgets;
 
-		$sidebars_widgets = wp_get_sidebars_widgets();
+		$sidebars_widgets = get_option( 'sidebars_widgets', array() );
 		foreach ( $sidebars_widgets as $sidebar => $ids ) {
 			if ( $sidebar !== 'wp_inactive_widgets' ) {
 				if ( is_array( $ids ) ) {
@@ -264,14 +264,14 @@ class Decent_Comments_Widget extends WP_Widget {
 		// render the widget's content
 		$output = $before_widget;
 		if ( !empty( $title ) ) {
-			$output .= $before_title . $title . $after_title;
+			$output .= wp_kses_post( $before_title ) . esc_html( $title ) . wp_kses_post( $after_title );
 		}
 		$output .= Decent_Comments_Renderer::get_comments( $instance );
 		$output .= $after_widget;
 
 		self::cache_set( $widget_id, $output );
 
-		echo $output;
+		echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 	/**
@@ -286,7 +286,7 @@ class Decent_Comments_Widget extends WP_Widget {
 		$settings = $old_instance;
 
 		// title
-		$settings['title'] = strip_tags( $new_instance['title'] );
+		$settings['title'] = strip_tags( $new_instance['title'] ); // phpcs:ignore  WordPress.WP.AlternativeFunctions.strip_tags_strip_tags
 
 		// number
 		$number = isset( $new_instance['number'] ) ? intval( $new_instance['number'] ) : 0;
@@ -357,7 +357,7 @@ class Decent_Comments_Widget extends WP_Widget {
 		}
 
 		// ellipsis
-		$settings['ellipsis'] = isset( $new_instance['ellipsis'] ) ? strip_tags( $new_instance['ellipsis'] ) : '';
+		$settings['ellipsis'] = isset( $new_instance['ellipsis'] ) ? strip_tags( $new_instance['ellipsis'] ) : ''; // phpcs:ignore WordPress.WP.AlternativeFunctions.strip_tags_strip_tags 
 
 		// show_author
 		$settings['show_author'] = !empty( $new_instance['show_author'] );
@@ -436,34 +436,36 @@ class Decent_Comments_Widget extends WP_Widget {
 	 */
 	public function form( $instance ) {
 
-		extract( Decent_Comments_Renderer::$defaults );
-
 		echo '<p style="border-bottom: 1px solid #999; margin-bottom: 8px; padding-bottom: 8px; font-weight: 600;">';
-		printf( esc_html__( 'Thanks for supporting our work with a purchase in our %sShop%s!' ), '<a href="' . esc_url( 'https://www.itthinx.com/shop/>' ) . '">', '</a>' );
+		printf(
+			/* translators: itthinx.com shop */
+			esc_html__( 'Thanks for supporting our work with a purchase in our %s!', 'decent-comments' ),
+			'<a href="https://www.itthinx.com/shop/>">' . esc_html__( 'Shop', 'decent-comments' ) . '</a>'
+		);
 		echo '</p>';
 
 		// title
 		$title = isset( $instance['title'] ) ? $instance['title'] : "";
 		echo "<p>";
-		echo '<label for="' .$this->get_field_id( 'title' ) . '">' . esc_html__( 'Title', 'decent-comments' ) . '</label>';
-		echo '<input class="widefat" id="' . $this->get_field_id( 'title' ) . '" name="' . $this->get_field_name( 'title' ) . '" type="text" value="' . esc_attr( $title ) . '" />';
+		echo '<label for="' . esc_attr( $this->get_field_id( 'title' ) ) . '">' . esc_html__( 'Title', 'decent-comments' ) . '</label>';
+		echo '<input class="widefat" id="' . esc_attr( $this->get_field_id( 'title' ) ) . '" name="' . esc_attr( $this->get_field_name( 'title' ) ) . '" type="text" value="' . esc_attr( $title ) . '" />';
 		echo '</p>';
 
 		// number
 		$number = isset( $instance['number'] ) ? intval( $instance['number'] ) : '';
 		echo "<p>";
-		echo '<label class="title" title="' . esc_html__( "The number of comments to show.", 'decent-comments' ) .'" for="' .$this->get_field_id( 'number' ) . '">' . esc_html__( 'Number of comments', 'decent-comments' ) . '</label>';
-		echo '<input class="widefat" id="' . $this->get_field_id( 'number' ) . '" name="' . $this->get_field_name( 'number' ) . '" type="text" value="' . esc_attr( $number ) . '" />';
+		echo '<label class="title" title="' . esc_attr__( "The number of comments to show.", 'decent-comments' ) .'" for="' . esc_attr( $this->get_field_id( 'number' ) ) . '">' . esc_html__( 'Number of comments', 'decent-comments' ) . '</label>';
+		echo '<input class="widefat" id="' . esc_attr( $this->get_field_id( 'number' ) ) . '" name="' . esc_attr( $this->get_field_name( 'number' ) ) . '" type="text" value="' . esc_attr( $number ) . '" />';
 		echo '</p>';
 
 		// orderby
 		$orderby = isset( $instance['orderby'] ) ? $instance['orderby'] : '';
 		echo '<p>';
-		echo '<label class="title" title="' . esc_html__( "Sorting criteria.", 'decent-comments' ) .'" for="' .$this->get_field_id( 'orderby' ) . '">' . esc_html__( 'Order by ...', 'decent-comments' ) . '</label>';
-		echo '<select class="widefat" name="' . $this->get_field_name( 'orderby' ) . '">';
+		echo '<label class="title" title="' . esc_attr__( "Sorting criteria.", 'decent-comments' ) .'" for="' . esc_attr( $this->get_field_id( 'orderby' ) ) . '">' . esc_html__( 'Order by ...', 'decent-comments' ) . '</label>';
+		echo '<select class="widefat" name="' . esc_attr( $this->get_field_name( 'orderby' ) ) . '">';
 		foreach ( Decent_Comments_Renderer::$orderby_options as $orderby_option_key => $orderby_option_name ) {
 			$selected = ( $orderby_option_key == $orderby ? ' selected="selected" ' : "" );
-			echo '<option ' . $selected . 'value="' . $orderby_option_key . '">' . $orderby_option_name . '</option>';
+			echo '<option ' . esc_attr( $selected ) . 'value="' . esc_attr( $orderby_option_key ) . '">' . $orderby_option_name . '</option>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $orderby_option_name already escaped in Decent_Comments_Renderer
 		}
 		echo '</select>';
 		echo '</p>';
@@ -471,11 +473,11 @@ class Decent_Comments_Widget extends WP_Widget {
 		// order
 		$order = isset( $instance['order'] ) ? $instance['order'] : '';
 		echo '<p>';
-		echo '<label class="title" title="' . esc_html__( "Sort order.", 'decent-comments' ) .'" for="' .$this->get_field_id( 'order' ) . '">' . esc_html__( 'Sort order', 'decent-comments' ) . '</label>';
-		echo '<select class="widefat" name="' . $this->get_field_name( 'order' ) . '">';
+		echo '<label class="title" title="' . esc_attr__( "Sort order.", 'decent-comments' ) .'" for="' . esc_attr( $this->get_field_id( 'order' ) ) . '">' . esc_html__( 'Sort order', 'decent-comments' ) . '</label>';
+		echo '<select class="widefat" name="' . esc_attr( $this->get_field_name( 'order' ) ) . '">';
 		foreach ( Decent_Comments_Renderer::$order_options as $order_option_key => $order_option_name ) {
 			$selected = ( $order_option_key == $order ? ' selected="selected" ' : "" );
-			echo '<option ' . $selected . 'value="' . $order_option_key . '">' . $order_option_name . '</option>';
+			echo '<option ' . esc_attr( $selected ) . 'value="' . esc_attr( $order_option_key ) . '">' . $order_option_name . '</option>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $order_option_name already escaped in Decent_Comments_Renderer
 		}
 		echo '</select>';
 		echo '</p>';
@@ -490,13 +492,19 @@ class Decent_Comments_Widget extends WP_Widget {
 			}
 		}
 		echo "<p>";
-		echo '<label class="title" title="' . esc_html__( "Leave empty to show comments for all posts. To show comments for a specific post only, indicate either part of the title or the post ID. To show posts for the current post, indicate: [current]", 'decent-comments' ) . '" for="' .$this->get_field_id( 'post_id' ) . '">' . esc_html__( 'Post ID', 'decent-comments' ) . '</label>';
-		echo '<input class="widefat" id="' . $this->get_field_id( 'post_id' ) . '" name="' . $this->get_field_name( 'post_id' ) . '" type="text" value="' . esc_attr( $post_id ) . '" />';
+		echo '<label class="title" title="' . esc_attr__( "Leave empty to show comments for all posts. To show comments for a specific post only, indicate either part of the title or the post ID. To show posts for the current post, indicate: [current]", 'decent-comments' ) . '" for="' . esc_attr( $this->get_field_id( 'post_id' ) ) . '">' . esc_html__( 'Post ID', 'decent-comments' ) . '</label>';
+		echo '<input class="widefat" id="' . esc_attr( $this->get_field_id( 'post_id' ) ) . '" name="' . esc_attr( $this->get_field_name( 'post_id' ) ) . '" type="text" value="' . esc_attr( $post_id ) . '" />';
 		echo '<br/>';
 		echo '<span class="description">' . esc_html__( "Title, empty, post ID or [current]", 'decent-comments' ) . '</span>';
 		if ( !empty( $post_id ) && ( $post_title = get_the_title( $post_id ) ) ) {
 			echo '<br/>';
-			echo '<span class="description"> ' . sprintf( esc_html__( 'Selected post: <em>%s</em>', 'decent-comments' ) , $post_title ) . '</span>';
+			echo '<span class="description"> ' .
+				sprintf(
+					/* translators: post title */
+					esc_html__( 'Selected post: %s', 'decent-comments' ),
+					'<em>' . esc_html( $post_title ) . '</em>'
+				) .
+			'</span>';
 		}
 		echo '</p>';
 
@@ -509,17 +517,19 @@ class Decent_Comments_Widget extends WP_Widget {
 		echo '<p>';
 		printf(
 			'<label class="title" title="%s" for="%s">%s</label>',
-			esc_attr(
-				esc_html__( 'Leave empty to show comments for all post types. To show comments for a specific post type only, indicate the post type.', 'decent-comments' ) .
-				' ' .
-				esc_html__( 'You can indicate one ore more post types separated by comma.', 'decent-comments' )
-			),
+			esc_attr__( 'Leave empty to show comments for all post types. To show comments for a specific post type only, indicate the post type. You can indicate one ore more post types separated by comma.', 'decent-comments' ),
 			esc_attr( $this->get_field_id( 'post_type' ) ),
-			esc_html( esc_html__( 'Post Type', 'decent-comments' ) )
+			esc_html__( 'Post Type', 'decent-comments' )
 		);
-		echo '<input class="widefat" id="' . $this->get_field_id( 'post_type' ) . '" name="' . $this->get_field_name( 'post_type' ) . '" type="text" value="' . esc_attr( $post_type ) . '" />';
+		echo '<input class="widefat" id="' . esc_attr( $this->get_field_id( 'post_type' ) ) . '" name="' . esc_attr( $this->get_field_name( 'post_type' ) ) . '" type="text" value="' . esc_attr( $post_type ) . '" />';
 		echo '<br/>';
-		echo '<span class="description">' . sprintf( esc_html__( "Available post types: %s", 'decent-comments' ), implode( ', ', $post_types ) ) . '</span>';
+		echo '<span class="description">' .
+			sprintf(
+				/* translators: post types */
+				esc_html__( "Available post types: %s", 'decent-comments' ),
+				esc_html( implode( ', ', $post_types ) )
+			) .
+		'</span>';
 		echo '</p>';
 
 		// exclude_post_author
@@ -528,94 +538,103 @@ class Decent_Comments_Widget extends WP_Widget {
 			( isset( $instance['exclude_post_author'] ) && $instance['exclude_post_author'] === true ) )
 			? 'checked="checked"' : '' );
 		echo '<p>';
-		echo '<input type="checkbox" ' . $checked . ' value="1" name="' . $this->get_field_name( 'exclude_post_author' ) . '" />';
-		echo '<label class="title" title="' . esc_html__( "If checked, excludes comments from post authors on their own posts.", 'decent-comments' ) .'" for="' . $this->get_field_id( 'exclude_post_author' ) . '">' . esc_html__( 'Exclude comments from post authors', 'decent-comments' ) . '</label>';
+		echo '<input type="checkbox" ' . esc_attr( $checked ) . ' value="1" name="' . esc_attr( $this->get_field_name( 'exclude_post_author' ) ) . '" />';
+		echo '<label class="title" title="' . esc_attr__( 'If checked, excludes comments from post authors on their own posts.', 'decent-comments' ) .'" for="' . esc_attr( $this->get_field_id( 'exclude_post_author' ) ) . '">' . esc_html__( 'Exclude comments from post authors', 'decent-comments' ) . '</label>';
 		echo '</p>';
 
 		// excerpt
 		$checked = ( ( ( !isset( $instance['excerpt'] ) && Decent_Comments_Renderer::$defaults['excerpt'] ) || ( isset( $instance['excerpt'] ) && $instance['excerpt'] === true ) ) ? 'checked="checked"' : '' );
 		echo '<p>';
-		echo '<input type="checkbox" ' . $checked . ' value="1" name="' . $this->get_field_name( 'excerpt' ) . '" />';
-		echo '<label class="title" title="' . esc_html__( "If checked, shows an excerpt of the comment. Otherwise the full text of the comment is displayed.", 'decent-comments' ) .'" for="' . $this->get_field_id( 'excerpt' ) . '">' . esc_html__( 'Show comment excerpt', 'decent-comments' ) . '</label>';
+		echo '<input type="checkbox" ' . esc_attr( $checked ) . ' value="1" name="' . esc_attr( $this->get_field_name( 'excerpt' ) ) . '" />';
+		echo '<label class="title" title="' . esc_attr__( "If checked, shows an excerpt of the comment. Otherwise the full text of the comment is displayed.", 'decent-comments' ) .'" for="' . esc_attr( $this->get_field_id( 'excerpt' ) ) . '">' . esc_html__( 'Show comment excerpt', 'decent-comments' ) . '</label>';
 		echo '</p>';
 
 		// max_excerpt_words
 		$max_excerpt_words = !empty( $instance['max_excerpt_words'] ) ? intval( $instance['max_excerpt_words'] ) : '';
 		echo "<p>";
-		echo '<label class="title" title="' . esc_html__( "The maximum number of words shown in excerpts.", 'decent-comments' ) .'" for="' .$this->get_field_id( 'max_excerpt_words' ) . '">' . esc_html__( 'Number of words in excerpts', 'decent-comments' ) . '</label>';
-		echo '<input class="widefat" id="' . $this->get_field_id( 'max_excerpt_words' ) . '" name="' . $this->get_field_name( 'max_excerpt_words' ) . '" type="text" value="' . esc_attr( $max_excerpt_words ) . '" />';
+		echo '<label class="title" title="' . esc_attr__( "The maximum number of words shown in excerpts.", 'decent-comments' ) .'" for="' . esc_attr( $this->get_field_id( 'max_excerpt_words' ) ) . '">' . esc_html__( 'Number of words in excerpts', 'decent-comments' ) . '</label>';
+		echo '<input class="widefat" id="' . esc_attr( $this->get_field_id( 'max_excerpt_words' ) ) . '" name="' . esc_attr( $this->get_field_name( 'max_excerpt_words' ) ) . '" type="text" value="' . esc_attr( $max_excerpt_words ) . '" />';
 		echo '</p>';
 
 		// max_excerpt_characters
 		$max_excerpt_characters = !empty( $instance['max_excerpt_characters'] ) ? intval( $instance['max_excerpt_characters'] ) : '';
 		echo "<p>";
-		echo '<label class="title" title="' . esc_html__( "The maximum number of characters shown in excerpts.", 'decent-comments' ) .'" for="' .$this->get_field_id( 'max_excerpt_characters' ) . '">' . esc_html__( 'Number of characters in excerpts', 'decent-comments' ) . '</label>';
-		echo '<input class="widefat" id="' . $this->get_field_id( 'max_excerpt_characters' ) . '" name="' . $this->get_field_name( 'max_excerpt_characters' ) . '" type="text" value="' . esc_attr( $max_excerpt_characters ) . '" />';
+		echo '<label class="title" title="' . esc_attr__( "The maximum number of characters shown in excerpts.", 'decent-comments' ) .'" for="' . esc_attr( $this->get_field_id( 'max_excerpt_characters' ) ) . '">' . esc_html__( 'Number of characters in excerpts', 'decent-comments' ) . '</label>';
+		echo '<input class="widefat" id="' . esc_attr( $this->get_field_id( 'max_excerpt_characters' ) ) . '" name="' . esc_attr( $this->get_field_name( 'max_excerpt_characters' ) ) . '" type="text" value="' . esc_attr( $max_excerpt_characters ) . '" />';
 		echo '</p>';
 
 		// ellipsis
 		$ellipsis = isset( $instance['ellipsis'] ) ? $instance['ellipsis'] : '';
 		echo "<p>";
-		echo '<label class="title" title="' . esc_html__( "The ellipsis is shown after the excerpt when there is more content.", 'decent-comments' ) . '" for="' .$this->get_field_id( 'ellipsis' ) . '">' . esc_html__( 'Ellipsis', 'decent-comments' ) . '</label>';
-		echo '<input class="widefat" id="' . $this->get_field_id( 'ellipsis' ) . '" name="' . $this->get_field_name( 'ellipsis' ) . '" type="text" value="' . esc_attr( $ellipsis ) . '" />';
+		echo '<label class="title" title="' . esc_attr__( "The ellipsis is shown after the excerpt when there is more content.", 'decent-comments' ) . '" for="' . esc_attr( $this->get_field_id( 'ellipsis' ) ) . '">' . esc_html__( 'Ellipsis', 'decent-comments' ) . '</label>';
+		echo '<input class="widefat" id="' . esc_attr( $this->get_field_id( 'ellipsis' ) ) . '" name="' . esc_attr( $this->get_field_name( 'ellipsis' ) ) . '" type="text" value="' . esc_attr( $ellipsis ) . '" />';
 		echo '</p>';
 
 		// show_author
 		$checked = ( ( ( !isset( $instance['show_author'] ) && Decent_Comments_Renderer::$defaults['show_author'] ) || ( isset( $instance['show_author'] ) && $instance['show_author'] === true ) ) ? 'checked="checked"' : '' );
 		echo '<p>';
-		echo '<input type="checkbox" ' . $checked . ' value="1" name="' . $this->get_field_name( 'show_author' ) . '" />';
-		echo '<label class="title" title="' . esc_html__( "Whether to show the author of each comment.", 'decent-comments' ) .'" for="' . $this->get_field_id( 'show_author' ) . '">' . esc_html__( 'Show author', 'decent-comments' ) . '</label>';
+		echo '<input type="checkbox" ' . esc_attr( $checked ) . ' value="1" name="' . esc_attr( $this->get_field_name( 'show_author' ) ) . '" />';
+		echo '<label class="title" title="' . esc_attr__( "Whether to show the author of each comment.", 'decent-comments' ) .'" for="' . esc_attr( $this->get_field_id( 'show_author' ) ) . '">' . esc_html__( 'Show author', 'decent-comments' ) . '</label>';
 		echo '</p>';
 
 		// show_date
 		$checked = ( ( ( !isset( $instance['show_date'] ) && Decent_Comments_Renderer::$defaults['show_date'] ) || ( isset( $instance['show_date'] ) && $instance['show_date'] === true ) ) ? 'checked="checked"' : '' );
 		echo '<p>';
-		echo '<input type="checkbox" ' . $checked . ' value="1" name="' . $this->get_field_name( 'show_date' ) . '" />';
-		echo '<label class="title" title="' . esc_html__( "Show the date and time when the comment was posted.", 'decent-comments' ) .'" for="' . $this->get_field_id( 'show_date' ) . '">' . esc_html__( 'Show date', 'decent-comments' ) . '</label>';
+		echo '<input type="checkbox" ' . esc_attr( $checked ) . ' value="1" name="' . esc_attr( $this->get_field_name( 'show_date' ) ) . '" />';
+		echo '<label class="title" title="' . esc_attr__( "Show the date and time when the comment was posted.", 'decent-comments' ) .'" for="' . esc_attr( $this->get_field_id( 'show_date' ) ) . '">' . esc_html__( 'Show date', 'decent-comments' ) . '</label>';
 		echo '</p>';
 
 		// link_author
 		$checked = ( ( ( !isset( $instance['link_author'] ) && Decent_Comments_Renderer::$defaults['link_author'] ) || ( isset( $instance['link_author'] ) && $instance['link_author'] === true ) ) ? 'checked="checked"' : '' );
 		echo '<p>';
-		echo '<input type="checkbox" ' . $checked . ' value="1" name="' . $this->get_field_name( 'link_author' ) . '" />';
-		echo '<label class="title" title="' . esc_html__( "Whether to link comment authors to their website.", 'decent-comments' ) .'" for="' . $this->get_field_id( 'link_author' ) . '">' . esc_html__( 'Link authors', 'decent-comments' ) . '</label>';
+		echo '<input type="checkbox" ' . esc_attr( $checked ) . ' value="1" name="' . esc_attr( $this->get_field_name( 'link_author' ) ) . '" />';
+		echo '<label class="title" title="' . esc_attr__( "Whether to link comment authors to their website.", 'decent-comments' ) .'" for="' . esc_attr( $this->get_field_id( 'link_author' ) ) . '">' . esc_html__( 'Link authors', 'decent-comments' ) . '</label>';
 		echo '</p>';
 
 		// show_avatar
 		$checked = ( ( ( !isset( $instance['show_avatar'] ) && Decent_Comments_Renderer::$defaults['show_avatar'] ) || ( isset( $instance['show_avatar'] ) && $instance['show_avatar'] === true ) ) ? 'checked="checked"' : '' );
 		echo '<p>';
-		echo '<input type="checkbox" ' . $checked . ' value="1" name="' . $this->get_field_name( 'show_avatar' ) . '" />';
-		echo '<label class="title" title="' . esc_html__( "Show the avatar of the author.", 'decent-comments' ) .'" for="' . $this->get_field_id( 'show_avatar' ) . '">' . esc_html__( 'Show avatar', 'decent-comments' ) . '</label>';
+		echo '<input type="checkbox" ' . esc_attr( $checked ) . ' value="1" name="' . esc_attr( $this->get_field_name( 'show_avatar' ) ) . '" />';
+		echo '<label class="title" title="' . esc_attr__( "Show the avatar of the author.", 'decent-comments' ) .'" for="' . esc_attr( $this->get_field_id( 'show_avatar' ) ) . '">' . esc_html__( 'Show avatar', 'decent-comments' ) . '</label>';
 		echo '</p>';
 
 		// avatar size
 		$avatar_size = isset( $instance['avatar_size'] ) ? intval( $instance['avatar_size'] ) : '';
 		echo "<p>";
-		echo '<label class="title" title="' . esc_html__( "The size of the avatar in pixels.", 'decent-comments' ) .'" for="' .$this->get_field_id( 'avatar_size' ) . '">' . esc_html__( 'Avatar size', 'decent-comments' ) . '</label>';
-		echo '<input class="widefat" id="' . $this->get_field_id( 'avatar_size' ) . '" name="' . $this->get_field_name( 'avatar_size' ) . '" type="text" value="' . esc_attr( $avatar_size ) . '" />';
+		echo '<label class="title" title="' . esc_attr__( "The size of the avatar in pixels.", 'decent-comments' ) .'" for="' . esc_attr( $this->get_field_id( 'avatar_size' ) ) . '">' . esc_html__( 'Avatar size', 'decent-comments' ) . '</label>';
+		echo '<input class="widefat" id="' . esc_attr( $this->get_field_id( 'avatar_size' ) ) . '" name="' . esc_attr( $this->get_field_name( 'avatar_size' ) ) . '" type="text" value="' . esc_attr( $avatar_size ) . '" />';
 		echo '</p>';
 
 		// show_link
 		$checked = ( ( ( !isset( $instance['show_link'] ) && Decent_Comments_Renderer::$defaults['show_link'] ) || ( isset( $instance['show_link'] ) && $instance['show_link'] === true ) ) ? 'checked="checked"' : '' );
 		echo '<p>';
-		echo '<input type="checkbox" ' . $checked . ' value="1" name="' . $this->get_field_name( 'show_link' ) . '" />';
-		echo '<label class="title" title="' . esc_html__( "Show a link to the post that the comment applies to.", 'decent-comments' ) .'" for="' . $this->get_field_id( 'show_link' ) . '">' . esc_html__( 'Show link to post', 'decent-comments' ) . '</label>';
+		echo '<input type="checkbox" ' . esc_attr( $checked ) . ' value="1" name="' . esc_attr( $this->get_field_name( 'show_link' ) ) . '" />';
+		echo '<label class="title" title="' . esc_attr__( "Show a link to the post that the comment applies to.", 'decent-comments' ) .'" for="' . esc_attr( $this->get_field_id( 'show_link' ) ) . '">' . esc_html__( 'Show link to post', 'decent-comments' ) . '</label>';
 		echo '</p>';
 
 		// show_comment
 		$checked = ( ( ( !isset( $instance['show_comment'] ) && Decent_Comments_Renderer::$defaults['show_comment'] ) || ( isset( $instance['show_comment'] ) && $instance['show_comment'] === true ) ) ? 'checked="checked"' : '' );
 		echo '<p>';
-		echo '<input type="checkbox" ' . $checked . ' value="1" name="' . $this->get_field_name( 'show_comment' ) . '" />';
-		echo '<label class="title" title="' . esc_html__( "Show an excerpt of the comment or the full comment.", 'decent-comments' ) .'" for="' . $this->get_field_id( 'show_comment' ) . '">' . esc_html__( 'Show the comment', 'decent-comments' ) . '</label>';
+		echo '<input type="checkbox" ' . esc_attr( $checked ) . ' value="1" name="' . esc_attr( $this->get_field_name( 'show_comment' ) ) . '" />';
+		echo '<label class="title" title="' . esc_attr__( "Show an excerpt of the comment or the full comment.", 'decent-comments' ) .'" for="' . esc_attr( $this->get_field_id( 'show_comment' ) ) . '">' . esc_html__( 'Show the comment', 'decent-comments' ) . '</label>';
 		echo '</p>';
 
 		// taxonomy & terms
 		$taxonomy = isset( $instance['taxonomy'] ) ? $instance['taxonomy'] : '';
 		echo "<p>";
-		echo '<label class="title" title="' . esc_html__( "A taxonomy, e.g. category or post_tag", 'decent-comments' ) .'" for="' .$this->get_field_id( 'taxonomy' ) . '">' . esc_html__( 'Taxonomy', 'decent-comments' ) . '</label>';
-		echo '<input class="widefat" id="' . $this->get_field_id( 'taxonomy' ) . '" name="' . $this->get_field_name( 'taxonomy' ) . '" type="text" value="' . esc_attr( $taxonomy ) . '" />';
+		echo '<label class="title" title="' . esc_attr__( "A taxonomy, e.g. category or post_tag", 'decent-comments' ) .'" for="' . esc_attr( $this->get_field_id( 'taxonomy' ) ) . '">' . esc_html__( 'Taxonomy', 'decent-comments' ) . '</label>';
+		echo '<input class="widefat" id="' . esc_attr( $this->get_field_id( 'taxonomy' ) ) . '" name="' . esc_attr( $this->get_field_name( 'taxonomy' ) ) . '" type="text" value="' . esc_attr( $taxonomy ) . '" />';
 		echo '<br/>';
-		echo '<span class="description">' . wp_kses_post( __( "Indicate <strong>category</strong> if you would like to show comments on posts in certain categories. Give the desired categories' slugs in <strong>Terms</strong>. For tags use <strong>post_tag</strong> and give the tags' slugs in <strong>Terms</strong>.", 'decent-comments' ) ) . '</span>';
+		echo '<span class="description">' .
+			sprintf(
+				/* translators: 1: category, 2: Terms, 3: post_tag, 4: Terms */
+				esc_html__( 'Indicate %1$s if you would like to show comments on posts in certain categories. Give the desired categories\' slugs in %2$s. For tags use %3$s and give the tags\' slugs in %4$s.', 'decent-comments' ),
+				'<strong>' . esc_html__( 'category', 'decent-comments' ) . '</strong>',
+				'<strong>' . esc_html__( 'Terms', 'decent-comments' ) . '</strong>',
+				'<strong>post_tag</strong>',
+				'<strong>' . esc_html__( 'Terms', 'decent-comments' ) . '</strong>'
+			) .
+			'</span>';
 		echo '</p>';
 
 		$terms = '';
@@ -627,24 +646,30 @@ class Decent_Comments_Widget extends WP_Widget {
 			}
 		}
 		echo "<p>";
-		echo '<label class="title" title="' . esc_html__( "If a taxonomy is given , indicate terms in that taxonomy separated by comma to show comments for all posts related to these terms. To show comments on posts related to the same terms as the current post, indicate: {current}. If a taxonomy is given and terms is empty, no comments will be shown.", 'decent-comments' ) . '" for="' .$this->get_field_id( 'terms' ) . '">' . esc_html__( 'Terms', 'decent-comments' ) . '</label>';
-		echo '<input class="widefat" id="' . $this->get_field_id( 'terms' ) . '" name="' . $this->get_field_name( 'terms' ) . '" type="text" value="' . esc_attr( $terms ) . '" />';
+		echo '<label class="title" title="' . esc_attr__( "If a taxonomy is given , indicate terms in that taxonomy separated by comma to show comments for all posts related to these terms. To show comments on posts related to the same terms as the current post, indicate: {current}. If a taxonomy is given and terms is empty, no comments will be shown.", 'decent-comments' ) . '" for="' . esc_attr( $this->get_field_id( 'terms' ) ) . '">' . esc_html__( 'Terms', 'decent-comments' ) . '</label>';
+		echo '<input class="widefat" id="' . esc_attr( $this->get_field_id( 'terms' ) ) . '" name="' . esc_attr( $this->get_field_name( 'terms' ) ) . '" type="text" value="' . esc_attr( $terms ) . '" />';
 		echo '<br/>';
-		echo '<span class="description">' . wp_kses_post( __( "Terms or {current}. A <strong>Taxonomy</strong> must be given.", 'decent-comments' ) ) . '</span>';
+		echo '<span class="description">' .
+			sprintf(
+				/* translators: Taxonomy */
+				esc_html__( "Terms or {current}. A %s must be given.", 'decent-comments' ),
+				'<strong>'. esc_html__( 'Taxonomy', 'decent-comments' ) . '</strong>'
+			) .
+		'</span>';
 		echo '</p>';
 
 		// pingback
 		$checked = ( ( ( !isset( $instance['pingback'] ) && Decent_Comments_Renderer::$defaults['pingback'] ) || ( isset( $instance['pingback'] ) && $instance['pingback'] === true ) ) ? 'checked="checked"' : '' );
 		echo '<p>';
-		echo '<input type="checkbox" ' . $checked . ' value="1" name="' . $this->get_field_name( 'pingback' ) . '" />';
-		echo '<label class="title" title="' . esc_html__( "Include pingbacks.", 'decent-comments' ) .'" for="' . $this->get_field_id( 'pingback' ) . '">' . esc_html__( 'Pingbacks', 'decent-comments' ) . '</label>';
+		echo '<input type="checkbox" ' . esc_attr( $checked ) . ' value="1" name="' . esc_attr( $this->get_field_name( 'pingback' ) ) . '" />';
+		echo '<label class="title" title="' . esc_attr__( "Include pingbacks.", 'decent-comments' ) .'" for="' . esc_attr( $this->get_field_id( 'pingback' ) ) . '">' . esc_html__( 'Pingbacks', 'decent-comments' ) . '</label>';
 		echo '</p>';
 
 		// trackback
 		$checked = ( ( ( !isset( $instance['trackback'] ) && Decent_Comments_Renderer::$defaults['trackback'] ) || ( isset( $instance['trackback'] ) && $instance['trackback'] === true ) ) ? 'checked="checked"' : '' );
 		echo '<p>';
-		echo '<input type="checkbox" ' . $checked . ' value="1" name="' . $this->get_field_name( 'trackback' ) . '" />';
-		echo '<label class="title" title="' . esc_html__( "Include trackbacks.", 'decent-comments' ) .'" for="' . $this->get_field_id( 'trackback' ) . '">' . esc_html__( 'Trackbacks', 'decent-comments' ) . '</label>';
+		echo '<input type="checkbox" ' . esc_attr( $checked ) . ' value="1" name="' . esc_attr( $this->get_field_name( 'trackback' ) ) . '" />';
+		echo '<label class="title" title="' . esc_attr__( "Include trackbacks.", 'decent-comments' ) .'" for="' . esc_attr( $this->get_field_id( 'trackback' ) ) . '">' . esc_html__( 'Trackbacks', 'decent-comments' ) . '</label>';
 		echo '</p>';
 	}
 } // class Decent_Comments_Widget

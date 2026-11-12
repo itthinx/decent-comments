@@ -2,6 +2,15 @@
 
 = 4.0.0 =
 * WordPress 7.1 compatible.
+* Replaced authentication token with nonce.
+* Removed unecessary imports from block.
+* Fixed avatar not displaying properly on frontend.
+* Fixed comment title and excerpt to display matching entities.
+* Fixed errors found in Plugin check.
+* Fixed warnings on undefined variables.
+* Fixed issued with avatar minimum size.
+* Added missing translators comments.
+* Formatting.
 
 = 3.0.3 =
 * WordPress 6.9 compatible.

@@ -22,7 +22,6 @@ import { createRoot } from 'react-dom/client';
 import { __ } from '@wordpress/i18n';
 import { fetchComments, RenderComments, parseAttributes } from './commentsUtils.js';
 
-
 let current_post_id = null;
 let current_term_id = null;
 if (window.decentCommentsView) {
@@ -56,8 +55,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 				}
 			}
 
-			const token = window.decentCommentsView?.token || '';
-			const response = await fetchComments(attributes, token);
+			const nonce = window.decentCommentsView?.nonce || '';
+			const response = await fetchComments(attributes, nonce);
 			root.render(
 				<RenderComments comments={response.comments || []} attributes={attributes} />
 			);

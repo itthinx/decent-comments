@@ -152,7 +152,7 @@ class Decent_Comments_Renderer {
 		if ( $comment ) {
 
 			if ( $strip_tags ) {
-				$content = strip_tags( $comment->comment_content );
+				$content = strip_tags( $comment->comment_content ); // phpcs:ignore WordPress.WP.AlternativeFunctions.strip_tags_strip_tags
 			} else {
 				$content = $comment->comment_content;
 			}
@@ -215,18 +215,23 @@ class Decent_Comments_Renderer {
 		// output
 		$output = '';
 
-		extract( self::$defaults );
-
 		// comment selection options
+		$number = self::$defaults['number'];
 		if ( isset( $options['number'] ) ) {
 			$number = intval( $options['number'] );
 		}
+
+		$order = self::$defaults['order'];
 		if ( isset( $options['order'] ) ) {
 			$order = ( 'ASC' == strtoupper( $options['order'] ) ) ? 'ASC' : 'DESC';
 		}
+
+		$orderby = self::$defaults['orderby'];
 		if ( isset( $options['orderby'] ) ) {
 			$orderby = $options['orderby'];
 		}
+
+		$post_id = self::$defaults['post_id'];
 		if ( isset( $options['post_id'] ) && ( $options['post_id'] !== null ) ) {
 			if ( ( "{current}" == $options['post_id'] ) || ( "[current]" == $options['post_id'] ) ) {
 				$post_id = get_the_ID();
@@ -235,6 +240,7 @@ class Decent_Comments_Renderer {
 			}
 		}
 
+		$post_type = self::$defaults['post_type'];
 		if ( isset( $options['post_type'] ) ) {
 			$post_types = get_post_types( array( 'public' => true ) );
 			$options['post_type'] = array_map( 'trim', explode( ',', $options['post_type'] ) );
@@ -262,10 +268,12 @@ class Decent_Comments_Renderer {
 		}
 
 		// Any chosen terms? - Needs taxonomy to be given as well.
+		$terms = self::$defaults['terms'];
 		if ( isset( $options['terms'] ) ) {
 			$terms = $options['terms'];
 		}
 		// Any term ids given? - Needs taxonomy to be given as well.
+		$term_ids = self::$defaults['term_ids'];
 		if ( isset( $options['term_ids'] ) ) {
 			$term_ids = $options['term_ids'];
 		}
@@ -289,17 +297,22 @@ class Decent_Comments_Renderer {
 				}
 			}
 		}
+
+		$pingback = self::$defaults['pingback'];
 		if ( isset( $options['pingback'] ) ) {
 			$pingback = ( $options['pingback'] !== 'false' && $options['pingback'] !== false );
 		}
+		$trackback = self::$defaults['trackback'];
 		if ( isset( $options['trackback'] ) ) {
 			$trackback = ( $options['trackback'] === 'false' && $options['pingback'] !== false );
 		}
+		$exclude_post_author = self::$defaults['exclude_post_author'];
 		if ( isset( $options['exclude_post_author'] ) ) {
 			$exclude_post_author = $options['exclude_post_author'] === 'true' || $options['exclude_post_author'] === true;
 		}
 
 		// @since 1.10.0
+		$post_status = 'publish';
 		if ( isset( $options['post_status'] ) ) {
 			$post_status = $options['post_status'];
 			if ( is_string( $post_status ) ) {
@@ -310,6 +323,7 @@ class Decent_Comments_Renderer {
 		}
 
 		// @since 1.11.0
+		$user_id = self::$defaults['user_id'];
 		if ( isset( $options['user_id'] ) && is_numeric( $options['user_id'] ) ) {
 			$user_id = intval( $options['user_id'] );
 			if ( $user_id < 0 ) {
@@ -318,6 +332,7 @@ class Decent_Comments_Renderer {
 		}
 
 		// @since 1.11.0
+		$search = self::$defaults['search'];
 		if ( !empty( $options['search'] ) && is_string( $options['search'] ) ) {
 			$search = trim( $options['search'] );
 			if ( strlen( $search ) === 0 ) {
@@ -421,39 +436,63 @@ class Decent_Comments_Renderer {
 		if ( !empty( $comments ) ) {
 
 			// display options
+
+			$avatar_size = self::$defaults['avatar_size'];
 			if ( isset( $options['avatar_size'] ) ) {
 				$avatar_size = intval( $options['avatar_size'] );
 			}
+
+			$excerpt = self::$defaults['excerpt'];
 			if ( isset( $options['excerpt'] ) ) {
 				$excerpt = ( $options['excerpt'] !== 'false' && $options['excerpt'] !== false );
 			}
+
+			$max_excerpt_words = self::$defaults['max_excerpt_words'];
 			if ( isset( $options['max_excerpt_words'] ) ) {
 				$max_excerpt_words = intval( $options['max_excerpt_words'] );
 			}
+
+			$max_excerpt_characters = self::$defaults['max_excerpt_characters'];
 			if ( isset( $options['max_excerpt_characters'] ) ) {
 				$max_excerpt_characters = intval( $options['max_excerpt_characters'] );
 			}
+
+			$ellipsis = self::$defaults['ellipsis'];
 			if ( isset( $options['ellipsis'] ) ) {
 				$ellipsis = $options['ellipsis'];
 			}
+
+			$show_author = self::$defaults['show_author'];
 			if ( isset( $options['show_author'] ) ) {
 				$show_author = ( $options['show_author'] !== 'false' && $options['show_author'] !== false );
 			}
+
+			$show_date = self::$defaults['show_date'];
 			if ( isset( $options['show_date'] ) ) {
 				$show_date = ( $options['show_date'] !== 'false' && $options['show_date'] !== false );
 			}
+
+			$link_author = self::$defaults['link_author'];
 			if ( isset( $options['link_author'] ) ) {
 				$link_author = ( $options['link_author'] !== 'false' && $options['link_author'] !== false );
 			}
+
+			$show_avatar = self::$defaults['show_avatar'];
 			if ( isset( $options['show_avatar'] ) ) {
 				$show_avatar = ( $options['show_avatar'] !== 'false' && $options['show_avatar'] !== false );
 			}
+
+			$show_link = self::$defaults['show_link'];
 			if ( isset( $options['show_link'] ) ) {
 				$show_link = ( $options['show_link'] !== 'false' && $options['show_link'] !== false );
 			}
+
+			$show_comment = self::$defaults['show_comment'];
 			if ( isset( $options['show_comment'] ) ) {
 				$show_comment = ( $options['show_comment'] !== 'false' && $options['show_comment'] !== false );
 			}
+
+			$strip_tags = self::$defaults['strip_tags'];
 			if ( isset( $options['strip_tags'] ) ) {
 				$strip_tags = ( $options['strip_tags'] !== 'false' && $options['strip_tags'] !== false );
 			}
@@ -493,7 +532,8 @@ class Decent_Comments_Renderer {
 				if ( $show_date ) {
 					$output .= '<div class="comment-date">';
 					$output .= sprintf(
-						_x( '%1$s at %2$s', 'comment-date', 'decent-comments' ), // translators : the first argument is the date of the comment, the second is the time
+						/* translators: 1: date of the comment, 2: time */
+						_x( '%1$s at %2$s', 'comment-date', 'decent-comments' ),
 						mysql2date( get_option( 'date_format' ), $comment->comment_date ),
 						mysql2date( get_option( 'time_format' ), $comment->comment_date, true )
 					);
@@ -503,6 +543,7 @@ class Decent_Comments_Renderer {
 				if ( $show_link ) {
 					$output .= '<div class="comment-link">';
 					$output .= sprintf(
+						/* translators: comment link */
 						_x( 'on %s', 'comment-link', 'decent-comments' ),
 						'<a href="' . esc_url( get_comment_link( $comment->comment_ID ) ) . '">' . get_the_title( $comment->comment_post_ID ) . '</a>'
 					);

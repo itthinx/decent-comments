@@ -149,23 +149,22 @@ class Decent_Comment {
 					if ( is_string( $terms ) ) {
 						$terms = explode( ",", $terms );
 					}
-					foreach ( $terms as $term ) {
-						$term_names[] = "%s";
-					}
-					$term_names = implode( ",", $term_names );
-					$terms = $wpdb->get_results( $wpdb->prepare( "SELECT DISTINCT term_id FROM $wpdb->terms WHERE slug IN ( $term_names )", $terms ) );
-					foreach ( $terms as $term ) {
-						if ( !in_array( $term->term_id, $term_ids ) ) {
-							$term_ids[] = $term->term_id;
+
+					$terms_results = $wpdb->get_results(
+						$wpdb->prepare(
+							"SELECT DISTINCT term_id FROM $wpdb->terms WHERE slug IN ( " . implode( ', ', array_fill( 0, count( $terms ), '%s' ) ) . " )",
+							$terms
+						)
+					);
+					if ( !empty( $terms_results ) ) {
+						foreach ( $terms_results as $term ) {
+							if ( !in_array( $term->term_id, $term_ids, true ) ) {
+								$term_ids[] = $term->term_id;
+							}
 						}
 					}
 				}
-				global $wp_version;
-				if ( isset( $wp_version ) && ( version_compare( $wp_version, '4.5' ) >= 0 ) ) {
-					$terms = get_terms( array( 'taxonomy' => $taxonomy, 'include' => $term_ids ) );
-				} else {
-					$terms = get_terms( $taxonomy, array( 'include' => $term_ids ) );
-				}
+				$terms = get_terms( array( 'taxonomy' => $taxonomy, 'include' => $term_ids ) );
 				if ( is_array( $terms ) ) {
 					$term_ids = array();
 					foreach ( $terms as $term ) {

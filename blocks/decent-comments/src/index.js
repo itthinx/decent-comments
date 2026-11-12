@@ -21,7 +21,7 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
-import { PanelBody, TextControl, ToggleControl, SelectControl, NumberControl } from '@wordpress/components';
+import { PanelBody, TextControl, ToggleControl, SelectControl } from '@wordpress/components';
 import './editor.css';
 import metadata from './block.json';
 import { useState, useEffect } from '@wordpress/element';
@@ -45,7 +45,7 @@ registerBlockType( metadata.name, {
 		show_date: { type: 'boolean', default: true },
 		link_authors: { type: 'boolean', default: true },
 		show_avatar: { type: 'boolean', default: true },
-		avatar_size: { type: 'number', default: 48 },
+		avatar_size: { type: 'number', default: 24 },
 		show_link: { type: 'boolean', default: true },
 		show_comment: { type: 'boolean', default: true },
 		taxonomy: { type: 'string', default: ''},
@@ -63,7 +63,6 @@ registerBlockType( metadata.name, {
 		post_type: { type: 'string', default: 'post' },
 	},
 	edit: ({ attributes, setAttributes }) => {
-		const blockProps = useBlockProps();
 		const [comments, setComments] = useState([]);
 		const [error, setError] = useState(null);
 
@@ -79,8 +78,8 @@ registerBlockType( metadata.name, {
 						updatedAttributes.term_ids = '';
 					}
 
-					const token = window.decentCommentsEdit?.token || '';
-					const response = await fetchComments(updatedAttributes, token);
+					const nonce = window.decentCommentsEdit?.nonce || '';
+					const response = await fetchComments(updatedAttributes, nonce);
 					setComments(response.comments || []);
 					setError(null);
 				} catch (err) {
@@ -91,6 +90,11 @@ registerBlockType( metadata.name, {
 
 			getComments();
 		}, [attributes]);
+
+		const blockProps = useBlockProps({
+			className: 'wp-block-itthinx-decent-comments',
+			'data-attributes': JSON.stringify(attributes)
+		});
 
 		return (
 			<>
@@ -196,8 +200,8 @@ registerBlockType( metadata.name, {
 						<TextControl
 							label={__('Avatar size', 'decent-comments')}
 							value={attributes.avatar_size}
-							onChange={(value) => setAttributes({ avatar_size: parseInt(value) || 48 })}
-							min="0"
+							onChange={(value) => setAttributes({ avatar_size: parseInt(value) || 24 })}
+							min="24"
 							type="number"
 						/>
 						<ToggleControl
@@ -238,7 +242,7 @@ registerBlockType( metadata.name, {
 						/>
 					</PanelBody>
 				</InspectorControls>
-				<div {...useBlockProps({ className: 'wp-block-itthinx-decent-comments', 'data-attributes': JSON.stringify(attributes) })}>
+				<div {...blockProps}>
 					{error ? (
 						<div className="decent-comments-error">
 							<p>
@@ -256,8 +260,12 @@ registerBlockType( metadata.name, {
 		);
 	},
 	save: ({ attributes }) => {
+		const blockProps = useBlockProps.save({ 
+			className: 'wp-block-itthinx-decent-comments',
+			'data-attributes': JSON.stringify(attributes)
+		});
 		return (
-			<div className="wp-block-itthinx-decent-comments" data-attributes={JSON.stringify(attributes)}>
+			<div {...blockProps}>
 				<p>{ __( 'Comments', 'decent-comments' ) } &hellip;</p>
 			</div>
 		);

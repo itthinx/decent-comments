@@ -60,7 +60,7 @@ export function parseAttributes(data) {
 	return JSON.parse(data || '{}');
 }
 
-export async function fetchComments(attributes, token = null) {
+export async function fetchComments(attributes, nonce) {
 	const query = buildQuery(attributes);
 
 	try {
@@ -68,7 +68,7 @@ export async function fetchComments(attributes, token = null) {
 			path: `decent-comments/v1/comments?${query.toString()}`,
 			method: 'GET',
 			headers: {
-				'Authorization': token,
+				'X-WP-Nonce': nonce,
 				'Content-Type': 'application/json',
 			},
 		});
@@ -142,6 +142,12 @@ export const RenderComment = ({ comment, attributes }) => {
 		`${comment.date} ${__('at', 'decent-comments')} ${comment.time}`
 	) : null;
 
+	const avatarSize = attributes.avatar_size || 24;
+	const avatarStyle = {
+		width: `${avatarSize}px`,
+		height: `${avatarSize}px`,
+		flexShrink: 0,
+	};
 	let pre_avatar = '';
 	let post_avatar = '';
 	if ( comment.author_url ) {
@@ -149,10 +155,13 @@ export const RenderComment = ({ comment, attributes }) => {
 		post_avatar = '</a>';
 	}
 
-	const avatar = attributes.show_avatar && comment.avatar ?
-		<div className="comment-avatar" dangerouslySetInnerHTML={{ __html: pre_avatar + comment.avatar + post_avatar }} />
-		:
-		null;
+	const avatar = attributes.show_avatar && comment.avatar ? (
+		<div 
+			className="comment-avatar" 
+			style={avatarStyle} 
+			dangerouslySetInnerHTML={{ __html: pre_avatar + comment.avatar + post_avatar }} 
+		/>
+	) : null;
 
 	const excerpt = attributes.show_comment ? formatExcerpt(comment.content, attributes) : '';
 
@@ -160,7 +169,7 @@ export const RenderComment = ({ comment, attributes }) => {
 		<div className="comment-link">
 			{ __( 'on', 'decent-comments' ) }{ ' ' }
 			<a href={safeEncodedUrl( comment.comment_link ) } className="comment-post-title">
-				{(comment.post_title || '')}
+				{decodeEntities(comment.post_title)}
 			</a>
 		</div>
 	) : null;
@@ -169,7 +178,7 @@ export const RenderComment = ({ comment, attributes }) => {
 		<li key={comment.id} className="comment-entry">
 			<div className="comment-content">
 				{ avatar }
-				{author && <div className="comment-author">{author}{' '}</div>}
+				{author && <div className="comment-author">{decodeEntities(author)}{' '}</div>}
 				{date && <div className="comment-date">{date}{' '}</div>}
 				{link}{' '}
 				{excerpt && <div className="comment-excerpt">{excerpt}</div>}
@@ -178,25 +187,46 @@ export const RenderComment = ({ comment, attributes }) => {
 	);
 };
 
-function formatExcerpt(content, attributes) {
-	let excerpt = attributes.show_excerpt ? content : '';
+function formatExcerpt(string, attributes) {
+	if (!attributes.show_excerpt || !string) return '';
+
+	let excerpt = string;
 
 	if (attributes.strip_tags) {
-		excerpt = excerpt.replace(/(<([^>]+)>)/gi, '');
+		excerpt = decodeEntities(string);
 	}
 
 	if (attributes.max_excerpt_words > 0) {
-		const words = excerpt.split(' ');
+		const words = excerpt.split(/\s+/).filter(word => word.length > 0);
 		excerpt = words.slice(0, attributes.max_excerpt_words).join(' ') +
-		(words.length > attributes.max_excerpt_words ? attributes.ellipsis : '');
+			(words.length > attributes.max_excerpt_words ? (attributes.ellipsis || '…') : '');
 	}
 
 	if (attributes.max_excerpt_characters > 0) {
 		excerpt = excerpt.substring(0, attributes.max_excerpt_characters) +
-		(excerpt.length > attributes.max_excerpt_characters ? attributes.ellipsis : '');
+			(excerpt.length > attributes.max_excerpt_characters ? (attributes.ellipsis || '…') : '');
 	}
 
 	return excerpt;
+}
+
+function decodeEntities(text) {
+	if (!text || typeof text !== 'string') return '';
+
+	return text
+		.replace(/&#8211;/g, '–')   // En-dash
+		.replace(/&#8212;/g, '—')   // Em-dash
+		.replace(/&#8217;/g, '’')   // Right single quotation mark (apostrophe)
+		.replace(/&#8220;/g, '“')   // Left double quotation mark
+		.replace(/&#8221;/g, '”')   // Right double quotation mark
+		.replace(/&#8230;/g, '…')
+		.replace(/&raquo;/g, '»')
+		.replace(/&laquo;/g, '«')
+		.replace(/&#91;/g, '[')
+		.replace(/&#93;/g, ']')
+		.replace(/&amp;/g, '&')     // Ampersand
+		.replace(/&lt;/g, '<')      // Less than
+		.replace(/&gt;/g, '>');     // Greater than
 }
 
 function handleError(block, error) {
